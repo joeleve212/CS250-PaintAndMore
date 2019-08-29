@@ -8,7 +8,7 @@
     <update check="always"/>
     <resources>
         <j2se version="10.0.1+" href="http://java.sun.com/products/autodl/j2se"/>
-        <jar href="FXLab1B.jar" size="2322" download="eager"/>
+        <jar href="FXLab1B.jar" size="3036" download="eager"/>
     </resources>
     <jfx:javafx-desc width="800" height="600" main-class="fxlab1b.FXLab1B" name="FXLab1B"/>
 </jnlp>
