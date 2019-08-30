@@ -12,12 +12,13 @@ import java.io.InputStream;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -40,9 +41,6 @@ public class PaintV0 extends Application {
     if (selectedFile != null) {
        mainStage.display(selectedFile);
     }*/
-        
-    //TODO: User choose the file to open
-        //FileView? FileChooser?
     
     //TODO: User save opened file
     
@@ -51,6 +49,8 @@ public class PaintV0 extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        Canvas canvas = new Canvas(1080, 790);
+        GraphicsContext selectImage = canvas.getGraphicsContext2D();
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
         
@@ -70,6 +70,7 @@ public class PaintV0 extends Application {
         });
         */
         btn.setOnAction((e)->{
+            //TODO: User choose the file to open
             FileChooser openFile = new FileChooser();
             openFile.setTitle("Open File");
             File file = openFile.showOpenDialog(primaryStage);
@@ -77,22 +78,23 @@ public class PaintV0 extends Application {
                 try {
                     InputStream io = new FileInputStream(file);
                     Image img = new Image(io);
+                    selectImage.drawImage(img, 2,2);
                 } catch (IOException ex) {
                     System.out.println("Error!");
                 }
             }
         });
         
-        //TODO: Menu bar in screen
-            //MenuButton, 
+        //TODO: Menu bar in screen 
         MenuBar topMenu = new MenuBar();
         final Menu menu1 = new Menu("File");
         final Menu menu2 = new Menu("Options");
         final Menu menu3 = new Menu("Help");
         topMenu.getMenus().addAll(menu1, menu2, menu3);
         
-        gridPane.add(btn, 3, 2);
+        gridPane.add(btn, 1, 0);
         gridPane.add(topMenu, 0, 0);
+        gridPane.add(canvas, 2, 2);
         
         Scene scene = new Scene(gridPane); //Placing the grid on the screen
 
