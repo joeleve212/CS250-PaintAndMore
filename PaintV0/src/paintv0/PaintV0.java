@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import javafx.application.Application;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -17,7 +18,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.image.Image;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -42,24 +46,36 @@ public class PaintV0 extends Application {
        mainStage.display(selectedFile);
     }*/
     
-    //TODO: User save opened file
     
-    //TODO: Close button to shut down program
-    //TODO: Update release notes
+    
+    
     
     @Override
     public void start(Stage primaryStage) {
-        Canvas canvas = new Canvas(1080, 790);
-        GraphicsContext selectImage = canvas.getGraphicsContext2D();
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        
         GridPane gridPane = new GridPane(); //Create the blank grid
         gridPane.setMinSize(400, 400);  //and set it's attributes
-        gridPane.setVgap(5); 
+        //gridPane.setVgap(5); 
         gridPane.setHgap(5);       
-        gridPane.setAlignment(Pos.CENTER); 
+        gridPane.setAlignment(Pos.TOP_LEFT); 
         
+        ColumnConstraints column1 = new ColumnConstraints(); //Setting widths of columns to 
+        column1.setPercentWidth(20);                        //percentages of the window width
+        ColumnConstraints column2 = new ColumnConstraints();
+        column2.setPercentWidth(10);
+        gridPane.getColumnConstraints().addAll(column1, column2);
+        
+        Canvas canvas = new Canvas(250, 100);
+        GraphicsContext selectImage = canvas.getGraphicsContext2D();
+        
+        ScrollBar vertScroll = new ScrollBar();
+        vertScroll.setOrientation(Orientation.VERTICAL);
+        //TODO: Connect this to control the page
+        //TODO: Stretch this to the length of the page
+        gridPane.add(vertScroll, 10, 1);
+        
+        Button btn = new Button();
+        btn.setText("Open Image File");
+        gridPane.add(btn, 1, 0);
         
         /*btn.setOnAction(new EventHandler<ActionEvent>() {
             
@@ -78,6 +94,8 @@ public class PaintV0 extends Application {
                 try {
                     InputStream io = new FileInputStream(file);
                     Image img = new Image(io);
+                    //TODO: Image scaling
+                    //TODO: don't crop off part of image
                     selectImage.drawImage(img, 2,2);
                 } catch (IOException ex) {
                     System.out.println("Error!");
@@ -88,19 +106,24 @@ public class PaintV0 extends Application {
         //TODO: Menu bar in screen 
         MenuBar topMenu = new MenuBar();
         final Menu menu1 = new Menu("File");
+        
+//TODO: User save opened file
+        menu1.getItems().add(new MenuItem("Save Image"));
         final Menu menu2 = new Menu("Options");
         final Menu menu3 = new Menu("Help");
         topMenu.getMenus().addAll(menu1, menu2, menu3);
-        
-        gridPane.add(btn, 1, 0);
         gridPane.add(topMenu, 0, 0);
-        gridPane.add(canvas, 2, 2);
+        
+        gridPane.add(canvas, 0, 1);
         
         Scene scene = new Scene(gridPane); //Placing the grid on the screen
 
         primaryStage.setTitle("Paint v0"); //Set the window title
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+//TODO: Close button to shut down program
+//TODO: Update release notes
     }
 
     public static void main(String[] args) {
