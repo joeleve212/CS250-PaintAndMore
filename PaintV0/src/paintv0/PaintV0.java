@@ -1,15 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* Project - OO Development with Pain(t) 
+ * Author - Joe Leveille
+ * Sprint #01 - 8/28/19 to 9/4/19
+ * Release Notes in //PaintV0/ExtraDocs/ReleaseNotes.md
  */
 package paintv0;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,10 +27,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Joe Leveille
- */
 public class PaintV0 extends Application {
     
     @Override
@@ -67,8 +64,8 @@ public class PaintV0 extends Application {
             FileChooser openFile = new FileChooser();
             openFile.setTitle("Open File");
             openFile.getExtensionFilters().addAll(
-                new ExtensionFilter("Text Files", "*.txt"),
                 new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+                new ExtensionFilter("Text Files", "*.txt"),
                 new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
                 new ExtensionFilter("All Files", "*.*")
             );
@@ -91,12 +88,32 @@ public class PaintV0 extends Application {
             }
         });
         
-        //TODO: Menu bar in screen 
+        //TODO: Menu bar in screen                DONE
         MenuBar topMenu = new MenuBar();
         final Menu menu1 = new Menu("File");
         
 //TODO: User save opened file
-        menu1.getItems().add(new MenuItem("Save Image"));
+        MenuItem imageSave = new MenuItem("Save Image");
+        menu1.getItems().add(imageSave);
+        
+        imageSave.setOnAction(new EventHandler<ActionEvent>() {
+            @Override 
+            public void handle(ActionEvent e) {
+                System.out.println("Saving image file...");
+        //TODO: save as fileChooser 
+                FileChooser saveImage = new FileChooser();
+                saveImage.setTitle("Save Image As");
+                saveImage.getExtensionFilters().addAll(
+                    new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+                    new ExtensionFilter("Text Files", "*.txt"),
+                    new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+                    new ExtensionFilter("All Files", "*.*")
+                );
+        //FIX: File savedIm = saveImage.showSaveDialog(primaryStage);
+                //File temp = savedIm.createTempFile("Image", ".png");
+            }
+        });
+        
         final Menu menu2 = new Menu("Options");
         final Menu menu3 = new Menu("Help");
         topMenu.getMenus().addAll(menu1, menu2, menu3);
@@ -114,7 +131,7 @@ public class PaintV0 extends Application {
 //TODO: Close button to shut down program           DONE?
 //TODO: Update release notes
     }
-
+//POSSIBLE TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
     }
