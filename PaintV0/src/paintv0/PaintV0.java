@@ -40,6 +40,7 @@ public class PaintV0 extends Application {
         gridPane.setVgap(0); 
         gridPane.setHgap(5);       
         gridPane.setAlignment(Pos.TOP_LEFT); 
+//TODO: implement stackPane w/ or borderPane?
         
         ColumnConstraints column1 = new ColumnConstraints(); //Setting widths of columns to 
         column1.setPercentWidth(35);                        //percentages of the window width
@@ -57,38 +58,42 @@ public class PaintV0 extends Application {
         gridPane.add(vertScroll, 10, 1);
         
         ImageView resizeIm = new ImageView();
+        FileChooser openFile= new FileChooser();
         
         
         Button openFileBtn = new Button();
         openFileBtn.setText("Open Image File");
         gridPane.add(openFileBtn, 1, 0);
-        openFileBtn.setOnAction((e)->{
+        openFileBtn.setOnAction(new EventHandler<ActionEvent>(){
             //TODO: User choose the file to open         DONE
-            FileChooser openFile = new FileChooser();
-            openFile.setInitialDirectory(new File("../../"));
-            openFile.setTitle("Open File");
-            openFile.getExtensionFilters().addAll(
-                new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"),
-                new ExtensionFilter("Text Files", "*.txt"),
-                new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
-                new ExtensionFilter("All Files", "*.*")
-            );
-            File insImg = openFile.showOpenDialog(primaryStage);
-            if (insImg != null) {
-                try {
-                    InputStream io = new FileInputStream(insImg);
-                    Image img = new Image(io);
-                    
-            //TODO: Image scaling
-                    resizeIm.setImage(img);
-                    resizeIm.setFitWidth(100);
-                    resizeIm.setFitHeight(100);
-                    resizeIm.setPreserveRatio(true);
-                    //CLEAN resizeIm.drawImage();
-                    //TODO: don't crop off part of image   DONE?
-                    gridPane.add(resizeIm, 1,1);
-                } catch (IOException ex) {
-                    System.out.println("Error!");
+            @Override 
+            public void handle(ActionEvent e) {
+                openFile.setInitialDirectory(new File("../../"));
+                openFile.setTitle("Open File");
+                openFile.getExtensionFilters().addAll(
+                    new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"),
+                    new ExtensionFilter("Text Files", "*.txt"),
+                    new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+                    new ExtensionFilter("All Files", "*.*")
+                );
+                //insImg.delete();
+                File insImg = openFile.showOpenDialog(primaryStage);
+                if (insImg != null) {
+                    try {
+                        InputStream io = new FileInputStream(insImg);
+                        Image img = new Image(io);
+
+                //TODO: Image scaling
+                        resizeIm.setImage(img);
+                        resizeIm.setFitWidth(100);
+                        resizeIm.setFitHeight(100);
+                        resizeIm.setPreserveRatio(true);
+                        //CLEAN resizeIm.drawImage();
+                        //TODO: don't crop off part of image   DONE?
+                        gridPane.add(resizeIm, 1,1);
+                    } catch (IOException ex) {
+                        System.out.println("Error!");
+                    }
                 }
             }
         });
@@ -102,6 +107,7 @@ public class PaintV0 extends Application {
         MenuItem exitBtn = new MenuItem("Exit Program");
         menu1.getItems().add(imageSave);
         menu1.getItems().add(exitBtn);
+        
         //imageSave.setOnAction(e -> saveToFile(image));
         
         exitBtn.setOnAction((e)->{
@@ -115,11 +121,22 @@ public class PaintV0 extends Application {
         //TODO: save as fileChooser 
                 FileChooser saveImage = new FileChooser();
                 saveImage.setTitle("Save Image As");
+                saveImage.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("PNG Files", "*.png"),
+                    new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
+                    new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
+                //saveImage.setSelectedExtensionFilter(new ExtensionFilter("PNG Image", ".png"));
+                File savedImg = saveImage.showSaveDialog(null);
+                String name = savedImg.getName();
+                String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase();
+                //saveToFile(resizeIm.getImage());
                 
-                File savedIm = saveImage.showSaveDialog(primaryStage);
-                //saveToFile(img);
-                //CLEAN savedIm.createTempFile("Image", ".png");
-                //ImageIO.write(new RenderedImage(img), String, File);
+    BufferedImage bImage = SwingFXUtils.fromFXImage(resizeIm.getImage(), null);
+    try {
+      ImageIO.write(bImage, ext, savedImg);
+    } catch (IOException o) {
+      throw new RuntimeException(o);
+    }
             }
         });
         
@@ -140,8 +157,8 @@ public class PaintV0 extends Application {
 //TODO: Close button to shut down program           DONE?
 //TODO: Update release notes
     }
-    
-    public static void saveToFile(Image image) {
+//CLEAN IF NOT USING
+  /*  public static void saveToFile(Image image) {
         File outputFile = new File("./");
         BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
         try {
@@ -150,6 +167,7 @@ public class PaintV0 extends Application {
           throw new RuntimeException(e);
         }
       }
+*/
 //POSSIBLE TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
