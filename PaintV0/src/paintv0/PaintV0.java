@@ -4,11 +4,13 @@
  * Release Notes in //PaintV0/ExtraDocs/ReleaseNotes.md
  */
 package paintv0;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
@@ -26,6 +28,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 public class PaintV0 extends Application {
     
@@ -55,24 +58,24 @@ public class PaintV0 extends Application {
         ImageView resizeIm = new ImageView();
         
         
-        Button btn = new Button();
-        btn.setText("Open Image File");
-        gridPane.add(btn, 1, 0);
-        
-        btn.setOnAction((e)->{
+        Button openFileBtn = new Button();
+        openFileBtn.setText("Open Image File");
+        gridPane.add(openFileBtn, 1, 0);
+        openFileBtn.setOnAction((e)->{
             //TODO: User choose the file to open         DONE
             FileChooser openFile = new FileChooser();
+            openFile.setInitialDirectory(new File("../../"));
             openFile.setTitle("Open File");
             openFile.getExtensionFilters().addAll(
-                new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+                new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"),
                 new ExtensionFilter("Text Files", "*.txt"),
                 new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
                 new ExtensionFilter("All Files", "*.*")
             );
-            File file = openFile.showOpenDialog(primaryStage);
-            if (file != null) {
+            File insImg = openFile.showOpenDialog(primaryStage);
+            if (insImg != null) {
                 try {
-                    InputStream io = new FileInputStream(file);
+                    InputStream io = new FileInputStream(insImg);
                     Image img = new Image(io);
             //TODO: Image scaling
                     resizeIm.setImage(img);
@@ -103,14 +106,11 @@ public class PaintV0 extends Application {
         //TODO: save as fileChooser 
                 FileChooser saveImage = new FileChooser();
                 saveImage.setTitle("Save Image As");
-                saveImage.getExtensionFilters().addAll(
-                    new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
-                    new ExtensionFilter("Text Files", "*.txt"),
-                    new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
-                    new ExtensionFilter("All Files", "*.*")
-                );
-        //FIX: File savedIm = saveImage.showSaveDialog(primaryStage);
-                //File temp = savedIm.createTempFile("Image", ".png");
+                
+                File savedIm = saveImage.showSaveDialog(primaryStage);
+                //saveToFile(img);
+                //CLEAN savedIm.createTempFile("Image", ".png");
+                //ImageIO.write(new RenderedImage(img), String, File);
             }
         });
         
@@ -131,6 +131,16 @@ public class PaintV0 extends Application {
 //TODO: Close button to shut down program           DONE?
 //TODO: Update release notes
     }
+    
+    public static void saveToFile(Image image) {
+        File outputFile = new File("./");
+        BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+        try {
+          ImageIO.write(bImage, "png", outputFile);
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
 //POSSIBLE TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
