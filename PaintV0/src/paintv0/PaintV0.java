@@ -22,8 +22,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
@@ -41,6 +43,7 @@ public class PaintV0 extends Application {
         gridPane.setHgap(5);       
         gridPane.setAlignment(Pos.TOP_LEFT); 
 //TODO: implement stackPane w/ or borderPane?
+        
         
         ColumnConstraints column1 = new ColumnConstraints(); //Setting widths of columns to 
         column1.setPercentWidth(35);                        //percentages of the window width
@@ -125,11 +128,9 @@ public class PaintV0 extends Application {
                     new FileChooser.ExtensionFilter("PNG Files", "*.png"),
                     new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
-                //saveImage.setSelectedExtensionFilter(new ExtensionFilter("PNG Image", ".png"));
                 File savedImg = saveImage.showSaveDialog(null);
                 String name = savedImg.getName();
                 String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase();
-                //saveToFile(resizeIm.getImage());
                 
     BufferedImage bImage = SwingFXUtils.fromFXImage(resizeIm.getImage(), null);
     try {
