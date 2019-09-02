@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -77,6 +78,7 @@ public class PaintV0 extends Application {
                 try {
                     InputStream io = new FileInputStream(insImg);
                     Image img = new Image(io);
+                    
             //TODO: Image scaling
                     resizeIm.setImage(img);
                     resizeIm.setFitWidth(100);
@@ -97,7 +99,14 @@ public class PaintV0 extends Application {
         
 //TODO: User save opened file
         MenuItem imageSave = new MenuItem("Save Image");
+        MenuItem exitBtn = new MenuItem("Exit Program");
         menu1.getItems().add(imageSave);
+        menu1.getItems().add(exitBtn);
+        //imageSave.setOnAction(e -> saveToFile(image));
+        
+        exitBtn.setOnAction((e)->{
+            Platform.exit();
+        });
         
         imageSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override 
