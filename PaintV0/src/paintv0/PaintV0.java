@@ -50,17 +50,14 @@ public class PaintV0 extends Application {
         ColumnConstraints column2 = new ColumnConstraints();
         column2.setPercentWidth(15);
         gridPane.getColumnConstraints().addAll(column1, column2);
-        
-        //CLEANCanvas canvas = new Canvas(500, 700);
-        //GraphicsContext selectImage = canvas.getGraphicsContext2D();
-        
+                
         ScrollBar vertScroll = new ScrollBar();
         vertScroll.setOrientation(Orientation.VERTICAL);
-        //TODO: Connect this to control the page
-        //TODO: Stretch this to the length of the page
+    //TODO: Connect this to control the page
+    //TODO: Stretch this to the length of the page
         gridPane.add(vertScroll, 10, 1);
         
-        ImageView resizeIm = new ImageView();
+        ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
         
         
@@ -79,7 +76,6 @@ public class PaintV0 extends Application {
                     new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
                     new ExtensionFilter("All Files", "*.*")
                 );
-                //insImg.delete();
                 File insImg = openFile.showOpenDialog(primaryStage);
                 if (insImg != null) {
                     try {
@@ -87,13 +83,11 @@ public class PaintV0 extends Application {
                         Image img = new Image(io);
 
                 //TODO: Image scaling
-                        resizeIm.setImage(img);
-                        resizeIm.setFitWidth(100);
-                        resizeIm.setFitHeight(100);
-                        resizeIm.setPreserveRatio(true);
-                        //CLEAN resizeIm.drawImage();
-                        //TODO: don't crop off part of image   DONE?
-                        gridPane.add(resizeIm, 1,1);
+                        placedImgView.setImage(img);
+                        placedImgView.setFitWidth(100);
+                        placedImgView.setFitHeight(100);
+                        placedImgView.setPreserveRatio(true);
+                        gridPane.add(placedImgView, 1,1);
                     } catch (IOException ex) {
                         System.out.println("Error!");
                     }
@@ -101,43 +95,39 @@ public class PaintV0 extends Application {
             }
         });
         
-        //TODO: Menu bar in screen                DONE
         MenuBar topMenu = new MenuBar();
         final Menu menu1 = new Menu("File");
         
-//TODO: User save opened file
         MenuItem imageSave = new MenuItem("Save Image");
         MenuItem exitBtn = new MenuItem("Exit Program");
         menu1.getItems().add(imageSave);
         menu1.getItems().add(exitBtn);
-        
-        //imageSave.setOnAction(e -> saveToFile(image));
-        
+                
         exitBtn.setOnAction((e)->{
             Platform.exit();
         });
         
+        //POSSIBLE CHANGE: outsource imageSave.setOnAction(e -> saveToFile(image));
         imageSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override 
             public void handle(ActionEvent e) {
-                System.out.println("Saving image file...");
-        //TODO: save as fileChooser 
-                FileChooser saveImage = new FileChooser();
-                saveImage.setTitle("Save Image As");
-                saveImage.getExtensionFilters().addAll(
+                System.out.println("Saving image file..."); 
+                FileChooser saveImageChoose = new FileChooser();
+                saveImageChoose.setTitle("Save Image As");
+                saveImageChoose.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("PNG Files", "*.png"),
                     new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
-                File savedImg = saveImage.showSaveDialog(null);
+                File savedImg = saveImageChoose.showSaveDialog(null);
                 String name = savedImg.getName();
-                String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase();
+                String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
                 
-    BufferedImage bImage = SwingFXUtils.fromFXImage(resizeIm.getImage(), null);
-    try {
-      ImageIO.write(bImage, ext, savedImg);
-    } catch (IOException o) {
-      throw new RuntimeException(o);
-    }
+                BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
+                try {
+                  ImageIO.write(bImage, ext, savedImg);
+                } catch (IOException o) {
+                  throw new RuntimeException(o);
+                }
             }
         });
         
@@ -146,29 +136,14 @@ public class PaintV0 extends Application {
         topMenu.getMenus().addAll(menu1, menu2, menu3);
         gridPane.add(topMenu, 0, 0);
         
-        //CLEAN gridPane.add(canvas, 0, 1);
-        
         Scene scene = new Scene(gridPane); //Placing the grid on the screen
 
-        primaryStage.setTitle("Paint v0"); //Set the window title
+        primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.show();
-        
-//TODO: Close button to shut down program           DONE?
-//TODO: Update release notes
     }
-//CLEAN IF NOT USING
-  /*  public static void saveToFile(Image image) {
-        File outputFile = new File("./");
-        BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
-        try {
-          ImageIO.write(bImage, "png", outputFile);
-        } catch (IOException e) {
-          throw new RuntimeException(e);
-        }
-      }
-*/
+//POSSIBLE TODO: USE CANVAS FOR IMAGE?
 //POSSIBLE TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
