@@ -42,9 +42,7 @@ public class PaintV0 extends Application {
         gridPane.setVgap(0); 
         gridPane.setHgap(5);       
         gridPane.setAlignment(Pos.TOP_LEFT); 
-//TODO: implement stackPane w/ or borderPane?
-        
-        
+//TODO: implement stackPane w/ or borderPane?        
         ColumnConstraints column1 = new ColumnConstraints(); //Setting widths of columns to 
         column1.setPercentWidth(35);                        //percentages of the window width
         ColumnConstraints column2 = new ColumnConstraints();
