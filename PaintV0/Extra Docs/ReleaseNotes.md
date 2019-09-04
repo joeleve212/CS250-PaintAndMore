@@ -16,13 +16,12 @@ Features added this release:
 - Scroll bar 
 
 Known Bugs:
-- Scroll bar does absolutely nothing
-- Component placement looks bad currently
+- Scroll bars do absolutely nothing
 - Image is a tiny, fixed size 
 
 Upcoming Solutions/Additions:
 - Splitting the program into separate .java files
 - Utilize formatting classes to rearrange 
-- Image will be a more reasonable size
+- Image will be a more reasonable size, and possibly resizable on the fly
 - Scroll bar will allow user to scroll to the bottom of long pictures
 

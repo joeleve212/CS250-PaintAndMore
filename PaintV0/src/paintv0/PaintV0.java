@@ -37,12 +37,11 @@ public class PaintV0 extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPane gridPane = new GridPane(); //Create the blank grid
-        gridPane.setMinSize(400, 400);  //and set it's attributes
-        gridPane.setVgap(0); 
-        gridPane.setHgap(5);       
-        gridPane.setAlignment(Pos.TOP_LEFT); 
-//TODO: implement stackPane w/ or borderPane?   
-        BorderPane bordPane = new BorderPane();
+        //gridPane.setMinSize(400, 400);  //and set it's attributes
+        //gridPane.setVgap(0); 
+        //gridPane.setHgap(5);       
+        //gridPane.setAlignment(Pos.TOP_LEFT); 
+        BorderPane bordPane = new BorderPane(); //Using borderPane to easily place things on screen edge
         bordPane.setPrefSize(500,400);
         ColumnConstraints column1 = new ColumnConstraints(); //Setting widths of columns to 
         column1.setPercentWidth(35);                        //percentages of the window width
@@ -52,9 +51,9 @@ public class PaintV0 extends Application {
                 
         ScrollBar vertScroll = new ScrollBar();
         vertScroll.setOrientation(Orientation.VERTICAL);
-    //TODO: Connect this to control the page
-    //TODO: Stretch this to the length of the page
-        //gridPane.add(vertScroll, 10, 1);
+        ScrollBar horizScroll = new ScrollBar();
+        horizScroll.setOrientation(Orientation.HORIZONTAL);
+//TODO: Connect scroll bar to control the page
         
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
@@ -62,14 +61,13 @@ public class PaintV0 extends Application {
         
         Button openFileBtn = new Button();
         openFileBtn.setText("Open Image File");
-        gridPane.add(openFileBtn, 1, 0);
-        openFileBtn.setOnAction(new EventHandler<ActionEvent>(){
-            //TODO: User choose the file to open         DONE
+        gridPane.add(openFileBtn, 0, 0);
+        openFileBtn.setOnAction(new EventHandler<ActionEvent>(){ //This function defines the action when open file is clicked
             @Override 
             public void handle(ActionEvent e) {
                 openFile.setInitialDirectory(new File("../../"));
                 openFile.setTitle("Open File");
-                openFile.getExtensionFilters().addAll(
+                openFile.getExtensionFilters().addAll(              //Including filters for extension types
                     new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"),
                     new ExtensionFilter("Text Files", "*.txt"),
                     new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
@@ -81,12 +79,12 @@ public class PaintV0 extends Application {
                         InputStream io = new FileInputStream(insImg);
                         Image img = new Image(io);
 
-                //TODO: Image scaling
-                        placedImgView.setImage(img);
+        //TODO: Image scaling
+                        placedImgView.setImage(img);        //Specifying placement & sizing of selected image
                         placedImgView.setFitWidth(100);
                         placedImgView.setFitHeight(100);
                         placedImgView.setPreserveRatio(true);
-                        gridPane.add(placedImgView, 1,1);
+                        gridPane.add(placedImgView, 4,4);
                     } catch (IOException ex) {
                         System.out.println("Error!");
                     }
@@ -94,19 +92,33 @@ public class PaintV0 extends Application {
             }
         });
         
-        MenuBar topMenu = new MenuBar();
-        final Menu menu1 = new Menu("File");
-        
+        MenuBar topMenu = new MenuBar();        //Create a menu bar to contain all menu pull-downs
+        final Menu menu1 = new Menu("File");    //Populate the first menu pull-down - File
         MenuItem imageSave = new MenuItem("Save Image");
         MenuItem exitBtn = new MenuItem("Exit Program");
+        MenuItem openBtn = new MenuItem("Open Image");
         menu1.getItems().add(imageSave);
+        menu1.getItems().add(openBtn);
         menu1.getItems().add(exitBtn);
+        
+        final Menu menu2 = new Menu("Options"); //Populate the next menu pull-down - Options
+        MenuItem cutter = new MenuItem("Cut");
+        MenuItem eraser = new MenuItem("Erase");
+        menu2.getItems().add(cutter);
+        menu2.getItems().add(eraser);
+        
+        final Menu menu3 = new Menu("Help"); //Creating Help pull-down for later use
+        topMenu.getMenus().addAll(menu1, menu2, menu3);
+        bordPane.setTop(topMenu);
+        bordPane.setCenter(gridPane);
+        bordPane.setRight(vertScroll);
+        bordPane.setBottom(horizScroll);
                 
-        exitBtn.setOnAction((e)->{
+        exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
             Platform.exit();
         });
         
-        //POSSIBLE CHANGE: outsource imageSave.setOnAction(e -> saveToFile(image));
+    //TODO: outsource button handlers to buttonHandlers.java
         imageSave.setOnAction(new EventHandler<ActionEvent>() {
             @Override 
             public void handle(ActionEvent e) {
@@ -129,14 +141,7 @@ public class PaintV0 extends Application {
                 }
             }
         });
-        
-        final Menu menu2 = new Menu("Options");
-        final Menu menu3 = new Menu("Help");
-        topMenu.getMenus().addAll(menu1, menu2, menu3);
-        bordPane.setTop(topMenu);
-        bordPane.setCenter(gridPane);
-        bordPane.setRight(vertScroll);
-        
+                      
         Scene scene = new Scene(bordPane); //Placing the grid on the screen
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
