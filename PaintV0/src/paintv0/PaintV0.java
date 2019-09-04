@@ -16,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -25,6 +24,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
@@ -41,7 +41,9 @@ public class PaintV0 extends Application {
         gridPane.setVgap(0); 
         gridPane.setHgap(5);       
         gridPane.setAlignment(Pos.TOP_LEFT); 
-//TODO: implement stackPane w/ or borderPane?        
+//TODO: implement stackPane w/ or borderPane?   
+        BorderPane bordPane = new BorderPane();
+        bordPane.setPrefSize(500,400);
         ColumnConstraints column1 = new ColumnConstraints(); //Setting widths of columns to 
         column1.setPercentWidth(35);                        //percentages of the window width
         ColumnConstraints column2 = new ColumnConstraints();
@@ -52,7 +54,7 @@ public class PaintV0 extends Application {
         vertScroll.setOrientation(Orientation.VERTICAL);
     //TODO: Connect this to control the page
     //TODO: Stretch this to the length of the page
-        gridPane.add(vertScroll, 10, 1);
+        //gridPane.add(vertScroll, 10, 1);
         
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
@@ -131,9 +133,11 @@ public class PaintV0 extends Application {
         final Menu menu2 = new Menu("Options");
         final Menu menu3 = new Menu("Help");
         topMenu.getMenus().addAll(menu1, menu2, menu3);
-        gridPane.add(topMenu, 0, 0);
+        bordPane.setTop(topMenu);
+        bordPane.setCenter(gridPane);
+        bordPane.setRight(vertScroll);
         
-        Scene scene = new Scene(gridPane); //Placing the grid on the screen
+        Scene scene = new Scene(bordPane); //Placing the grid on the screen
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);
