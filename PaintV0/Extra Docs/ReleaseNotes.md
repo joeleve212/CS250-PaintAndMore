@@ -18,6 +18,8 @@ Features added this release:
 Known Bugs:
 - Scroll bars do absolutely nothing
 - Image is a tiny, fixed size 
+- Adding a picture on top of an already-added picture causes internal errors
+- Saving a file before opening an image causes internal errors
 
 Upcoming Solutions/Additions:
 - Splitting the program into separate .java files

@@ -33,22 +33,15 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 public class PaintV0 extends Application {
-    
+    public int INIT_WINDOW_WIDTH = 400;
+    public int INIT_WINDOW_HEIGHT = 400;
     @Override
     public void start(Stage primaryStage) {
         GridPane gridPane = new GridPane(); //Create the blank grid
-        //gridPane.setMinSize(400, 400);  //and set it's attributes
-        //gridPane.setVgap(0); 
-        //gridPane.setHgap(5);       
-        //gridPane.setAlignment(Pos.TOP_LEFT); 
+        
         BorderPane bordPane = new BorderPane(); //Using borderPane to easily place things on screen edge
-        bordPane.setPrefSize(500,400);
-        ColumnConstraints column1 = new ColumnConstraints(); //Setting widths of columns to 
-        column1.setPercentWidth(35);                        //percentages of the window width
-        ColumnConstraints column2 = new ColumnConstraints();
-        column2.setPercentWidth(15);
-        gridPane.getColumnConstraints().addAll(column1, column2);
-                
+        bordPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
+            
         ScrollBar vertScroll = new ScrollBar();
         vertScroll.setOrientation(Orientation.VERTICAL);
         ScrollBar horizScroll = new ScrollBar();
@@ -61,8 +54,36 @@ public class PaintV0 extends Application {
         
         Button openFileBtn = new Button();
         openFileBtn.setText("Open Image File");
-        gridPane.add(openFileBtn, 0, 0);
-        openFileBtn.setOnAction(new EventHandler<ActionEvent>(){ //This function defines the action when open file is clicked
+        
+        
+        MenuBar topMenu = new MenuBar();        //Create a menu bar to contain all menu pull-downs
+        final Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File
+        MenuItem imageSave = new MenuItem("Save Image");
+        MenuItem exitBtn = new MenuItem("Exit Program");
+        MenuItem openBtn = new MenuItem("Open Image");
+        fileMenu.getItems().add(imageSave);
+        fileMenu.getItems().add(openBtn);
+        fileMenu.getItems().add(exitBtn);
+        
+        final Menu toolMenu = new Menu("Tools"); //Populate the next menu pull-down - Options
+        MenuItem cutter = new MenuItem("Cut");
+        MenuItem eraser = new MenuItem("Erase");
+        toolMenu.getItems().add(cutter);
+        toolMenu.getItems().add(eraser);
+        
+        final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
+        
+        topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar
+        bordPane.setTop(topMenu);
+        bordPane.setCenter(gridPane);
+        bordPane.setRight(vertScroll);
+        bordPane.setBottom(horizScroll);
+                
+        exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
+            Platform.exit();
+        });
+        
+        openBtn.setOnAction(new EventHandler<ActionEvent>(){ //This function defines the action when open file is clicked
             @Override 
             public void handle(ActionEvent e) {
                 openFile.setInitialDirectory(new File("../../"));
@@ -81,8 +102,8 @@ public class PaintV0 extends Application {
 
         //TODO: Image scaling
                         placedImgView.setImage(img);        //Specifying placement & sizing of selected image
-                        placedImgView.setFitWidth(100);
-                        placedImgView.setFitHeight(100);
+                        placedImgView.setFitWidth(INIT_WINDOW_WIDTH);
+                        placedImgView.setFitHeight(INIT_WINDOW_HEIGHT);
                         placedImgView.setPreserveRatio(true);
                         gridPane.add(placedImgView, 4,4);
                     } catch (IOException ex) {
@@ -90,32 +111,6 @@ public class PaintV0 extends Application {
                     }
                 }
             }
-        });
-        
-        MenuBar topMenu = new MenuBar();        //Create a menu bar to contain all menu pull-downs
-        final Menu menu1 = new Menu("File");    //Populate the first menu pull-down - File
-        MenuItem imageSave = new MenuItem("Save Image");
-        MenuItem exitBtn = new MenuItem("Exit Program");
-        MenuItem openBtn = new MenuItem("Open Image");
-        menu1.getItems().add(imageSave);
-        menu1.getItems().add(openBtn);
-        menu1.getItems().add(exitBtn);
-        
-        final Menu menu2 = new Menu("Options"); //Populate the next menu pull-down - Options
-        MenuItem cutter = new MenuItem("Cut");
-        MenuItem eraser = new MenuItem("Erase");
-        menu2.getItems().add(cutter);
-        menu2.getItems().add(eraser);
-        
-        final Menu menu3 = new Menu("Help"); //Creating Help pull-down for later use
-        topMenu.getMenus().addAll(menu1, menu2, menu3);
-        bordPane.setTop(topMenu);
-        bordPane.setCenter(gridPane);
-        bordPane.setRight(vertScroll);
-        bordPane.setBottom(horizScroll);
-                
-        exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
-            Platform.exit();
         });
         
     //TODO: outsource button handlers to buttonHandlers.java
@@ -134,9 +129,9 @@ public class PaintV0 extends Application {
                 String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
                 
                 BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
-                try {
+                try {           //attempt to make a save file from the inserted image
                   ImageIO.write(bImage, ext, savedImg);
-                } catch (IOException o) {
+                } catch (IOException o) {   //If the above line breaks, throw an exception
                   throw new RuntimeException(o);
                 }
             }
