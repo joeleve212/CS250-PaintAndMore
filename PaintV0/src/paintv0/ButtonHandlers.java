@@ -1,5 +1,5 @@
 /*
- * This file is meant to contain the functions 
+ * This file is meant to contain the functions - Not implemented for Sprint 1
  */
 package paintv0;
 

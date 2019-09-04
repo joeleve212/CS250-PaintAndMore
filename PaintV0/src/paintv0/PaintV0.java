@@ -120,7 +120,7 @@ public class PaintV0 extends Application {
                 System.out.println("Saving image file..."); 
                 FileChooser saveImageChoose = new FileChooser();
                 saveImageChoose.setTitle("Save Image As");
-                saveImageChoose.getExtensionFilters().addAll(
+                saveImageChoose.getExtensionFilters().addAll( //allow saving in different file formats
                     new FileChooser.ExtensionFilter("PNG Files", "*.png"),
                     new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
