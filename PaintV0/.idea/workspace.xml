@@ -14,12 +14,24 @@
       <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+            <state relative-caret-position="132">
+              <caret line="83" column="11" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
               <folding>
                 <element signature="e#0#8544#0" expanded="true" />
-                <element signature="e#7982#7983#0" expanded="true" />
-                <element signature="e#8010#8011#0" expanded="true" />
+                <element signature="e#6572#6573#0" expanded="true" />
+                <element signature="e#6600#6601#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InfoPopup.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/paintv0/InfoPopup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,14 +50,24 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>infoBox</find>
+      <find>primary</find>
+      <find>about</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/paintv0/InfoPopup.java" />
         <option value="$PROJECT_DIR$/src/paintv0/PaintV0.java" />
       </list>
     </option>
@@ -196,10 +218,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.32905984" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.32905984" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
@@ -209,7 +232,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.24928775" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="right" id="Leiningen" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32905984" />
+      <window_info anchor="bottom" id="Terminal" weight="0.20512821" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15771812" />
@@ -248,14 +271,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintv0/InfoPopup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+        <state relative-caret-position="132">
+          <caret line="83" column="11" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
           <folding>
             <element signature="e#0#8544#0" expanded="true" />
-            <element signature="e#7982#7983#0" expanded="true" />
-            <element signature="e#8010#8011#0" expanded="true" />
+            <element signature="e#6572#6573#0" expanded="true" />
+            <element signature="e#6600#6601#0" expanded="true" />
           </folding>
         </state>
       </provider>

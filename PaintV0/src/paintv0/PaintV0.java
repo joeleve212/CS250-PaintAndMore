@@ -12,21 +12,16 @@ import java.io.InputStream;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -83,8 +78,12 @@ public class PaintV0 extends Application {
         MenuItem about = new MenuItem("About");
     //TODO: popup with version number, author, app name, exit button
         helpMenu.getItems().add(about);
-        
-        topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar
+
+        about.setOnAction((e) -> {
+            InfoPopup aboutPop = new InfoPopup(primaryStage);
+        });
+
+                    topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar
         bordPane.setTop(topMenu);
         bordPane.setCenter(gridPane);
 
@@ -93,30 +92,7 @@ public class PaintV0 extends Application {
             Platform.exit();
         });
 //TODO: Encapsulate popup stuff in separate file
-        int dialogWidth = 300;
-        int dialogHeight = 300;
-        
-        BorderPane popBorderPane = new BorderPane(); //Using borderPane to easily place things on screen edge
-        popBorderPane.setPrefSize(dialogWidth,dialogHeight);
-        
-        //VBox infoBox = new VBox(50);
-        Text version = new Text("Pain(t) Version 0.1 - Authored by Joe Leveille");
-        
-        //infoBox.getChildren().add(version);
-        popBorderPane.setCenter(version);
-        
-        Scene popupScene = new Scene(popBorderPane);
-        Stage popupStage = new Stage();
-        popupStage.setTitle("About Program");
-        popupStage.initModality(Modality.APPLICATION_MODAL);
-        popupStage.initOwner(primaryStage);
-        popupStage.setScene(popupScene);
-        about.setOnAction((e)->{
-//                Popup aboutWindow = new Popup();
-//                aboutWindow.setHideOnEscape(true);
-//                aboutWindow.setAutoFix(true);
-            popupStage.show();
-        });
+
         
         openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked
             openFile.setInitialDirectory(new File(OPENER_FILE_LOC));
@@ -146,30 +122,26 @@ public class PaintV0 extends Application {
         });
         
     //TODO: outsource button handlers to buttonHandlers.java
-        imageSave.setOnAction(new EventHandler<ActionEvent>() {
-            @Override 
-            public void handle(ActionEvent e) {
-                System.out.println("Saving image file..."); 
-                FileChooser saveImageChoose = new FileChooser();
-                saveImageChoose.setTitle("Save Image As");
-                saveImageChoose.getExtensionFilters().addAll( //allow saving in different file formats
-                    new FileChooser.ExtensionFilter("PNG Files", "*.png"),
-                    new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
-                    new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
-                File savedImg = saveImageChoose.showSaveDialog(null);
-                String name = savedImg.getName();
-                String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
-                
-                BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
-                try {           //attempt to make a save file from the inserted image
-                  ImageIO.write(bImage, ext, savedImg);
-                } catch (IOException o) {   //If the above line breaks, throw an exception
-                  throw new RuntimeException(o);
-                }
+        imageSave.setOnAction((e)->{
+            System.out.println("Saving image file...");
+            FileChooser saveImageChoose = new FileChooser();
+            saveImageChoose.setTitle("Save Image As");
+            saveImageChoose.getExtensionFilters().addAll( //allow saving in different file formats
+                new FileChooser.ExtensionFilter("PNG Files", "*.png"),
+                new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
+                new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
+            File savedImg = saveImageChoose.showSaveDialog(null);
+            String name = savedImg.getName();
+            String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
+
+            BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
+            try {           //attempt to make a save file from the inserted image
+              ImageIO.write(bImage, ext, savedImg);
+            } catch (IOException o) {   //If the above line breaks, throw an exception
+                throw new RuntimeException(o);
             }
         });
-                      
-        
+
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
