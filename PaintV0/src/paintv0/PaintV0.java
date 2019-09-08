@@ -1,7 +1,7 @@
 /* Project - OO Development with Pain(t) 
  * Author - Joe Leveille
- * Sprint #01 - 8/28/19 to 9/4/19
- * Release Notes in //PaintV0/ExtraDocs/ReleaseNotes.md
+ * Sprint #02 - 9/6/19 to 9/13/19
+ * Release Notes in //PaintV0/ExtraDocs/ReleaseNotes.txt
  */
 package paintv0;
 import java.awt.image.BufferedImage;
@@ -15,39 +15,43 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
+    public String OPENER_FILE_LOC = "../..";
     @Override
     public void start(Stage primaryStage) {
         GridPane gridPane = new GridPane(); //Create the blank grid
         
         BorderPane bordPane = new BorderPane(); //Using borderPane to easily place things on screen edge
         bordPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
-            
-        ScrollBar vertScroll = new ScrollBar();
-        vertScroll.setOrientation(Orientation.VERTICAL);
-        ScrollBar horizScroll = new ScrollBar();
-        horizScroll.setOrientation(Orientation.HORIZONTAL);
-//TODO: Connect scroll bar to control the page
         
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
+        scrollPane.setContent(bordPane);
+        
+        Scene scene = new Scene(scrollPane); //Placing the grid on the screen
+        
+
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
         
@@ -67,48 +71,76 @@ public class PaintV0 extends Application {
         
         final Menu toolMenu = new Menu("Tools"); //Populate the next menu pull-down - Options
         MenuItem cutter = new MenuItem("Cut");
+        MenuItem copier = new MenuItem("Copy");
+        MenuItem line = new MenuItem("Line");
         MenuItem eraser = new MenuItem("Erase");
+        toolMenu.getItems().add(line);
+        toolMenu.getItems().add(copier);
         toolMenu.getItems().add(cutter);
         toolMenu.getItems().add(eraser);
         
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
+        MenuItem about = new MenuItem("About");
+    //TODO: popup with version number, author, app name, exit button
+        helpMenu.getItems().add(about);
         
         topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar
         bordPane.setTop(topMenu);
         bordPane.setCenter(gridPane);
-        bordPane.setRight(vertScroll);
-        bordPane.setBottom(horizScroll);
+
                 
         exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
             Platform.exit();
         });
+//TODO: Encapsulate popup stuff in separate file
+        int dialogWidth = 300;
+        int dialogHeight = 300;
         
-        openBtn.setOnAction(new EventHandler<ActionEvent>(){ //This function defines the action when open file is clicked
-            @Override 
-            public void handle(ActionEvent e) {
-                openFile.setInitialDirectory(new File("../../"));
-                openFile.setTitle("Open File");
-                openFile.getExtensionFilters().addAll(              //Including filters for extension types
-                    new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"),
-                    new ExtensionFilter("Text Files", "*.txt"),
-                    new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
-                    new ExtensionFilter("All Files", "*.*")
-                );
-                File insImg = openFile.showOpenDialog(primaryStage);
-                if (insImg != null) {
-                    try {
-                        InputStream io = new FileInputStream(insImg);
-                        Image img = new Image(io);
+        BorderPane popBorderPane = new BorderPane(); //Using borderPane to easily place things on screen edge
+        popBorderPane.setPrefSize(dialogWidth,dialogHeight);
+        
+        //VBox infoBox = new VBox(50);
+        Text version = new Text("Pain(t) Version 0.1 - Authored by Joe Leveille");
+        
+        //infoBox.getChildren().add(version);
+        popBorderPane.setCenter(version);
+        
+        Scene popupScene = new Scene(popBorderPane);
+        Stage popupStage = new Stage();
+        popupStage.setTitle("About Program");
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+        popupStage.initOwner(primaryStage);
+        popupStage.setScene(popupScene);
+        about.setOnAction((e)->{
+//                Popup aboutWindow = new Popup();
+//                aboutWindow.setHideOnEscape(true);
+//                aboutWindow.setAutoFix(true);
+            popupStage.show();
+        });
+        
+        openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked
+            openFile.setInitialDirectory(new File(OPENER_FILE_LOC));
+            openFile.setTitle("Open File");
+            openFile.getExtensionFilters().addAll(              //Including filters for extension types
+                new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"),
+                new ExtensionFilter("Text Files", "*.txt"),
+                new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+                new ExtensionFilter("All Files", "*.*")
+            );
+            File insImg = openFile.showOpenDialog(primaryStage);
+            if (insImg != null) {
+                try {
+                    InputStream io = new FileInputStream(insImg);
+                    Image img = new Image(io);
 
-        //TODO: Image scaling
-                        placedImgView.setImage(img);        //Specifying placement & sizing of selected image
-                        placedImgView.setFitWidth(INIT_WINDOW_WIDTH);
-                        placedImgView.setFitHeight(INIT_WINDOW_HEIGHT);
-                        placedImgView.setPreserveRatio(true);
-                        gridPane.add(placedImgView, 4,4);
-                    } catch (IOException ex) {
-                        System.out.println("Error!");
-                    }
+                    //TODO: Image scaling
+                    placedImgView.setImage(img);        //Specifying placement & sizing of selected image
+                    placedImgView.setFitWidth(INIT_WINDOW_WIDTH);
+                    placedImgView.setFitHeight(INIT_WINDOW_HEIGHT);
+                    placedImgView.setPreserveRatio(true);
+                    gridPane.add(placedImgView, 4, 4);
+                } catch (IOException ex) {
+                    System.out.println("Error!");
                 }
             }
         });
@@ -137,8 +169,7 @@ public class PaintV0 extends Application {
             }
         });
                       
-        Scene scene = new Scene(bordPane); //Placing the grid on the screen
-
+        
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
