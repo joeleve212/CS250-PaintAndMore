@@ -4,6 +4,7 @@
  * Release Notes in //PaintV0/ExtraDocs/ReleaseNotes.txt
  */
 package paintv0;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,6 +13,8 @@ import java.io.InputStream;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -22,6 +25,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -53,9 +58,12 @@ public class PaintV0 extends Application {
         
         Button openFileBtn = new Button();
         openFileBtn.setText("Open Image File");
-        
-        
+
+    //    HBox menuBox=new HBox();
         MenuBar topMenu = new MenuBar();        //Create a menu bar to contain all menu pull-downs
+    //    menuBox.getChildren().addAll(topMenu);
+//CLEAN: HBox.setHGrow(topMenu, Priority.ALWAYS);
+//CLEAN: topMenu.prefWidthProperty().bind(primaryStage.widthProperty());
         final Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File
         MenuItem imageSave = new MenuItem("Save Image");
         MenuItem exitBtn = new MenuItem("Exit Program");
@@ -76,7 +84,6 @@ public class PaintV0 extends Application {
         
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
-    //TODO: popup with version number, author, app name, exit button
         helpMenu.getItems().add(about);
 
         about.setOnAction((e) -> {
@@ -106,20 +113,25 @@ public class PaintV0 extends Application {
                 try {
                     InputStream io = new FileInputStream(insImg);
                     Image img = new Image(io);
+                    Canvas imgCanv = new Canvas(); // Canvas imgCanv = new Canvas(); //
+
 
                     //TODO: Image scaling
                     placedImgView.setImage(img);        //Specifying placement & sizing of selected image
                     placedImgView.setFitWidth(INIT_WINDOW_WIDTH);
                     placedImgView.setFitHeight(INIT_WINDOW_HEIGHT);
                     placedImgView.setPreserveRatio(true);
-                    gridPane.add(placedImgView, 4, 4);
+                    gridPane.add(placedImgView, 0, 0);
+                    gridPane.setAlignment(Pos.CENTER);
+                    GraphicsContext gc = imgCanv.getGraphicsContext2D();
+                    //gridPane.setMargin(imgCanv, new Insets(10,10,10,10));
                 } catch (IOException ex) {
                     System.out.println("Error!");
                 }
             }
         });
         
-    //TODO: outsource button handlers to buttonHandlers.java
+    //TODO: outsource button handlers to buttonHandlers.java ???
         imageSave.setOnAction((e)->{
             System.out.println("Saving image file...");
             FileChooser saveImageChoose = new FileChooser();

@@ -17,6 +17,7 @@ public class InfoPopup {
     InfoPopup(Stage primaryStage) {
         dialogHeight = 300;
         dialogWidth = 300;
+        Insets lowCenterBtn = new Insets(5,5,20,5);
 
         BorderPane popBorderPane = new BorderPane(); //Using borderPane to easily place things on screen edge
         popBorderPane.setPrefSize(dialogWidth, dialogHeight);
@@ -26,7 +27,7 @@ public class InfoPopup {
 
         popBorderPane.setBottom(exitPopup);
         popBorderPane.setAlignment(exitPopup, Pos.BOTTOM_CENTER);
-        popBorderPane.setMargin(exitPopup, new Insets(5,5,20,5));
+        popBorderPane.setMargin(exitPopup,lowCenterBtn);
         popBorderPane.setCenter(version);
 
         Scene popupScene = new Scene(popBorderPane);
