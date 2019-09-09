@@ -1,6 +1,10 @@
 package paintv0;
 
+import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -17,10 +21,12 @@ public class InfoPopup {
         BorderPane popBorderPane = new BorderPane(); //Using borderPane to easily place things on screen edge
         popBorderPane.setPrefSize(dialogWidth, dialogHeight);
 
-        //VBox infoBox = new VBox(50);
         Text version = new Text("Pain(t) Version 0.1 - Authored by Joe Leveille");
+        Button exitPopup = new Button("Exit");
 
-        //infoBox.getChildren().add(version);
+        popBorderPane.setBottom(exitPopup);
+        popBorderPane.setAlignment(exitPopup, Pos.BOTTOM_CENTER);
+        popBorderPane.setMargin(exitPopup, new Insets(5,5,20,5));
         popBorderPane.setCenter(version);
 
         Scene popupScene = new Scene(popBorderPane);
@@ -30,6 +36,10 @@ public class InfoPopup {
         popupStage.initOwner(primaryStage);
         popupStage.setScene(popupScene);
         popupStage.show();
+
+        exitPopup.setOnAction((e) -> {
+            popupStage.close();
+        });
 
     }
 }

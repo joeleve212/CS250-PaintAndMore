@@ -7,6 +7,6 @@ package paintv0;
  *
  * @author Joe Leveille
  */
-public class ButtonHandlers {
+public class MainScreenButtonHandlers {
     
 }

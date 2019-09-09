@@ -44,7 +44,7 @@ public class PaintV0 extends Application {
         scrollPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
         scrollPane.setContent(bordPane);
         
-        Scene scene = new Scene(scrollPane); //Placing the grid on the screen
+        Scene scene = new Scene(scrollPane);
         
 
         ImageView placedImgView = new ImageView();
@@ -83,7 +83,7 @@ public class PaintV0 extends Application {
             InfoPopup aboutPop = new InfoPopup(primaryStage);
         });
 
-                    topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar
+        topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar
         bordPane.setTop(topMenu);
         bordPane.setCenter(gridPane);
 
@@ -91,9 +91,7 @@ public class PaintV0 extends Application {
         exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
             Platform.exit();
         });
-//TODO: Encapsulate popup stuff in separate file
 
-        
         openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked
             openFile.setInitialDirectory(new File(OPENER_FILE_LOC));
             openFile.setTitle("Open File");
