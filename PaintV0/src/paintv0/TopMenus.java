@@ -12,11 +12,10 @@ import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.MouseEvent;
-import javafx.event.EventHandler;
+import javafx.scene.control.Menu;
+import javafx.scene.shape.Line;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,37 +32,38 @@ public class TopMenus {
     GraphicsContext gc;
     Image img;
     Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
-    double x0,y0,x1,y1;
+    private double x0,y0,x1,y1;
+    public boolean imgInserted = false;
+    private int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
     TopMenus(Stage primaryStage, GridPane gridPane){
 
 
-        topMenu = new MenuBar();
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
 
-        final javafx.scene.control.Menu fileMenu = new javafx.scene.control.Menu("File");    //Populate the first menu pull-down - File
-        javafx.scene.control.MenuItem imageSave = new javafx.scene.control.MenuItem("Save Image");
-        javafx.scene.control.MenuItem exitBtn = new javafx.scene.control.MenuItem("Exit Program");
-        javafx.scene.control.MenuItem openBtn = new javafx.scene.control.MenuItem("Open Image");
+        final Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File
+        MenuItem imageSave = new MenuItem("Save Image");
+        MenuItem exitBtn = new MenuItem("Exit Program");
+        MenuItem openBtn = new MenuItem("Open Image");
         fileMenu.getItems().add(imageSave);
         fileMenu.getItems().add(openBtn);
         fileMenu.getItems().add(exitBtn);
 
-        final javafx.scene.control.Menu toolMenu = new javafx.scene.control.Menu("Tools"); //Populate the next menu pull-down - Options
-        javafx.scene.control.MenuItem cutter = new javafx.scene.control.MenuItem("Cut");
-        javafx.scene.control.MenuItem copier = new javafx.scene.control.MenuItem("Copy");
-        javafx.scene.control.MenuItem line = new javafx.scene.control.MenuItem("Line");
-        javafx.scene.control.MenuItem eraser = new javafx.scene.control.MenuItem("Erase");
-        toolMenu.getItems().add(line);
-        toolMenu.getItems().add(copier);
-        toolMenu.getItems().add(cutter);
-        toolMenu.getItems().add(eraser);
+        final Menu toolMenu = new Menu("Tools"); //Populate the next menu pull-down - Options
+        MenuItem cutter = new MenuItem("Cut");
+        MenuItem copier = new MenuItem("Copy");
+        Menu shape = new Menu("Draw Shape");
+        MenuItem line = new MenuItem("Line");
+        MenuItem eraser = new MenuItem("Erase");
+        shape.getItems().addAll(line);
+        toolMenu.getItems().addAll(copier, cutter, eraser, shape);
 
-        final javafx.scene.control.Menu helpMenu = new javafx.scene.control.Menu("Help"); //Creating Help pull-down for later use
-        javafx.scene.control.MenuItem about = new MenuItem("About");
+        final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
+        MenuItem about = new MenuItem("About");
         helpMenu.getItems().add(about);
 
-        topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar
+        topMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
+    //if mode = ____, then add ____ options to menuBar
 
         imageSave.setOnAction((e)->{
             System.out.println("Saving image file...");
@@ -117,6 +117,7 @@ public class TopMenus {
                     gc.getCanvas().setHeight(img.getHeight());
                     gc.drawImage(img, 0,0, img.getWidth(),img.getHeight());
                     gridPane.add(imgCanv,0,0);
+                    imgInserted = true;
 
                 } catch (IOException ex) {
                     System.out.println("Error!");
@@ -128,19 +129,32 @@ public class TopMenus {
             InfoPopup aboutPop = new InfoPopup(primaryStage);
         });
 
-        imgCanv.setOnMouseClicked(
-                (event)->{
-                    x0 = event.getX();
-                    y0 = event.getY();
-                }
+        imgCanv.setOnMouseClicked((event)->{
+                x0 = event.getX();
+                y0 = event.getY();
+            }
         );
-        imgCanv.setOnMouseReleased(
-                (event)->{
-                    x1 = event.getX();
-                    y1 = event.getY();
-                }
+        imgCanv.setOnMouseReleased((event)->{
+                x1 = event.getX();
+                y1 = event.getY();
+                drawShape();
+            }
         );
+
+        line.setOnAction((e)->{
+            drawMode = 1;
+        });
     }
+    int getDrawMode(){return drawMode;}
     MenuBar getMenuBar(){return topMenu;}
+    boolean drawShape(){
+//TODO: add if state for each type of shape
+        if(drawMode == 1){
+//TODO: Place line between x0,y0 & x1,y1
+            Line newLine = new Line(x0,y0,x1,y1);
+            System.out.println("Attempted to make line");
+        }
+        return true;
+    }
 
 }

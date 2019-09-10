@@ -36,7 +36,7 @@ public class PaintV0 extends Application {
         bordPane.setTop(topMenu);
         bordPane.setCenter(gridPane);
 
-        //TODO: outsource button handlers to buttonHandlers.java ???
+//TODO: outsource button handlers to buttonHandlers.java ???
 
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
@@ -44,8 +44,7 @@ public class PaintV0 extends Application {
         primaryStage.sizeToScene();
         primaryStage.show();
     }
-    //POSSIBLE TODO: USE CANVAS FOR IMAGE?
-//POSSIBLE TODO: use scene.getWidth()/getHeight() for properly scaling elements
+//TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
     }
