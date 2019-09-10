@@ -28,13 +28,15 @@ public class TopMenus {
     public String OPENER_FILE_LOC = "../../../Phone Backups";
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
-
+    int DEFAULT_CANV_W = 400;
+    int DEFAULT_CANV_H = 400;
+    GraphicsContext gc;
     Image img;
-    Canvas imgCanv;
+    Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
+    double x0,y0,x1,y1;
     TopMenus(Stage primaryStage, GridPane gridPane){
 
-        int DEFAULT_CANV_W = 400;
-        int DEFAULT_CANV_H = 400;
+
         topMenu = new MenuBar();
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
@@ -101,20 +103,20 @@ public class TopMenus {
                 try {
                     InputStream io = new FileInputStream(insImg);
                     img = new Image(io);
-                    imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
-
 
                     //TODO: Image scaling
                     placedImgView.setImage(img);        //Specifying placement & sizing of selected image
-                    placedImgView.fitWidthProperty();
-                    placedImgView.fitHeightProperty();
+                    placedImgView.setFitWidth(img.getWidth());
+                    placedImgView.setFitHeight(img.getHeight());
                     placedImgView.setPreserveRatio(true);
-                    gridPane.add(placedImgView, 0, 0);
+                    //gridPane.add(placedImgView, 0, 0);
                     gridPane.setAlignment(Pos.CENTER);
 
-                    GraphicsContext gc = imgCanv.getGraphicsContext2D();
-                    gc.drawImage(img, img.getWidth(),img.getHeight());
-                   // gridPane.add(imgCanv,0,0);
+                    gc = imgCanv.getGraphicsContext2D();
+                    gc.getCanvas().setWidth(img.getWidth());
+                    gc.getCanvas().setHeight(img.getHeight());
+                    gc.drawImage(img, 0,0, img.getWidth(),img.getHeight());
+                    gridPane.add(imgCanv,0,0);
 
                 } catch (IOException ex) {
                     System.out.println("Error!");
@@ -126,12 +128,18 @@ public class TopMenus {
             InfoPopup aboutPop = new InfoPopup(primaryStage);
         });
 
-//        imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED,
-//                (event)->{
-//                    double x0 = event.getX();
-//                    double y0 = event.getY();
-//                }
-//        );
+        imgCanv.setOnMouseClicked(
+                (event)->{
+                    x0 = event.getX();
+                    y0 = event.getY();
+                }
+        );
+        imgCanv.setOnMouseReleased(
+                (event)->{
+                    x1 = event.getX();
+                    y1 = event.getY();
+                }
+        );
     }
     MenuBar getMenuBar(){return topMenu;}
 
