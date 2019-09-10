@@ -138,11 +138,13 @@ public class TopMenus {
                 x1 = event.getX();
                 y1 = event.getY();
                 drawShape();
+                gc.save();
             }
         );
 
         line.setOnAction((e)->{
             drawMode = 1;
+            updateMenus();
         });
     }
     int getDrawMode(){return drawMode;}
@@ -151,10 +153,15 @@ public class TopMenus {
 //TODO: add if state for each type of shape
         if(drawMode == 1){
 //TODO: Place line between x0,y0 & x1,y1
-            Line newLine = new Line(x0,y0,x1,y1);
+            //Line newLine = new Line(x0,y0,x1,y1);
+            gc.strokeLine(x0,y0,x1,y1);
             System.out.println("Attempted to make line");
         }
         return true;
+    }
+    boolean updateMenus(){
+        return false;
+//TODO: implement this to check drawMode (and other?) to adjust the menu buttons
     }
 
 }
