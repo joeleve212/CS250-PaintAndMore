@@ -54,6 +54,7 @@ public class PaintV0 extends Application {
 
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
+<<<<<<< Updated upstream
         
         
         Button openFileBtn = new Button();
@@ -85,20 +86,18 @@ public class PaintV0 extends Application {
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
         helpMenu.getItems().add(about);
+=======
+>>>>>>> Stashed changes
 
-        about.setOnAction((e) -> {
-            InfoPopup aboutPop = new InfoPopup(primaryStage);
-        });
+        TopMenus topMenu = new TopMenus(primaryStage,placedImgView,openFile,gridPane);
+        MenuBar menus = topMenu.getMenuBar();
 
-        topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar
-        bordPane.setTop(topMenu);
+         //Plopping the menu pull-downs onto the menuBar
+        bordPane.setTop(menus);
         bordPane.setCenter(gridPane);
 
-                
-        exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
-            Platform.exit();
-        });
 
+<<<<<<< Updated upstream
         openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked
             openFile.setInitialDirectory(new File(OPENER_FILE_LOC));
             openFile.setTitle("Open File");
@@ -143,14 +142,10 @@ public class PaintV0 extends Application {
             File savedImg = saveImageChoose.showSaveDialog(null);
             String name = savedImg.getName();
             String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
+=======
+    //TODO: outsource button handlers to buttonHandlers.java
+>>>>>>> Stashed changes
 
-            BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
-            try {           //attempt to make a save file from the inserted image
-              ImageIO.write(bImage, ext, savedImg);
-            } catch (IOException o) {   //If the above line breaks, throw an exception
-                throw new RuntimeException(o);
-            }
-        });
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);
