@@ -15,8 +15,8 @@
           <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="719">
-                  <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+                <state relative-caret-position="160">
+                  <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
                   <folding>
                     <element signature="e#0#4073#0" expanded="true" />
                     <element signature="imports" expanded="true" />
@@ -34,8 +34,8 @@
           <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintv0/TopMenus.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="305">
-                  <caret line="140" column="26" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
+                <state relative-caret-position="155">
+                  <caret line="148" column="5" lean-forward="true" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#2551#3678#0" />
@@ -76,8 +76,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/paintv0/PaintV0.java" />
         <option value="$PROJECT_DIR$/src/paintv0/TopMenus.java" />
+        <option value="$PROJECT_DIR$/src/paintv0/PaintV0.java" />
       </list>
     </option>
   </component>
@@ -234,7 +234,7 @@
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.53411514" side_tool="true" weight="0.24591948" />
-      <window_info anchor="bottom" id="Messages" order="0" sideWeight="0.4946695" weight="0.32861805" />
+      <window_info active="true" anchor="bottom" id="Messages" order="0" sideWeight="0.49307036" visible="true" weight="0.32861805" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" order="0" />
       <window_info anchor="right" id="Capture Analysis" />
@@ -242,9 +242,9 @@
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="REPL" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.46215352" visible="true" weight="0.34276387" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.46215352" weight="0.34276387" />
       <window_info anchor="right" id="Leiningen" />
-      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.5378465" side_tool="true" visible="true" weight="0.34276387" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.50692964" side_tool="true" visible="true" weight="0.32861805" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="Designer" order="2" />
       <window_info anchor="bottom" content_ui="combo" id="Project" order="11" type="SLIDING" weight="0.25" />
@@ -348,23 +348,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="719">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#0#4073#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#2570#2571#0" expanded="true" />
-            <element signature="e#2598#2599#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintv0/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="140" column="26" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
+        <state relative-caret-position="155">
+          <caret line="148" column="5" lean-forward="true" selection-start-line="148" selection-start-column="5" selection-end-line="148" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2551#3678#0" />
@@ -372,6 +359,19 @@
             <element signature="e#3834#5545#0" />
             <element signature="e#5575#5655#0" />
             <element signature="e#5946#6066#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#4073#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2570#2571#0" expanded="true" />
+            <element signature="e#2598#2599#0" expanded="true" />
           </folding>
         </state>
       </provider>

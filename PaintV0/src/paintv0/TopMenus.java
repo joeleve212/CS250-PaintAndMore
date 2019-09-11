@@ -34,7 +34,7 @@ public class TopMenus {
     Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
     private double x0,y0,x1,y1;
     public boolean imgInserted = false;
-    private int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
+    public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
     TopMenus(Stage primaryStage, GridPane gridPane){
 
 
@@ -148,6 +148,7 @@ public class TopMenus {
         });
     }
     int getDrawMode(){return drawMode;}
+    void setDrawMode(int x){drawMode = x;}
     MenuBar getMenuBar(){return topMenu;}
     boolean drawShape(){
 //TODO: add if state for each type of shape

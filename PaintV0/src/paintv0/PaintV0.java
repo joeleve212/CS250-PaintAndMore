@@ -8,9 +8,12 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.event.EventHandler;
 
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
@@ -36,8 +39,14 @@ public class PaintV0 extends Application {
         bordPane.setTop(topMenu);
         bordPane.setCenter(gridPane);
 
-//TODO: outsource button handlers to buttonHandlers.java ???
-
+//TODO: Make ESC key set drawMode to 0
+//        scene.onKeyPressed(new EventHandler<KeyEvent>() {
+//            public void handle(final KeyEvent keyEvent){
+//                if(keyEvent.getCode() == KeyCode.ESCAPE){
+//                    menus.setDrawMode(0);
+//                }
+//            }
+//        });
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);
