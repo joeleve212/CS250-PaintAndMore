@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 
@@ -29,14 +30,17 @@ public class PaintV0 extends Application {
         scrollPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
         scrollPane.setContent(bordPane);
 
-        Scene scene = new Scene(scrollPane);
+
+
 
         TopMenus menus = new TopMenus(primaryStage, gridPane);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
+
+        VBox screenContent = new VBox(topMenu, scrollPane);
+        Scene scene = new Scene(screenContent);
         //    menuBox.getChildren().addAll(topMenu);
 //CLEAN: topMenu.prefWidthProperty().bind(primaryStage.widthProperty());
-
-        bordPane.setTop(topMenu);
+//CLEAN:bordPane.setTop(topMenu);
         bordPane.setCenter(gridPane);
 
 //TODO: Make ESC key set drawMode to 0
