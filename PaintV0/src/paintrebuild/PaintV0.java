@@ -6,8 +6,10 @@
 package paintv0;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToolBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -30,18 +32,26 @@ public class PaintV0 extends Application {
         scrollPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
         scrollPane.setContent(bordPane);
 
-
-
-
         TopMenus menus = new TopMenus(primaryStage, gridPane);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
         VBox screenContent = new VBox(topMenu, scrollPane);
         Scene scene = new Scene(screenContent);
-        //    menuBox.getChildren().addAll(topMenu);
-//CLEAN: topMenu.prefWidthProperty().bind(primaryStage.widthProperty());
-//CLEAN:bordPane.setTop(topMenu);
+
         bordPane.setCenter(gridPane);
+
+        ChoiceBox widthChoose = new ChoiceBox();
+        widthChoose.getItems().addAll("1px", "2px", "3px");
+//TODO: implement width choosing and add to screen
+        ToolBar windowBar = new ToolBar(widthChoose);
+        bordPane.setTop(windowBar);
+
+        widthChoose.setOnAction((e)-> {
+            String widthVal = widthChoose.getValue().toString();
+            int lineWidth = Integer.parseInt(widthVal.substring(0, widthVal.lastIndexOf("p")));
+            System.out.println(lineWidth);
+            menus.setLineWidth((double) lineWidth);
+        });
 
 //TODO: Make ESC key set drawMode to 0
 //        scene.onKeyPressed(new EventHandler<KeyEvent>() {

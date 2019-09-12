@@ -34,6 +34,7 @@ public class TopMenus {
     Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
     private double x0,y0,x1,y1;
     public boolean imgInserted = false;
+    private double lineWidth;
     public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
     TopMenus(Stage primaryStage, GridPane gridPane){
 
@@ -61,11 +62,6 @@ public class TopMenus {
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
         helpMenu.getItems().add(about);
-
-        ChoiceBox widthChoose = new ChoiceBox();
-        widthChoose.getItems().addAll("1px", "2px", "3px");
-//TODO: implement width choosing and add to screen
-        ToolBar windowBar = new ToolBar(widthChoose);
 
         topMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
@@ -164,15 +160,15 @@ public class TopMenus {
     void setDrawMode(int x){drawMode = x;}
     MenuBar getMenuBar(){return topMenu;}
     boolean drawShape(){
+        gc.setLineWidth(lineWidth);
 //TODO: add if state for each type of shape
         if(drawMode == 1){
 //TODO: Place line between x0,y0 & x1,y1
-            //Line newLine = new Line(x0,y0,x1,y1);
             gc.strokeLine(x0,y0,x1,y1);
-            System.out.println("Attempted to make line");
         }
         return true;
     }
+    void setLineWidth(double newLineW){lineWidth=newLineW;}
     boolean updateMenus(){
         return false;
 //TODO: implement this to check drawMode (and other?) to adjust the menu buttons
