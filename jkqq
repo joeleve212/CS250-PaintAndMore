@@ -1,0 +1,531 @@
+[33mcommit df4ad8cbdd813c0da144e85d862f869a0e8cdc54[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: Joseph Leveille <joe.leveille@valpo.edu>
+Date:   Tue Sep 10 14:44:29 2019 -0500
+
+    TopMenus.java implemented
+
+[1mdiff --git a/PaintV0/.idea/workspace.xml b/PaintV0/.idea/workspace.xml[m
+[1mindex f015589..4263893 100644[m
+[1m--- a/PaintV0/.idea/workspace.xml[m
+[1m+++ b/PaintV0/.idea/workspace.xml[m
+[36m@@ -10,58 +10,52 @@[m
+     <option name="LAST_RESOLUTION" value="IGNORE" />[m
+   </component>[m
+   <component name="FileEditorManager">[m
+[31m-    <leaf>[m
+[31m-      <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">[m
+[31m-        <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">[m
+[31m-          <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="132">[m
+[31m-              <caret line="115" column="53" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />[m
+[31m-              <folding>[m
+[31m-                <element signature="e#0#8544#0" expanded="true" />[m
+[31m-                <element signature="e#3196#3244#0" />[m
+[31m-                <element signature="e#3931#4023#0" />[m
+[31m-                <element signature="e#6209#7335#0" />[m
+[31m-                <element signature="e#6572#6573#0" expanded="true" />[m
+[31m-                <element signature="e#6600#6601#0" expanded="true" />[m
+[31m-              </folding>[m
+[31m-            </state>[m
+[31m-          </provider>[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-      <file leaf-file-name="InfoPopup.java" pinned="false" current-in-tab="false">[m
+[31m-        <entry file="file://$PROJECT_DIR$/src/paintv0/InfoPopup.java">[m
+[31m-          <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="67">[m
+[31m-              <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />[m
+[31m-              <folding>[m
+[31m-                <element signature="imports" expanded="true" />[m
+[31m-              </folding>[m
+[31m-            </state>[m
+[31m-          </provider>[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-      <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="false">[m
+[31m-        <entry file="file://$PROJECT_DIR$/src/paintv0/MainScreenButtonHandlers.java">[m
+[31m-          <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="200">[m
+[31m-              <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />[m
+[31m-              <folding>[m
+[31m-                <element signature="e#0#175#0" expanded="true" />[m
+[31m-              </folding>[m
+[31m-            </state>[m
+[31m-          </provider>[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-      <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">[m
+[31m-        <entry file="file://$PROJECT_DIR$/src/paintv0/TopMenus.java">[m
+[31m-          <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="60">[m
+[31m-              <caret line="3" selection-start-line="3" selection-end-line="3" />[m
+[31m-            </state>[m
+[31m-          </provider>[m
+[31m-        </entry>[m
+[31m-      </file>[m
+[31m-    </leaf>[m
+[32m+[m[32m    <splitter split-orientation="horizontal" split-proportion="0.5">[m
+[32m+[m[32m      <split-first>[m
+[32m+[m[32m        <leaf>[m
+[32m+[m[32m          <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="132">[m
+[32m+[m[32m                  <caret line="52" column="60" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />[m
+[32m+[m[32m                  <folding>[m
+[32m+[m[32m                    <element signature="imports" expanded="true" />[m
+[32m+[m[32m                  </folding>[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/paintv0/TopMenus.java">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="60">[m
+[32m+[m[32m                  <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m        </leaf>[m
+[32m+[m[32m      </split-first>[m
+[32m+[m[32m      <split-second>[m
+[32m+[m[32m        <leaf>[m
+[32m+[m[32m          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">[m
+[32m+[m[32m            <entry file="file://$PROJECT_DIR$/src/paintv0/TopMenus.java">[m
+[32m+[m[32m              <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m                <state relative-caret-position="60">[m
+[32m+[m[32m                  <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />[m
+[32m+[m[32m                  <folding>[m
+[32m+[m[32m                    <element signature="imports" expanded="true" />[m
+[32m+[m[32m                    <element signature="e#464#1577#0" />[m
+[32m+[m[32m                    <element signature="e#346#438#0" />[m
+[32m+[m[32m                    <element signature="e#3604#3684#0" />[m
+[32m+[m[32m                  </folding>[m
+[32m+[m[32m                </state>[m
+[32m+[m[32m              </provider>[m
+[32m+[m[32m            </entry>[m
+[32m+[m[32m          </file>[m
+[32m+[m[32m        </leaf>[m
+[32m+[m[32m      </split-second>[m
+[32m+[m[32m    </splitter>[m
+   </component>[m
+   <component name="FileTemplateManagerImpl">[m
+     <option name="RECENT_TEMPLATES">[m
+[36m@@ -78,14 +72,16 @@[m
+       <find>about</find>[m
+       <find>exit</find>[m
+       <find>gridPane</find>[m
+[32m+[m[32m      <find>canvas</find>[m
+[32m+[m[32m      <find>ge)</find>[m
+     </findStrings>[m
+   </component>[m
+   <component name="IdeDocumentHistory">[m
+     <option name="CHANGED_PATHS">[m
+       <list>[m
+[31m-        <option value="$PROJECT_DIR$/src/paintv0/TopMenus.java" />[m
+         <option value="$PROJECT_DIR$/src/paintv0/MainScreenButtonHandlers.java" />[m
+         <option value="$PROJECT_DIR$/src/paintv0/InfoPopup.java" />[m
+[32m+[m[32m        <option value="$PROJECT_DIR$/src/paintv0/TopMenus.java" />[m
+         <option value="$PROJECT_DIR$/src/paintv0/PaintV0.java" />[m
+       </list>[m
+     </option>[m
+[36m@@ -99,33 +95,7 @@[m
+     <navigator proportions="" version="1">[m
+       <foldersAlwaysOnTop value="true" />[m
+     </navigator>[m
+[31m-    <panes>[m
+[31m-      <pane id="AndroidView" />[m
+[31m-      <pane id="ProjectPane">[m
+[31m-        <subPane>[m
+[31m-          <expand>[m
+[31m-            <path>[m
+[31m-              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />[m
+[31m-              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />[m
+[31m-            </path>[m
+[31m-            <path>[m
+[31m-              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />[m
+[31m-              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />[m
+[31m-              <item name="src" type="462c0819:PsiDirectoryNode" />[m
+[31m-            </path>[m
+[31m-            <path>[m
+[31m-              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />[m
+[31m-              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />[m
+[31m-              <item name="src" type="462c0819:PsiDirectoryNode" />[m
+[31m-              <item name="paintv0" type="462c0819:PsiDirectoryNode" />[m
+[31m-            </path>[m
+[31m-          </expand>[m
+[31m-          <select />[m
+[31m-        </subPane>[m
+[31m-      </pane>[m
+[31m-      <pane id="Scope" />[m
+[31m-      <pane id="PackagesPane" />[m
+[31m-    </panes>[m
+[32m+[m[32m    <panes />[m
+   </component>[m
+   <component name="PropertiesComponent">[m
+     <property name="last_opened_file_path" value="$PROJECT_DIR$" />[m
+[36m@@ -247,20 +217,20 @@[m
+       <window_info anchor="bottom" id="Event Log" side_tool="true" />[m
+       <window_info anchor="right" id="Maven Projects" />[m
+       <window_info anchor="right" id="REPL" side_tool="true" />[m
+[31m-      <window_info anchor="bottom" id="Run" order="2" weight="0.24928775" />[m
+       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />[m
+[32m+[m[32m      <window_info anchor="bottom" id="Run" order="2" />[m
+       <window_info anchor="right" id="Leiningen" />[m
+[31m-      <window_info anchor="bottom" id="Terminal" weight="0.20512821" />[m
+[32m+[m[32m      <window_info anchor="bottom" id="Terminal" weight="0.26495728" />[m
+       <window_info id="Capture Tool" />[m
+       <window_info id="Designer" />[m
+[31m-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15771812" />[m
+[32m+[m[32m      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />[m
+       <window_info id="Learn" />[m
+       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />[m
+       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />[m
+       <window_info id="UI Designer" />[m
+       <window_info anchor="right" id="Theme Preview" />[m
+[31m-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />[m
+       <window_info id="Favorites" side_tool="true" />[m
+[32m+[m[32m      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />[m
+       <window_info anchor="bottom" id="Find" order="1" />[m
+       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />[m
+       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />[m
+[36m@@ -274,28 +244,31 @@[m
+   </component>[m
+   <component name="XDebuggerManager">[m
+     <breakpoint-manager>[m
+[31m-      <breakpoints>[m
+[31m-        <line-breakpoint enabled="true" type="java-line">[m
+[31m-          <url>file://$PROJECT_DIR$/src/paintv0/PaintV0.java</url>[m
+[31m-          <line>97</line>[m
+[31m-          <properties />[m
+[31m-        </line-breakpoint>[m
+[31m-      </breakpoints>[m
+       <option name="time" value="1" />[m
+     </breakpoint-manager>[m
+   </component>[m
+   <component name="editorHistoryManager">[m
+[31m-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/event/EventHandler.java">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/paintv0/TopMenus.java">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="286">[m
+[31m-          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />[m
+[32m+[m[32m        <state relative-caret-position="80">[m
+[32m+[m[32m          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/src/paintv0/TopMenus.java">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="60">[m
+[31m-          <caret line="3" selection-start-line="3" selection-end-line="3" />[m
+[32m+[m[32m        <state relative-caret-position="80">[m
+[32m+[m[32m          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />[m
+[32m+[m[32m          <folding>[m
+[32m+[m[32m            <element signature="imports" expanded="true" />[m
+[32m+[m[32m          </folding>[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/event/EventHandler.java">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="286">[m
+[32m+[m[32m          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[36m@@ -303,9 +276,6 @@[m
+       <provider selected="true" editor-type-id="text-editor">[m
+         <state relative-caret-position="67">[m
+           <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />[m
+[31m-          <folding>[m
+[31m-            <element signature="imports" expanded="true" />[m
+[31m-          </folding>[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[36m@@ -313,23 +283,22 @@[m
+       <provider selected="true" editor-type-id="text-editor">[m
+         <state relative-caret-position="200">[m
+           <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />[m
+[31m-          <folding>[m
+[31m-            <element signature="e#0#175#0" expanded="true" />[m
+[31m-          </folding>[m
+[32m+[m[32m        </state>[m
+[32m+[m[32m      </provider>[m
+[32m+[m[32m    </entry>[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/paintv0/TopMenus.java">[m
+[32m+[m[32m      <provider selected="true" editor-type-id="text-editor">[m
+[32m+[m[32m        <state relative-caret-position="60">[m
+[32m+[m[32m          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+     <entry file="file://$PROJECT_DIR$/src/paintv0/PaintV0.java">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+         <state relative-caret-position="132">[m
+[31m-          <caret line="115" column="53" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />[m
+[32m+[m[32m          <caret line="52" column="60" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />[m
+           <folding>[m
+[31m-            <element signature="e#0#8544#0" expanded="true" />[m
+[31m-            <element signature="e#3196#3244#0" />[m
+[31m-            <element signature="e#3931#4023#0" />[m
+[31m-            <element signature="e#6209#7335#0" />[m
+[31m-            <element signature="e#6572#6573#0" expanded="true" />[m
+[31m-            <element signature="e#6600#6601#0" expanded="true" />[m
+[32m+[m[32m            <element signature="imports" expanded="true" />[m
+           </folding>[m
+         </state>[m
+       </provider>[m
+[1mdiff --git a/PaintV0/src/paintv0/PaintV0.java b/PaintV0/src/paintv0/PaintV0.java[m
+[1mindex 8d64e07..734afff 100644[m
+[1m--- a/PaintV0/src/paintv0/PaintV0.java[m
+[1m+++ b/PaintV0/src/paintv0/PaintV0.java[m
+[36m@@ -37,7 +37,6 @@[m [mimport javax.imageio.ImageIO;[m
+ public class PaintV0 extends Application {[m
+     public int INIT_WINDOW_WIDTH = 400;[m
+     public int INIT_WINDOW_HEIGHT = 400;[m
+[31m-    public String OPENER_FILE_LOC = "../..";[m
+     @Override[m
+     public void start(Stage primaryStage) {[m
+         GridPane gridPane = new GridPane(); //Create the blank grid[m
+[36m@@ -50,107 +49,25 @@[m [mpublic class PaintV0 extends Application {[m
+         scrollPane.setContent(bordPane);[m
+         [m
+         Scene scene = new Scene(scrollPane);[m
+[31m-        [m
+[31m-[m
+[31m-        ImageView placedImgView = new ImageView();[m
+[31m-        FileChooser openFile= new FileChooser();[m
+[31m-        [m
+[31m-        [m
+[31m-        Button openFileBtn = new Button();[m
+[31m-        openFileBtn.setText("Open Image File");[m
+ [m
+[31m-    //    HBox menuBox=new HBox();[m
+[31m-        MenuBar topMenu = new MenuBar();        //Create a menu bar to contain all menu pull-downs[m
+[32m+[m[32m        TopMenus menus = new TopMenus(primaryStage, gridPane);[m
+[32m+[m[32m        MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs[m
+     //    menuBox.getChildren().addAll(topMenu);[m
+ //CLEAN: HBox.setHGrow(topMenu, Priority.ALWAYS);[m
+ //CLEAN: topMenu.prefWidthProperty().bind(primaryStage.widthProperty());[m
+[31m-        final Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File[m
+[31m-        MenuItem imageSave = new MenuItem("Save Image");[m
+[31m-        MenuItem exitBtn = new MenuItem("Exit Program");[m
+[31m-        MenuItem openBtn = new MenuItem("Open Image");[m
+[31m-        fileMenu.getItems().add(imageSave);[m
+[31m-        fileMenu.getItems().add(openBtn);[m
+[31m-        fileMenu.getItems().add(exitBtn);[m
+[31m-        [m
+[31m-        final Menu toolMenu = new Menu("Tools"); //Populate the next menu pull-down - Options[m
+[31m-        MenuItem cutter = new MenuItem("Cut");[m
+[31m-        MenuItem copier = new MenuItem("Copy");[m
+[31m-        MenuItem line = new MenuItem("Line");[m
+[31m-        MenuItem eraser = new MenuItem("Erase");[m
+[31m-        toolMenu.getItems().add(line);[m
+[31m-        toolMenu.getItems().add(copier);[m
+[31m-        toolMenu.getItems().add(cutter);[m
+[31m-        toolMenu.getItems().add(eraser);[m
+[31m-        [m
+[31m-        final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use[m
+[31m-        MenuItem about = new MenuItem("About");[m
+[31m-        helpMenu.getItems().add(about);[m
+ [m
+[31m-        about.setOnAction((e) -> {[m
+[31m-            InfoPopup aboutPop = new InfoPopup(primaryStage);[m
+[31m-        });[m
+ [m
+[31m-        topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar[m
+[32m+[m
+[32m+[m
+[32m+[m
+         bordPane.setTop(topMenu);[m
+         bordPane.setCenter(gridPane);[m
+ [m
+                 [m
+[31m-        exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button[m
+[31m-            Platform.exit();[m
+[31m-        });[m
+[31m-[m
+[31m-        openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked[m
+[31m-            openFile.setInitialDirectory(new File(OPENER_FILE_LOC));[m
+[31m-            openFile.setTitle("Open File");[m
+[31m-            openFile.getExtensionFilters().addAll(              //Including filters for extension types[m
+[31m-                new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"),[m
+[31m-                new ExtensionFilter("Text Files", "*.txt"),[m
+[31m-                new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),[m
+[31m-                new ExtensionFilter("All Files", "*.*")[m
+[31m-            );[m
+[31m-            File insImg = openFile.showOpenDialog(primaryStage);[m
+[31m-            if (insImg != null) {[m
+[31m-                try {[m
+[31m-                    InputStream io = new FileInputStream(insImg);[m
+[31m-                    Image img = new Image(io);[m
+[31m-                    Canvas imgCanv = new Canvas(); // Canvas imgCanv = new Canvas(); //[m
+[31m-[m
+ [m
+[31m-                    //TODO: Image scaling[m
+[31m-                    placedImgView.setImage(img);        //Specifying placement & sizing of selected image[m
+[31m-                    placedImgView.setFitWidth(INIT_WINDOW_WIDTH);[m
+[31m-                    placedImgView.setFitHeight(INIT_WINDOW_HEIGHT);[m
+[31m-                    placedImgView.setPreserveRatio(true);[m
+[31m-                    gridPane.add(placedImgView, 0, 0);[m
+[31m-                    gridPane.setAlignment(Pos.CENTER);[m
+[31m-                    GraphicsContext gc = imgCanv.getGraphicsContext2D();[m
+[31m-                    //gridPane.setMargin(imgCanv, new Insets(10,10,10,10));[m
+[31m-                } catch (IOException ex) {[m
+[31m-                    System.out.println("Error!");[m
+[31m-                }[m
+[31m-            }[m
+[31m-        });[m
+         [m
+     //TODO: outsource button handlers to buttonHandlers.java ???[m
+[31m-        imageSave.setOnAction((e)->{[m
+[31m-            System.out.println("Saving image file...");[m
+[31m-            FileChooser saveImageChoose = new FileChooser();[m
+[31m-            saveImageChoose.setTitle("Save Image As");[m
+[31m-            saveImageChoose.getExtensionFilters().addAll( //allow saving in different file formats[m
+[31m-                new FileChooser.ExtensionFilter("PNG Files", "*.png"),[m
+[31m-                new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),[m
+[31m-                new FileChooser.ExtensionFilter("GIF Files", "*.gif"));[m
+[31m-            File savedImg = saveImageChoose.showSaveDialog(null);[m
+[31m-            String name = savedImg.getName();[m
+[31m-            String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image[m
+ [m
+[31m-            BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);[m
+[31m-            try {           //attempt to make a save file from the inserted image[m
+[31m-              ImageIO.write(bImage, ext, savedImg);[m
+[31m-            } catch (IOException o) {   //If the above line breaks, throw an exception[m
+[31m-                throw new RuntimeException(o);[m
+[31m-            }[m
+[31m-        });[m
+ [m
+         primaryStage.setTitle("Paint v0"); //Set the window title text[m
+         primaryStage.setScene(scene);[m
+[1mdiff --git a/PaintV0/src/paintv0/TopMenus.java b/PaintV0/src/paintv0/TopMenus.java[m
+[1mindex 997bb22..0c0abc8 100644[m
+[1m--- a/PaintV0/src/paintv0/TopMenus.java[m
+[1m+++ b/PaintV0/src/paintv0/TopMenus.java[m
+[36m@@ -1,5 +1,120 @@[m
+ package paintv0;[m
+ [m
+[32m+[m[32mimport javafx.application.Platform;[m
+[32m+[m[32mimport javafx.embed.swing.SwingFXUtils;[m
+[32m+[m[32mimport javafx.geometry.Pos;[m
+[32m+[m[32mimport javafx.scene.control.MenuBar;[m
+[32m+[m[32mimport javafx.scene.control.MenuItem;[m
+[32m+[m[32mimport javafx.scene.image.Image;[m
+[32m+[m[32mimport javafx.scene.image.ImageView;[m
+[32m+[m[32mimport javafx.stage.FileChooser;[m
+[32m+[m[32mimport javafx.stage.Stage;[m
+[32m+[m[32mimport javafx.scene.layout.GridPane;[m
+[32m+[m[32mimport javafx.scene.canvas.*;[m
+[32m+[m
+[32m+[m[32mimport javax.imageio.ImageIO;[m
+[32m+[m[32mimport java.awt.*;[m
+[32m+[m[32mimport java.awt.image.BufferedImage;[m
+[32m+[m[32mimport java.io.File;[m
+[32m+[m[32mimport java.io.FileInputStream;[m
+[32m+[m[32mimport java.io.IOException;[m
+[32m+[m[32mimport java.io.InputStream;[m
+[32m+[m
+ public class TopMenus {[m
+[32m+[m[32m    MenuBar topMenu;[m
+[32m+[m[32m    public String OPENER_FILE_LOC = "../..";[m
+[32m+[m[32m    public int INIT_WINDOW_WIDTH = 400;[m
+[32m+[m[32m    public int INIT_WINDOW_HEIGHT = 400;[m
+[32m+[m[32m    TopMenus(Stage primaryStage, GridPane gridPane){[m
+[32m+[m
+[32m+[m[32m        topMenu = new MenuBar();[m
+[32m+[m[32m        ImageView placedImgView = new ImageView();[m
+[32m+[m[32m        FileChooser openFile= new FileChooser();[m
+[32m+[m
+[32m+[m[32m        final javafx.scene.control.Menu fileMenu = new javafx.scene.control.Menu("File");    //Populate the first menu pull-down - File[m
+[32m+[m[32m        javafx.scene.control.MenuItem imageSave = new javafx.scene.control.MenuItem("Save Image");[m
+[32m+[m[32m        javafx.scene.control.MenuItem exitBtn = new javafx.scene.control.MenuItem("Exit Program");[m
+[32m+[m[32m        javafx.scene.control.MenuItem openBtn = new javafx.scene.control.MenuItem("Open Image");[m
+[32m+[m[32m        fileMenu.getItems().add(imageSave);[m
+[32m+[m[32m        fileMenu.getItems().add(openBtn);[m
+[32m+[m[32m        fileMenu.getItems().add(exitBtn);[m
+[32m+[m
+[32m+[m[32m        final javafx.scene.control.Menu toolMenu = new javafx.scene.control.Menu("Tools"); //Populate the next menu pull-down - Options[m
+[32m+[m[32m        javafx.scene.control.MenuItem cutter = new javafx.scene.control.MenuItem("Cut");[m
+[32m+[m[32m        javafx.scene.control.MenuItem copier = new javafx.scene.control.MenuItem("Copy");[m
+[32m+[m[32m        javafx.scene.control.MenuItem line = new javafx.scene.control.MenuItem("Line");[m
+[32m+[m[32m        javafx.scene.control.MenuItem eraser = new javafx.scene.control.MenuItem("Erase");[m
+[32m+[m[32m        toolMenu.getItems().add(line);[m
+[32m+[m[32m        toolMenu.getItems().add(copier);[m
+[32m+[m[32m        toolMenu.getItems().add(cutter);[m
+[32m+[m[32m        toolMenu.getItems().add(eraser);[m
+[32m+[m
+[32m+[m[32m        final javafx.scene.control.Menu helpMenu = new javafx.scene.control.Menu("Help"); //Creating Help pull-down for later use[m
+[32m+[m[32m        javafx.scene.control.MenuItem about = new MenuItem("About");[m
+[32m+[m[32m        helpMenu.getItems().add(about);[m
+[32m+[m
+[32m+[m[32m        topMenu.getMenus().addAll(fileMenu, toolMenu, helpMenu); //Plopping the menu pull-downs onto the menuBar[m
+[32m+[m
+[32m+[m[32m        imageSave.setOnAction((e)->{[m
+[32m+[m[32m            System.out.println("Saving image file...");[m
+[32m+[m[32m            FileChooser saveImageChoose = new FileChooser();[m
+[32m+[m[32m            saveImageChoose.setTitle("Save Image As");[m
+[32m+[m[32m            saveImageChoose.getExtensionFilters().addAll( //allow saving in different file formats[m
+[32m+[m[32m                    new FileChooser.ExtensionFilter("PNG Files", "*.png"),[m
+[32m+[m[32m                    new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),[m
+[32m+[m[32m                    new FileChooser.ExtensionFilter("GIF Files", "*.gif"));[m
+[32m+[m[32m            File savedImg = saveImageChoose.showSaveDialog(null);[m
+[32m+[m[32m            String name = savedImg.getName();[m
+[32m+[m[32m            String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image[m
+[32m+[m
+[32m+[m[32m            BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);[m
+[32m+[m[32m            try {           //attempt to make a save file from the inserted image[m
+[32m+[m[32m                ImageIO.write(bImage, ext, savedImg);[m
+[32m+[m[32m            } catch (IOException o) {   //If the above line breaks, throw an exception[m
+[32m+[m[32m                throw new RuntimeException(o);[m
+[32m+[m[32m            }[m
+[32m+[m[32m        });[m
+[32m+[m
+[32m+[m[32m        exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button[m
+[32m+[m[32m            Platform.exit();[m
+[32m+[m[32m        });[m
+[32m+[m
+[32m+[m[32m        openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked[m
+[32m+[m[32m            openFile.setInitialDirectory(new File(OPENER_FILE_LOC));[m
+[32m+[m[32m            openFile.setTitle("Open File");[m
+[32m+[m[32m            openFile.getExtensionFilters().addAll(              //Including filters for extension types[m
+[32m+[m[32m                    new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"),[m
+[32m+[m[32m                    new FileChooser.ExtensionFilter("Text Files", "*.txt"),[m
+[32m+[m[32m                    new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),[m
+[32m+[m[32m                    new FileChooser.ExtensionFilter("All Files", "*.*")[m
+[32m+[m[32m            );[m
+[32m+[m[32m            File insImg = openFile.showOpenDialog(primaryStage);[m
+[32m+[m[32m            if (insImg != null) {[m
+[32m+[m[32m                try {[m
+[32m+[m[32m                    InputStream io = new FileInputStream(insImg);[m
+[32m+[m[32m                    Image img = new Image(io);[m
+[32m+[m[32m                   // Canvas imgCanv = new Canvas(); // Canvas imgCanv = new Canvas(); //[m
+[32m+[m
+[32m+[m
+[32m+[m[32m                    //TODO: Image scaling[m
+[32m+[m[32m                    placedImgView.setImage(img);        //Specifying placement & sizing of selected image[m
+[32m+[m[32m                    placedImgView.setFitWidth(INIT_WINDOW_WIDTH);[m
+[32m+[m[32m                    placedImgView.setFitHeight(INIT_WINDOW_HEIGHT);[m
+[32m+[m[32m                    placedImgView.setPreserveRatio(true);[m
+[32m+[m[32m                    gridPane.add(placedImgView, 0, 0);[m
+[32m+[m[32m                    gridPane.setAlignment(Pos.CENTER);[m
+[32m+[m[32m                   // GraphicsContext gc = imgCanv.getGraphicsContext2D();[m
+[32m+[m[32m                    //gridPane.setMargin(imgCanv, new Insets(10,10,10,10));[m
+[32m+[m[32m                } catch (IOException ex) {[m
+[32m+[m[32m                    System.out.println("Error!");[m
+[32m+[m[32m                }[m
+[32m+[m[32m            }[m
+[32m+[m[32m        });[m
+[32m+[m
+[32m+[m[32m        about.setOnAction((e) -> {[m
+[32m+[m[32m            InfoPopup aboutPop = new InfoPopup(primaryStage);[m
+[32m+[m[32m        });[m
+[32m+[m[32m    }[m
+[32m+[m[32m    MenuBar getMenuBar(){return topMenu;}[m
+ [m
+ }[m

@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -18,10 +19,13 @@ import javafx.scene.shape.Line;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TopMenus {
     MenuBar topMenu;
@@ -82,10 +86,21 @@ public class TopMenus {
             String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
             BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
-            try {           //attempt to make a save file from the inserted image
-                ImageIO.write(bImage, ext, savedImg);
-            } catch (IOException o) {   //If the above line breaks, throw an exception
-                throw new RuntimeException(o);
+//            try {           //attempt to make a save file from the inserted image
+//                ImageIO.write(bImage, ext, savedImg);
+//            } catch (IOException o) {   //If the above line breaks, throw an exception
+//                throw new RuntimeException(o);
+//            }
+//CLEAN: Attempted save with line
+            if(savedImg != null){
+                try {
+                    WritableImage writableImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight()/1);
+                    imgCanv.snapshot(null, writableImage);
+                    RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
+                    ImageIO.write(renderedImage, ext, savedImg);
+                } catch (IOException ex) {
+        //CLEAN/FIX            Logger.getLogger(JDrawOnCanvas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
