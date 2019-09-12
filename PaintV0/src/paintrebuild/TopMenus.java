@@ -2,17 +2,17 @@ package paintv0;
 
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Menu;
 import javafx.scene.shape.Line;
 
 import javax.imageio.ImageIO;
@@ -62,7 +62,14 @@ public class TopMenus {
         MenuItem about = new MenuItem("About");
         helpMenu.getItems().add(about);
 
+        ChoiceBox widthChoose = new ChoiceBox();
+        widthChoose.getItems().addAll("1px", "2px", "3px");
+//TODO: implement width choosing and add to screen
+        ToolBar windowBar = new ToolBar(widthChoose);
+
         topMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
+
+
     //if mode = ____, then add ____ options to menuBar
 
         imageSave.setOnAction((e)->{
@@ -129,16 +136,26 @@ public class TopMenus {
             InfoPopup aboutPop = new InfoPopup(primaryStage);
         });
 
-        imgCanv.setOnMouseClicked((event)->{
-                x0 = event.getX();
-                y0 = event.getY();
+        imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED,
+                new EventHandler<MouseEvent>(){
+
+                @Override
+                public void handle(MouseEvent event) {
+                    x0 = event.getX();
+                    y0 = event.getY();
+                }
             }
         );
-        imgCanv.setOnMouseReleased((event)->{
-                x1 = event.getX();
-                y1 = event.getY();
-                drawShape();
-                gc.save();
+        imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED,
+                new EventHandler<MouseEvent>(){
+
+                @Override
+                public void handle(MouseEvent event) {
+                    x1 = event.getX();
+                    y1 = event.getY();
+                    drawShape();
+                    gc.save();
+                }
             }
         );
 
