@@ -15,9 +15,10 @@
       <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
+            <state relative-caret-position="160">
+              <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
               <folding>
+                <element signature="e#0#2170#0" expanded="true" />
                 <element signature="e#2503#2504#0" expanded="true" />
                 <element signature="e#2531#2532#0" expanded="true" />
               </folding>
@@ -28,13 +29,14 @@
       <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="167" column="9" lean-forward="true" selection-start-line="167" selection-start-column="9" selection-end-line="167" selection-end-column="9" />
+            <state relative-caret-position="269">
+              <caret line="170" column="63" lean-forward="true" selection-start-line="170" selection-start-column="63" selection-end-line="170" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2571#3698#0" />
                 <element signature="e#3854#5657#0" />
                 <element signature="e#5687#5767#0" />
+                <element signature="class#5988:6295" />
                 <element signature="e#6707#6776#0" />
               </folding>
             </state>
@@ -67,8 +69,9 @@
       <find>system</find>
       <find>ext</find>
       <find>line</find>
-      <find>ext</find>
       <find>lineWidth</find>
+      <find>ext</find>
+      <find>v0</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -304,9 +307,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
+        <state relative-caret-position="160">
+          <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
           <folding>
+            <element signature="e#0#2170#0" expanded="true" />
             <element signature="e#2503#2504#0" expanded="true" />
             <element signature="e#2531#2532#0" expanded="true" />
           </folding>
@@ -315,13 +319,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="167" column="9" lean-forward="true" selection-start-line="167" selection-start-column="9" selection-end-line="167" selection-end-column="9" />
+        <state relative-caret-position="269">
+          <caret line="170" column="63" lean-forward="true" selection-start-line="170" selection-start-column="63" selection-end-line="170" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2571#3698#0" />
             <element signature="e#3854#5657#0" />
             <element signature="e#5687#5767#0" />
+            <element signature="class#5988:6295" />
             <element signature="e#6707#6776#0" />
           </folding>
         </state>

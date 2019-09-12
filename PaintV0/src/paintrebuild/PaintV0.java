@@ -5,16 +5,15 @@
  */
 package paintv0;
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 
@@ -41,9 +40,17 @@ public class PaintV0 extends Application {
         bordPane.setCenter(gridPane);
 
         ChoiceBox widthChoose = new ChoiceBox();
+        ColorPicker colorChoose = new ColorPicker();
+        colorChoose.setOnAction(new EventHandler() {
+            public void handle(Event t) {
+                Color c = colorChoose.getValue();
+                System.out.println("New Color's RGB = "+c.getRed()+" "+c.getGreen()+" "+c.getBlue());
+                menus.setShapeColor(c);
+            }
+        });
         widthChoose.getItems().addAll("1px", "2px", "3px");
 //TODO: implement width choosing and add to screen
-        ToolBar windowBar = new ToolBar(widthChoose);
+        ToolBar windowBar = new ToolBar(widthChoose, colorChoose);
         bordPane.setTop(windowBar);
 
         widthChoose.setOnAction((e)-> {
@@ -62,7 +69,7 @@ public class PaintV0 extends Application {
 //            }
 //        });
 
-        primaryStage.setTitle("Paint v0"); //Set the window title text
+        primaryStage.setTitle("Paint v1"); //Set the window title text
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.show();

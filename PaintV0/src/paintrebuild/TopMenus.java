@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
@@ -140,6 +141,14 @@ public class TopMenus {
                 }
             }
         );
+//TODO: implement mouse drag event to see line during creation
+//        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
+//            @Override
+//            public void handle(MouseEvent event) {
+//                graphicsContext.lineTo(event.getX(), event.getY());
+//                graphicsContext.stroke();
+//            }
+//        });
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event) {
@@ -159,6 +168,7 @@ public class TopMenus {
     int getDrawMode(){return drawMode;}
     void setDrawMode(int x){drawMode = x;}
     MenuBar getMenuBar(){return topMenu;}
+    void setShapeColor(Color newColor){gc.setStroke(newColor);}
     boolean drawShape(){
         gc.setLineWidth(lineWidth);
 //TODO: add if state for each type of shape
