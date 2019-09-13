@@ -44,7 +44,7 @@ public class PaintV0 extends Application {
         colorChoose.setOnAction(new EventHandler() {
             public void handle(Event t) {
                 Color c = colorChoose.getValue();
-                System.out.println("New Color's RGB = "+c.getRed()+" "+c.getGreen()+" "+c.getBlue());
+   //CLEAN: System.out.println("New Color's RGB = "+c.getRed()+" "+c.getGreen()+" "+c.getBlue());
                 menus.setShapeColor(c);
             }
         });
@@ -69,7 +69,7 @@ public class PaintV0 extends Application {
 //            }
 //        });
 
-        primaryStage.setTitle("Paint v1"); //Set the window title text
+        primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.show();

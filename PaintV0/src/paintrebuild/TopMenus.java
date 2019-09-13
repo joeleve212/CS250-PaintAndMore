@@ -86,11 +86,6 @@ public class TopMenus {
             String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
             BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
-//            try {           //attempt to make a save file from the inserted image
-//                ImageIO.write(bImage, ext, savedImg);
-//            } catch (IOException o) {   //If the above line breaks, throw an exception
-//                throw new RuntimeException(o);
-//            }
 //CLEAN: Attempted save with line
             if(savedImg != null){
                 try {
@@ -157,11 +152,11 @@ public class TopMenus {
             }
         );
 //TODO: implement mouse drag event to see line during creation
-//        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
+//        imgCanv.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
 //            @Override
 //            public void handle(MouseEvent event) {
-//                graphicsContext.lineTo(event.getX(), event.getY());
-//                graphicsContext.stroke();
+//                gc.lineTo(event.getX(), event.getY());
+//                gc.stroke();
 //            }
 //        });
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){

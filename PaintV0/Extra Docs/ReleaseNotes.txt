@@ -1,3 +1,28 @@
+Leveille Paint Version 0.1 - 9/12/19
+
+Features added this release:
+- Drawing lines
+    - Line color selector
+    - Line width selector
+- Help tab
+    - About popup w/ version info & exit button
+- Saving image with drawn lines
+- Scroll bars move view around the canvas
+-
+
+Known Bugs:
+- Default line color is black, but selector shows white until changed
+- Image is sometimes cutoff when window height is expanded
+- Line width pull down does not show default size until changed
+-
+
+Upcoming Solutions/Additions:
+- Resizing images
+- More shapes to draw
+- Input for custom width values
+-
+
+-----------------------------------------------
 
 Leveille Paint Version 0.0 - 8/28/19
 
