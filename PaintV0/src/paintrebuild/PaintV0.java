@@ -10,6 +10,7 @@ import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
+import javafx.scene.layout.Priority;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -41,57 +42,56 @@ public class PaintV0 extends Application {
         TopMenus menus = new TopMenus(primaryStage, gridPane);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
-        VBox screenContent = new VBox(topMenu, scrollPane);
-        Scene scene = new Scene(screenContent);
-
         bordPane.setCenter(gridPane);
 
         ChoiceBox widthChoose = new ChoiceBox();
-        widthChoose.setValue("1px");
-        ColorPicker colorChoose = new ColorPicker(Color.BLACK);
-        colorChoose.setOnAction(new EventHandler() {
+        widthChoose.setValue("1px"); //set default width
+
+        ColorPicker colorChoose = new ColorPicker(Color.BLACK); //set default color
+        colorChoose.setOnAction(new EventHandler() { //trigger color picker when button is clicked
             public void handle(Event t) {
                 Color c = colorChoose.getValue();
                 menus.setShapeColor(c);
             }
         });
-        widthChoose.getItems().addAll("1px", "2px", "3px");
-//TODO: implement width choosing and add to screen
-        ToolBar windowBar = new ToolBar(widthChoose, colorChoose);
-        bordPane.setTop(windowBar);
+//TODO: Allow custom input for width choosing, possibly diff units
+        widthChoose.getItems().addAll("1px", "2px", "3px", "5px", "10px"); //A few default widths to choose
+//TODO: Place necessary controls on toolbar for each edit tool
+        ToolBar windowBar = new ToolBar(widthChoose, colorChoose); //Creates the toolbar to hold both choosers
+        //bordPane.setTop(windowBar);
 
-        widthChoose.setOnAction((e)-> {
-            String widthVal = widthChoose.getValue().toString();
-            int lineWidth = Integer.parseInt(widthVal.substring(0, widthVal.lastIndexOf("p")));
-            System.out.println(lineWidth);
-            menus.setLineWidth((double) lineWidth);
-        });
+        VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
+        VBox.setVgrow(scrollPane, Priority.ALWAYS);
+        Scene scene = new Scene(screenContent);
 
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(final KeyEvent event){
-                KeyCode press = event.getCode();
-                if(press == KeyCode.ESCAPE){
-                    menus.setDrawMode(0);
-                }
-                else if(press == KeyCode.S && event.isControlDown()){
-//TODO: implement save
-                    try {
-                        imgCanv = menus.getCanv();
-                        WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
-                        imgCanv.snapshot(null, wImage);
-                        ImageIO.write(SwingFXUtils.fromFXImage(wImage, null), menus.ext, menus.savedImg);
-                        System.out.println("Saving attempt!");
-                    }catch(IOException ex){
-                        System.out.println("Save Failed!");
-                    }
+        primaryStage.setTitle("Paint v0"); //Set the window title text
+        primaryStage.setScene(scene);      //and build stage before showing
+        primaryStage.sizeToScene();
+        primaryStage.show();
+
+        scene.setOnKeyPressed((event)-> {
+            KeyCode press = event.getCode(); //store pressed key in variable for reuse
+            if (press == KeyCode.ESCAPE) { //ESC exits any drawing mode
+                menus.setDrawMode(0);
+            } else if (press == KeyCode.S && event.isControlDown()) { //CTRL+S updates the image in the existing file
+                try {
+                    imgCanv = menus.getCanv(); //grab imgCanv from TopMenus class
+                    WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
+                    imgCanv.snapshot(null, wImage);
+                    ImageIO.write(SwingFXUtils.fromFXImage(wImage, null), menus.ext, menus.savedImg);
+                    System.out.println("Saving attempt!");
+                } catch (IOException ex) { //Throw a simple error if saving dies
+                    System.out.println("Save Failed!");
                 }
             }
         });
 
-        primaryStage.setTitle("Paint v0"); //Set the window title text
-        primaryStage.setScene(scene);
-        primaryStage.sizeToScene();
-        primaryStage.show();
+        widthChoose.setOnAction((event)-> { //Grabbing new width setting and updating Line width
+            String widthVal = widthChoose.getValue().toString();
+            //pulling the numeric value of width w/o units
+            int lineWidth = Integer.parseInt(widthVal.substring(0, widthVal.lastIndexOf("p")));
+            menus.setLineWidth((double) lineWidth);
+        });
     }
     public Canvas getCanv(){return imgCanv;}
 //TODO: use scene.getWidth()/getHeight() for properly scaling elements
