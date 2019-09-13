@@ -70,6 +70,10 @@ public class PaintV0 extends Application {
 
         scene.setOnKeyPressed((event)-> {
             KeyCode press = event.getCode(); //store pressed key in variable for reuse
+            if(imgCanv == null){
+//TODO: make CTRL+S saveAs first time                menus.imgSave.handle();
+                return;
+            }
             if (press == KeyCode.ESCAPE) { //ESC exits any drawing mode
                 menus.setDrawMode(0);
             } else if (press == KeyCode.S && event.isControlDown()) { //CTRL+S updates the image in the existing file

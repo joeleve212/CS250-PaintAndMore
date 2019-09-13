@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -35,6 +36,7 @@ public class TopMenus {
     MenuBar pinnedMenu;
     private double x0,y0,x1,y1, lineWidth;
     private int IMG_POS_X=0, IMG_POS_Y=0;
+    private boolean primaryJustClicked = false;
 
     TopMenus(Stage primaryStage, GridPane gridPane){
 
@@ -65,7 +67,7 @@ public class TopMenus {
         pinnedMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
 
-    //if mode = ____, then add ____ options to menuBar
+    //if mode = ____, then add needed options to menuBar
 
         imageSave.setOnAction((e)->{
             System.out.println("Saving image file...");
@@ -75,6 +77,7 @@ public class TopMenus {
                     new FileChooser.ExtensionFilter("PNG Files", "*.png"),
                     new FileChooser.ExtensionFilter("JPEG Files", "*.jpeg"),
                     new FileChooser.ExtensionFilter("JPG Files", "*.jpg"),
+                    new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
             savedImg = saveImageChoose.showSaveDialog(null);
             String name = savedImg.getName();
@@ -111,7 +114,7 @@ public class TopMenus {
             File insImg = openFile.showOpenDialog(primaryStage);
             currImgPath = insImg.getPath();
             System.out.println(currImgPath);
-            if (insImg != null) {
+            if (currImgPath != "") {
                 try {
                     InputStream io = new FileInputStream(insImg);
                     img = new Image(io);
@@ -143,8 +146,11 @@ public class TopMenus {
         imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event) {
-                    x0 = event.getX();
-                    y0 = event.getY();
+                    if(event.isPrimaryButtonDown()) {
+                        x0 = event.getX();
+                        y0 = event.getY();
+                        primaryJustClicked = true;
+                    }
                 }
             }
         );
@@ -159,10 +165,13 @@ public class TopMenus {
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event) {
-                    x1 = event.getX();
-                    y1 = event.getY();
-                    drawShape();
-                    gc.save();
+                    if(!event.isPrimaryButtonDown()&&primaryJustClicked) {
+                        x1 = event.getX();
+                        y1 = event.getY();
+                        drawShape();
+                        gc.save();
+                        primaryJustClicked = false;
+                    }
                 }
             }
         );
