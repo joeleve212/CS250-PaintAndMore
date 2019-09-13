@@ -70,6 +70,7 @@ public class PaintV0 extends Application {
 
         scene.setOnKeyPressed((event)-> {
             KeyCode press = event.getCode(); //store pressed key in variable for reuse
+            imgCanv = menus.getCanv(); //grab imgCanv from TopMenus class
             if(imgCanv == null){
 //TODO: make CTRL+S saveAs first time                menus.imgSave.handle();
                 return;
@@ -78,7 +79,6 @@ public class PaintV0 extends Application {
                 menus.setDrawMode(0);
             } else if (press == KeyCode.S && event.isControlDown()) { //CTRL+S updates the image in the existing file
                 try {
-                    imgCanv = menus.getCanv(); //grab imgCanv from TopMenus class
                     WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
                     imgCanv.snapshot(null, wImage);
                     ImageIO.write(SwingFXUtils.fromFXImage(wImage, null), menus.ext, menus.savedImg);
