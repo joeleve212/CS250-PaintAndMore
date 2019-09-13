@@ -28,20 +28,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TopMenus {
-    MenuBar topMenu;
-    public String OPENER_FILE_LOC = "../../../Phone Backups";
-    public int INIT_WINDOW_WIDTH = 400;
-    public int INIT_WINDOW_HEIGHT = 400;
-    int DEFAULT_CANV_W = 400;
-    int DEFAULT_CANV_H = 400;
+    public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
+    public boolean imgInserted = false;
+    public String currImgPath, ext, OPENER_FILE_LOC = "../../../";
+    public File savedImg;
+    public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
     GraphicsContext gc;
     Image img;
     Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
-    private double x0,y0,x1,y1;
-    public boolean imgInserted = false;
-    private double lineWidth;
-    public String currImgPath;
-    public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
+    MenuBar pinnedMenu;
+    private double x0,y0,x1,y1, lineWidth;
+    private int IMG_POS_X=0, IMG_POS_X=0;
+
     TopMenus(Stage primaryStage, GridPane gridPane){
 
         ImageView placedImgView = new ImageView();
@@ -68,7 +66,7 @@ public class TopMenus {
         MenuItem about = new MenuItem("About");
         helpMenu.getItems().add(about);
 
-        topMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
+        pinnedMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
 
     //if mode = ____, then add ____ options to menuBar
@@ -81,9 +79,9 @@ public class TopMenus {
                     new FileChooser.ExtensionFilter("PNG Files", "*.png"),
                     new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
-            File savedImg = saveImageChoose.showSaveDialog(null);
+            savedImg = saveImageChoose.showSaveDialog(null);
             String name = savedImg.getName();
-            String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
+            ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
 //CLEAN:    BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
 //CLEAN: Attempted save with line
@@ -131,7 +129,7 @@ public class TopMenus {
                     gc = imgCanv.getGraphicsContext2D();
                     gc.getCanvas().setWidth(img.getWidth());
                     gc.getCanvas().setHeight(img.getHeight());
-                    gc.drawImage(img, 0,0, img.getWidth(),img.getHeight());
+                    gc.drawImage(img, IMG_POS_X,IMG_POS_Y, img.getWidth(),img.getHeight());
                     gridPane.add(imgCanv,0,0);
                     imgInserted = true;
 
@@ -179,7 +177,7 @@ public class TopMenus {
     }
     int getDrawMode(){return drawMode;}
     void setDrawMode(int x){drawMode = x;}
-    MenuBar getMenuBar(){return topMenu;}
+    MenuBar getMenuBar(){return pinnedMenu;}
     void setShapeColor(Color newColor){gc.setStroke(newColor);}
     boolean drawShape(){
         gc.setLineWidth(lineWidth);

@@ -8,12 +8,14 @@ Features added this release:
     - About popup w/ version info & exit button
 - Saving image with drawn lines
 - Scroll bars move view around the canvas
--
+- ESC takes off drawing mode
+- CTRL+S triggers save
 
 Known Bugs:
 - Image is sometimes cutoff when window height is expanded
 - Adding a picture on top of an already-added picture causes internal errors
 - Saving a file before opening an image causes internal errors
+- Closing openFile window causes internal errors
 -
 
 Upcoming Solutions/Additions:

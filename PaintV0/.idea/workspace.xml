@@ -12,10 +12,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
+            <state relative-caret-position="183">
               <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
               <folding>
                 <element signature="e#0#2170#0" expanded="true" />
@@ -29,11 +29,10 @@
       <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="91" column="113" lean-forward="true" selection-start-line="91" selection-start-column="113" selection-end-line="91" selection-end-column="113" />
+            <state relative-caret-position="-240">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3854#5657#0" />
                 <element signature="class#5988:6295" />
                 <element signature="class#6386:6669" />
                 <element signature="e#6707#6776#0" />
@@ -42,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReleaseNotes.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ReleaseNotes.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+            <state relative-caret-position="360">
+              <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -73,14 +72,15 @@
       <find>ge)</find>
       <find>toolBar</find>
       <find>Bar</find>
-      <find>topMenu</find>
       <find>system</find>
       <find>ext</find>
       <find>line</find>
       <find>lineWidth</find>
       <find>ext</find>
-      <find>v0</find>
       <find>color</find>
+      <find>imgInserted</find>
+      <find>topMenu</find>
+      <find>v0</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -89,9 +89,9 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/paintv0/TopMenus.java" />
         <option value="$PROJECT_DIR$/src/paintv0/PaintV0.java" />
-        <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
+        <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
       </list>
     </option>
   </component>
@@ -253,7 +253,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32897604" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -263,10 +263,10 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.21895425" />
       <window_info anchor="right" id="Leiningen" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.22875817" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2777778" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12846482" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.12846482" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -281,6 +281,37 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21895425" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12846482" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="REPL" order="6" side_tool="true" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info anchor="right" id="Leiningen" order="7" />
+      <window_info id="UI Designer" order="5" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Learn" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.22875817" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32897604" />
+      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -320,20 +351,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="91" column="113" lean-forward="true" selection-start-line="91" selection-start-column="113" selection-end-line="91" selection-end-column="113" />
+        <state relative-caret-position="-240">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3854#5657#0" />
             <element signature="class#5988:6295" />
             <element signature="class#6386:6669" />
             <element signature="e#6707#6776#0" />
@@ -343,13 +366,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="183">
           <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
           <folding>
             <element signature="e#0#2170#0" expanded="true" />
             <element signature="e#3329#3330#0" expanded="true" />
             <element signature="e#3357#3358#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
         </state>
       </provider>
     </entry>
