@@ -40,7 +40,8 @@ public class PaintV0 extends Application {
         bordPane.setCenter(gridPane);
 
         ChoiceBox widthChoose = new ChoiceBox();
-        ColorPicker colorChoose = new ColorPicker();
+        widthChoose.setValue("1px");
+        ColorPicker colorChoose = new ColorPicker(Color.BLACK);
         colorChoose.setOnAction(new EventHandler() {
             public void handle(Event t) {
                 Color c = colorChoose.getValue();

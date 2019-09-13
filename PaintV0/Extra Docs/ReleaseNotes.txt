@@ -11,9 +11,7 @@ Features added this release:
 -
 
 Known Bugs:
-- Default line color is black, but selector shows white until changed
 - Image is sometimes cutoff when window height is expanded
-- Line width pull down does not show default size until changed
 -
 
 Upcoming Solutions/Additions:

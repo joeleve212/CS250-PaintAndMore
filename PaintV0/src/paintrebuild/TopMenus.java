@@ -43,7 +43,6 @@ public class TopMenus {
     public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
     TopMenus(Stage primaryStage, GridPane gridPane){
 
-
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
 

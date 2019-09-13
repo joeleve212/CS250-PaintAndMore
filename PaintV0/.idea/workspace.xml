@@ -15,8 +15,8 @@
       <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+            <state relative-caret-position="500">
+              <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
               <folding>
                 <element signature="e#0#2170#0" expanded="true" />
                 <element signature="e#2503#2504#0" expanded="true" />
@@ -29,10 +29,9 @@
       <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-180">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
+            <state relative-caret-position="-1129">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="31" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#3854#5657#0" />
                 <element signature="class#5988:6295" />
                 <element signature="class#6386:6669" />
@@ -45,8 +44,8 @@
       <file leaf-file-name="ReleaseNotes.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+            <state relative-caret-position="280">
+              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -96,10 +95,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="2289" />
+    <option name="y" value="-129" />
+    <option name="width" value="1152" />
+    <option name="height" value="612" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -248,7 +247,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="1912" y="-113" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -261,12 +260,12 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="right" id="REPL" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21937323" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21895425" />
       <window_info anchor="right" id="Leiningen" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.22364673" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.22875817" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16174497" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12846482" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -320,24 +319,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#2170#0" expanded="true" />
-            <element signature="e#2503#2504#0" expanded="true" />
-            <element signature="e#2531#2532#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="-1129">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#3854#5657#0" />
             <element signature="class#5988:6295" />
             <element signature="class#6386:6669" />
@@ -346,10 +332,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#2170#0" expanded="true" />
+            <element signature="e#2503#2504#0" expanded="true" />
+            <element signature="e#2531#2532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+        <state relative-caret-position="280">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
         </state>
       </provider>
     </entry>
