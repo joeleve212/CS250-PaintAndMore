@@ -15,17 +15,13 @@ import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.shape.Line;
 
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TopMenus {
     public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
@@ -49,22 +45,22 @@ public class TopMenus {
         MenuItem imageSave = new MenuItem("Save Image");
         MenuItem exitBtn = new MenuItem("Exit Program");
         MenuItem openBtn = new MenuItem("Open Image");
-        fileMenu.getItems().add(imageSave);
-        fileMenu.getItems().add(openBtn);
-        fileMenu.getItems().add(exitBtn);
+        fileMenu.getItems().addAll(imageSave, openBtn, exitBtn);
 
         final Menu toolMenu = new Menu("Tools"); //Populate the next menu pull-down - Options
         MenuItem cutter = new MenuItem("Cut");
         MenuItem copier = new MenuItem("Copy");
+        MenuItem eraser = new MenuItem("Erase");
         Menu shape = new Menu("Draw Shape");
         MenuItem line = new MenuItem("Line");
-        MenuItem eraser = new MenuItem("Erase");
-        shape.getItems().addAll(line);
-        toolMenu.getItems().addAll(copier, cutter, eraser, shape);
+        MenuItem rect = new MenuItem("Rectangle");
+
+        shape.getItems().addAll(line, rect);
+        toolMenu.getItems().addAll(shape, copier, cutter, eraser);
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
-        helpMenu.getItems().add(about);
+        helpMenu.getItems().addAll(about);
 
         pinnedMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
@@ -91,7 +87,7 @@ public class TopMenus {
                     WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
                     imgCanv.snapshot(null, wImage);
                     RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
-                    ImageIO.write(rImage, ext, savedImg);
+                    ImageIO.write(rImage, "png", savedImg);
                 } catch (IOException ex) {
         //CLEAN/FIX            Logger.getLogger(JDrawOnCanvas.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println("Initial save failed");
@@ -125,7 +121,6 @@ public class TopMenus {
                     placedImgView.setFitWidth(img.getWidth());
                     placedImgView.setFitHeight(img.getHeight());
                     placedImgView.setPreserveRatio(true);
-                    //gridPane.add(placedImgView, 0, 0);
                     gridPane.setAlignment(Pos.CENTER);
 
                     gc = imgCanv.getGraphicsContext2D();
@@ -176,6 +171,10 @@ public class TopMenus {
             drawMode = 1;
             updateMenus();
         });
+        rect.setOnAction((e)->{
+            drawMode = 2;
+            updateMenus();
+        });
     }
     int getDrawMode(){return drawMode;}
     void setDrawMode(int x){drawMode = x;}
@@ -185,8 +184,12 @@ public class TopMenus {
         gc.setLineWidth(lineWidth);
 //TODO: add if state for each type of shape
         if(drawMode == 1){
-//TODO: Place line between x0,y0 & x1,y1
+//Place line between x0,y0 & x1,y1
             gc.strokeLine(x0,y0,x1,y1);
+        }
+        else if(drawMode==2){
+            //place rectangle between opposite corners x0,y0 & x1,y1
+            gc.strokeRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
         }
         return true;
     }

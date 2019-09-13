@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Priority;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -79,7 +78,6 @@ public class PaintV0 extends Application {
                     WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
                     imgCanv.snapshot(null, wImage);
                     ImageIO.write(SwingFXUtils.fromFXImage(wImage, null), menus.ext, menus.savedImg);
-                    System.out.println("Saving attempt!");
                 } catch (IOException ex) { //Throw a simple error if saving dies
                     System.out.println("Save Failed!");
                 }
