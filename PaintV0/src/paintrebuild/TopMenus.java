@@ -35,10 +35,10 @@ public class TopMenus {
     public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
     GraphicsContext gc;
     Image img;
-    Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
+    private Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
     MenuBar pinnedMenu;
     private double x0,y0,x1,y1, lineWidth;
-    private int IMG_POS_X=0, IMG_POS_X=0;
+    private int IMG_POS_X=0, IMG_POS_Y=0;
 
     TopMenus(Stage primaryStage, GridPane gridPane){
 
@@ -77,7 +77,8 @@ public class TopMenus {
             saveImageChoose.setTitle("Save Image As");
             saveImageChoose.getExtensionFilters().addAll( //allow saving in different file formats
                     new FileChooser.ExtensionFilter("PNG Files", "*.png"),
-                    new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
+                    new FileChooser.ExtensionFilter("JPEG Files", "*.jpeg"),
+                    new FileChooser.ExtensionFilter("JPG Files", "*.jpg"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
             savedImg = saveImageChoose.showSaveDialog(null);
             String name = savedImg.getName();
@@ -87,12 +88,13 @@ public class TopMenus {
 //CLEAN: Attempted save with line
             if(savedImg != null){
                 try {
-                    WritableImage writableImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
-                    imgCanv.snapshot(null, writableImage);
-                    RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
-                    ImageIO.write(renderedImage, ext, savedImg);
+                    WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
+                    imgCanv.snapshot(null, wImage);
+                    RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
+                    ImageIO.write(rImage, ext, savedImg);
                 } catch (IOException ex) {
         //CLEAN/FIX            Logger.getLogger(JDrawOnCanvas.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Initial save failed");
                 }
             }
         });
@@ -193,5 +195,6 @@ public class TopMenus {
         return false;
 //TODO: implement this to check drawMode (and other?) to adjust the menu buttons
     }
+    public Canvas getCanv(){return imgCanv;}
 
 }

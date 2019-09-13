@@ -16,14 +16,19 @@ Known Bugs:
 - Adding a picture on top of an already-added picture causes internal errors
 - Saving a file before opening an image causes internal errors
 - Closing openFile window causes internal errors
+- cannot save as .bmp
+- images saved as .jpeg or .jpg have red tint
 -
 
 Upcoming Solutions/Additions:
 - Resizing images
 - More shapes to draw
+    - With fill option
 - Input for custom width values
 - Adding text
 - Reorganization of menu items
+- zoom
+- options tab
 -
 
 -----------------------------------------------

@@ -5,9 +5,12 @@
  */
 package paintv0;
 import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -18,10 +21,12 @@ import javafx.stage.Stage;
 import javafx.event.EventHandler;
 
 import javax.imageio.ImageIO;
+import java.io.IOException;
 
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
+    private Canvas imgCanv;
     @Override
     public void start(Stage primaryStage) {
         GridPane gridPane = new GridPane(); //Create the blank grid
@@ -47,7 +52,6 @@ public class PaintV0 extends Application {
         colorChoose.setOnAction(new EventHandler() {
             public void handle(Event t) {
                 Color c = colorChoose.getValue();
-   //CLEAN: System.out.println("New Color's RGB = "+c.getRed()+" "+c.getGreen()+" "+c.getBlue());
                 menus.setShapeColor(c);
             }
         });
@@ -71,8 +75,15 @@ public class PaintV0 extends Application {
                 }
                 else if(press == KeyCode.S && event.isControlDown()){
 //TODO: implement save
-                    //ImageIO.write()
-                    System.out.println("Saving attempt!");
+                    try {
+                        imgCanv = menus.getCanv();
+                        WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
+                        imgCanv.snapshot(null, wImage);
+                        ImageIO.write(SwingFXUtils.fromFXImage(wImage, null), menus.ext, menus.savedImg);
+                        System.out.println("Saving attempt!");
+                    }catch(IOException ex){
+                        System.out.println("Save Failed!");
+                    }
                 }
             }
         });
@@ -82,10 +93,7 @@ public class PaintV0 extends Application {
         primaryStage.sizeToScene();
         primaryStage.show();
     }
-    public void handle(KeyEvent event){
-
-
-    }
+    public Canvas getCanv(){return imgCanv;}
 //TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
