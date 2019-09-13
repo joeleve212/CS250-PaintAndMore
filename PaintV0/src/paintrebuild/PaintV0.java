@@ -17,6 +17,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 
+import javax.imageio.ImageIO;
+
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
@@ -61,19 +63,28 @@ public class PaintV0 extends Application {
             menus.setLineWidth((double) lineWidth);
         });
 
-//TODO: Make ESC key set drawMode to 0
-//        scene.onKeyPressed(new EventHandler<KeyEvent>() {
-//            public void handle(final KeyEvent keyEvent){
-//                if(keyEvent.getCode() == KeyCode.ESCAPE){
-//                    menus.setDrawMode(0);
-//                }
-//            }
-//        });
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(final KeyEvent event){
+                KeyCode press = event.getCode();
+                if(press == KeyCode.ESCAPE){
+                    menus.setDrawMode(0);
+                }
+                else if(press == KeyCode.S && event.isControlDown()){
+//TODO: implement save
+                    //ImageIO.write()
+                    System.out.println("Saving attempt!");
+                }
+            }
+        });
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.show();
+    }
+    public void handle(KeyEvent event){
+
+
     }
 //TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {

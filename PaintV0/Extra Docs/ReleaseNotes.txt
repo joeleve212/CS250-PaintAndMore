@@ -12,12 +12,16 @@ Features added this release:
 
 Known Bugs:
 - Image is sometimes cutoff when window height is expanded
+- Adding a picture on top of an already-added picture causes internal errors
+- Saving a file before opening an image causes internal errors
 -
 
 Upcoming Solutions/Additions:
 - Resizing images
 - More shapes to draw
 - Input for custom width values
+- Adding text
+- Reorganization of menu items
 -
 
 -----------------------------------------------

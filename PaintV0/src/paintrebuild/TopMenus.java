@@ -40,6 +40,7 @@ public class TopMenus {
     private double x0,y0,x1,y1;
     public boolean imgInserted = false;
     private double lineWidth;
+    public String currImgPath;
     public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
     TopMenus(Stage primaryStage, GridPane gridPane){
 
@@ -84,11 +85,11 @@ public class TopMenus {
             String name = savedImg.getName();
             String ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
-            BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
+//CLEAN:    BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
 //CLEAN: Attempted save with line
             if(savedImg != null){
                 try {
-                    WritableImage writableImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight()/1);
+                    WritableImage writableImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
                     imgCanv.snapshot(null, writableImage);
                     RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
                     ImageIO.write(renderedImage, ext, savedImg);
@@ -112,6 +113,8 @@ public class TopMenus {
                     new FileChooser.ExtensionFilter("All Files", "*.*")
             );
             File insImg = openFile.showOpenDialog(primaryStage);
+            currImgPath = insImg.getPath();
+            System.out.println(currImgPath);
             if (insImg != null) {
                 try {
                     InputStream io = new FileInputStream(insImg);
