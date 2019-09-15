@@ -147,6 +147,7 @@ public class TopMenus {
                 @Override
                 public void handle(MouseEvent event) {
                     if(event.isPrimaryButtonDown()) {
+                        gc.beginPath();
                         x0 = event.getX();
                         y0 = event.getY();
                         primaryJustClicked = true;
@@ -163,8 +164,10 @@ public class TopMenus {
             @Override
             public void handle(MouseEvent event) {
                 if(event.isPrimaryButtonDown() && drawMode==3) {
+
                     gc.lineTo(event.getX(), event.getY());
                     gc.stroke();
+
                 }
             }
         });
@@ -178,6 +181,7 @@ public class TopMenus {
                         gc.save();
                         primaryJustClicked = false;
                     }
+                    gc.closePath();
                 }
             }
         );
