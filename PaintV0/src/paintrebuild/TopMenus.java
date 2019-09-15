@@ -225,9 +225,17 @@ public class TopMenus {
         }
         else if(drawMode==4){ //Ellipse
             if(fill){
-                //
+                gc.fillOval(x0,y0,Math.abs(x1-x0), Math.abs(y0-y1));
             }
-            //TODO
+            gc.strokeOval(x0,y0,Math.abs(x1-x0), Math.abs(y0-y1));
+        }
+        else if(drawMode==5) { //Circle
+            double w = Math.abs(x1 - x0);
+            //double h = Math.abs(x1 - x0);
+            if (fill) {
+                gc.fillOval(x0, y0, w, w);
+            }
+            gc.strokeOval(x0, y0, w, w);
         }
         return true;
     }
