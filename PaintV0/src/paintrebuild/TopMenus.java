@@ -30,6 +30,7 @@ public class TopMenus {
     public String currImgPath, ext, OPENER_FILE_LOC = "../../../";
     public File savedImg;
     public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
+    public boolean fill = false;
     GraphicsContext gc;
     Image img;
     private Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
@@ -196,7 +197,7 @@ public class TopMenus {
     void setDrawMode(int x){drawMode = x;}
     MenuBar getMenuBar(){return pinnedMenu;}
     void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
-    void setShapeFillColor(Color newColor){gc.setFill(newColor);}
+    void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
     boolean drawShape(){
         gc.setLineWidth(lineWidth);
 //TODO: add if state for each type of shape
@@ -205,6 +206,9 @@ public class TopMenus {
             gc.strokeLine(x0,y0,x1,y1);
         }
         else if(drawMode==2){
+            if(fill){
+                gc.fillRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
+            }
             //place rectangle between opposite corners x0,y0 & x1,y1
 //TODO: allow drawing rect from corner other than top left
             gc.strokeRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
