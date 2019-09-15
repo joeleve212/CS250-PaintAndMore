@@ -58,15 +58,17 @@ public class TopMenus {
         MenuItem line = new MenuItem("Line");
         MenuItem rect = new MenuItem("Rectangle");
         MenuItem free = new MenuItem("Free Draw");
+        MenuItem oval = new MenuItem("Ellipse");
+        MenuItem circ = new MenuItem("Circle");
 
-        shape.getItems().addAll(line, rect, free);
-        toolMenu.getItems().addAll(shape, copier, cutter, eraser);
+        shape.getItems().addAll(line, rect, free, oval, circ);
+        toolMenu.getItems().addAll(copier, cutter, eraser);
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
         helpMenu.getItems().addAll(about);
 
-        pinnedMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
+        pinnedMenu = new MenuBar(fileMenu,toolMenu,shape,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
     //if mode = ____, then add needed options to menuBar
 
@@ -192,6 +194,14 @@ public class TopMenus {
             drawMode = 3;
             updateMenus();
         });
+        oval.setOnAction((e)->{
+            drawMode = 4;
+            updateMenus();
+        });
+        circ.setOnAction((e)->{
+            drawMode = 5;
+            updateMenus();
+        });
     }
     int getDrawMode(){return drawMode;}
     void setDrawMode(int x){drawMode = x;}
@@ -212,6 +222,12 @@ public class TopMenus {
             //place rectangle between opposite corners x0,y0 & x1,y1
 //TODO: allow drawing rect from corner other than top left
             gc.strokeRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
+        }
+        else if(drawMode==4){ //Ellipse
+            if(fill){
+                //
+            }
+            //TODO
         }
         return true;
     }

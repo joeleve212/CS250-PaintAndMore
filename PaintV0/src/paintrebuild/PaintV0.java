@@ -26,7 +26,7 @@ import java.io.IOException;
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
-    private Canvas imgCanv;
+    private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     @Override
     public void start(Stage primaryStage) {
         GridPane gridPane = new GridPane(); //Create the blank grid
@@ -67,6 +67,7 @@ public class PaintV0 extends Application {
         VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);
+        scene.setFill(Color.gray(.3));
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);      //and build stage before showing
