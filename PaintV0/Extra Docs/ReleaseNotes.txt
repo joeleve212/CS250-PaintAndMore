@@ -18,6 +18,7 @@ Known Bugs:
 - Saving a file before opening an image causes internal errors
 - Closing openFile window causes internal errors
 - rectangle only goes from top left to bottom right
+- Choosing color before a drawMode causes internal errors
 -
 
 Upcoming Solutions/Additions:

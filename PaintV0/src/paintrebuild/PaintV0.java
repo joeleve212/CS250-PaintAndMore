@@ -46,17 +46,22 @@ public class PaintV0 extends Application {
         ChoiceBox widthChoose = new ChoiceBox();
         widthChoose.setValue("1px"); //set default width
 
-        ColorPicker colorChoose = new ColorPicker(Color.BLACK); //set default color
-        colorChoose.setOnAction(new EventHandler() { //trigger color picker when button is clicked
+        ColorPicker outlineColor = new ColorPicker(Color.BLACK); //set default outline color
+        ColorPicker fillColor = new ColorPicker(Color.BLACK);//set default fill color
+        outlineColor.setOnAction(new EventHandler() { //trigger color picker when button is clicked
             public void handle(Event t) {
-                Color c = colorChoose.getValue();
-                menus.setShapeColor(c);
+                Color c = outlineColor.getValue();
+                menus.setShapeLineColor(c);
             }
+        });
+        fillColor.setOnAction(event -> {
+            Color fillC = fillColor.getValue();
+            menus.setShapeFillColor(fillC);
         });
 //TODO: Allow custom input for width choosing, possibly diff units
         widthChoose.getItems().addAll("1px", "2px", "3px", "5px", "10px"); //A few default widths to choose
 //TODO: Place necessary controls on toolbar for each edit tool
-        ToolBar windowBar = new ToolBar(widthChoose, colorChoose); //Creates the toolbar to hold both choosers
+        ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor); //Creates the toolbar to hold both choosers
         //bordPane.setTop(windowBar);
 
         VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
@@ -100,5 +105,6 @@ public class PaintV0 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+//TODO: toss new snapshot of canvas onto stack after each added drawing
+//TODO: bilinear image scaling?? Try to find a better way
 }

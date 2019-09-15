@@ -56,8 +56,9 @@ public class TopMenus {
         Menu shape = new Menu("Draw Shape");
         MenuItem line = new MenuItem("Line");
         MenuItem rect = new MenuItem("Rectangle");
+        MenuItem free = new MenuItem("Free Draw");
 
-        shape.getItems().addAll(line, rect);
+        shape.getItems().addAll(line, rect, free);
         toolMenu.getItems().addAll(shape, copier, cutter, eraser);
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
@@ -65,7 +66,6 @@ public class TopMenus {
         helpMenu.getItems().addAll(about);
 
         pinnedMenu = new MenuBar(fileMenu,toolMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
-
 
     //if mode = ____, then add needed options to menuBar
 
@@ -83,8 +83,6 @@ public class TopMenus {
             String name = savedImg.getName();
             ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
-//CLEAN:    BufferedImage bImage = SwingFXUtils.fromFXImage(placedImgView.getImage(), null);
-//CLEAN: Attempted save with line
             if(savedImg != null){
                 try {
                     WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
@@ -92,7 +90,6 @@ public class TopMenus {
                     RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
                     ImageIO.write(rImage, "png", savedImg);
                 } catch (IOException ex) {
-        //CLEAN/FIX            Logger.getLogger(JDrawOnCanvas.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println("Initial save failed");
                 }
             }
@@ -151,21 +148,27 @@ public class TopMenus {
                         y0 = event.getY();
                         primaryJustClicked = true;
                     }
+                    if(drawMode==3){
+                        x1=x0;
+                        y1=y0;
+                    }
                 }
             }
         );
-//TODO: implement mouse drag event to see line during creation
-//        imgCanv.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
-//            @Override
-//            public void handle(MouseEvent event) {
-//                gc.lineTo(event.getX(), event.getY());
-//                gc.stroke();
-//            }
-//        });
+//TODO: implement mouse drag event to see shape during creation
+        imgCanv.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.isPrimaryButtonDown() && drawMode==3) {
+                    gc.lineTo(event.getX(), event.getY());
+                    gc.stroke();
+                }
+            }
+        });
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                 @Override
                 public void handle(MouseEvent event) {
-                    if(!event.isPrimaryButtonDown()&&primaryJustClicked) {
+                    if(!event.isPrimaryButtonDown()&&primaryJustClicked&&drawMode!=3) {
                         x1 = event.getX();
                         y1 = event.getY();
                         drawShape();
@@ -184,11 +187,16 @@ public class TopMenus {
             drawMode = 2;
             updateMenus();
         });
+        free.setOnAction((e)->{
+            drawMode = 3;
+            updateMenus();
+        });
     }
     int getDrawMode(){return drawMode;}
     void setDrawMode(int x){drawMode = x;}
     MenuBar getMenuBar(){return pinnedMenu;}
-    void setShapeColor(Color newColor){gc.setStroke(newColor);}
+    void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
+    void setShapeFillColor(Color newColor){gc.setFill(newColor);}
     boolean drawShape(){
         gc.setLineWidth(lineWidth);
 //TODO: add if state for each type of shape
@@ -198,6 +206,7 @@ public class TopMenus {
         }
         else if(drawMode==2){
             //place rectangle between opposite corners x0,y0 & x1,y1
+//TODO: allow drawing rect from corner other than top left
             gc.strokeRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
         }
         return true;
