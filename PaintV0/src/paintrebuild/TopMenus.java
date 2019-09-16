@@ -142,7 +142,6 @@ public class TopMenus {
         });
 
         grabber.setOnAction((e)->{
-    //TODO: implement color grabber
             drawMode = -1; //It's not drawing, so negative
         });
 

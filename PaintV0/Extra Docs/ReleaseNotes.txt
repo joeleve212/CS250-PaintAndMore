@@ -1,3 +1,16 @@
+Leveille Paint Version 0.2 - 9/18/19
+
+Features added this release:
+-
+
+Known Bugs:
+- Color grabber tool does not update chosen color display
+-
+
+Upcoming Solutions/Additions:
+-
+
+
 Leveille Paint Version 0.1 - 9/12/19
 
 Features added this release:
