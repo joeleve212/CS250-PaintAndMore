@@ -7,8 +7,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -54,6 +54,8 @@ public class TopMenus {
         MenuItem cutter = new MenuItem("Cut");
         MenuItem copier = new MenuItem("Copy");
         MenuItem eraser = new MenuItem("Erase");
+        MenuItem grabber = new MenuItem("Grab Color");
+
         Menu shape = new Menu("Draw Shape");
         MenuItem line = new MenuItem("Line");
         MenuItem rect = new MenuItem("Rectangle");
@@ -62,7 +64,7 @@ public class TopMenus {
         MenuItem circ = new MenuItem("Circle");
 
         shape.getItems().addAll(line, rect, free, oval, circ);
-        toolMenu.getItems().addAll(copier, cutter, eraser);
+        toolMenu.getItems().addAll(copier, cutter, eraser, grabber);
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
@@ -139,6 +141,11 @@ public class TopMenus {
             }
         });
 
+        grabber.setOnAction((e)->{
+    //TODO: implement color grabber
+            drawMode = -1; //It's not drawing, so negative
+        });
+
         about.setOnAction((e) -> {
             InfoPopup aboutPop = new InfoPopup(primaryStage);
         });
@@ -151,6 +158,11 @@ public class TopMenus {
                         x0 = event.getX();
                         y0 = event.getY();
                         primaryJustClicked = true;
+                        if(drawMode==-1){
+                            PixelReader colorSnag = img.getPixelReader();
+                            Color newColor = colorSnag.getColor((int)x0, (int)y0);
+                            setShapeLineColor(newColor);
+                        }
                     }
                     if(drawMode==3){
                         x1=x0;

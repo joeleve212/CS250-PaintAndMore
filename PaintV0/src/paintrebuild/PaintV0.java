@@ -20,12 +20,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 
+
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
+    public boolean unsavedChanges = true;
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     @Override
     public void start(Stage primaryStage) {
@@ -91,6 +93,8 @@ public class PaintV0 extends Application {
                 } catch (IOException ex) { //Throw a simple error if saving dies
                     System.out.println("Save Failed!");
                 }
+            } else if(press == KeyCode.Z && event.isControlDown()){
+    //TODO: Implement Undo
             }
         });
 
@@ -99,6 +103,12 @@ public class PaintV0 extends Application {
             //pulling the numeric value of width w/o units
             int lineWidth = Integer.parseInt(widthVal.substring(0, widthVal.lastIndexOf("p")));
             menus.setLineWidth((double) lineWidth);
+        });
+        //Window mainWin = new Window();
+        primaryStage.setOnCloseRequest((event)->{
+            if(unsavedChanges){}
+    //TODO: implement smart save (exit button checks if work is saved)
+            InfoPopup smartSave = new InfoPopup(primaryStage);
         });
     }
     public Canvas getCanv(){return imgCanv;}
