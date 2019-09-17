@@ -38,6 +38,7 @@ public class TopMenus {
     private double x0,y0,x1,y1, lineWidth;
     private int IMG_POS_X=0, IMG_POS_Y=0;
     private boolean primaryJustClicked = false;
+    private boolean imageHasBeenSaved = false;
 
     TopMenus(Stage primaryStage, GridPane gridPane){
 
@@ -101,7 +102,13 @@ public class TopMenus {
         });
 
         exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
-            Platform.exit();
+            if(imageHasBeenSaved){
+                Platform.exit();
+            }
+            else{
+                InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
+            }
+
         });
 
         openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked
@@ -146,7 +153,7 @@ public class TopMenus {
         });
 
         about.setOnAction((e) -> {
-            InfoPopup aboutPop = new InfoPopup(primaryStage);
+            InfoPopup aboutPop = new InfoPopup(primaryStage, "About");
         });
 
         imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){

@@ -27,7 +27,7 @@ import java.io.IOException;
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
-    public boolean unsavedChanges = true;
+    public boolean imageHasBeenSaved = false;
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     @Override
     public void start(Stage primaryStage) {
@@ -64,12 +64,11 @@ public class PaintV0 extends Application {
         widthChoose.getItems().addAll("1px", "2px", "3px", "5px", "10px"); //A few default widths to choose
 //TODO: Place necessary controls on toolbar for each edit tool
         ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor); //Creates the toolbar to hold both choosers
-        //bordPane.setTop(windowBar);
 
         VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);
-        scene.setFill(Color.gray(.3));
+
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);      //and build stage before showing
@@ -104,11 +103,14 @@ public class PaintV0 extends Application {
             int lineWidth = Integer.parseInt(widthVal.substring(0, widthVal.lastIndexOf("p")));
             menus.setLineWidth((double) lineWidth);
         });
-        //Window mainWin = new Window();
         primaryStage.setOnCloseRequest((event)->{
-            if(unsavedChanges){}
+            if(!imageHasBeenSaved){
+//TODO: CLEAN?
+                event.consume();
+
+            }
     //TODO: implement smart save (exit button checks if work is saved)
-            InfoPopup smartSave = new InfoPopup(primaryStage);
+            InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
         });
     }
     public Canvas getCanv(){return imgCanv;}
