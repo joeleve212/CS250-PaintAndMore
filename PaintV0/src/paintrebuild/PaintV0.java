@@ -10,6 +10,7 @@ import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
+import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.Priority;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
@@ -96,7 +97,6 @@ public class PaintV0 extends Application {
     //TODO: Implement Undo
             }
         });
-
         widthChoose.setOnAction((event)-> { //Grabbing new width setting and updating Line width
             String widthVal = widthChoose.getValue().toString();
             //pulling the numeric value of width w/o units
@@ -107,6 +107,12 @@ public class PaintV0 extends Application {
             if(!imageHasBeenSaved){event.consume();}
     //TODO: implement smart save (exit button checks if work is saved)
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
+        });
+        screenContent.setOnZoom(new EventHandler<ZoomEvent>() { //trigger color picker when button is clicked
+            public void handle(ZoomEvent event) {
+                //TODO: implement zoom !!
+            }
+
         });
     }
     public Canvas getCanv(){return imgCanv;}
