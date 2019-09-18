@@ -104,11 +104,7 @@ public class PaintV0 extends Application {
             menus.setLineWidth((double) lineWidth);
         });
         primaryStage.setOnCloseRequest((event)->{
-            if(!imageHasBeenSaved){
-//TODO: CLEAN?
-                event.consume();
-
-            }
+            if(!imageHasBeenSaved){event.consume();}
     //TODO: implement smart save (exit button checks if work is saved)
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
         });
