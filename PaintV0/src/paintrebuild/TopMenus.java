@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Stack;
 
 public class TopMenus {
     public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
@@ -39,11 +40,12 @@ public class TopMenus {
     private int IMG_POS_X=0, IMG_POS_Y=0;
     private boolean primaryJustClicked = false;
     private boolean imageHasBeenSaved = false;
-
-    TopMenus(Stage primaryStage, GridPane gridPane){
+    private Stack prevVersions;
+    TopMenus(Stage primaryStage, GridPane gridPane, Stack versions){
 
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
+        prevVersions = versions;
 
         final Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File
         MenuItem imageSave = new MenuItem("Save Image");
@@ -93,6 +95,7 @@ public class TopMenus {
                 try {
                     WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
                     imgCanv.snapshot(null, wImage);
+                    //CLEANprevVersions = new Stack(wImage);
                     RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
                     ImageIO.write(rImage, "png", savedImg);
                 } catch (IOException ex) {
@@ -199,7 +202,13 @@ public class TopMenus {
                         gc.save();
                         primaryJustClicked = false;
                     }
-                    gc.closePath();
+                    else if(drawMode==3){
+                        gc.closePath();
+                        WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
+                        imgCanv.snapshot(null, wImage);
+                        prevVersions.push(wImage);
+                    }
+
                 }
             }
         );
@@ -267,5 +276,8 @@ public class TopMenus {
 //TODO: implement this to check drawMode (and other?) to adjust the menu buttons
     }
     public Canvas getCanv(){return imgCanv;}
+    public void setCanvVersion(WritableImage currVersion){
+        gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
+    }
 
 }

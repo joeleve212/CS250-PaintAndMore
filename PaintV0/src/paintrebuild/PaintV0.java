@@ -24,12 +24,14 @@ import javafx.event.EventHandler;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
+import java.util.Stack;
 
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
     public boolean imageHasBeenSaved = false;
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
+    private Stack<WritableImage> prevVersions = new Stack<>();
     @Override
     public void start(Stage primaryStage) {
         GridPane gridPane = new GridPane(); //Create the blank grid
@@ -41,7 +43,7 @@ public class PaintV0 extends Application {
         scrollPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
         scrollPane.setContent(bordPane);
 
-        TopMenus menus = new TopMenus(primaryStage, gridPane);
+        TopMenus menus = new TopMenus(primaryStage, gridPane, prevVersions);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
         bordPane.setCenter(gridPane);
@@ -51,6 +53,7 @@ public class PaintV0 extends Application {
 
         ColorPicker outlineColor = new ColorPicker(Color.BLACK); //set default outline color
         ColorPicker fillColor = new ColorPicker(Color.BLACK);//set default fill color
+        Button undoBtn = new Button("Undo"); //Self explanatory
         outlineColor.setOnAction(new EventHandler() { //trigger color picker when button is clicked
             public void handle(Event t) {
                 Color c = outlineColor.getValue();
@@ -61,10 +64,14 @@ public class PaintV0 extends Application {
             Color fillC = fillColor.getValue();
             menus.setShapeFillColor(fillC);
         });
+        undoBtn.setOnAction((event)->{
+            prevVersions.pop();
+            menus.setCanvVersion(prevVersions.peek());
+        });
 //TODO: Allow custom input for width choosing, possibly diff units
         widthChoose.getItems().addAll("1px", "2px", "3px", "5px", "10px"); //A few default widths to choose
 //TODO: Place necessary controls on toolbar for each edit tool
-        ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor); //Creates the toolbar to hold both choosers
+        ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, undoBtn); //Creates the toolbar to hold both choosers
 
         VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
@@ -111,6 +118,7 @@ public class PaintV0 extends Application {
         screenContent.setOnZoom(new EventHandler<ZoomEvent>() { //trigger color picker when button is clicked
             public void handle(ZoomEvent event) {
                 //TODO: implement zoom !!
+
             }
 
         });
