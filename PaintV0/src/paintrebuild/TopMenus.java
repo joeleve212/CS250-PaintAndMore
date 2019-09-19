@@ -142,6 +142,7 @@ public class TopMenus {
                     gc.getCanvas().setWidth(img.getWidth());
                     gc.getCanvas().setHeight(img.getHeight());
                     gc.drawImage(img, IMG_POS_X,IMG_POS_Y, img.getWidth(),img.getHeight());
+                    saveSnap();
                     gridPane.add(imgCanv,0,0);
                     imgInserted = true;
 
@@ -204,9 +205,7 @@ public class TopMenus {
                     }
                     else if(drawMode==3){
                         gc.closePath();
-                        WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
-                        imgCanv.snapshot(null, wImage);
-                        prevVersions.push(wImage);
+                        saveSnap();
                     }
 
                 }
@@ -268,6 +267,7 @@ public class TopMenus {
             }
             gc.strokeOval(x0, y0, w, w);
         }
+        saveSnap();
         return true;
     }
     void setLineWidth(double newLineW){lineWidth=newLineW;}
@@ -278,6 +278,11 @@ public class TopMenus {
     public Canvas getCanv(){return imgCanv;}
     public void setCanvVersion(WritableImage currVersion){
         gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
+    }
+    private void saveSnap(){
+        WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
+        imgCanv.snapshot(null, wImage);
+        prevVersions.push(wImage);
     }
 
 }
