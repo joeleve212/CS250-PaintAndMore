@@ -144,7 +144,7 @@ public class PaintV0 extends Application {
         groupBounds = gr.getLayoutBounds();
                 scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
                 scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
-                imgCanv.resize(imgCanv.getWidth()*zoomFactor, imgCanv.getHeight()*zoomFactor);
+                //CLEAN:imgCanv.resize(imgCanv.getWidth()*zoomFactor, imgCanv.getHeight()*zoomFactor);
         imgCanv.autosize();
             }
         });

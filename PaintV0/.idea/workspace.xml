@@ -15,8 +15,8 @@
       <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="158" column="16" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="16" />
+            <state relative-caret-position="124">
+              <caret line="146" column="24" selection-start-line="146" selection-start-column="24" selection-end-line="146" selection-end-column="24" />
               <folding>
                 <element signature="e#0#5314#0" expanded="true" />
                 <element signature="class#1997:2220" />
@@ -29,16 +29,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InfoPopup.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InfoPopup.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+            <state relative-caret-position="405">
+              <caret line="63" column="11" lean-forward="true" selection-start-line="63" selection-start-column="11" selection-end-line="63" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -46,6 +46,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReleaseNotes.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -99,13 +108,13 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/paintv0/TopMenus.java" />
         <option value="$PROJECT_DIR$/src/paintv0/PaintV0.java" />
-        <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
         <option value="$PROJECT_DIR$/src/paintrebuild/Version.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/VersionStack.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/InfoPopup.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
+        <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/InfoPopup.java" />
       </list>
     </option>
   </component>
@@ -126,6 +135,11 @@
             <path>
               <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
               <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
+              <item name="Extra Docs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
@@ -519,13 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/Version.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -558,17 +565,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+        <state relative-caret-position="120">
+          <caret line="136" column="23" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="158" column="16" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="16" />
+        <state relative-caret-position="124">
+          <caret line="146" column="24" selection-start-line="146" selection-start-column="24" selection-end-line="146" selection-end-column="24" />
           <folding>
             <element signature="e#0#5314#0" expanded="true" />
             <element signature="class#1997:2220" />
@@ -580,13 +597,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="136" column="23" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="63" column="11" lean-forward="true" selection-start-line="63" selection-start-column="11" selection-end-line="63" selection-end-column="11" />
         </state>
       </provider>
     </entry>

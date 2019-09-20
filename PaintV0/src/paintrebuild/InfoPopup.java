@@ -59,6 +59,9 @@ public class InfoPopup {
                 primaryStage.close();
             }
         });
+        cancelBtn.setOnAction((e)->{
+            popupStage.close();
+        });
 
     }
 }
