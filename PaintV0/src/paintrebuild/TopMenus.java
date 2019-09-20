@@ -143,6 +143,9 @@ public class TopMenus {
                     gc.getCanvas().setHeight(img.getHeight());
                     gc.drawImage(img, IMG_POS_X,IMG_POS_Y, imgCanv.getWidth(),imgCanv.getHeight());
                     saveSnap();
+              //Uneeded?
+            placedImgView.scaleXProperty().bind(imgCanv.widthProperty());
+            placedImgView.scaleYProperty().bind(imgCanv.heightProperty());
                     group.getChildren().add(imgCanv);
                     imgInserted = true;
 
@@ -276,7 +279,7 @@ public class TopMenus {
 //TODO: implement this to check drawMode (and other?) to adjust the menu buttons
     }
     public Canvas getCanv(){return imgCanv;}
-    public void updateCanv(Canvas update){imgCanv=update;}
+    public void updateCanv(Canvas update){imgCanv=update;} //CLEAN?
     public void setCanvVersion(WritableImage currVersion){
         gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
     }

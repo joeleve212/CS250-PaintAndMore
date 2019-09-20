@@ -33,6 +33,7 @@ public class PaintV0 extends Application {
     public TopMenus menus;
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     private Stack<WritableImage> prevVersions = new Stack<>();
+    private Stack<WritableImage> undidVersions = new Stack<>();
     @Override
     public void start(Stage primaryStage) {
 //        GridPane gridPane = new GridPane(); //Create the blank grid
@@ -59,6 +60,7 @@ public class PaintV0 extends Application {
         ColorPicker outlineColor = new ColorPicker(Color.BLACK); //set default outline color
         ColorPicker fillColor = new ColorPicker(Color.BLACK);//set default fill color
         Button undoBtn = new Button("Undo"); //Self explanatory
+        Button redoBtn = new Button("Redo"); //Self explanatory
         outlineColor.setOnAction(new EventHandler() { //trigger color picker when button is clicked
             public void handle(Event t) {
                 Color c = outlineColor.getValue();
@@ -72,10 +74,13 @@ public class PaintV0 extends Application {
         undoBtn.setOnAction((event) -> {
             undo();
         });
+        redoBtn.setOnAction((event) -> {
+            redo();
+        });
 //TODO: Allow custom input for width choosing, possibly diff units
         widthChoose.getItems().addAll("1px", "2px", "3px", "5px", "10px"); //A few default widths to choose
 //TODO: Place necessary controls on toolbar for each edit tool
-        ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, undoBtn); //Creates the toolbar to hold both choosers
+        ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, undoBtn, redoBtn); //Creates the toolbar to hold both choosers
 
         VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
@@ -144,10 +149,12 @@ public class PaintV0 extends Application {
         groupBounds = gr.getLayoutBounds();
                 scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
                 scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
-        imgCanv.resize(scrollPane.getWidth(), scrollPane.getHeight()); //Hopefully changes canvas sizes
+       // imgCanv.resize(scrollPane.getWidth(), scrollPane.getHeight()); //Hopefully changes canvas sizes
+                imgCanv.setScaleX(target.getWidth()/imgCanv.getWidth());
+                imgCanv.setScaleY(target.getHeight()/imgCanv.getHeight());
 //                menus.updateCanv(imgCanv);
-                imgCanv.widthProperty().bind(scrollPane.widthProperty());
-                imgCanv.heightProperty().bind(scrollPane.heightProperty());
+//                imgCanv.widthProperty().bind(gr.widthProperty());
+//                imgCanv.heightProperty().bind(target.heightProperty());
 //                //menus.getIma.setWidth(groupBounds.getWidth());
 //                menus.img.setWidth(groupBounds.getHeight());
         //imgCanv.autosize();
@@ -167,10 +174,22 @@ public class PaintV0 extends Application {
     }
     public void undo(){
         if (!prevVersions.empty()){
+            WritableImage removed = prevVersions.peek();
             prevVersions.pop();
+            undidVersions.push(removed);
             menus.setCanvVersion(prevVersions.peek());
             imageHasBeenSaved=false;
         }
+    }
+    public void redo(){
+        if(!undidVersions.empty()){
+            WritableImage redid = undidVersions.peek();
+            undidVersions.pop();
+            menus.setCanvVersion(redid);
+            prevVersions.push(redid);
+            imageHasBeenSaved=false;
+        }
+        //TODO: implement
     }
 //TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
