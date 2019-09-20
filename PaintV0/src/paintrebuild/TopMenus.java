@@ -134,19 +134,18 @@ public class TopMenus {
 
                     //TODO: Image scaling
                     placedImgView.setImage(img);        //Specifying placement & sizing of selected image
-       //CLEAN? below 3 lines may cause issue with image resize
-                    placedImgView.setFitWidth(img.getWidth());
-                    placedImgView.setFitHeight(img.getHeight());
-                    placedImgView.setPreserveRatio(true);
+       //CLEAN? below 2 lines may cause issue with image resize
+//            placedImgView.setFitWidth(img.getRequestedWidth());
+//            placedImgView.setFitHeight(img.getRequestedHeight());
+            placedImgView.setPreserveRatio(true);
 //                    gridPane.setAlignment(Pos.CENTER);
 
                     gc = imgCanv.getGraphicsContext2D();
-            gc.getCanvas().setWidth(img.getWidth());
-            gc.getCanvas().setHeight(img.getHeight());
-                    gc.drawImage(img, IMG_POS_X,IMG_POS_Y, img.getWidth(),img.getHeight());
+                    gc.getCanvas().setWidth(img.getWidth());  //Setting canvas to the size of the image
+                    gc.getCanvas().setHeight(img.getHeight());
+                    gc.drawImage(img, IMG_POS_X,IMG_POS_Y, imgCanv.getWidth(),imgCanv.getHeight());
                     saveSnap();
                     group.getChildren().add(imgCanv);
-//                    gridPane.add(imgCanv,0,0);
                     imgInserted = true;
 
                 } catch (IOException ex) {
@@ -156,7 +155,7 @@ public class TopMenus {
         });
 
         grabber.setOnAction((e)->{
-            drawMode = -1; //It's not drawing, so negative
+            drawMode = -1; //It's not drawing, so negative for color grab mode
         });
 
         about.setOnAction((e) -> {

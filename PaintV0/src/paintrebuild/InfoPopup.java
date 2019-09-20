@@ -18,6 +18,7 @@ public class InfoPopup {
     private int dialogHeight;
     private Text content = new Text();
     private Button cancelBtn = new Button("Cancel");
+    public Button saveBtn;
     InfoPopup(Stage primaryStage, String popupType) {
         dialogHeight = 300;
         dialogWidth = 300;
@@ -29,7 +30,7 @@ public class InfoPopup {
         popBorderPane.setPrefSize(dialogWidth, dialogHeight);
         if(popupType=="exitSave"){
             popupStage.setTitle("Exit Save");
-            Button saveBtn = new Button("Save Image");
+            saveBtn = new Button("Save Image");
             content.setText("There are unsaved changes!\n" +
                     "-------------------------------\n " +
                     "Are you sure you want to exit?");

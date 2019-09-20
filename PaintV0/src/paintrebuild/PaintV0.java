@@ -30,6 +30,7 @@ public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
     public boolean imageHasBeenSaved = false;
+    public TopMenus menus;
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     private Stack<WritableImage> prevVersions = new Stack<>();
     @Override
@@ -47,8 +48,7 @@ public class PaintV0 extends Application {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
 
-
-        TopMenus menus = new TopMenus(primaryStage, gr, prevVersions);
+        menus = new TopMenus(primaryStage, gr, prevVersions);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
 //        bordPane.setCenter(gridPane);
@@ -70,8 +70,7 @@ public class PaintV0 extends Application {
             menus.setShapeFillColor(fillC);
         });
         undoBtn.setOnAction((event) -> {
-            prevVersions.pop();
-            menus.setCanvVersion(prevVersions.peek());
+            undo();
         });
 //TODO: Allow custom input for width choosing, possibly diff units
         widthChoose.getItems().addAll("1px", "2px", "3px", "5px", "10px"); //A few default widths to choose
@@ -98,15 +97,9 @@ public class PaintV0 extends Application {
             if (press == KeyCode.ESCAPE) { //ESC exits any drawing mode
                 menus.setDrawMode(0);
             } else if (press == KeyCode.S && event.isControlDown()) { //CTRL+S updates the image in the existing file
-                try {
-                    WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
-                    imgCanv.snapshot(null, wImage);
-                    ImageIO.write(SwingFXUtils.fromFXImage(wImage, null), menus.ext, menus.savedImg);
-                } catch (IOException ex) { //Throw a simple error if saving dies
-                    System.out.println("Save Failed!");
-                }
+                saveImage();
             } else if (press == KeyCode.Z && event.isControlDown()) {
-                //TODO: Implement Undo
+                undo();
             }
         });
         widthChoose.setOnAction((event) -> { //Grabbing new width setting and updating Line width
@@ -121,6 +114,11 @@ public class PaintV0 extends Application {
             }
             //TODO: implement smart save (exit button checks if work is saved)
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
+            smartSave.saveBtn.setOnAction(e->{
+                System.out.println("asdfasdf");
+                saveImage();
+                //TODO: implement saving on saveBtn press
+            });
         });
         bordPane.setOnScroll(event -> { //TODO : recomment zooming
             if (event.isControlDown()) {
@@ -147,11 +145,28 @@ public class PaintV0 extends Application {
                 scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
                 scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
                 imgCanv.resize(imgCanv.getWidth()*zoomFactor, imgCanv.getHeight()*zoomFactor);
-        //imgCanv.autosize();
+        imgCanv.autosize();
             }
         });
     }
     public Canvas getCanv(){return imgCanv;}
+    public void saveImage(){
+        try{
+            WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
+            imgCanv.snapshot(null, wImage);
+            ImageIO.write(SwingFXUtils.fromFXImage(wImage, null), menus.ext, menus.savedImg);
+            imageHasBeenSaved=true;
+        } catch (IOException ex) { //Throw a simple error if saving dies
+            System.out.println("Save Failed!");
+        }
+    }
+    public void undo(){
+        if (!prevVersions.empty()){
+            prevVersions.pop();
+            menus.setCanvVersion(prevVersions.peek());
+            imageHasBeenSaved=false;
+        }
+    }
 //TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
