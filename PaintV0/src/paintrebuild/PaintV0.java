@@ -144,8 +144,13 @@ public class PaintV0 extends Application {
         groupBounds = gr.getLayoutBounds();
                 scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
                 scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
-                //CLEAN:imgCanv.resize(imgCanv.getWidth()*zoomFactor, imgCanv.getHeight()*zoomFactor);
-        imgCanv.autosize();
+        imgCanv.resize(scrollPane.getWidth(), scrollPane.getHeight()); //Hopefully changes canvas sizes
+//                menus.updateCanv(imgCanv);
+                imgCanv.widthProperty().bind(scrollPane.widthProperty());
+                imgCanv.heightProperty().bind(scrollPane.heightProperty());
+//                //menus.getIma.setWidth(groupBounds.getWidth());
+//                menus.img.setWidth(groupBounds.getHeight());
+        //imgCanv.autosize();
             }
         });
     }

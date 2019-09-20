@@ -131,14 +131,12 @@ public class TopMenus {
                 try {
                     InputStream io = new FileInputStream(insImg);
                     img = new Image(io);
-
                     //TODO: Image scaling
                     placedImgView.setImage(img);        //Specifying placement & sizing of selected image
        //CLEAN? below 2 lines may cause issue with image resize
-//            placedImgView.setFitWidth(img.getRequestedWidth());
-//            placedImgView.setFitHeight(img.getRequestedHeight());
+            placedImgView.setFitWidth(img.getRequestedWidth());
+            placedImgView.setFitHeight(img.getRequestedHeight());
             placedImgView.setPreserveRatio(true);
-//                    gridPane.setAlignment(Pos.CENTER);
 
                     gc = imgCanv.getGraphicsContext2D();
                     gc.getCanvas().setWidth(img.getWidth());  //Setting canvas to the size of the image
@@ -278,6 +276,7 @@ public class TopMenus {
 //TODO: implement this to check drawMode (and other?) to adjust the menu buttons
     }
     public Canvas getCanv(){return imgCanv;}
+    public void updateCanv(Canvas update){imgCanv=update;}
     public void setCanvVersion(WritableImage currVersion){
         gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
     }
