@@ -7,16 +7,16 @@ package paintv0;
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.input.ZoomEvent;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.*;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
@@ -34,19 +34,24 @@ public class PaintV0 extends Application {
     private Stack<WritableImage> prevVersions = new Stack<>();
     @Override
     public void start(Stage primaryStage) {
-        GridPane gridPane = new GridPane(); //Create the blank grid
-
+//        GridPane gridPane = new GridPane(); //Create the blank grid
+        Region target = new StackPane(imgCanv);
+        Group gr = new Group(target);
         BorderPane bordPane = new BorderPane(); //Using borderPane to easily place things on screen edge
-        bordPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
+        //CLEAN?bordPane.setPrefSize(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
+        bordPane.setCenter(gr);
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setPrefSize(INIT_WINDOW_WIDTH,INIT_WINDOW_HEIGHT);
-        scrollPane.setContent(bordPane);
+        ScrollPane scrollPane = new ScrollPane(bordPane);
+        //scrollPane.setPrefSize(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
+//TODO: May want these 2 lines:
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
 
-        TopMenus menus = new TopMenus(primaryStage, gridPane, prevVersions);
+
+        TopMenus menus = new TopMenus(primaryStage, gr, prevVersions);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
-        bordPane.setCenter(gridPane);
+//        bordPane.setCenter(gridPane);
 
         ChoiceBox widthChoose = new ChoiceBox();
         widthChoose.setValue("1px"); //set default width
@@ -64,7 +69,7 @@ public class PaintV0 extends Application {
             Color fillC = fillColor.getValue();
             menus.setShapeFillColor(fillC);
         });
-        undoBtn.setOnAction((event)->{
+        undoBtn.setOnAction((event) -> {
             prevVersions.pop();
             menus.setCanvVersion(prevVersions.peek());
         });
@@ -83,10 +88,10 @@ public class PaintV0 extends Application {
         primaryStage.sizeToScene();
         primaryStage.show();
 
-        scene.setOnKeyPressed((event)-> {
+        scene.setOnKeyPressed((event) -> {
             KeyCode press = event.getCode(); //store pressed key in variable for reuse
             imgCanv = menus.getCanv(); //grab imgCanv from TopMenus class
-            if(imgCanv == null){
+            if (imgCanv == null) {
 //TODO: make CTRL+S saveAs first time                menus.imgSave.handle();
                 return;
             }
@@ -100,27 +105,50 @@ public class PaintV0 extends Application {
                 } catch (IOException ex) { //Throw a simple error if saving dies
                     System.out.println("Save Failed!");
                 }
-            } else if(press == KeyCode.Z && event.isControlDown()){
-    //TODO: Implement Undo
+            } else if (press == KeyCode.Z && event.isControlDown()) {
+                //TODO: Implement Undo
             }
         });
-        widthChoose.setOnAction((event)-> { //Grabbing new width setting and updating Line width
+        widthChoose.setOnAction((event) -> { //Grabbing new width setting and updating Line width
             String widthVal = widthChoose.getValue().toString();
             //pulling the numeric value of width w/o units
             int lineWidth = Integer.parseInt(widthVal.substring(0, widthVal.lastIndexOf("p")));
             menus.setLineWidth((double) lineWidth);
         });
-        primaryStage.setOnCloseRequest((event)->{
-            if(!imageHasBeenSaved){event.consume();}
-    //TODO: implement smart save (exit button checks if work is saved)
+        primaryStage.setOnCloseRequest((event) -> {
+            if (!imageHasBeenSaved) {
+                event.consume();
+            }
+            //TODO: implement smart save (exit button checks if work is saved)
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
         });
-        screenContent.setOnZoom(new EventHandler<ZoomEvent>() { //trigger color picker when button is clicked
-            public void handle(ZoomEvent event) {
-                //TODO: implement zoom !!
+        bordPane.setOnScroll(event -> { //TODO : recomment zooming
+            if (event.isControlDown()) {
+                event.consume();
+                // These numbers need to be hardcoded for standard zoom factor
+                final double zoomFactor = event.getDeltaY() > 0 ? 1.2 : 1 / 1.2;
+        Bounds groupBounds = gr.getLayoutBounds();
+                final Bounds viewportBounds = scrollPane.getViewportBounds();
+                // calculate pixel offsets from [0, 1] range
+                double valX = scrollPane.getHvalue() * (groupBounds.getWidth() - viewportBounds.getWidth());
+                double valY = scrollPane.getVvalue() * (groupBounds.getHeight() - viewportBounds.getHeight());
+                // convert content coordinates to target coordinates
+        Point2D posInZoomTarget = target.parentToLocal(gr.parentToLocal(new Point2D(event.getX(), event.getY())));
+                // calculate adjustment of scroll position (pixels)
+                Point2D adjustment = target.getLocalToParentTransform().deltaTransform(posInZoomTarget.multiply(zoomFactor - 1));
 
+                target.setScaleX(zoomFactor * target.getScaleX());
+                target.setScaleY(zoomFactor * target.getScaleY());
+                // refresh ScrollPane scroll positions & content bounds
+                scrollPane.layout();
+                // convert back to [0, 1] range
+                // (too large/small values are automatically corrected by ScrollPane)
+        groupBounds = gr.getLayoutBounds();
+                scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
+                scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
+                imgCanv.resize(imgCanv.getWidth()*zoomFactor, imgCanv.getHeight()*zoomFactor);
+        //imgCanv.autosize();
             }
-
         });
     }
     public Canvas getCanv(){return imgCanv;}

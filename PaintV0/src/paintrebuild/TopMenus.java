@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -41,7 +42,7 @@ public class TopMenus {
     private boolean primaryJustClicked = false;
     private boolean imageHasBeenSaved = false;
     private Stack prevVersions;
-    TopMenus(Stage primaryStage, GridPane gridPane, Stack versions){
+    TopMenus(Stage primaryStage, Group group, Stack versions){
 
         ImageView placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
@@ -133,17 +134,19 @@ public class TopMenus {
 
                     //TODO: Image scaling
                     placedImgView.setImage(img);        //Specifying placement & sizing of selected image
+       //CLEAN? below 3 lines may cause issue with image resize
                     placedImgView.setFitWidth(img.getWidth());
                     placedImgView.setFitHeight(img.getHeight());
                     placedImgView.setPreserveRatio(true);
-                    gridPane.setAlignment(Pos.CENTER);
+//                    gridPane.setAlignment(Pos.CENTER);
 
                     gc = imgCanv.getGraphicsContext2D();
-                    gc.getCanvas().setWidth(img.getWidth());
-                    gc.getCanvas().setHeight(img.getHeight());
+            gc.getCanvas().setWidth(img.getWidth());
+            gc.getCanvas().setHeight(img.getHeight());
                     gc.drawImage(img, IMG_POS_X,IMG_POS_Y, img.getWidth(),img.getHeight());
                     saveSnap();
-                    gridPane.add(imgCanv,0,0);
+                    group.getChildren().add(imgCanv);
+//                    gridPane.add(imgCanv,0,0);
                     imgInserted = true;
 
                 } catch (IOException ex) {
