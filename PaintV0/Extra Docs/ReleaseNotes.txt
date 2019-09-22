@@ -1,6 +1,23 @@
 Leveille Paint Version 0.2 - 9/18/19
 
 Features added this release:
+- More readable code
+    - Removed CLEAN labels and commented chunks of code
+- Text placing tool
+-
+
+Known Bugs:
+- Zooming out too far causes image to flip and zoom to go back in
+- Saving after zooming produces extra white space around right & bottom of image
+-
+
+Upcoming Solutions/Additions:
+-
+
+
+Leveille Paint Version 0.2 - 9/18/19
+
+Features added this release:
 - Undo & redo buttons
 - Smart save window popup & functionality
 - Drawing circles & ellipses

@@ -1,6 +1,7 @@
 package paintv0;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -12,6 +13,7 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
@@ -32,22 +34,25 @@ public class TopMenus {
     public String currImgPath, ext, OPENER_FILE_LOC = "../../../";
     public File savedImg;
     public ImageView placedImgView;
-    public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
+    public int drawMode = 0; //-1 = color grab, 0 for none, 1 for line, 2 for rect, 3 for circ, etc
     public boolean fill = false;
-    GraphicsContext gc;
     public Image img;
+    private GraphicsContext gc;
     private Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
-    MenuBar pinnedMenu;
+    private MenuBar pinnedMenu;
     private double x0,y0,x1,y1, lineWidth;
     private int IMG_POS_X=0, IMG_POS_Y=0;
     private boolean primaryJustClicked = false;
     private boolean imageHasBeenSaved = false;
     private Stack prevVersions;
-    TopMenus(Stage primaryStage, Group group, Stack versions){
+    private TextField textInput;
+    TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
 
         placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
         prevVersions = versions;
+
+        textInput = (TextField)toolBar.getItems().get(3);
 
         final Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File
         MenuItem imageSave = new MenuItem("Save Image");
@@ -58,26 +63,25 @@ public class TopMenus {
         final Menu toolMenu = new Menu("Tools"); //Populate the next menu pull-down - Options
         MenuItem cutter = new MenuItem("Cut");
         MenuItem copier = new MenuItem("Copy");
+        MenuItem text = new MenuItem("Text");
         MenuItem eraser = new MenuItem("Erase");
         MenuItem grabber = new MenuItem("Grab Color");
 
-        Menu shape = new Menu("Draw Shape");
+        Menu shapeMenu = new Menu("Draw Shape"); //Populate Drawing tools pull-down
         MenuItem line = new MenuItem("Line");
         MenuItem rect = new MenuItem("Rectangle");
         MenuItem free = new MenuItem("Free Draw");
         MenuItem oval = new MenuItem("Ellipse");
         MenuItem circ = new MenuItem("Circle");
 
-        shape.getItems().addAll(line, rect, free, oval, circ);
-        toolMenu.getItems().addAll(copier, cutter, eraser, grabber);
+        shapeMenu.getItems().addAll(line, rect, free, oval, circ);
+        toolMenu.getItems().addAll(copier, cutter, text, eraser, grabber);
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
         helpMenu.getItems().addAll(about);
 
-        pinnedMenu = new MenuBar(fileMenu,toolMenu,shape,helpMenu); //Plopping the menu pull-downs onto the menuBar
-
-    //if mode = ____, then add needed options to menuBar
+        pinnedMenu = new MenuBar(fileMenu,toolMenu,shapeMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
         imageSave.setOnAction((e)->{
             System.out.println("Saving image file...");
@@ -97,7 +101,6 @@ public class TopMenus {
                 try {
                     WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
                     imgCanv.snapshot(null, wImage);
-                    //CLEANprevVersions = new Stack(wImage);
                     RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
                     ImageIO.write(rImage, "png", savedImg);
                 } catch (IOException ex) {
@@ -134,19 +137,13 @@ public class TopMenus {
                     img = new Image(io);
                     //TODO: Image scaling
                     placedImgView.setImage(img);        //Specifying placement & sizing of selected image
-       //CLEAN? below 2 lines may cause issue with image resize
-            placedImgView.setFitWidth(img.getRequestedWidth());
-            placedImgView.setFitHeight(img.getRequestedHeight());
-            placedImgView.setPreserveRatio(true);
+                    placedImgView.setPreserveRatio(true);
 
                     gc = imgCanv.getGraphicsContext2D();
                     gc.getCanvas().setWidth(img.getWidth());  //Setting canvas to the size of the image
                     gc.getCanvas().setHeight(img.getHeight());
                     gc.drawImage(img, IMG_POS_X,IMG_POS_Y, imgCanv.getWidth(),imgCanv.getHeight());
                     saveSnap();
-              //Uneeded? CLEAN
-//            placedImgView.scaleXProperty().bind(imgCanv.widthProperty());
-//            placedImgView.scaleYProperty().bind(imgCanv.heightProperty());
                     group.getChildren().add(imgCanv);
                     imgInserted = true;
 
@@ -154,6 +151,10 @@ public class TopMenus {
                     System.out.println("Error!");
                 }
             }
+        });
+
+        text.setOnAction((e)->{
+            drawMode = 8;
         });
 
         grabber.setOnAction((e)->{
@@ -242,33 +243,48 @@ public class TopMenus {
     void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
     boolean drawShape(){
         gc.setLineWidth(lineWidth);
-//TODO: add if state for each type of shape
-        if(drawMode == 1){
-//Place line between x0,y0 & x1,y1
-            gc.strokeLine(x0,y0,x1,y1);
-        }
-        else if(drawMode==2){
-            if(fill){
-                gc.fillRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
-            }
-            //place rectangle between opposite corners x0,y0 & x1,y1
+//TODO: make this a switch case
+        switch(drawMode){ //Place line between x0,y0 & x1,y1
+            case 1:
+                gc.strokeLine(x0,y0,x1,y1);
+                break;
+            case 2: //Rectangle
+                if(fill){
+                    gc.fillRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
+                }
+                //place rectangle between opposite corners x0,y0 & x1,y1
 //TODO: allow drawing rect from corner other than top left
-            gc.strokeRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
+                gc.strokeRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
+                break;
+            case 4:  //Ellipse
+                if(fill){
+                    gc.fillOval(x0,y0,Math.abs(x1-x0), Math.abs(y0-y1));
+                }
+                gc.strokeOval(x0,y0,Math.abs(x1-x0), Math.abs(y0-y1));
+                break;
+            case 5: //Circle
+                double w = Math.abs(x1 - x0);
+                //double h = Math.abs(x1 - x0);
+                if (fill) {
+                    gc.fillOval(x0, y0, w, w);
+                }
+                gc.strokeOval(x0, y0, w, w);
+                break;
+            case 6: //Regular Polygon
+                //TODO: implement
+                break;
+            case 7: //Choice shape - TBD
+                //TODO: decide on shape & implement
+                break;
+            case 8: //Text placement
+                //TODO:
+                String inputString = textInput.getCharacters().toString(); //pull in the current typed string
+                gc.fillText(inputString,x0,y0, Math.abs(x1-x0));
+                break;
+            default:
+                System.out.println("Invalid Drawing Mode Selected");
         }
-        else if(drawMode==4){ //Ellipse
-            if(fill){
-                gc.fillOval(x0,y0,Math.abs(x1-x0), Math.abs(y0-y1));
-            }
-            gc.strokeOval(x0,y0,Math.abs(x1-x0), Math.abs(y0-y1));
-        }
-        else if(drawMode==5) { //Circle
-            double w = Math.abs(x1 - x0);
-            //double h = Math.abs(x1 - x0);
-            if (fill) {
-                gc.fillOval(x0, y0, w, w);
-            }
-            gc.strokeOval(x0, y0, w, w);
-        }
+
         saveSnap();
         return true;
     }
@@ -278,12 +294,11 @@ public class TopMenus {
 //TODO: implement this to check drawMode (and other?) to adjust the menu buttons
     }
     public Canvas getCanv(){return imgCanv;}
-    public void updateCanv(Canvas update){imgCanv=update;} //CLEAN?
     public void setCanvVersion(WritableImage currVersion){
         gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
     }
     private void saveSnap(){
-        WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)img.getHeight());
+        WritableImage wImage = new WritableImage((int)img.getWidth(), (int)img.getHeight());
         imgCanv.snapshot(null, wImage);
         prevVersions.push(wImage);
     }

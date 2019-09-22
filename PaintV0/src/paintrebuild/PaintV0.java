@@ -34,31 +34,25 @@ public class PaintV0 extends Application {
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     private Stack<WritableImage> prevVersions = new Stack<>();
     private Stack<WritableImage> undidVersions = new Stack<>();
+    private TextField textInput;
     @Override
     public void start(Stage primaryStage) {
-//        GridPane gridPane = new GridPane(); //Create the blank grid
         Region target = new StackPane(imgCanv);
         Group gr = new Group(target);
         BorderPane bordPane = new BorderPane(); //Using borderPane to easily place things on screen edge
-        //CLEAN?bordPane.setPrefSize(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
         bordPane.setCenter(gr);
 
         ScrollPane scrollPane = new ScrollPane(bordPane);
-        //scrollPane.setPrefSize(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
 //TODO: May want these 2 lines:
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
-
-        menus = new TopMenus(primaryStage, gr, prevVersions);
-        MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
-
-//        bordPane.setCenter(gridPane);
 
         ChoiceBox widthChoose = new ChoiceBox();
         widthChoose.setValue("1px"); //set default width
 
         ColorPicker outlineColor = new ColorPicker(Color.BLACK); //set default outline color
         ColorPicker fillColor = new ColorPicker(Color.BLACK);//set default fill color
+        textInput = new TextField("Text Input");
         Button undoBtn = new Button("Undo"); //Self explanatory
         Button redoBtn = new Button("Redo"); //Self explanatory
         outlineColor.setOnAction(new EventHandler() { //trigger color picker when button is clicked
@@ -80,7 +74,10 @@ public class PaintV0 extends Application {
 //TODO: Allow custom input for width choosing, possibly diff units
         widthChoose.getItems().addAll("1px", "2px", "3px", "5px", "10px"); //A few default widths to choose
 //TODO: Place necessary controls on toolbar for each edit tool
-        ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, undoBtn, redoBtn); //Creates the toolbar to hold both choosers
+        ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, textInput, undoBtn, redoBtn); //Creates the toolbar to hold both choosers
+
+        menus = new TopMenus(primaryStage, gr, prevVersions, windowBar);
+        MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
         VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
@@ -120,44 +117,25 @@ public class PaintV0 extends Application {
             //TODO: implement smart save (exit button checks if work is saved)
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{
-                saveImage();
-                //TODO: implement saving on saveBtn press
+                if(!imageHasBeenSaved){ //If this is the first time image is
+                    //TODO: call saveAs function
+                }else {
+                    saveImage(); //save on saveBtn press
+                }
             });
         });
-        bordPane.setOnScroll(event -> { //TODO : recomment zooming
-            if (event.isControlDown()) {
+        bordPane.setOnScroll(event -> {
+            if (event.isControlDown()) { //CTRL + Scroll triggers zooming
                 boolean scrollDown;
-                if(event.getDeltaY() < 0){
+                if(event.getDeltaY() < 0){ //store direction of scroll before consuming event
                     scrollDown = false;
-                }else{ scrollDown = true;}
-                event.consume();
-                // These numbers need to be hardcoded for standard zoom factor
-//                final double zoomFactor = event.getDeltaY() > 0 ? 1.2 : 1 / 1.2;
-//        Bounds groupBounds = gr.getLayoutBounds();
-//                final Bounds viewportBounds = scrollPane.getViewportBounds();
-//                // calculate pixel offsets from [0, 1] range
-//                double valX = scrollPane.getHvalue() * (groupBounds.getWidth() - viewportBounds.getWidth());
-//                double valY = scrollPane.getVvalue() * (groupBounds.getHeight() - viewportBounds.getHeight());
-//                // convert content coordinates to target coordinates
-//        Point2D posInZoomTarget = target.parentToLocal(gr.parentToLocal(new Point2D(event.getX(), event.getY())));
-//                // calculate adjustment of scroll position (pixels)
-//                Point2D adjustment = target.getLocalToParentTransform().deltaTransform(posInZoomTarget.multiply(zoomFactor - 1));
-
-                //target.setScaleX(zoomFactor * target.getScaleX());
-                //target.setScaleY(zoomFactor * target.getScaleY());
-                // refresh ScrollPane scroll positions & content bounds
-//                scrollPane.layout();
-//                // convert back to [0, 1] range
-//                // (too large/small values are automatically corrected by ScrollPane)
-//        groupBounds = gr.getLayoutBounds();
-//                scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
-//                scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
-       // imgCanv.resize(scrollPane.getWidth(), scrollPane.getHeight()); //Hopefully changes canvas sizes
-//     USEFUL?           imgCanv.setScaleX(target.getWidth()/imgCanv.getWidth());
-//     USEFUL?           imgCanv.setScaleY(target.getHeight()/imgCanv.getHeight());
-                double xCanvScale = imgCanv.getScaleX();
-                double yCanvScale = imgCanv.getScaleY();
-                double scaleMod = .1;
+                }else{
+                    scrollDown = true;
+                }
+                event.consume(); //consuming event
+                double xCanvScale = imgCanv.getScaleX(); //grabbing current canvas scale
+                double yCanvScale = imgCanv.getScaleY(); //in each direction
+                double scaleMod = .1; //The size step in scale to take each scroll-click
                 if(scrollDown) {
                     imgCanv.setScaleX(xCanvScale - scaleMod); //Zoom in
                     imgCanv.setScaleY(yCanvScale - scaleMod);
@@ -165,14 +143,12 @@ public class PaintV0 extends Application {
                     imgCanv.setScaleX(xCanvScale + scaleMod); //Zoom out
                     imgCanv.setScaleY(yCanvScale + scaleMod);
                 }
-                menus.placedImgView.setScaleX(imgCanv.getScaleX());
+                menus.placedImgView.setScaleX(imgCanv.getScaleX()); //scale the imageView same as the canvas
                 menus.placedImgView.setScaleY(imgCanv.getScaleY());
-                target.setScaleX(imgCanv.getScaleX());
+                target.setScaleX(imgCanv.getScaleX()); //scale the Region same as the canvas
                 target.setScaleY(imgCanv.getScaleY());
-                scrollPane.setHvalue(imgCanv.getWidth());
+                scrollPane.setHvalue(imgCanv.getWidth()); //attempt to make the scrollPane the same size as the canvas
                 scrollPane.setVvalue(imgCanv.getHeight());
-//                imgCanv.setWidth(menus.img.getWidth());
-//                imgCanv.setHeight(menus.img.getHeight());
             }
         });
     }
@@ -205,9 +181,7 @@ public class PaintV0 extends Application {
             imageHasBeenSaved=false;
         }
     }
-//TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
     }
-//TODO: bilinear image scaling?? Try to find a better way
 }
