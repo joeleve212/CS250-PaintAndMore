@@ -120,60 +120,59 @@ public class PaintV0 extends Application {
             //TODO: implement smart save (exit button checks if work is saved)
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{
-                System.out.println("asdfasdf");
                 saveImage();
                 //TODO: implement saving on saveBtn press
             });
         });
         bordPane.setOnScroll(event -> { //TODO : recomment zooming
             if (event.isControlDown()) {
-                boolean scrollUp;
+                boolean scrollDown;
                 if(event.getDeltaY() < 0){
-                    scrollUp = false;
-                }else{ scrollUp = true;}
+                    scrollDown = false;
+                }else{ scrollDown = true;}
                 event.consume();
                 // These numbers need to be hardcoded for standard zoom factor
-                final double zoomFactor = event.getDeltaY() > 0 ? 1.2 : 1 / 1.2;
-        Bounds groupBounds = gr.getLayoutBounds();
-                final Bounds viewportBounds = scrollPane.getViewportBounds();
-                // calculate pixel offsets from [0, 1] range
-                double valX = scrollPane.getHvalue() * (groupBounds.getWidth() - viewportBounds.getWidth());
-                double valY = scrollPane.getVvalue() * (groupBounds.getHeight() - viewportBounds.getHeight());
-                // convert content coordinates to target coordinates
-        Point2D posInZoomTarget = target.parentToLocal(gr.parentToLocal(new Point2D(event.getX(), event.getY())));
-                // calculate adjustment of scroll position (pixels)
-                Point2D adjustment = target.getLocalToParentTransform().deltaTransform(posInZoomTarget.multiply(zoomFactor - 1));
+//                final double zoomFactor = event.getDeltaY() > 0 ? 1.2 : 1 / 1.2;
+//        Bounds groupBounds = gr.getLayoutBounds();
+//                final Bounds viewportBounds = scrollPane.getViewportBounds();
+//                // calculate pixel offsets from [0, 1] range
+//                double valX = scrollPane.getHvalue() * (groupBounds.getWidth() - viewportBounds.getWidth());
+//                double valY = scrollPane.getVvalue() * (groupBounds.getHeight() - viewportBounds.getHeight());
+//                // convert content coordinates to target coordinates
+//        Point2D posInZoomTarget = target.parentToLocal(gr.parentToLocal(new Point2D(event.getX(), event.getY())));
+//                // calculate adjustment of scroll position (pixels)
+//                Point2D adjustment = target.getLocalToParentTransform().deltaTransform(posInZoomTarget.multiply(zoomFactor - 1));
 
-                target.setScaleX(zoomFactor * target.getScaleX());
-                target.setScaleY(zoomFactor * target.getScaleY());
+                //target.setScaleX(zoomFactor * target.getScaleX());
+                //target.setScaleY(zoomFactor * target.getScaleY());
                 // refresh ScrollPane scroll positions & content bounds
-                scrollPane.layout();
-                // convert back to [0, 1] range
-                // (too large/small values are automatically corrected by ScrollPane)
-        groupBounds = gr.getLayoutBounds();
-                scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
-                scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
+//                scrollPane.layout();
+//                // convert back to [0, 1] range
+//                // (too large/small values are automatically corrected by ScrollPane)
+//        groupBounds = gr.getLayoutBounds();
+//                scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
+//                scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
        // imgCanv.resize(scrollPane.getWidth(), scrollPane.getHeight()); //Hopefully changes canvas sizes
 //     USEFUL?           imgCanv.setScaleX(target.getWidth()/imgCanv.getWidth());
 //     USEFUL?           imgCanv.setScaleY(target.getHeight()/imgCanv.getHeight());
                 double xCanvScale = imgCanv.getScaleX();
                 double yCanvScale = imgCanv.getScaleY();
                 double scaleMod = .1;
-                if(scrollUp) {
+                if(scrollDown) {
                     imgCanv.setScaleX(xCanvScale - scaleMod); //Zoom in
                     imgCanv.setScaleY(yCanvScale - scaleMod);
                 }else{
                     imgCanv.setScaleX(xCanvScale + scaleMod); //Zoom out
                     imgCanv.setScaleY(yCanvScale + scaleMod);
                 }
+                menus.placedImgView.setScaleX(imgCanv.getScaleX());
+                menus.placedImgView.setScaleY(imgCanv.getScaleY());
                 target.setScaleX(imgCanv.getScaleX());
                 target.setScaleY(imgCanv.getScaleY());
-//                menus.updateCanv(imgCanv);
-//                imgCanv.widthProperty().bind(gr.widthProperty());
-//                imgCanv.heightProperty().bind(target.heightProperty());
-//                //menus.getIma.setWidth(groupBounds.getWidth());
-//                menus.img.setWidth(groupBounds.getHeight());
-        //imgCanv.autosize();
+                scrollPane.setHvalue(imgCanv.getWidth());
+                scrollPane.setVvalue(imgCanv.getHeight());
+//                imgCanv.setWidth(menus.img.getWidth());
+//                imgCanv.setHeight(menus.img.getHeight());
             }
         });
     }
@@ -189,7 +188,7 @@ public class PaintV0 extends Application {
         }
     }
     public void undo(){ //TODO: export to handlers file?
-        if (!prevVersions.empty()){
+        if (prevVersions.size()>1){
             WritableImage removed = prevVersions.peek();
             prevVersions.pop();
             undidVersions.push(removed);
@@ -198,7 +197,7 @@ public class PaintV0 extends Application {
         }
     }
     public void redo(){ //TODO: export to handlers file?
-        if(!undidVersions.empty()){
+        if(undidVersions.size()>0){
             WritableImage redid = undidVersions.peek();
             undidVersions.pop();
             menus.setCanvVersion(redid);

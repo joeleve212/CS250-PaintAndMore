@@ -31,10 +31,11 @@ public class TopMenus {
     public boolean imgInserted = false;
     public String currImgPath, ext, OPENER_FILE_LOC = "../../../";
     public File savedImg;
+    public ImageView placedImgView;
     public int drawMode = 0; //0 for none, 1 for line, 2 for rect, 3 for circ - Index in 'draw shape' list
     public boolean fill = false;
     GraphicsContext gc;
-    Image img;
+    public Image img;
     private Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
     MenuBar pinnedMenu;
     private double x0,y0,x1,y1, lineWidth;
@@ -44,7 +45,7 @@ public class TopMenus {
     private Stack prevVersions;
     TopMenus(Stage primaryStage, Group group, Stack versions){
 
-        ImageView placedImgView = new ImageView();
+        placedImgView = new ImageView();
         FileChooser openFile= new FileChooser();
         prevVersions = versions;
 
@@ -143,9 +144,9 @@ public class TopMenus {
                     gc.getCanvas().setHeight(img.getHeight());
                     gc.drawImage(img, IMG_POS_X,IMG_POS_Y, imgCanv.getWidth(),imgCanv.getHeight());
                     saveSnap();
-              //Uneeded?
-            placedImgView.scaleXProperty().bind(imgCanv.widthProperty());
-            placedImgView.scaleYProperty().bind(imgCanv.heightProperty());
+              //Uneeded? CLEAN
+//            placedImgView.scaleXProperty().bind(imgCanv.widthProperty());
+//            placedImgView.scaleYProperty().bind(imgCanv.heightProperty());
                     group.getChildren().add(imgCanv);
                     imgInserted = true;
 
