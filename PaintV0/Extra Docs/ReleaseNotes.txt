@@ -1,16 +1,23 @@
 Leveille Paint Version 0.2 - 9/18/19
 
 Features added this release:
-- Undo
+- Undo & redo buttons
 - Smart save window popup & functionality
--
+- Drawing circles & ellipses
+- CTRL + Z triggers undo
+- Color grabber
+- Partially functional zoom
 
 Known Bugs:
 - Free draw does not update line width until tool is switched
--
+- About page exit button is not centered
+- Zoom does not affect size of canvas
 
 Upcoming Solutions/Additions:
-- Redo
+- Polygon drawing
+- Fixing zoom function
+- Refactoring files to look nicer and be more readability
+- Cut & paste pieces of image
 
 
 Leveille Paint Version 0.1 - 9/12/19
