@@ -189,10 +189,8 @@ public class TopMenus {
             @Override
             public void handle(MouseEvent event) {
                 if(event.isPrimaryButtonDown() && drawMode==3) {
-
                     gc.lineTo(event.getX(), event.getY());
                     gc.stroke();
-
                 }
             }
         });

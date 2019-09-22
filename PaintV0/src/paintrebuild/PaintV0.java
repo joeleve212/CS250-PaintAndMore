@@ -127,6 +127,10 @@ public class PaintV0 extends Application {
         });
         bordPane.setOnScroll(event -> { //TODO : recomment zooming
             if (event.isControlDown()) {
+                boolean scrollUp;
+                if(event.getDeltaY() < 0){
+                    scrollUp = false;
+                }else{ scrollUp = true;}
                 event.consume();
                 // These numbers need to be hardcoded for standard zoom factor
                 final double zoomFactor = event.getDeltaY() > 0 ? 1.2 : 1 / 1.2;
@@ -150,8 +154,20 @@ public class PaintV0 extends Application {
                 scrollPane.setHvalue((valX + adjustment.getX()) / (groupBounds.getWidth() - viewportBounds.getWidth()));
                 scrollPane.setVvalue((valY + adjustment.getY()) / (groupBounds.getHeight() - viewportBounds.getHeight()));
        // imgCanv.resize(scrollPane.getWidth(), scrollPane.getHeight()); //Hopefully changes canvas sizes
-                imgCanv.setScaleX(target.getWidth()/imgCanv.getWidth());
-                imgCanv.setScaleY(target.getHeight()/imgCanv.getHeight());
+//     USEFUL?           imgCanv.setScaleX(target.getWidth()/imgCanv.getWidth());
+//     USEFUL?           imgCanv.setScaleY(target.getHeight()/imgCanv.getHeight());
+                double xCanvScale = imgCanv.getScaleX();
+                double yCanvScale = imgCanv.getScaleY();
+                double scaleMod = .1;
+                if(scrollUp) {
+                    imgCanv.setScaleX(xCanvScale - scaleMod); //Zoom in
+                    imgCanv.setScaleY(yCanvScale - scaleMod);
+                }else{
+                    imgCanv.setScaleX(xCanvScale + scaleMod); //Zoom out
+                    imgCanv.setScaleY(yCanvScale + scaleMod);
+                }
+                target.setScaleX(imgCanv.getScaleX());
+                target.setScaleY(imgCanv.getScaleY());
 //                menus.updateCanv(imgCanv);
 //                imgCanv.widthProperty().bind(gr.widthProperty());
 //                imgCanv.heightProperty().bind(target.heightProperty());
@@ -162,7 +178,7 @@ public class PaintV0 extends Application {
         });
     }
     public Canvas getCanv(){return imgCanv;}
-    public void saveImage(){
+    public void saveImage(){ //TODO: export to handlers file?
         try{
             WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
             imgCanv.snapshot(null, wImage);
@@ -172,7 +188,7 @@ public class PaintV0 extends Application {
             System.out.println("Save Failed!");
         }
     }
-    public void undo(){
+    public void undo(){ //TODO: export to handlers file?
         if (!prevVersions.empty()){
             WritableImage removed = prevVersions.peek();
             prevVersions.pop();
@@ -181,7 +197,7 @@ public class PaintV0 extends Application {
             imageHasBeenSaved=false;
         }
     }
-    public void redo(){
+    public void redo(){ //TODO: export to handlers file?
         if(!undidVersions.empty()){
             WritableImage redid = undidVersions.peek();
             undidVersions.pop();
@@ -189,12 +205,10 @@ public class PaintV0 extends Application {
             prevVersions.push(redid);
             imageHasBeenSaved=false;
         }
-        //TODO: implement
     }
 //TODO: use scene.getWidth()/getHeight() for properly scaling elements
     public static void main(String[] args) {
         launch(args);
     }
-//TODO: toss new snapshot of canvas onto stack after each added drawing
 //TODO: bilinear image scaling?? Try to find a better way
 }
