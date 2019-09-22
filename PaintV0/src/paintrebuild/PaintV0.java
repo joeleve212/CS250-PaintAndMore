@@ -52,10 +52,10 @@ public class PaintV0 extends Application {
         Button redoBtn = new Button("Redo");
 
         BottomToolSet bottomTools = new BottomToolSet(menus, undoBtn, redoBtn);
-        ToolBar windowBar = bottomTools.getToolBar();
-        menus = new TopMenus(primaryStage, gr, prevVersions, windowBar);
+        menus = new TopMenus(primaryStage, gr, prevVersions, bottomTools);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
+        ToolBar windowBar = bottomTools.getToolBar();
         VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);

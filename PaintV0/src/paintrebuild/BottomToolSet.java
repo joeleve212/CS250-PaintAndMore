@@ -53,23 +53,31 @@ public class BottomToolSet {
     public ToolBar getToolBar(){
         return currentToolSet;
     }
-    public void updateTools(int drawMode){
+    public ToolBar updateTools(int mode){
+       // int mode = menus.getDrawMode();
         ToolBar newToolBar;
-        switch(drawMode){
+        switch(mode){ //TODO: Change to if statement?
             case 1: //Line
-                newToolBar = new ToolBar();
+                newToolBar = new ToolBar(widthChoose,outlineColor);
                 //line width, line color
+                System.out.println("Inside case");
                 break;
             case 2: //Rectangle
+                newToolBar = new ToolBar(widthChoose,outlineColor,fillColor);
                 //Line width/color, fill color
                 break;
             case 3: //Free Draw
+                newToolBar = new ToolBar(widthChoose,outlineColor);
                 //line width/color
                 break;
             default:
                 //blank icon
+                newToolBar = new ToolBar();
         }
-        newToolBar = new ToolBar();
+        newToolBar.getItems().addAll(undoBtn,redoBtn);
+        currentToolSet = newToolBar;
+        System.out.println("Finished inside func");
+        return currentToolSet;
     }
 
 

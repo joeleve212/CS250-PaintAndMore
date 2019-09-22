@@ -32,10 +32,12 @@ public class TopMenus {
     public double x0,y0,x1,y1, lineWidth;
     public ToolBar toolBar;
     private Stack prevVersions;
+    private paintv0.BottomToolSet bottomTools;
     private TextField textInput;
     private MenuBar pinnedMenu;
-    TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
-        this.toolBar = toolBar;
+    TopMenus(Stage primaryStage, Group group, Stack versions, BottomToolSet bottomTools){
+        this.bottomTools = bottomTools;
+        this.toolBar = bottomTools.getToolBar();
         placedImgView = new ImageView();
         prevVersions = versions;
         textInput = new TextField("Kevin");//Needs to be improved: (TextField)toolBar.getItems().get(3);
@@ -83,10 +85,12 @@ public class TopMenus {
 
         text.setOnAction((e)->{
             drawMode = 8;
+            updateMenus();
         });
 
         grabber.setOnAction((e)->{
             drawMode = -1; //It's not drawing, so negative for color grab mode
+            updateMenus();
         });
 
         about.setOnAction((e) -> {
@@ -168,7 +172,10 @@ public class TopMenus {
     }
     void setLineWidth(double newLineW){lineWidth=newLineW;}
     public boolean updateMenus(){
-        return false;
+        toolBar = bottomTools.updateTools(1);
+        System.out.println("Finished update");
+
+        return true;
         //Call BottomToolSet.updateTools(int drawMode)
 //TODO: implement this to check drawMode (and other?) to adjust the toolBar buttons
     }
