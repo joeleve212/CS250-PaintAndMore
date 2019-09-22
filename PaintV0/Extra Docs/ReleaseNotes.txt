@@ -1,8 +1,9 @@
-Leveille Paint Version 0.2 - 9/18/19
+Leveille Paint Version 0.3 - 9/27/19
 
 Features added this release:
 - More readable code
     - Removed CLEAN labels and commented chunks of code
+    - Migrated many handlers to separate class
 - Text placing tool
 -
 
@@ -12,10 +13,11 @@ Known Bugs:
 -
 
 Upcoming Solutions/Additions:
+- Adjustable size & color of text
 -
 
 
-Leveille Paint Version 0.2 - 9/18/19
+Leveille Paint Version 0.2 - 9/20/19
 
 Features added this release:
 - Undo & redo buttons

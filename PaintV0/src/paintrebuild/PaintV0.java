@@ -43,7 +43,7 @@ public class PaintV0 extends Application {
         bordPane.setCenter(gr);
 
         ScrollPane scrollPane = new ScrollPane(bordPane);
-//TODO: May want these 2 lines:
+//TODO: Decide on these 2 lines:
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
 
@@ -98,6 +98,7 @@ public class PaintV0 extends Application {
             }
             if (press == KeyCode.ESCAPE) { //ESC exits any drawing mode
                 menus.setDrawMode(0);
+                menus.updateMenus();
             } else if (press == KeyCode.S && event.isControlDown()) { //CTRL+S updates the image in the existing file
                 saveImage();
             } else if (press == KeyCode.Z && event.isControlDown()) {
@@ -151,6 +152,7 @@ public class PaintV0 extends Application {
                 scrollPane.setVvalue(imgCanv.getHeight());
             }
         });
+        MainScreenButtonHandlers handlers = new MainScreenButtonHandlers(menus, primaryStage, gr);
     }
     public Canvas getCanv(){return imgCanv;}
     public void saveImage(){ //TODO: export to handlers file?
