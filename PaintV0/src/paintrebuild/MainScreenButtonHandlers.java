@@ -32,13 +32,15 @@ public class MainScreenButtonHandlers {
     //TODO: Bring in eventHandlers
     //TODO: Make instance of this class in main class
     TopMenus menuController;
+    public String currImgPath, ext;
+    public boolean imgInserted = false, primaryJustClicked = false;
+    public File savedImg;
+    public Canvas imgCanv;
     MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group){
         menuController=menu;
 
         Image img = menu.img;
-        Canvas imgCanv = menu.imgCanv;
-
-
+        imgCanv = menu.imgCanv;
         menu.imageSave.setOnAction((e)->{
             System.out.println("Saving image file...");
             FileChooser saveImageChoose = new FileChooser();
@@ -49,16 +51,16 @@ public class MainScreenButtonHandlers {
                     new FileChooser.ExtensionFilter("JPG Files", "*.jpg"),
                     new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
-            menu.savedImg = saveImageChoose.showSaveDialog(null);
-            String name = menu.savedImg.getName();
-            menu.ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
+            savedImg = saveImageChoose.showSaveDialog(null);
+            String name = savedImg.getName();
+            ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
-            if(menu.savedImg != null){
+            if(savedImg != null){
                 try {
                     WritableImage wImage = new WritableImage((int)menu.imgCanv.getWidth(), (int)menu.img.getHeight());
                     menu.imgCanv.snapshot(null, wImage);
                     RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
-                    ImageIO.write(rImage, "png", menu.savedImg);
+                    ImageIO.write(rImage, "png", savedImg);
                 } catch (IOException ex) {
                     System.out.println("Initial save failed");
                 }
@@ -77,9 +79,9 @@ public class MainScreenButtonHandlers {
                     new FileChooser.ExtensionFilter("All Files", "*.*")
             );
             File insImg = openFile.showOpenDialog(primaryStage);
-            menu.currImgPath = insImg.getPath();
-            System.out.println(menu.currImgPath);
-            if (menu.currImgPath != "") {
+            currImgPath = insImg.getPath();
+            System.out.println(currImgPath);
+            if (currImgPath != "") {
                 try {
                     InputStream io = new FileInputStream(insImg);
                     menu.img = new Image(io);
@@ -93,7 +95,7 @@ public class MainScreenButtonHandlers {
                     menu.gc.drawImage(menu.img, menu.IMG_POS_X,menu.IMG_POS_Y, imgCanv.getWidth(),imgCanv.getHeight());
                     menu.saveSnap();
                     group.getChildren().add(imgCanv);
-                    menu.imgInserted = true;
+                    imgInserted = true;
 
                 } catch (IOException ex) {
                     System.out.println("Error!");
@@ -107,7 +109,7 @@ public class MainScreenButtonHandlers {
                             menu.gc.beginPath();
                             menu.x0 = event.getX();
                             menu.y0 = event.getY();
-                            menu.primaryJustClicked = true;
+                            primaryJustClicked = true;
                             if(menu.drawMode==-1){
                                 PixelReader colorSnag = img.getPixelReader();
                                 Color newColor = colorSnag.getColor((int)menu.x0, (int)menu.y0);
@@ -134,11 +136,11 @@ public class MainScreenButtonHandlers {
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event) {
-                        if(!event.isPrimaryButtonDown()&&menu.primaryJustClicked&&menu.drawMode!=3) {
+                        if(!event.isPrimaryButtonDown()&&primaryJustClicked&&menu.drawMode!=3) {
                             menu.x1 = event.getX();
                             menu.y1 = event.getY();
                             menu.drawShape();
-                            menu.primaryJustClicked = false;
+                            primaryJustClicked = false;
                         }
                         else if(menu.drawMode==3){
                             menu.gc.closePath();
@@ -148,5 +150,15 @@ public class MainScreenButtonHandlers {
                     }
                 }
         );
+    }
+    public void saveImage(){
+        try{
+            WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
+            imgCanv.snapshot(null, wImage);
+            ImageIO.write(SwingFXUtils.fromFXImage(wImage, null), ext, savedImg);
+            menuController.imageHasBeenSaved=true;
+        } catch (IOException ex) { //Throw a simple error if saving dies
+            System.out.println("Save Failed!");
+        }
     }
 }

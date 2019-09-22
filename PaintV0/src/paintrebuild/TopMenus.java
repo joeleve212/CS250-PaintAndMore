@@ -1,59 +1,44 @@
 package paintv0;
 
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.scene.layout.GridPane;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-import javax.imageio.ImageIO;
-import java.awt.image.RenderedImage;
+import javax.tools.Tool;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Stack;
 
 public class TopMenus {
     public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
-    public boolean imgInserted = false;
-    public String currImgPath, ext;
-    public File savedImg;
+
+
+
     public ImageView placedImgView;
     public int drawMode = 0; //-1 = color grab, 0 for none, 1 for line, 2 for rect, 3 for circ, etc
     public boolean fill = false;
     public Image img;
     public Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
     public MenuItem imageSave, openBtn;
-    public boolean imageHasBeenSaved = false;
+    public boolean imageHasBeenSaved = false; //TODO: eliminate separate instances of this var?
     public int IMG_POS_X=0, IMG_POS_Y=0;
     public GraphicsContext gc;
     public double x0,y0,x1,y1, lineWidth;
-    public boolean primaryJustClicked = false;
+    public ToolBar toolBar;
     private Stack prevVersions;
     private TextField textInput;
     private MenuBar pinnedMenu;
     TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
-
+        this.toolBar = toolBar;
         placedImgView = new ImageView();
-
         prevVersions = versions;
-
-        textInput = (TextField)toolBar.getItems().get(3);
+        textInput = new TextField("Kevin");//Needs to be improved: (TextField)toolBar.getItems().get(3);
 
         Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File
         imageSave = new MenuItem("Save Image");
@@ -134,6 +119,7 @@ public class TopMenus {
     public MenuBar getMenuBar(){return pinnedMenu;}
     public void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
     public void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
+    public void setToolBar(ToolBar tools){toolBar=tools;}
     public boolean drawShape(){
         gc.setLineWidth(lineWidth);
         switch(drawMode){ //Place line between x0,y0 & x1,y1
@@ -182,13 +168,8 @@ public class TopMenus {
     }
     void setLineWidth(double newLineW){lineWidth=newLineW;}
     public boolean updateMenus(){
-        switch(drawMode){
-            case 0:
-                //TODO: clear all controls?
-                break;
-            case 1:
-        }
         return false;
+        //Call BottomToolSet.updateTools(int drawMode)
 //TODO: implement this to check drawMode (and other?) to adjust the toolBar buttons
     }
     public Canvas getCanv(){return imgCanv;}
@@ -200,5 +181,4 @@ public class TopMenus {
         imgCanv.snapshot(null, wImage);
         prevVersions.push(wImage);
     }
-
 }
