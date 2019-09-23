@@ -39,9 +39,9 @@ public class MainScreenButtonHandlers {
     public boolean imgInserted = false, primaryJustClicked = false;
     public File savedImg;
     public Canvas imgCanv;
-    private Line dragLine;
-    private Rectangle dragRect;
-    private Ellipse dragEllip;
+    private Line dragLine = new Line();
+    private Rectangle dragRect = new Rectangle();
+    private Ellipse dragEllip = new Ellipse();
     MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group){
         menuController=menu;
 
@@ -133,7 +133,7 @@ public class MainScreenButtonHandlers {
                             dragLine.setStartY(menu.y0);
                             dragLine.setEndX(menu.x1);
                             dragLine.setEndY(menu.y1);
-                            dragLine.setStroke(Color.WHEAT);
+                            dragLine.setStroke(menu.getLineColor());
                             group.getChildren().add(dragLine);
                         } else if(menu.drawMode==2){
                             //rectangle

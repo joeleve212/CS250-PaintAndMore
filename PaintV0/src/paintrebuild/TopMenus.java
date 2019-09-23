@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -134,6 +135,7 @@ public class TopMenus {
     public void setDrawMode(int x){drawMode = x;}
     public MenuBar getMenuBar(){return pinnedMenu;}
     public void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
+    public Paint getLineColor(){return gc.getStroke();}
     public void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
     public void setToolBar(ToolBar tools){toolBar=tools;}
     public boolean drawShape(){
