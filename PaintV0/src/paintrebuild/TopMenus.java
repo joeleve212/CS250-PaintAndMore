@@ -17,9 +17,6 @@ import java.util.Stack;
 
 public class TopMenus {
     public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
-
-
-
     public ImageView placedImgView;
     public int drawMode = 0; //-1 = color grab, 0 for none, 1 for line, 2 for rect, 3 for circ, etc
     public boolean fill = false;
@@ -31,6 +28,7 @@ public class TopMenus {
     public GraphicsContext gc;
     public double x0,y0,x1,y1, lineWidth;
     public ToolBar toolBar;
+    public double[] xCoord, yCoord; //for use with polygon drawing
     private Stack prevVersions;
     private paintv0.BottomToolSet bottomTools;
     private TextField textInput;
@@ -61,6 +59,7 @@ public class TopMenus {
         MenuItem free = new MenuItem("Free Draw");
         MenuItem oval = new MenuItem("Ellipse");
         MenuItem circ = new MenuItem("Circle");
+        MenuItem poly = new MenuItem("Polygon");
 
         shapeMenu.getItems().addAll(line, rect, free, oval, circ);
         toolMenu.getItems().addAll(copier, cutter, text, eraser, grabber);
@@ -121,6 +120,14 @@ public class TopMenus {
         circ.setOnAction((e)->{
             drawMode = 5;
             updateMenus();
+        });
+        poly.setOnAction((e)->{
+            int numSides = 3;// inputBox.getValue();
+            //TODO: Prompt for number of sides - Reuse
+            xCoord = new double[numSides];
+            xCoord = new double[numSides];
+            drawMode = 10;
+            updateMenus();//TODO: update this method to account for higher drawModes
         });
     }
     public int getDrawMode(){return drawMode;}
