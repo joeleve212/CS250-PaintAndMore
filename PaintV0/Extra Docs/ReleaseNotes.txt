@@ -5,12 +5,12 @@ Features added this release:
     - Removed CLEAN labels and commented chunks of code
     - Migrated many handlers to separate class
 - Text placing tool
--
+- Eraser tool
 
 Known Bugs:
 - Zooming out too far causes image to flip and zoom to go back in
 - Saving after zooming produces extra white space around right & bottom of image
--
+- Width chooser does not work after changing to Spinner
 
 Upcoming Solutions/Additions:
 - Adjustable size & color of text

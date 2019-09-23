@@ -30,7 +30,7 @@ public class BottomToolSet {
 //TODO: Place necessary controls on toolbar for each edit tool
         //ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, textInput, undoBtn, redoBtn); //Creates the toolbar to hold both choosers
 
-        currentToolSet = new ToolBar(undoBtn,redoBtn);
+        currentToolSet = new ToolBar(widthChoose,outlineColor,fillColor,textInput,undoBtn,redoBtn);
 
         outlineColor.setOnAction(new EventHandler() { //trigger color picker when button is clicked
             public void handle(Event t) {
@@ -43,42 +43,40 @@ public class BottomToolSet {
             menus.setShapeFillColor(fillC);
         });
         widthChoose.setOnKeyPressed((event) -> { //Grabbing new width setting and updating Line width
-            if(event.getCode() == KeyCode.ENTER){
-                int lineWidth = widthChoose.getValue();
-                menus.setLineWidth((double) lineWidth);
-            }
+            int lineWidth = widthChoose.getValue();
+            menus.setLineWidth((double) lineWidth);
         });
-
     }
+    public void setToolBar(ToolBar newTools){currentToolSet=newTools;}
     public ToolBar getToolBar(){
         return currentToolSet;
     }
     public ToolBar updateTools(int mode){
-       // int mode = menus.getDrawMode();
-        ToolBar newToolBar;
-        switch(mode){ //TODO: Change to if statement?
-            case 1: //Line
-                newToolBar = new ToolBar(widthChoose,outlineColor);
-                //line width, line color
-                System.out.println("Inside case");
-                break;
-            case 2: //Rectangle
-                newToolBar = new ToolBar(widthChoose,outlineColor,fillColor);
-                //Line width/color, fill color
-                break;
-            case 3: //Free Draw
-                newToolBar = new ToolBar(widthChoose,outlineColor);
-                //line width/color
-                break;
-            default:
-                //blank icon
-                newToolBar = new ToolBar();
+//        int mode = menus.getDrawMode();
+//        ToolBar newToolBar = new ToolBar();
+        if(mode==1||mode==3) { //TODO: Change to if statement?
+            //Line & free draw
+            //line width, line color
+            widthChoose.setVisible(true);
+            outlineColor.setVisible(true);
+            fillColor.setVisible(false);
+            textInput.setVisible(false);
+        } else if(mode==2||(mode>3&&mode<8)) {//Rectangle, circle, ellipse, polygon, star
+//              //Line width/color, fill color
+            widthChoose.setVisible(true);
+            outlineColor.setVisible(true);
+            fillColor.setVisible(true);
+            textInput.setVisible(false);
+        }else if(mode==8){
+            widthChoose.setVisible(false);
+            outlineColor.setVisible(false);
+            fillColor.setVisible(false);
+            textInput.setVisible(true);
+        } else {
+            System.out.println("Draw mode " + mode + " invalid");
         }
-        newToolBar.getItems().addAll(undoBtn,redoBtn);
-        currentToolSet = newToolBar;
-        System.out.println("Finished inside func");
+        //newToolBar.getItems().addAll(undoBtn,redoBtn);
+        //currentToolSet = newToolBar;
         return currentToolSet;
     }
-
-
 }

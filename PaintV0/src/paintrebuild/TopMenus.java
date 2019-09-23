@@ -73,6 +73,11 @@ public class TopMenus {
 
         pinnedMenu = new MenuBar(fileMenu,toolMenu,shapeMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
+        eraser.setOnAction((e)->{
+            drawMode = 3; //set drawMode - same as freeDraw except auto white
+            gc.setStroke(Color.WHITE);
+            updateMenus(); //SHOULD show only needed items
+        });
         exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
             if(imageHasBeenSaved){
                 Platform.exit();
@@ -171,11 +176,9 @@ public class TopMenus {
         return true;
     }
     void setLineWidth(double newLineW){lineWidth=newLineW;}
-    public boolean updateMenus(){
-        toolBar = bottomTools.updateTools(1);
-        System.out.println("Finished update");
-
-        return true;
+    public void updateMenus(){ //TODO: fix this to actually update toolbar
+//TODO: idea-set visibility to false for unused pieces
+        toolBar = bottomTools.updateTools(drawMode);
         //Call BottomToolSet.updateTools(int drawMode)
 //TODO: implement this to check drawMode (and other?) to adjust the toolBar buttons
     }

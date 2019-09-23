@@ -55,8 +55,8 @@ public class PaintV0 extends Application {
         menus = new TopMenus(primaryStage, gr, prevVersions, bottomTools);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
-        ToolBar windowBar = bottomTools.getToolBar();
-        VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
+        //ToolBar windowBar = bottomTools.getToolBar();
+        VBox screenContent = new VBox(topMenu, scrollPane, bottomTools.getToolBar()); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);
 
