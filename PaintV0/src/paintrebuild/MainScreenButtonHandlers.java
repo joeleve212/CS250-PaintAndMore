@@ -117,15 +117,33 @@ public class MainScreenButtonHandlers {
                             menu.y0 = event.getY();
                             primaryJustClicked = true;
                             if(menu.drawMode==-1){
-                                PixelReader colorSnag = img.getPixelReader();
+                                PixelReader colorSnag = menu.img.getPixelReader();
                                 Color newColor = colorSnag.getColor((int)menu.x0, (int)menu.y0);
                                 menu.setShapeLineColor(newColor);
                             }
                         }
-    //TODO: add dummy shape to group
+
                         if(menu.drawMode==3){
                             menu.x1=menu.x0;
                             menu.y1=menu.y0;
+                        }
+                        if(menu.drawMode==1){
+                            //TODO: add dummy line to group
+                            dragLine.setStartX(menu.x0);
+                            dragLine.setStartY(menu.y0);
+                            dragLine.setEndX(menu.x1);
+                            dragLine.setEndY(menu.y1);
+                            dragLine.setStroke(Color.WHEAT);
+                            group.getChildren().add(dragLine);
+                        } else if(menu.drawMode==2){
+                            //rectangle
+                            dragRect.setX(menu.x0);
+                            dragRect.setY(menu.y0);
+                            dragRect.setWidth(0);
+                            dragRect.setHeight(0);
+                            group.getChildren().add(dragRect);
+                        } else if(menu.drawMode>3&&menu.drawMode<6){
+                            //TODO: start up circle/ellipse
                         }
                     }
                 }
@@ -137,6 +155,19 @@ public class MainScreenButtonHandlers {
                 if(event.isPrimaryButtonDown() && menu.drawMode==3) {
                     menu.gc.lineTo(event.getX(), event.getY());
                     menu.gc.stroke();
+                } else if(event.isPrimaryButtonDown()){
+                    switch (menu.drawMode){
+                        case 1:
+                            dragLine.setEndX(event.getX());
+                            dragLine.setEndY(event.getY());
+                            break;
+                        case 2:
+                            dragRect.setWidth(Math.abs(event.getX()-menu.x0));
+                            dragRect.setHeight(Math.abs(event.getY()-menu.y0));
+                            break;
+                        default:
+                            //Nothing?
+                    }
                 }
             }
 //TODO: for seeing shape during drag, make instance shapes separate from gc - setEndX(xCurr) Add this to group
@@ -149,8 +180,17 @@ public class MainScreenButtonHandlers {
                             menu.y1 = event.getY();
                             menu.drawShape();
                             primaryJustClicked = false;
-                        }
-                        else if(menu.drawMode==3){
+                            switch (menu.drawMode) {
+                                case 1:
+                                    group.getChildren().remove(dragLine);
+                                    break;
+                                case 2:
+                                    group.getChildren().remove(dragRect);
+                                    break;
+                                default:
+                                    //
+                            }
+                        } else if(menu.drawMode==3){
                             menu.gc.closePath();
                             menu.saveSnap();
                         }
