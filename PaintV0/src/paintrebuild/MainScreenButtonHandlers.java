@@ -11,6 +11,9 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
@@ -36,6 +39,9 @@ public class MainScreenButtonHandlers {
     public boolean imgInserted = false, primaryJustClicked = false;
     public File savedImg;
     public Canvas imgCanv;
+    private Line dragLine;
+    private Rectangle dragRect;
+    private Ellipse dragEllip;
     MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group){
         menuController=menu;
 
@@ -116,6 +122,7 @@ public class MainScreenButtonHandlers {
                                 menu.setShapeLineColor(newColor);
                             }
                         }
+    //TODO: add dummy shape to group
                         if(menu.drawMode==3){
                             menu.x1=menu.x0;
                             menu.y1=menu.y0;
@@ -132,6 +139,7 @@ public class MainScreenButtonHandlers {
                     menu.gc.stroke();
                 }
             }
+//TODO: for seeing shape during drag, make instance shapes separate from gc - setEndX(xCurr) Add this to group
         });
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                     @Override
@@ -146,7 +154,7 @@ public class MainScreenButtonHandlers {
                             menu.gc.closePath();
                             menu.saveSnap();
                         }
-
+//TODO: remove dummy shape from group
                     }
                 }
         );
