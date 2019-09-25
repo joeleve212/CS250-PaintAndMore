@@ -11,7 +11,8 @@ Known Bugs:
 - Zooming out too far causes image to flip and zoom to go back in
 - Saving after zooming produces extra white space around right & bottom of image
 - Width chooser does not work after changing to Spinner
-- Canvas once again does not resize
+- Zooming screws up seeing shape during drag
+-
 
 Upcoming Solutions/Additions:
 - Adjustable size & color of text

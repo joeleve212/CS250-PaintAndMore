@@ -133,6 +133,7 @@ public class MainScreenButtonHandlers {
                             dragLine.setStartY(menu.y0);
                             dragLine.setEndX(menu.x1);
                             dragLine.setEndY(menu.y1);
+                            dragLine.setStrokeWidth(menu.lineWidth);
                             dragLine.setStroke(menu.getLineColor());
                             group.getChildren().add(dragLine);
                         } else if(menu.drawMode==2){
@@ -141,9 +142,20 @@ public class MainScreenButtonHandlers {
                             dragRect.setY(menu.y0);
                             dragRect.setWidth(0);
                             dragRect.setHeight(0);
+                            dragRect.setStrokeWidth(menu.lineWidth);
+                            dragRect.setStroke(menu.getLineColor());
+                            dragRect.setFill(null);
                             group.getChildren().add(dragRect);
-                        } else if(menu.drawMode>3&&menu.drawMode<6){
+                        } else if(menu.drawMode==4){
                             //TODO: start up circle/ellipse
+                            dragEllip.setCenterX(menu.x0);
+                            dragEllip.setCenterY(menu.y0);
+                            dragEllip.setRadiusX(0);
+                            dragEllip.setRadiusY(0);
+                            dragEllip.setStrokeWidth(menu.lineWidth);
+                            dragEllip.setStroke(menu.getLineColor());
+                            dragEllip.setFill(null);
+                            group.getChildren().add(dragEllip);
                         }
                     }
                 }
@@ -164,6 +176,10 @@ public class MainScreenButtonHandlers {
                         case 2:
                             dragRect.setWidth(Math.abs(event.getX()-menu.x0));
                             dragRect.setHeight(Math.abs(event.getY()-menu.y0));
+                            break;
+                        case 4:
+                            dragEllip.setRadiusX(Math.abs(event.getX()-menu.x0));
+                            dragEllip.setRadiusY(Math.abs(event.getY()-menu.y0));
                             break;
                         default:
                             //Nothing?
@@ -187,6 +203,8 @@ public class MainScreenButtonHandlers {
                                 case 2:
                                     group.getChildren().remove(dragRect);
                                     break;
+                                case 4:
+                                    group.getChildren().remove(dragEllip);
                                 default:
                                     //
                             }

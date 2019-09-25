@@ -14,6 +14,8 @@ import javafx.scene.canvas.GraphicsContext;
 
 import javax.tools.Tool;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class TopMenus {
@@ -31,15 +33,15 @@ public class TopMenus {
     public ToolBar toolBar;
     public double[] xCoord, yCoord; //for use with polygon drawing
     private Stack prevVersions;
-    private paintv0.BottomToolSet bottomTools;
+    //private paintv0.BottomToolSet bottomTools;
     private TextField textInput;
     private MenuBar pinnedMenu;
-    TopMenus(Stage primaryStage, Group group, Stack versions, BottomToolSet bottomTools){
-        this.bottomTools = bottomTools;
-        this.toolBar = bottomTools.getToolBar();
+    TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
+        //this.bottomTools = new paintv0.BottomToolSet();
+        this.toolBar = toolBar;
         placedImgView = new ImageView();
         prevVersions = versions;
-        textInput = new TextField("Kevin");//Needs to be improved: (TextField)toolBar.getItems().get(3);
+        textInput = new TextField("Kevin");//TODO: Needs to be improved: (TextField)toolBar.getItems().get(3);
 
         Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File
         imageSave = new MenuItem("Save Image");
@@ -72,6 +74,17 @@ public class TopMenus {
         helpMenu.getItems().addAll(about, release_notes, toolHelp);
 
         pinnedMenu = new MenuBar(fileMenu,toolMenu,shapeMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
+
+        release_notes.setOnAction((ev)->{
+            try (Scanner scanner = new Scanner(new File("./ReleaseNotes.txt"))) {
+
+                while (scanner.hasNext())
+                    System.out.println(scanner.next());
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
 
         eraser.setOnAction((e)->{
             drawMode = 3; //set drawMode - same as freeDraw except auto white
@@ -137,6 +150,7 @@ public class TopMenus {
     public void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
     public Paint getLineColor(){return gc.getStroke();}
     public void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
+    public Paint getFillColor(){return gc.getFill(); }
     public void setToolBar(ToolBar tools){toolBar=tools;}
     public boolean drawShape(){
         gc.setLineWidth(lineWidth);
@@ -153,19 +167,21 @@ public class TopMenus {
                 gc.strokeRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
                 break;
             case 4:  //Ellipse
+                double deltX = Math.abs(x1-x0);
+                double deltY = Math.abs(y1-y0);
                 if(fill){
-                    gc.fillOval(x0,y0,Math.abs(x1-x0), Math.abs(y0-y1));
+                    gc.fillOval(x0-deltX,y0-deltY,2*deltX, 2*deltY);
                 }
-                gc.strokeOval(x0,y0,Math.abs(x1-x0), Math.abs(y0-y1));
+                gc.strokeOval(x0-deltX,y0-deltY,2*deltX, 2*deltY);
                 break;
             case 5: //Circle
 //TODO: allow drawing from center to edge
                 double w = Math.abs(x1 - x0);
                 //double h = Math.abs(x1 - x0);
                 if (fill) {
-                    gc.fillOval(x0, y0, w, w);
+                    gc.fillOval(x0-w, y0-w, 2*w, 2*w);
                 }
-                gc.strokeOval(x0, y0, w, w);
+                gc.strokeOval(x0-w, y0-w, 2*w, 2*w);
                 break;
             case 6: //Regular Polygon
                 //TODO: implement
@@ -180,14 +196,12 @@ public class TopMenus {
             default:
                 System.out.println("Invalid Drawing Mode Selected");
         }
-
         saveSnap();
         return true;
     }
     void setLineWidth(double newLineW){lineWidth=newLineW;}
     public void updateMenus(){ //TODO: fix this to actually update toolbar
-//TODO: idea-set visibility to false for unused pieces
-        toolBar = bottomTools.updateTools(drawMode);
+        //toolBar = bottomTools.updateTools(drawMode);
         //Call BottomToolSet.updateTools(int drawMode)
 //TODO: implement this to check drawMode (and other?) to adjust the toolBar buttons
     }

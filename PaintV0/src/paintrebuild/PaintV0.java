@@ -36,6 +36,9 @@ public class PaintV0 extends Application {
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     private Stack<WritableImage> prevVersions = new Stack<>();
     private Stack<WritableImage> undidVersions = new Stack<>();
+    private ColorPicker outlineColor, fillColor;
+    private TextField textInput;
+    private Spinner<Integer> widthChoose;
     @Override
     public void start(Stage primaryStage) {
         Region target = new StackPane(imgCanv);
@@ -51,12 +54,22 @@ public class PaintV0 extends Application {
         Button undoBtn = new Button("Undo");
         Button redoBtn = new Button("Redo");
 
-        BottomToolSet bottomTools = new BottomToolSet(menus, undoBtn, redoBtn);
-        menus = new TopMenus(primaryStage, gr, prevVersions, bottomTools);
+        //BottomToolSet bottomTools = new BottomToolSet(menus, undoBtn, redoBtn);
+
+        widthChoose = new Spinner<Integer>(1,100,5);
+        widthChoose.setEditable(true);
+        outlineColor = new ColorPicker(Color.BLACK); //set default outline color
+        fillColor = new ColorPicker(Color.BLACK);//set default fill color
+        textInput = new TextField("Text Input");
+//TODO: Place necessary controls on toolbar for each edit tool
+        //ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, textInput, undoBtn, redoBtn); //Creates the toolbar to hold both choosers
+        ToolBar windowBar = new ToolBar(widthChoose,outlineColor,fillColor,textInput,undoBtn,redoBtn);
+
+        menus = new TopMenus(primaryStage, gr, prevVersions, windowBar);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
         //ToolBar windowBar = bottomTools.getToolBar();
-        VBox screenContent = new VBox(topMenu, scrollPane, bottomTools.getToolBar()); //Placing menuBar above pane that contains the rest
+        VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);
 
@@ -66,6 +79,21 @@ public class PaintV0 extends Application {
         primaryStage.setScene(scene);      //and build stage before showing
         primaryStage.sizeToScene();
         primaryStage.show();
+
+        outlineColor.setOnAction(new EventHandler() { //trigger color picker when button is clicked
+            public void handle(Event t) {
+                Color c = outlineColor.getValue();
+                menus.setShapeLineColor(c);
+            }
+        });
+        fillColor.setOnAction(event -> {
+            Color fillC = fillColor.getValue();
+            menus.setShapeFillColor(fillC);
+        });
+        widthChoose.setOnMouseClicked((event) -> { //Grabbing new width setting and updating Line width
+            int lineWidth = widthChoose.getValue();
+            menus.setLineWidth((double) lineWidth);
+        });
 
         undoBtn.setOnAction((event) -> {
             undo();
@@ -150,6 +178,31 @@ public class PaintV0 extends Application {
             menus.setCanvVersion(redid);
             prevVersions.push(redid);
             imageHasBeenSaved=false;
+        }
+    }
+    public void updateTools(int mode){
+//        int mode = menus.getDrawMode();
+//        ToolBar newToolBar = new ToolBar();
+        if(mode==1||mode==3) {
+            //Line & free draw
+            //line width, line color
+            widthChoose.setVisible(true);
+            outlineColor.setVisible(true);
+            fillColor.setVisible(false);
+            textInput.setVisible(false);
+        } else if(mode==2||(mode>3&&mode<8)) {//Rectangle, circle, ellipse, polygon, star
+//              //Line width/color, fill color
+            widthChoose.setVisible(true);
+            outlineColor.setVisible(true);
+            fillColor.setVisible(true);
+            textInput.setVisible(false);
+        }else if(mode==8){
+            widthChoose.setVisible(false);
+            outlineColor.setVisible(false);
+            fillColor.setVisible(false);
+            textInput.setVisible(true);
+        } else {
+            System.out.println("Draw mode " + mode + " invalid");
         }
     }
 
