@@ -128,7 +128,6 @@ public class MainScreenButtonHandlers {
                             menu.y1=menu.y0;
                         }
                         if(menu.drawMode==1){
-                            //TODO: add dummy line to group
                             dragLine.setStartX(menu.x0);
                             dragLine.setStartY(menu.y0);
                             dragLine.setEndX(menu.x1);
@@ -136,7 +135,7 @@ public class MainScreenButtonHandlers {
                             dragLine.setStrokeWidth(menu.lineWidth);
                             dragLine.setStroke(menu.getLineColor());
                             group.getChildren().add(dragLine);
-                        } else if(menu.drawMode==2){
+                        } else if(Math.abs(menu.drawMode)==2){
                             //rectangle
                             dragRect.setX(menu.x0);
                             dragRect.setY(menu.y0);
@@ -147,7 +146,6 @@ public class MainScreenButtonHandlers {
                             dragRect.setFill(null);
                             group.getChildren().add(dragRect);
                         } else if(menu.drawMode==4||menu.drawMode==5){
-                            //TODO: start up circle/ellipse
                             dragEllip.setCenterX(menu.x0);
                             dragEllip.setCenterY(menu.y0);
                             dragEllip.setRadiusX(0);
@@ -160,7 +158,6 @@ public class MainScreenButtonHandlers {
                     }
                 }
         );
-//TODO: implement mouse drag event to see shape during creation
         imgCanv.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -177,6 +174,10 @@ public class MainScreenButtonHandlers {
                             dragRect.setWidth(Math.abs(event.getX()-menu.x0));
                             dragRect.setHeight(Math.abs(event.getY()-menu.y0));
                             break;
+                        case -2:
+                            dragRect.setWidth(Math.abs(event.getX()-menu.x0));
+                            dragRect.setHeight(Math.abs(event.getY()-menu.y0));
+                            break;
                         case 4:
                             dragEllip.setRadiusX(Math.abs(event.getX()-menu.x0));
                             dragEllip.setRadiusY(Math.abs(event.getY()-menu.y0));
@@ -184,12 +185,12 @@ public class MainScreenButtonHandlers {
                         case 5:
                             dragEllip.setRadiusX(Math.abs(event.getX()-menu.x0));
                             dragEllip.setRadiusY(Math.abs(event.getX()-menu.x0));
+                            break;
                         default:
                             //Nothing?
                     }
                 }
             }
-//TODO: for seeing shape during drag, make instance shapes separate from gc - setEndX(xCurr) Add this to group
         });
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                     @Override
@@ -212,6 +213,9 @@ public class MainScreenButtonHandlers {
                                 case 5:
                                     group.getChildren().remove(dragEllip);
                                     break;
+                                case -2:
+                                    group.getChildren().remove(dragRect);
+                                    break;
                                 default:
                                     //
                             }
@@ -219,7 +223,6 @@ public class MainScreenButtonHandlers {
                             menu.gc.closePath();
                             menu.saveSnap();
                         }
-//TODO: remove dummy shape from group
                     }
                 }
         );

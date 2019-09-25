@@ -105,10 +105,6 @@ public class PaintV0 extends Application {
         scene.setOnKeyPressed((event) -> {
             KeyCode press = event.getCode(); //store pressed key in variable for reuse
             imgCanv = menus.getCanv(); //grab imgCanv from TopMenus class
-            if (imgCanv == null) {
-//TODO: make CTRL+S saveAs first time                menus.imgSave.handle();
-                return;
-            }
             if (press == KeyCode.ESCAPE) { //ESC exits any drawing mode
                 menus.setDrawMode(0);
                 menus.updateMenus();
@@ -123,8 +119,6 @@ public class PaintV0 extends Application {
             if (!imageHasBeenSaved) {
                 event.consume();
             }
-            //TODO: implement smart save (exit button checks if work is saved)
-            InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{
                 if(!imageHasBeenSaved){ //If this is the first time image is
                     //TODO: call saveAs function

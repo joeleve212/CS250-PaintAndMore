@@ -82,6 +82,11 @@ public class TopMenus {
 
         pinnedMenu = new MenuBar(fileMenu,toolMenu,shapeMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
+        cutter.setOnAction((e)->{
+            drawMode = -2; //negative num for non-drawing tool
+            updateMenus();
+        });
+
         release_notes.setOnAction((ev)->{
             File ReleaseNotesDoc = new File(releaseNotesPath);
             try{
@@ -101,7 +106,6 @@ public class TopMenus {
             else{
                 InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             }
-
         });
 
         text.setOnAction((e)->{
