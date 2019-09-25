@@ -146,7 +146,7 @@ public class MainScreenButtonHandlers {
                             dragRect.setStroke(menu.getLineColor());
                             dragRect.setFill(null);
                             group.getChildren().add(dragRect);
-                        } else if(menu.drawMode==4){
+                        } else if(menu.drawMode==4||menu.drawMode==5){
                             //TODO: start up circle/ellipse
                             dragEllip.setCenterX(menu.x0);
                             dragEllip.setCenterY(menu.y0);
@@ -181,6 +181,9 @@ public class MainScreenButtonHandlers {
                             dragEllip.setRadiusX(Math.abs(event.getX()-menu.x0));
                             dragEllip.setRadiusY(Math.abs(event.getY()-menu.y0));
                             break;
+                        case 5:
+                            dragEllip.setRadiusX(Math.abs(event.getX()-menu.x0));
+                            dragEllip.setRadiusY(Math.abs(event.getX()-menu.x0));
                         default:
                             //Nothing?
                     }
@@ -205,6 +208,10 @@ public class MainScreenButtonHandlers {
                                     break;
                                 case 4:
                                     group.getChildren().remove(dragEllip);
+                                    break;
+                                case 5:
+                                    group.getChildren().remove(dragEllip);
+                                    break;
                                 default:
                                     //
                             }
