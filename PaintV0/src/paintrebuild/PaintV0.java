@@ -119,6 +119,7 @@ public class PaintV0 extends Application {
             if (!imageHasBeenSaved) {
                 event.consume();
             }
+            InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{
                 if(!imageHasBeenSaved){ //If this is the first time image is
                     //TODO: call saveAs function
@@ -146,12 +147,13 @@ public class PaintV0 extends Application {
                     imgCanv.setScaleX(xCanvScale + scaleMod); //Zoom out
                     imgCanv.setScaleY(yCanvScale + scaleMod);
                 }
-                menus.placedImgView.setScaleX(imgCanv.getScaleX()); //scale the imageView same as the canvas
-                menus.placedImgView.setScaleY(imgCanv.getScaleY());
-                target.setScaleX(imgCanv.getScaleX()); //scale the Region same as the canvas
-                target.setScaleY(imgCanv.getScaleY());
-                scrollPane.setHvalue(imgCanv.getWidth()); //attempt to make the scrollPane the same size as the canvas
-                scrollPane.setVvalue(imgCanv.getHeight());
+                //CLEAN?: these seem to do nothing
+//                menus.placedImgView.setScaleX(imgCanv.getScaleX()); //scale the imageView same as the canvas
+//                menus.placedImgView.setScaleY(imgCanv.getScaleY());
+//                target.setScaleX(imgCanv.getScaleX()); //scale the Region same as the canvas
+//                target.setScaleY(imgCanv.getScaleY());
+//                scrollPane.setHvalue(imgCanv.getWidth()); //attempt to make the scrollPane the same size as the canvas
+//                scrollPane.setVvalue(imgCanv.getHeight());
             }
         });
     }

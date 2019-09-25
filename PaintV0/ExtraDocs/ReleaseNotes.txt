@@ -6,13 +6,15 @@ Features added this release:
     - Migrated many handlers to separate class
 - Text placing tool
 - Eraser tool
+- Release Notes button pops open window w/ release notes
+- 
 
 Known Bugs:
-- Zooming out too far causes image to flip and zoom to go back in
+- Zooming out too far causes image to flip and zoom back in
 - Saving after zooming produces extra white space around right & bottom of image
-- Width chooser does not work after changing to Spinner
-- Zooming screws up seeing shape during drag
--
+- Zooming screws up seeing shape during drag (shapes aren't scaled same as image)
+- Undo after zooming shows whitespace (extra canvas) around image
+- 
 
 Upcoming Solutions/Additions:
 - Adjustable size & color of text

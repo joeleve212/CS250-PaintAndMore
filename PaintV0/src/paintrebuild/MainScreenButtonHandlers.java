@@ -6,11 +6,10 @@ package paintv0;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.WritableImage;
+import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -25,6 +24,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 
 /**
  *
@@ -39,6 +41,7 @@ public class MainScreenButtonHandlers {
     public boolean imgInserted = false, primaryJustClicked = false;
     public File savedImg;
     public Canvas imgCanv;
+    private boolean imageCurrCut = false;
     private Line dragLine = new Line();
     private Rectangle dragRect = new Rectangle();
     private Ellipse dragEllip = new Ellipse();
@@ -112,7 +115,7 @@ public class MainScreenButtonHandlers {
                     @Override
                     public void handle(MouseEvent event) {
                         if(event.isPrimaryButtonDown()) {
-                            menu.gc.beginPath();
+//
                             menu.x0 = event.getX();
                             menu.y0 = event.getY();
                             primaryJustClicked = true;
@@ -126,6 +129,8 @@ public class MainScreenButtonHandlers {
                         if(menu.drawMode==3){
                             menu.x1=menu.x0;
                             menu.y1=menu.y0;
+                            menu.gc.beginPath();
+                            menu.gc.setLineWidth(menu.lineWidth);
                         }
                         if(menu.drawMode==1){
                             dragLine.setStartX(menu.x0);
@@ -223,6 +228,14 @@ public class MainScreenButtonHandlers {
                             menu.gc.closePath();
                             menu.saveSnap();
                         }
+                        if(menu.drawMode==-2){//If tool is in cut mode
+                            //TODO: create PixelReader, then writable image, then erase area and grab writable
+                            PixelReader cutImageRead = img.getPixelReader();
+                            //cutImageRead.getPixels(x0,y0,Math.abs(x0-x1),Math.abs(y0-y1),);
+                            WritableImage cutImage = new WritableImage(cutImageRead,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
+                            drawBlankRect();
+                            imageCurrCut = true;
+                        }
                     }
                 }
         );
@@ -236,5 +249,16 @@ public class MainScreenButtonHandlers {
         } catch (IOException ex) { //Throw a simple error if saving dies
             System.out.println("Save Failed!");
         }
+    }
+    public void drawBlankRect(){
+        double x0 = menuController.x0;
+        double x1 = menuController.x1;
+        double y0 = menuController.y0;
+        double y1 = menuController.y1;
+        Paint color = menuController.getFillColor();
+        menuController.setShapeFillColor(Color.WHITE);
+        menuController.gc.fillRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
+        menuController.setShapeFillColor((Color)color);
+        saveImage();
     }
 }
