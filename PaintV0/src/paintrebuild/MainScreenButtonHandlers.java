@@ -41,7 +41,8 @@ public class MainScreenButtonHandlers {
     public boolean imgInserted = false, primaryJustClicked = false;
     public File savedImg;
     public Canvas imgCanv;
-    private boolean imageCurrCut = false;
+    private WritableImage cutImage;
+    private boolean imageGrabbed = false;
     private Line dragLine = new Line();
     private Rectangle dragRect = new Rectangle();
     private Ellipse dragEllip = new Ellipse();
@@ -114,51 +115,57 @@ public class MainScreenButtonHandlers {
         imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event) {
+                        menu.x0 = event.getX();
+                        menu.y0 = event.getY();
+                        if(imageGrabbed){
+                            //TODO: attach image to canvas at current point
+                            menu.gc.drawImage(cutImage, menu.x0, menu.y0);
+                            menu.saveSnap();
+                            imageGrabbed = false;
+                            menu.drawMode = 0;
+                            return;
+                        }
                         if(event.isPrimaryButtonDown()) {
-//
-                            menu.x0 = event.getX();
-                            menu.y0 = event.getY();
                             primaryJustClicked = true;
-                            if(menu.drawMode==-1){
+                            if (menu.drawMode == -1) {
                                 PixelReader colorSnag = menu.img.getPixelReader();
-                                Color newColor = colorSnag.getColor((int)menu.x0, (int)menu.y0);
+                                Color newColor = colorSnag.getColor((int) menu.x0, (int) menu.y0);
                                 menu.setShapeLineColor(newColor);
                             }
-                        }
-
-                        if(menu.drawMode==3){
-                            menu.x1=menu.x0;
-                            menu.y1=menu.y0;
-                            menu.gc.beginPath();
-                            menu.gc.setLineWidth(menu.lineWidth);
-                        }
-                        if(menu.drawMode==1){
-                            dragLine.setStartX(menu.x0);
-                            dragLine.setStartY(menu.y0);
-                            dragLine.setEndX(menu.x1);
-                            dragLine.setEndY(menu.y1);
-                            dragLine.setStrokeWidth(menu.lineWidth);
-                            dragLine.setStroke(menu.getLineColor());
-                            group.getChildren().add(dragLine);
-                        } else if(Math.abs(menu.drawMode)==2){
-                            //rectangle
-                            dragRect.setX(menu.x0);
-                            dragRect.setY(menu.y0);
-                            dragRect.setWidth(0);
-                            dragRect.setHeight(0);
-                            dragRect.setStrokeWidth(menu.lineWidth);
-                            dragRect.setStroke(menu.getLineColor());
-                            dragRect.setFill(null);
-                            group.getChildren().add(dragRect);
-                        } else if(menu.drawMode==4||menu.drawMode==5){
-                            dragEllip.setCenterX(menu.x0);
-                            dragEllip.setCenterY(menu.y0);
-                            dragEllip.setRadiusX(0);
-                            dragEllip.setRadiusY(0);
-                            dragEllip.setStrokeWidth(menu.lineWidth);
-                            dragEllip.setStroke(menu.getLineColor());
-                            dragEllip.setFill(null);
-                            group.getChildren().add(dragEllip);
+                            if (menu.drawMode == 3) {
+                                menu.x1 = menu.x0;
+                                menu.y1 = menu.y0;
+                                menu.gc.beginPath();
+                                menu.gc.setLineWidth(menu.lineWidth);
+                            }
+                            if (menu.drawMode == 1) {
+                                dragLine.setStartX(menu.x0);
+                                dragLine.setStartY(menu.y0);
+                                dragLine.setEndX(menu.x1);
+                                dragLine.setEndY(menu.y1);
+                                dragLine.setStrokeWidth(menu.lineWidth);
+                                dragLine.setStroke(menu.getLineColor());
+                                group.getChildren().add(dragLine);
+                            } else if (Math.abs(menu.drawMode) == 2) {
+                                //rectangle
+                                dragRect.setX(menu.x0);
+                                dragRect.setY(menu.y0);
+                                dragRect.setWidth(0);
+                                dragRect.setHeight(0);
+                                dragRect.setStrokeWidth(menu.lineWidth);
+                                dragRect.setStroke(menu.getLineColor());
+                                dragRect.setFill(null);
+                                group.getChildren().add(dragRect);
+                            } else if (menu.drawMode == 4 || menu.drawMode == 5) {
+                                dragEllip.setCenterX(menu.x0);
+                                dragEllip.setCenterY(menu.y0);
+                                dragEllip.setRadiusX(0);
+                                dragEllip.setRadiusY(0);
+                                dragEllip.setStrokeWidth(menu.lineWidth);
+                                dragEllip.setStroke(menu.getLineColor());
+                                dragEllip.setFill(null);
+                                group.getChildren().add(dragEllip);
+                            }
                         }
                     }
                 }
@@ -195,6 +202,9 @@ public class MainScreenButtonHandlers {
                             //Nothing?
                     }
                 }
+                if(imageGrabbed){
+                    //TODO: make grabbed image follow cursor
+                }
             }
         });
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
@@ -230,11 +240,13 @@ public class MainScreenButtonHandlers {
                         }
                         if(menu.drawMode==-2){//If tool is in cut mode
                             //TODO: create PixelReader, then writable image, then erase area and grab writable
-                            PixelReader cutImageRead = img.getPixelReader();
+
                             //cutImageRead.getPixels(x0,y0,Math.abs(x0-x1),Math.abs(y0-y1),);
-                            WritableImage cutImage = new WritableImage(cutImageRead,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
+                            WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());
+                            imgCanv.snapshot(null, wImage);
+                            cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
                             drawBlankRect();
-                            imageCurrCut = true;
+                            imageGrabbed = true;
                         }
                     }
                 }
@@ -259,6 +271,6 @@ public class MainScreenButtonHandlers {
         menuController.setShapeFillColor(Color.WHITE);
         menuController.gc.fillRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
         menuController.setShapeFillColor((Color)color);
-        saveImage();
+        menuController.saveSnap();
     }
 }
