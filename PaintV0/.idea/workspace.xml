@@ -11,13 +11,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.40302813">
+    <splitter split-orientation="horizontal" split-proportion="0.25757575">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="175">
+                <state relative-caret-position="20">
                   <caret line="92" column="38" selection-start-line="92" selection-start-column="38" selection-end-line="92" selection-end-column="38" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -51,11 +51,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="156" column="50" lean-forward="true" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
+                <state relative-caret-position="65">
+                  <caret line="142" column="21" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -63,11 +63,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="175">
-                  <caret line="31" column="40" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="40" />
+                <state relative-caret-position="249">
+                  <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#setCanvVersion#0;class#TopMenus#0" />
@@ -90,7 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>widthchoo</find>
       <find>imagehas</find>
       <find>imageHasBeenSaved</find>
       <find>imagehasbeen</find>
@@ -120,6 +119,7 @@
       <find>linewi</find>
       <find>drag</find>
       <find>lineWidth</find>
+      <find>release_notes</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -133,9 +133,9 @@
         <option value="$PROJECT_DIR$/src/paintrebuild/InfoPopup.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/BottomToolSet.java" />
         <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
       </list>
     </option>
   </component>
@@ -299,13 +299,13 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="right" id="REPL" order="3" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14529915" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3105413" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Leiningen" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.17948718" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.25071225" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.069127515" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.069798656" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -322,34 +322,34 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="REPL" order="6" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26068377" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12550336" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="right" id="REPL" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26068377" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Leiningen" order="7" />
       <window_info id="UI Designer" order="5" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
+      <window_info id="Learn" order="6" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.2834758" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Capture Tool" order="4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32478634" />
       <window_info anchor="right" id="Maven Projects" order="9" />
-      <window_info id="Learn" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -642,8 +642,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
+        <state relative-caret-position="20">
           <caret line="92" column="38" selection-start-line="92" selection-start-column="38" selection-end-line="92" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="142" column="21" selection-start-line="142" selection-start-column="21" selection-end-line="142" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -652,22 +662,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="31" column="40" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="40" />
+        <state relative-caret-position="249">
+          <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
             <element signature="method#saveSnap#0;class#TopMenus#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="156" column="50" lean-forward="true" selection-start-line="156" selection-start-column="50" selection-end-line="156" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

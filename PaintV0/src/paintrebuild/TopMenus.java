@@ -3,6 +3,10 @@ package paintv0;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -13,8 +17,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 import javax.tools.Tool;
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -32,6 +38,7 @@ public class TopMenus {
     public double x0,y0,x1,y1, lineWidth;
     public ToolBar toolBar;
     public double[] xCoord, yCoord; //for use with polygon drawing
+    public String releaseNotesPath = "src/../ExtraDocs/ReleaseNotes.txt";
     private Stack prevVersions;
     //private paintv0.BottomToolSet bottomTools;
     private TextField textInput;
@@ -76,14 +83,10 @@ public class TopMenus {
         pinnedMenu = new MenuBar(fileMenu,toolMenu,shapeMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
         release_notes.setOnAction((ev)->{
-            try (Scanner scanner = new Scanner(new File("./ReleaseNotes.txt"))) {
-
-                while (scanner.hasNext())
-                    System.out.println(scanner.next());
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            File ReleaseNotesDoc = new File(releaseNotesPath);
+            try{
+                Desktop.getDesktop().open(ReleaseNotesDoc);
+            } catch (IOException e){}
         });
 
         eraser.setOnAction((e)->{
