@@ -40,6 +40,11 @@ public class InfoPopup {
             popupStage.setTitle("About Program");
             content.setText("Pain(t) Version 0.2 - Authored by Joe Leveille");
         }
+        else if(popupType=="helpInfo"){
+            popupStage.setTitle("Help Information");
+            content.setText("This program is meant to modify images\n" +
+                    " with custom shapes and image tools");
+        }
         Button exitPopup = new Button("Exit");
         content.setTextAlignment(TextAlignment.CENTER);
         popBorderPane.setCenter(content);

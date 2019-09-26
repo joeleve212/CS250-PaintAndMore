@@ -87,6 +87,10 @@ public class TopMenus {
             updateMenus();
         });
 
+        toolHelp.setOnAction((e)->{
+            InfoPopup helpInfo = new InfoPopup(primaryStage, "helpInfo");
+        });
+
         release_notes.setOnAction((ev)->{
             File ReleaseNotesDoc = new File(releaseNotesPath);
             try{
