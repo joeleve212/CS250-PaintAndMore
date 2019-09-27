@@ -165,7 +165,8 @@ public class MainScreenButtonHandlers {
                                 dragEllip.setFill(null);
                                 group.getChildren().add(dragEllip);
                             } else if(menu.drawMode==6){
-                                //
+                                //TODO:
+
                             }
                         }
                     }
@@ -207,7 +208,8 @@ public class MainScreenButtonHandlers {
                     //TODO: make grabbed image follow cursor
                 }
             }
-        });
+        }
+        );
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event) {
@@ -232,6 +234,9 @@ public class MainScreenButtonHandlers {
                                 case -2:
                                     group.getChildren().remove(dragRect);
                                     break;
+                                case 8:
+
+                                    break;
                                 default:
                                     //
                             }
@@ -240,7 +245,6 @@ public class MainScreenButtonHandlers {
                             menu.saveSnap();
                         }
                         if(menu.drawMode==-2){//If tool is in cut mode
-                            //TODO: create PixelReader, then writable image, then erase area and grab writable
 
                             //cutImageRead.getPixels(x0,y0,Math.abs(x0-x1),Math.abs(y0-y1),);
                             WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());

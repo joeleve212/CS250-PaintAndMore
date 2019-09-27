@@ -94,6 +94,10 @@ public class PaintV0 extends Application {
             int lineWidth = widthChoose.getValue();
             menus.setLineWidth((double) lineWidth);
         });
+        textInput.setOnAction(e->{
+            String currString = textInput.getText();
+            menus.setInputString(currString);
+        });
 
         undoBtn.setOnAction((event) -> {
             undo();

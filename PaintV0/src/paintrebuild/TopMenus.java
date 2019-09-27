@@ -40,6 +40,7 @@ public class TopMenus {
     public double[] xCoord, yCoord; //for use with polygon drawing
     public String releaseNotesPath = "src/../ExtraDocs/ReleaseNotes.txt";
     private Stack prevVersions;
+    private String inputText = "Kevin";
     //private paintv0.BottomToolSet bottomTools;
     private TextField textInput;
     private MenuBar pinnedMenu;
@@ -47,6 +48,7 @@ public class TopMenus {
         //this.bottomTools = new paintv0.BottomToolSet();
         this.toolBar = toolBar;
         placedImgView = new ImageView();
+//TODO: Clean/fixtextInput = toolBar.getItems().get(textIndex);
         prevVersions = versions;
         textInput = new TextField("Kevin");//TODO: Needs to be improved: (TextField)toolBar.getItems().get(3);
 
@@ -71,7 +73,7 @@ public class TopMenus {
         MenuItem circ = new MenuItem("Circle");
         MenuItem regPoly = new MenuItem("Polygon");
 
-        shapeMenu.getItems().addAll(line, rect, free, oval, circ);
+        shapeMenu.getItems().addAll(line, rect, free, oval, circ, regPoly);
         toolMenu.getItems().addAll(copier, cutter, text, eraser, grabber);
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
@@ -148,8 +150,8 @@ public class TopMenus {
         });
         regPoly.setOnAction((e)->{
             int numSides = 3;// inputBox.getValue();
-            int textIndex = toolBar.getItems().indexOf(textInput);
-            numSides = Integer.parseInt(toolBar.getItems().get(textIndex).getAccessibleText());
+            numSides = Integer.parseInt(inputText);
+            System.out.println(numSides);
             //TODO: Grab number of sides - Reuse text box
             xCoord = new double[numSides];
             xCoord = new double[numSides];
@@ -165,6 +167,7 @@ public class TopMenus {
     public void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
     public Paint getFillColor(){return gc.getFill(); }
     public void setToolBar(ToolBar tools){toolBar=tools;}
+    public void setInputString(String newString){inputText=newString;}
     public boolean drawShape(){
         gc.setLineWidth(lineWidth);
         switch(drawMode){ //Place line between x0,y0 & x1,y1
@@ -198,14 +201,12 @@ public class TopMenus {
                 break;
             case 6: //Regular Polygon
                 //TODO: implement
-
                 break;
             case 7: //Choice shape - TBD
                 //TODO: decide on shape & implement
                 break;
             case 8: //Text placement
-                String inputString = textInput.getCharacters().toString(); //pull in the current typed string
-                gc.fillText(inputString,x0,y0, Math.abs(x1-x0));
+                gc.fillText(inputText,x0,y0, Math.abs(x1-x0));
                 break;
             default:
                 System.out.println("Invalid Drawing Mode Selected");
