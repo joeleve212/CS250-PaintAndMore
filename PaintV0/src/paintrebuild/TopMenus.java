@@ -69,7 +69,7 @@ public class TopMenus {
         MenuItem free = new MenuItem("Free Draw");
         MenuItem oval = new MenuItem("Ellipse");
         MenuItem circ = new MenuItem("Circle");
-        MenuItem poly = new MenuItem("Polygon");
+        MenuItem regPoly = new MenuItem("Polygon");
 
         shapeMenu.getItems().addAll(line, rect, free, oval, circ);
         toolMenu.getItems().addAll(copier, cutter, text, eraser, grabber);
@@ -146,12 +146,14 @@ public class TopMenus {
             drawMode = 5;
             updateMenus();
         });
-        poly.setOnAction((e)->{
+        regPoly.setOnAction((e)->{
             int numSides = 3;// inputBox.getValue();
-            //TODO: Prompt for number of sides - Reuse
+            int textIndex = toolBar.getItems().indexOf(textInput);
+            numSides = Integer.parseInt(toolBar.getItems().get(textIndex).getAccessibleText());
+            //TODO: Grab number of sides - Reuse text box
             xCoord = new double[numSides];
             xCoord = new double[numSides];
-            drawMode = 10;
+            drawMode = 6;
             updateMenus();//TODO: update this method to account for higher drawModes
         });
     }
@@ -196,6 +198,7 @@ public class TopMenus {
                 break;
             case 6: //Regular Polygon
                 //TODO: implement
+
                 break;
             case 7: //Choice shape - TBD
                 //TODO: decide on shape & implement

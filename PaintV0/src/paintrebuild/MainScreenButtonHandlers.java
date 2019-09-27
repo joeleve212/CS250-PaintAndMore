@@ -118,7 +118,6 @@ public class MainScreenButtonHandlers {
                         menu.x0 = event.getX();
                         menu.y0 = event.getY();
                         if(imageGrabbed){
-                            //TODO: attach image to canvas at current point
                             menu.gc.drawImage(cutImage, menu.x0, menu.y0);
                             menu.saveSnap();
                             imageGrabbed = false;
@@ -131,22 +130,22 @@ public class MainScreenButtonHandlers {
                                 PixelReader colorSnag = menu.img.getPixelReader();
                                 Color newColor = colorSnag.getColor((int) menu.x0, (int) menu.y0);
                                 menu.setShapeLineColor(newColor);
-                            }
-                            if (menu.drawMode == 3) {
+                            } else if(menu.drawMode == 3) {
                                 menu.x1 = menu.x0;
                                 menu.y1 = menu.y0;
                                 menu.gc.beginPath();
                                 menu.gc.setLineWidth(menu.lineWidth);
-                            }
-                            if (menu.drawMode == 1) {
+                            } else if(menu.drawMode == 1) {
                                 dragLine.setStartX(menu.x0);
                                 dragLine.setStartY(menu.y0);
-                                dragLine.setEndX(menu.x1);
-                                dragLine.setEndY(menu.y1);
+                                dragLine.setEndX(menu.x0);
+                                dragLine.setEndY(menu.y0);
                                 dragLine.setStrokeWidth(menu.lineWidth);
                                 dragLine.setStroke(menu.getLineColor());
+//                                dragLine.setScaleX(menu.placedImgView.getScaleX());
+//                                dragLine.setScaleY(menu.placedImgView.getScaleY());
                                 group.getChildren().add(dragLine);
-                            } else if (Math.abs(menu.drawMode) == 2) {
+                            } else if(Math.abs(menu.drawMode) == 2) {
                                 //rectangle
                                 dragRect.setX(menu.x0);
                                 dragRect.setY(menu.y0);
@@ -165,6 +164,8 @@ public class MainScreenButtonHandlers {
                                 dragEllip.setStroke(menu.getLineColor());
                                 dragEllip.setFill(null);
                                 group.getChildren().add(dragEllip);
+                            } else if(menu.drawMode==6){
+                                //
                             }
                         }
                     }
