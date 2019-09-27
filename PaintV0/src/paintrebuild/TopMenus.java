@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -33,7 +34,7 @@ public class TopMenus {
     public Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
     public MenuItem imageSave, openBtn;
     public boolean imageHasBeenSaved = false; //TODO: eliminate separate instances of this var?
-    public int IMG_POS_X=0, IMG_POS_Y=0;
+    public int IMG_POS_X=0, IMG_POS_Y=0, numSides;
     public GraphicsContext gc;
     public double x0,y0,x1,y1, lineWidth;
     public ToolBar toolBar;
@@ -149,12 +150,11 @@ public class TopMenus {
             updateMenus();
         });
         regPoly.setOnAction((e)->{
-            int numSides = 3;// inputBox.getValue();
-            numSides = Integer.parseInt(inputText);
-            System.out.println(numSides);
-            //TODO: Grab number of sides - Reuse text box
-            xCoord = new double[numSides];
-            xCoord = new double[numSides];
+            numSides = 3;// inputBox.getValue();
+            try{numSides = Integer.parseInt(inputText);} //May need catch
+            catch(Exception ev){System.out.println("Couldn't detect number");}
+//            xCoord = new double[numSides];
+//            yCoord = new double[numSides];
             drawMode = 6;
             updateMenus();//TODO: update this method to account for higher drawModes
         });
@@ -168,6 +168,21 @@ public class TopMenus {
     public Paint getFillColor(){return gc.getFill(); }
     public void setToolBar(ToolBar tools){toolBar=tools;}
     public void setInputString(String newString){inputText=newString;}
+    public void drawPolygon(Polygon poly){
+        //TODO:
+        xCoord = new double[poly.getPoints().size()/2];
+        yCoord = new double[poly.getPoints().size()/2];
+        for(int i=0;i< poly.getPoints().size()/2;i++){
+            xCoord[i]=poly.getPoints().get(i);
+            yCoord[i]=poly.getPoints().get(i);
+        }
+        System.out.println(poly.getPoints());
+        System.out.println("Should match: "+poly.getPoints().size()/2+" "+numSides);
+        gc.strokePolygon(xCoord,yCoord,numSides);
+        if(fill){
+            gc.fillPolygon(xCoord,yCoord,numSides);
+        }
+    }
     public boolean drawShape(){
         gc.setLineWidth(lineWidth);
         switch(drawMode){ //Place line between x0,y0 & x1,y1

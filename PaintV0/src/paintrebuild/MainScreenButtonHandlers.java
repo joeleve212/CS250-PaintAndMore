@@ -7,11 +7,13 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.scene.canvas.Canvas;
@@ -19,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.scene.Group;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,6 +30,7 @@ import java.io.InputStream;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
+import java.util.ArrayList;
 
 /**
  *
@@ -46,6 +50,7 @@ public class MainScreenButtonHandlers {
     private Line dragLine = new Line();
     private Rectangle dragRect = new Rectangle();
     private Ellipse dragEllip = new Ellipse();
+    private Polygon nPoly = new Polygon();
     MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group){
         menuController=menu;
 
@@ -165,8 +170,10 @@ public class MainScreenButtonHandlers {
                                 dragEllip.setFill(null);
                                 group.getChildren().add(dragEllip);
                             } else if(menu.drawMode==6){
-                                //TODO:
-
+                                nPoly.setStroke(menu.getLineColor());
+                                nPoly.setFill(null);
+                                nPoly.setStrokeWidth(menu.lineWidth);
+                                group.getChildren().add(nPoly);
                             }
                         }
                     }
@@ -199,6 +206,10 @@ public class MainScreenButtonHandlers {
                         case 5:
                             dragEllip.setRadiusX(Math.abs(event.getX()-menu.x0));
                             dragEllip.setRadiusY(Math.abs(event.getX()-menu.x0));
+                            break;
+                        case 6:
+                            ArrayList<Double> corners= createPolyPoints(event);
+                            nPoly.getPoints().setAll(corners);
                             break;
                         default:
                             //Nothing?
@@ -234,8 +245,9 @@ public class MainScreenButtonHandlers {
                                 case -2:
                                     group.getChildren().remove(dragRect);
                                     break;
-                                case 8:
-
+                                case 6:
+                                    menu.drawPolygon(nPoly);
+                                    group.getChildren().remove(nPoly);
                                     break;
                                 default:
                                     //
@@ -256,6 +268,21 @@ public class MainScreenButtonHandlers {
                     }
                 }
         );
+    }
+    public ArrayList<Double> createPolyPoints(MouseEvent event){
+        //TODO: implement createNGon
+        double x0 = menuController.x0;
+        double y0 = menuController.y0;
+        double x1 = event.getX();
+        double y1 = event.getY();
+        int sides = menuController.numSides;
+        double rad = Math.max(Math.abs(x0- event.getX()),Math.abs(y0-event.getY()));
+        ArrayList<Double> pointArr=new ArrayList<Double>(2*sides);
+        for(int i=0;i<sides;i++){
+            pointArr.add(rad*Math.cos(2*i*Math.PI/sides)+x0);
+            pointArr.add(rad*Math.sin(2*i*Math.PI/sides)+y0);
+        }
+        return pointArr;
     }
     public void saveImage(){
         try{
