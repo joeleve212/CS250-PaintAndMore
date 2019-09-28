@@ -154,8 +154,6 @@ public class MainScreenButtonHandlers {
                                 dragLine.setEndY(menu.y0);
                                 dragLine.setStrokeWidth(menu.lineWidth);
                                 dragLine.setStroke(menu.getLineColor());
-//                                dragLine.setScaleX(menu.placedImgView.getScaleX());
-//                                dragLine.setScaleY(menu.placedImgView.getScaleY());
                                 group.getChildren().add(dragLine);
                             } else if(Math.abs(menu.drawMode) == 2) {
                                 //rectangle
@@ -183,10 +181,6 @@ public class MainScreenButtonHandlers {
                                 group.getChildren().add(nPoly);
                             } else if (menu.drawMode==7) {
                                 if(recPoints<SELF_POLY_SIDES){
-                                    if(recPoints==0){
-//                                        startX = event.getX();
-//                                        startY = event.getY();
-                                    }
                                     polyPointsX.add(event.getX());
                                     polyPointsY.add(event.getY());
                                     recPoints++;
@@ -208,6 +202,8 @@ public class MainScreenButtonHandlers {
                     menu.gc.lineTo(event.getX(), event.getY());
                     menu.gc.stroke();
                 } else if(event.isPrimaryButtonDown()){
+                    double deltX=Math.abs(event.getX()-menu.x0);
+                    double deltY=Math.abs(event.getY()-menu.y0);
                     switch (menu.drawMode){
                         case 1:
                             dragLine.setEndX(event.getX());
@@ -218,18 +214,24 @@ public class MainScreenButtonHandlers {
                         case 2:
                             dragRect.setWidth(Math.abs(event.getX()-menu.x0));
                             dragRect.setHeight(Math.abs(event.getY()-menu.y0));
+                            menu.setCanvVersion(currSnap);
+                            menu.gc.strokeRect(menu.x0,menu.y0,deltX, deltY);
                             break;
                         case -2:
                             dragRect.setWidth(Math.abs(event.getX()-menu.x0));
                             dragRect.setHeight(Math.abs(event.getY()-menu.y0));
                             break;
                         case 4:
-                            dragEllip.setRadiusX(Math.abs(event.getX()-menu.x0));
-                            dragEllip.setRadiusY(Math.abs(event.getY()-menu.y0));
+                            dragEllip.setRadiusX(deltX);
+                            dragEllip.setRadiusY(deltY);
+                            menu.setCanvVersion(currSnap);
+                            menu.gc.strokeOval(menu.x0-deltX,menu.y0-deltY,2*deltX, 2*deltY);
                             break;
                         case 5:
-                            dragEllip.setRadiusX(Math.abs(event.getX()-menu.x0));
-                            dragEllip.setRadiusY(Math.abs(event.getX()-menu.x0));
+                            dragEllip.setRadiusX(deltX);
+                            dragEllip.setRadiusY(deltX);
+                            menu.setCanvVersion(currSnap);
+                            menu.gc.strokeOval(menu.x0-deltX,menu.y0-deltX,2*deltX, 2*deltX);
                             break;
                         case 6:
                             ArrayList<Double> corners= createPolyPoints(event);

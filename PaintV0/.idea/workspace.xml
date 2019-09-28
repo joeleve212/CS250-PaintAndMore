@@ -24,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="193" column="78" selection-start-line="193" selection-start-column="78" selection-end-line="193" selection-end-column="78" />
+            <state relative-caret-position="462">
+              <caret line="233" column="33" selection-start-line="233" selection-start-column="33" selection-end-line="233" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1687#1695#0" expanded="true" />
@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
+            <state relative-caret-position="198">
+              <caret line="224" column="66" selection-start-line="224" selection-start-column="16" selection-end-line="224" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7175#7495#0" />
@@ -68,9 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>inputstring</find>
-      <find>toolBar.getItems()</find>
-      <find>getacc</find>
       <find>textInput</find>
       <find>mouse</find>
       <find>drawshape</find>
@@ -98,6 +95,9 @@
       <find>polylist</find>
       <find>drawpoly</find>
       <find>7</find>
+      <find>update</find>
+      <find>strokerect</find>
+      <find>gc.strokeOval(x0-deltX,y0-deltY,2*deltX, 2*deltY);</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -112,8 +112,8 @@
         <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
         <option value="$PROJECT_DIR$/src/paintrebuild/InfoPopup.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
       </list>
     </option>
   </component>
@@ -276,7 +276,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32763532" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32135075" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.32135075" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -284,7 +284,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.3295302" />
       <window_info anchor="right" id="REPL" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27124184" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27124184" />
       <window_info anchor="right" id="Leiningen" order="3" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.208061" />
       <window_info id="Capture Tool" order="2" />
@@ -641,10 +641,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="224" column="66" selection-start-line="224" selection-start-column="16" selection-end-line="224" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7175#7495#0" />
+            <element signature="method#setCanvVersion#0;class#TopMenus#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="193" column="78" selection-start-line="193" selection-start-column="78" selection-end-line="193" selection-end-column="78" />
+        <state relative-caret-position="462">
+          <caret line="233" column="33" selection-start-line="233" selection-start-column="33" selection-end-line="233" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1687#1695#0" expanded="true" />
@@ -654,18 +666,6 @@
             <element signature="e#13715#13723#0" expanded="true" />
             <element signature="method#saveImage#0;class#MainScreenButtonHandlers#0" />
             <element signature="method#drawBlankRect#0;class#MainScreenButtonHandlers#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="276" column="22" selection-start-line="276" selection-start-column="22" selection-end-line="276" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7175#7495#0" />
-            <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
       </provider>
