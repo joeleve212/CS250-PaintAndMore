@@ -168,16 +168,15 @@ public class TopMenus {
     public Paint getFillColor(){return gc.getFill(); }
     public void setToolBar(ToolBar tools){toolBar=tools;}
     public void setInputString(String newString){inputText=newString;}
-    public void drawPolygon(Polygon poly){
+    public void drawPolygon(Polygon poly, double radius){
         //TODO:
         xCoord = new double[poly.getPoints().size()/2];
         yCoord = new double[poly.getPoints().size()/2];
-        for(int i=0;i< poly.getPoints().size()/2;i++){
-            xCoord[i]=poly.getPoints().get(i);
-            yCoord[i]=poly.getPoints().get(i);
+        int j = 0;
+        for(int i=0;i< numSides;i++){
+            xCoord[i]=radius*Math.cos(2*i*Math.PI/numSides)+x0;
+            yCoord[i]=radius*Math.sin(2*i*Math.PI/numSides)+y0;
         }
-        System.out.println(poly.getPoints());
-        System.out.println("Should match: "+poly.getPoints().size()/2+" "+numSides);
         gc.strokePolygon(xCoord,yCoord,numSides);
         if(fill){
             gc.fillPolygon(xCoord,yCoord,numSides);

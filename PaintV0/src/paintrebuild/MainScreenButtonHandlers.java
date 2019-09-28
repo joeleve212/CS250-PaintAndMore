@@ -246,7 +246,8 @@ public class MainScreenButtonHandlers {
                                     group.getChildren().remove(dragRect);
                                     break;
                                 case 6:
-                                    menu.drawPolygon(nPoly);
+                                    double rad = Math.max(Math.abs(menu.x0- event.getX()),Math.abs(menu.y0-event.getY()));
+                                    menu.drawPolygon(nPoly, rad);
                                     group.getChildren().remove(nPoly);
                                     break;
                                 default:
