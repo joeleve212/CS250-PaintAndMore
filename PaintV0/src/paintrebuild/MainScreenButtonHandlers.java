@@ -51,6 +51,7 @@ public class MainScreenButtonHandlers {
     private Rectangle dragRect = new Rectangle();
     private Ellipse dragEllip = new Ellipse();
     private Polygon nPoly = new Polygon();
+    private WritableImage currSnap;
     MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group){
         menuController=menu;
 
@@ -122,6 +123,8 @@ public class MainScreenButtonHandlers {
                     public void handle(MouseEvent event) {
                         menu.x0 = event.getX();
                         menu.y0 = event.getY();
+                        WritableImage writable = new WritableImage((int)menu.img.getWidth(),(int)menu.img.getHeight());
+                        currSnap = imgCanv.snapshot(null, writable);
                         if(imageGrabbed){
                             menu.gc.drawImage(cutImage, menu.x0, menu.y0);
                             menu.saveSnap();
@@ -190,6 +193,8 @@ public class MainScreenButtonHandlers {
                         case 1:
                             dragLine.setEndX(event.getX());
                             dragLine.setEndY(event.getY());
+                            menu.setCanvVersion(currSnap);
+                            menu.gc.strokeLine(menu.x0,menu.y0,event.getX(),event.getY());
                             break;
                         case 2:
                             dragRect.setWidth(Math.abs(event.getX()-menu.x0));
@@ -229,9 +234,12 @@ public class MainScreenButtonHandlers {
                             menu.y1 = event.getY();
                             menu.drawShape();
                             primaryJustClicked = false;
+                            WritableImage writable = new WritableImage((int)menu.imgCanv.getWidth(),(int)menu.imgCanv.getHeight());
+                            currSnap = imgCanv.snapshot(null,writable);
                             switch (menu.drawMode) {
                                 case 1:
                                     group.getChildren().remove(dragLine);
+                                    menu.setCanvVersion(currSnap);
                                     break;
                                 case 2:
                                     group.getChildren().remove(dragRect);

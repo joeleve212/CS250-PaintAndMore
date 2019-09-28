@@ -24,16 +24,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="249" column="60" selection-start-line="249" selection-start-column="60" selection-end-line="249" selection-end-column="60" />
+            <state relative-caret-position="153">
+              <caret line="237" column="69" selection-start-line="237" selection-start-column="69" selection-end-line="237" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1656#3102#0" />
                 <element signature="e#3139#5027#0" />
-                <element signature="method#handle#0;class#5092:8307" />
                 <element signature="e#13715#13723#0" expanded="true" />
                 <element signature="method#saveImage#0;class#MainScreenButtonHandlers#0" />
                 <element signature="method#drawBlankRect#0;class#MainScreenButtonHandlers#0" />
@@ -42,13 +41,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="179" column="8" selection-start-line="179" selection-start-column="8" selection-end-line="179" selection-end-column="8" />
+            <state relative-caret-position="547">
+              <caret line="246" lean-forward="true" selection-start-line="246" selection-end-line="246" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#6745#7343#0" />
+                <element signature="e#7172#8915#0" />
                 <element signature="method#setCanvVersion#0;class#TopMenus#0" />
               </folding>
             </state>
@@ -66,7 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lineWidth</find>
       <find>release_notes</find>
       <find>kevin</find>
       <find>cutter</find>
@@ -96,6 +96,7 @@
       <find>num</find>
       <find>xcoo</find>
       <find>rad</find>
+      <find>snapshot</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -110,8 +111,8 @@
         <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
         <option value="$PROJECT_DIR$/src/paintrebuild/InfoPopup.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
       </list>
     </option>
   </component>
@@ -121,10 +122,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="842" />
-    <option name="width" value="1087" />
-    <option name="height" value="1038" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="598" />
+    <option name="y" value="-13" />
+    <option name="width" value="1620" />
+    <option name="height" value="920" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -268,12 +270,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="674" y="0" width="869" height="830" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32763532" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32276657" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32193732" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -281,12 +283,12 @@
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.3295302" />
       <window_info anchor="right" id="REPL" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2723343" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27207977" />
       <window_info anchor="right" id="Leiningen" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2735043" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2723343" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.02472188" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.02472188" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -303,33 +305,33 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Designer" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26068377" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12550336" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2723343" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.02472188" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32763532" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="REPL" order="6" side_tool="true" />
       <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="2" />
+      <window_info id="Capture Tool" order="4" />
       <window_info anchor="right" id="Leiningen" order="7" />
       <window_info id="UI Designer" order="5" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Learn" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2834758" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2723343" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32478634" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32276657" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.3295302" />
       <window_info id="Favorites" order="7" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -368,7 +370,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1656#3102#0" />
             <element signature="e#3139#5027#0" />
-            <element signature="method#handle#0;class#5092:8307" />
             <element signature="e#13715#13723#0" expanded="true" />
             <element signature="method#saveImage#0;class#MainScreenButtonHandlers#0" />
             <element signature="method#drawBlankRect#0;class#MainScreenButtonHandlers#0" />
@@ -382,6 +383,8 @@
           <caret line="174" column="18" selection-start-line="174" selection-start-column="18" selection-end-line="174" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -410,6 +413,8 @@
           <caret line="282" column="23" selection-start-line="282" selection-start-column="16" selection-end-line="282" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -436,6 +441,8 @@
           <caret line="136" column="23" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -455,6 +462,8 @@
           <caret line="108" column="75" selection-start-line="108" selection-start-column="75" selection-end-line="108" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -488,6 +497,8 @@
           <caret line="149" column="39" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -506,6 +517,8 @@
           <caret line="210" column="13" selection-start-line="210" selection-start-column="13" selection-end-line="210" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -526,6 +539,8 @@
           <caret line="210" column="13" lean-forward="true" selection-start-line="210" selection-start-column="13" selection-end-line="210" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -544,6 +559,8 @@
           <caret line="66" column="109" selection-start-line="66" selection-start-column="109" selection-end-line="66" selection-end-column="109" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -563,6 +580,8 @@
           <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
             <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
@@ -628,29 +647,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="249" column="60" selection-start-line="249" selection-start-column="60" selection-end-line="249" selection-end-column="60" />
+        <state relative-caret-position="547">
+          <caret line="246" lean-forward="true" selection-start-line="246" selection-end-line="246" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1656#3102#0" />
-            <element signature="e#3139#5027#0" />
-            <element signature="method#handle#0;class#5092:8307" />
-            <element signature="e#13715#13723#0" expanded="true" />
-            <element signature="method#saveImage#0;class#MainScreenButtonHandlers#0" />
-            <element signature="method#drawBlankRect#0;class#MainScreenButtonHandlers#0" />
+            <element signature="e#6745#7343#0" />
+            <element signature="e#7172#8915#0" />
+            <element signature="method#setCanvVersion#0;class#TopMenus#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="179" column="8" selection-start-line="179" selection-start-column="8" selection-end-line="179" selection-end-column="8" />
+        <state relative-caret-position="153">
+          <caret line="237" column="69" selection-start-line="237" selection-start-column="69" selection-end-line="237" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setCanvVersion#0;class#TopMenus#0" />
+            <element signature="e#1656#3102#0" />
+            <element signature="e#3139#5027#0" />
+            <element signature="e#13715#13723#0" expanded="true" />
+            <element signature="method#saveImage#0;class#MainScreenButtonHandlers#0" />
+            <element signature="method#drawBlankRect#0;class#MainScreenButtonHandlers#0" />
           </folding>
         </state>
       </provider>
