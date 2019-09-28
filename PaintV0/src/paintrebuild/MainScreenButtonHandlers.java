@@ -177,6 +177,10 @@ public class MainScreenButtonHandlers {
                                 nPoly.setFill(null);
                                 nPoly.setStrokeWidth(menu.lineWidth);
                                 group.getChildren().add(nPoly);
+                            } else if (menu.drawMode==7) {
+                                polyListX.add(event.getX());
+                                polyListY.add(event.getY());
+                                polyPoints++;
                             }
                         }
                     }

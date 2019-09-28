@@ -3,6 +3,7 @@ package paintv0;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -13,6 +14,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -40,18 +42,17 @@ public class TopMenus {
     public ToolBar toolBar;
     public double[] xCoord, yCoord; //for use with polygon drawing
     public String releaseNotesPath = "src/../ExtraDocs/ReleaseNotes.txt";
+    public Text modeLabel = new Text("No Tool Selected");
     private Stack prevVersions;
     private String inputText = "Kevin";
     //private paintv0.BottomToolSet bottomTools;
-    private TextField textInput;
     private MenuBar pinnedMenu;
     TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
         //this.bottomTools = new paintv0.BottomToolSet();
         this.toolBar = toolBar;
+        toolBar.getItems().add(modeLabel);
         placedImgView = new ImageView();
-//TODO: Clean/fixtextInput = toolBar.getItems().get(textIndex);
         prevVersions = versions;
-        textInput = new TextField("Kevin");//TODO: Needs to be improved: (TextField)toolBar.getItems().get(3);
 
         Menu fileMenu = new Menu("File");    //Populate the first menu pull-down - File
         imageSave = new MenuItem("Save Image");
@@ -169,7 +170,6 @@ public class TopMenus {
     public void setToolBar(ToolBar tools){toolBar=tools;}
     public void setInputString(String newString){inputText=newString;}
     public void drawPolygon(Polygon poly, double radius){
-        //TODO:
         xCoord = new double[poly.getPoints().size()/2];
         yCoord = new double[poly.getPoints().size()/2];
         int j = 0;
@@ -213,10 +213,7 @@ public class TopMenus {
                 }
                 gc.strokeOval(x0-w, y0-w, 2*w, 2*w);
                 break;
-            case 6: //Regular Polygon
-                //TODO: implement
-                break;
-            case 7: //Choice shape - TBD
+            case 7: //Choice shape - create your own polygon
                 //TODO: decide on shape & implement
                 break;
             case 8: //Text placement
@@ -232,6 +229,37 @@ public class TopMenus {
     public void updateMenus(){ //TODO: fix this to actually update toolbar
         //toolBar = bottomTools.updateTools(drawMode);
         //Call BottomToolSet.updateTools(int drawMode)
+        switch (drawMode){ //TODO: check that I have all modes covered
+            case 1:
+                modeLabel.setText("Line");
+                break;
+            case 2:
+                modeLabel.setText("Rectangle");
+                break;
+            case 3:
+                modeLabel.setText("Free Draw");
+                break;
+            case 4:
+                modeLabel.setText("Ellipse");
+                break;
+            case 5:
+                modeLabel.setText("Circle");
+                break;
+            case 6:
+                modeLabel.setText("Polygon");
+                break;
+            case -1:
+                modeLabel.setText("Color Grab");
+                break;
+            case 8:
+                modeLabel.setText("Text");
+                break;
+            case -2:
+                modeLabel.setText("Cut/Paste");
+                break;
+            default:
+                modeLabel.setText("No Tool Selected");
+        }
 //TODO: implement this to check drawMode (and other?) to adjust the toolBar buttons
     }
     public Canvas getCanv(){return imgCanv;}

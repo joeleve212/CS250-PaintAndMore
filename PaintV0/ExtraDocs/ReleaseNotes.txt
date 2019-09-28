@@ -7,6 +7,10 @@ Features added this release:
 - Text placing tool
 - Eraser tool
 - Release Notes button pops open window w/ release notes
+- Drawing regular polygons 
+	- Choosable number of sides
+- All shapes are visible as they are being drawn
+- Added label in bottom right displying current tool
 - 
 
 Known Bugs:
@@ -14,11 +18,16 @@ Known Bugs:
 - Saving after zooming produces extra white space around right & bottom of image
 - Zooming screws up seeing shape during drag (shapes aren't scaled same as image)
 - Undo after zooming shows whitespace (extra canvas) around image
+- Number of sides does not update until changing tools
+- Free draw color stays white after deselecting eraser
+- Image gets blurry after drawing multiple shapes on it
+- Saving as .jpg give saved image red tint
 - 
 
 Upcoming Solutions/Additions:
 - Adjustable size & color of text
--
+- Toolbar updates based on tool selected
+- select and copy area 
 
 
 Leveille Paint Version 0.2 - 9/20/19
