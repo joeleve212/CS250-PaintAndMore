@@ -45,13 +45,17 @@ public class MainScreenButtonHandlers {
     public boolean imgInserted = false, primaryJustClicked = false;
     public File savedImg;
     public Canvas imgCanv;
+    public int SELF_POLY_SIDES = 5; //Sets the default number of sides for a self-draw Polygon
     private WritableImage cutImage;
+    private int recPoints = 0;
     private boolean imageGrabbed = false;
     private Line dragLine = new Line();
     private Rectangle dragRect = new Rectangle();
     private Ellipse dragEllip = new Ellipse();
     private Polygon nPoly = new Polygon();
     private WritableImage currSnap;
+    private ArrayList<Double> polyPointsX = new ArrayList<Double>();
+    private ArrayList<Double> polyPointsY = new ArrayList<Double>();
     MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group){
         menuController=menu;
 
@@ -178,9 +182,20 @@ public class MainScreenButtonHandlers {
                                 nPoly.setStrokeWidth(menu.lineWidth);
                                 group.getChildren().add(nPoly);
                             } else if (menu.drawMode==7) {
-                                polyListX.add(event.getX());
-                                polyListY.add(event.getY());
-                                polyPoints++;
+                                if(recPoints<SELF_POLY_SIDES){
+                                    if(recPoints==0){
+//                                        startX = event.getX();
+//                                        startY = event.getY();
+                                    }
+                                    polyPointsX.add(event.getX());
+                                    polyPointsY.add(event.getY());
+                                    recPoints++;
+                                }else{      //Reset polygon points
+                                    menu.drawSelfPoly(polyPointsX, polyPointsY);
+                                    recPoints=0;
+                                    polyPointsX.clear();
+                                    polyPointsY.clear();
+                                }
                             }
                         }
                     }

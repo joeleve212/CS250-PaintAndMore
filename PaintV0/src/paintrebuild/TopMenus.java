@@ -24,6 +24,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -74,8 +75,9 @@ public class TopMenus {
         MenuItem oval = new MenuItem("Ellipse");
         MenuItem circ = new MenuItem("Circle");
         MenuItem regPoly = new MenuItem("Polygon");
+        MenuItem freePoly = new MenuItem("Free Poly");
 
-        shapeMenu.getItems().addAll(line, rect, free, oval, circ, regPoly);
+        shapeMenu.getItems().addAll(line, rect, free, oval, circ, regPoly,freePoly);
         toolMenu.getItems().addAll(copier, cutter, text, eraser, grabber);
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
@@ -157,7 +159,11 @@ public class TopMenus {
 //            xCoord = new double[numSides];
 //            yCoord = new double[numSides];
             drawMode = 6;
-            updateMenus();//TODO: update this method to account for higher drawModes
+            updateMenus();
+        });
+        freePoly.setOnAction((e)->{
+            drawMode=7;
+            updateMenus();
         });
     }
     public int getDrawMode(){return drawMode;}
@@ -181,6 +187,20 @@ public class TopMenus {
         if(fill){
             gc.fillPolygon(xCoord,yCoord,numSides);
         }
+        saveSnap();
+    }
+    public void drawSelfPoly(ArrayList<Double> polyPointsX, ArrayList<Double> polyPointsY){
+        double[] polyArrayX = new double[100];
+        double[] polyArrayY = new double[100];
+        double firstX=polyPointsX.get(0),firstY=polyPointsX.get(0);
+        for (int i = 0; i < polyPointsX.size(); i++) {
+            polyArrayX[i] = polyPointsX.get(i);
+            polyArrayY[i] = polyPointsY.get(i);
+        }
+
+        gc.fillPolygon(polyArrayX,polyArrayY,polyPointsX.size());
+        gc.strokePolygon(polyArrayX,polyArrayY,polyPointsX.size());
+        saveSnap();
     }
     public boolean drawShape(){
         gc.setLineWidth(lineWidth);
@@ -213,9 +233,6 @@ public class TopMenus {
                 }
                 gc.strokeOval(x0-w, y0-w, 2*w, 2*w);
                 break;
-            case 7: //Choice shape - create your own polygon
-                //TODO: decide on shape & implement
-                break;
             case 8: //Text placement
                 gc.fillText(inputText,x0,y0, Math.abs(x1-x0));
                 break;
@@ -226,9 +243,7 @@ public class TopMenus {
         return true;
     }
     void setLineWidth(double newLineW){lineWidth=newLineW;}
-    public void updateMenus(){ //TODO: fix this to actually update toolbar
-        //toolBar = bottomTools.updateTools(drawMode);
-        //Call BottomToolSet.updateTools(int drawMode)
+    public void updateMenus(){ //TODO: actually update toolbar controls
         switch (drawMode){ //TODO: check that I have all modes covered
             case 1:
                 modeLabel.setText("Line");
@@ -257,10 +272,11 @@ public class TopMenus {
             case -2:
                 modeLabel.setText("Cut/Paste");
                 break;
+            case 7:
+                modeLabel.setText("Free Polygon");
             default:
                 modeLabel.setText("No Tool Selected");
         }
-//TODO: implement this to check drawMode (and other?) to adjust the toolBar buttons
     }
     public Canvas getCanv(){return imgCanv;}
     public void setCanvVersion(WritableImage currVersion){
