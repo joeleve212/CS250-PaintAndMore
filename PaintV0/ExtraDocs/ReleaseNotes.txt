@@ -11,7 +11,7 @@ Features added this release:
 	- Choosable number of sides
 - All shapes are visible as they are being drawn
 - Added label in bottom right displying current tool
-- 
+- Added drawing your own 5-sided polygon based on points
 
 Known Bugs:
 - Zooming out too far causes image to flip and zoom back in

@@ -274,6 +274,7 @@ public class TopMenus {
                 break;
             case 7:
                 modeLabel.setText("Free Polygon");
+                break;
             default:
                 modeLabel.setText("No Tool Selected");
         }
