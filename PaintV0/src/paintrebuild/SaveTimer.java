@@ -9,32 +9,38 @@ import java.io.File;
 import java.io.IOException;
 
 public class SaveTimer implements Runnable{
-    private int saveInterval = 300; //
+    private int saveInterval = 50; //
     private int sleepTime = 100; //Time to sleep in milliseconds
     private Canvas currCanv;
-    private String tmpFileLoc = "src/paintrebuild/";
+    private String tmpFileLoc = "src/paintrebuild/tmp.png";
     private File imageFile;
-    SaveTimer(Canvas imgCanv, File imgFile){
+    public SaveTimer(Canvas imgCanv, File imgFile){
         currCanv=imgCanv; //
-        imageFile = imgFile;
+        imageFile = new File(imgFile,tmpFileLoc);
+        File tempName = new File(tmpFileLoc);
+        imageFile.renameTo(tempName); //possibly breaking things
         //TODO: pull in canvas in order to save/update temp file
+        System.out.println("Timer created");
     }
     @Override
     public void run(){
+        System.out.println("Timer started");
         while(true) {
             for (int i = 0; saveInterval - i > 0; i++) {
                 try {
                     Thread.sleep(sleepTime);
                     updateTimer(saveInterval - i);
                 }catch(InterruptedException e){
-                    System.out.println("Timer delay interupted");
+                    System.out.println("Timer delay interrupted");
                 }
             }
             autoSave();
+            System.out.println("Timer finished");
         }
     }
     public void updateTimer(int newTimeLeft){
         //TODO: update displayed time in window
+
     }
     private void autoSave(){
         //TODO: implement saving currCanv to tmp.png

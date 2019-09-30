@@ -1,11 +1,7 @@
-/*
- * This file is meant to contain the functions - Not implemented for Sprint 1
- */
 package paintv0;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -19,9 +15,9 @@ import javafx.stage.FileChooser;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 import javafx.scene.Group;
+import paintrebuild.SaveTimer;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -85,6 +81,9 @@ public class MainScreenButtonHandlers {
                     System.out.println("Initial save failed");
                 }
             }
+            SaveTimer saveTimer = new SaveTimer(imgCanv,savedImg);
+            Thread timeThread = new Thread(saveTimer);
+            timeThread.start();
             menu.imageHasBeenSaved = true;
         });
 
