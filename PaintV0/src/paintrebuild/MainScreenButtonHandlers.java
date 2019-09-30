@@ -193,8 +193,7 @@ public class MainScreenButtonHandlers {
                             }
                         }
                     }
-                }
-        );
+                });
         imgCanv.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -245,8 +244,7 @@ public class MainScreenButtonHandlers {
                     //TODO: make grabbed image follow cursor
                 }
             }
-        }
-        );
+        });
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event) {
@@ -296,8 +294,7 @@ public class MainScreenButtonHandlers {
                             imageGrabbed = true;
                         }
                     }
-                }
-        );
+                });
     }
     public ArrayList<Double> createPolyPoints(MouseEvent event){
         //TODO: implement createNGon

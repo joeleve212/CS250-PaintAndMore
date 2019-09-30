@@ -21,7 +21,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
-import paintv0.BottomToolSet;
 
 
 import javax.imageio.ImageIO;
@@ -54,8 +53,6 @@ public class PaintV0 extends Application {
         Button undoBtn = new Button("Undo");
         Button redoBtn = new Button("Redo");
 
-        //BottomToolSet bottomTools = new BottomToolSet(menus, undoBtn, redoBtn);
-
         widthChoose = new Spinner<Integer>(1,100,5);
         widthChoose.setEditable(true);
         outlineColor = new ColorPicker(Color.BLACK); //set default outline color
@@ -68,7 +65,6 @@ public class PaintV0 extends Application {
         menus = new TopMenus(primaryStage, gr, prevVersions, windowBar);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
 
-        //ToolBar windowBar = bottomTools.getToolBar();
         VBox screenContent = new VBox(topMenu, scrollPane, windowBar); //Placing menuBar above pane that contains the rest
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);

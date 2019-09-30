@@ -46,10 +46,8 @@ public class TopMenus {
     public Text modeLabel = new Text("No Tool Selected");
     private Stack prevVersions;
     private String inputText = "Kevin";
-    //private paintv0.BottomToolSet bottomTools;
     private MenuBar pinnedMenu;
     TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
-        //this.bottomTools = new paintv0.BottomToolSet();
         this.toolBar = toolBar;
         toolBar.getItems().add(modeLabel);
         placedImgView = new ImageView();
