@@ -19,6 +19,7 @@ import javafx.scene.layout.*;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 
@@ -58,9 +59,10 @@ public class PaintV0 extends Application {
         outlineColor = new ColorPicker(Color.BLACK); //set default outline color
         fillColor = new ColorPicker(Color.BLACK);//set default fill color
         textInput = new TextField("Text Input");
+        Text timerVal = new Text("20");
 //TODO: Place necessary controls on toolbar for each edit tool
         //ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, textInput, undoBtn, redoBtn); //Creates the toolbar to hold both choosers
-        ToolBar windowBar = new ToolBar(widthChoose,outlineColor,fillColor,textInput,undoBtn,redoBtn);
+        ToolBar windowBar = new ToolBar(widthChoose,outlineColor,fillColor,textInput,undoBtn,redoBtn,timerVal);
 
         menus = new TopMenus(primaryStage, gr, prevVersions, windowBar);
         MenuBar topMenu = menus.getMenuBar();        //Create a menu bar to contain all menu pull-downs
@@ -69,7 +71,7 @@ public class PaintV0 extends Application {
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);
 
-        MainScreenButtonHandlers handlers = new MainScreenButtonHandlers(menus, primaryStage, gr);
+        MainScreenButtonHandlers handlers = new MainScreenButtonHandlers(menus, primaryStage, gr, timerVal);
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);      //and build stage before showing

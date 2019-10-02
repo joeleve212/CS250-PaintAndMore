@@ -11,6 +11,7 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
@@ -52,7 +53,7 @@ public class MainScreenButtonHandlers {
     private WritableImage currSnap;
     private ArrayList<Double> polyPointsX = new ArrayList<Double>();
     private ArrayList<Double> polyPointsY = new ArrayList<Double>();
-    MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group){
+    MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group, Text timerVal){
         menuController=menu;
 
         Image img = menu.img;
@@ -81,8 +82,9 @@ public class MainScreenButtonHandlers {
                     System.out.println("Initial save failed");
                 }
             }
-            SaveTimer saveTimer = new SaveTimer(imgCanv,savedImg);
+            SaveTimer saveTimer = new SaveTimer(imgCanv,savedImg,timerVal);
             Thread timeThread = new Thread(saveTimer);
+            timeThread.setDaemon(true);
             timeThread.start();
             menu.imageHasBeenSaved = true;
         });
