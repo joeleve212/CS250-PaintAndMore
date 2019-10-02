@@ -11,19 +11,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class SaveTimer implements Runnable{
-    private int saveInterval = 50; //
-    private int sleepTime = 100; //Time to sleep in milliseconds
+    private int saveInterval = 120; //
+    private int sleepTime = 1000; //Time to sleep in milliseconds
     private Canvas currCanv;
-    private String tmpFileLoc = "./";
+    private String tmpFileLoc = "src/paintrebuild/tmp.png";
     private File imageFile;
     private Text currTimer;
     public SaveTimer(Canvas imgCanv, File imgFile, Text timerVal){
         currCanv=imgCanv;
         currTimer=timerVal;
-        //imageFile=imgFile;
-        imageFile = new File(imgFile,tmpFileLoc);
-//        File tempName = new File(tmpFileLoc);
-//        imageFile.renameTo(tempName); //possibly breaking things
+        imageFile = new File(tmpFileLoc);
         //TODO: pull in canvas in order to save/update temp file
         System.out.println("Timer created");
     }

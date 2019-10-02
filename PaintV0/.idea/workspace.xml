@@ -24,14 +24,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SaveTimer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SaveTimer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/SaveTimer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+            <state relative-caret-position="220">
+              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReleaseNotes.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -120,6 +129,7 @@
         <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/SaveTimer.java" />
+        <option value="$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt" />
       </list>
     </option>
   </component>
@@ -148,6 +158,11 @@
             <path>
               <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
               <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
+              <item name="ExtraDocs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
@@ -290,12 +305,12 @@
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.3295302" />
       <window_info anchor="right" id="REPL" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27065527" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27065527" />
       <window_info anchor="right" id="Leiningen" order="3" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.18660969" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18657719" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18657719" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -351,7 +366,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/BottomToolSet.java" />
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -623,11 +637,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/SaveTimer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        <state relative-caret-position="220">
+          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
         </state>
       </provider>
     </entry>

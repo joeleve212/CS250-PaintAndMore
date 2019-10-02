@@ -1,3 +1,16 @@
+Leveille Paint Version 0.4 - 10/5/19
+
+Features added this release:
+- Autosave
+    - Displays time left before next autosave
+-
+
+Known Bugs:
+-
+
+Upcoming Solutions/Additions:
+-
+
 Leveille Paint Version 0.3 - 9/27/19
 
 Features added this release:
