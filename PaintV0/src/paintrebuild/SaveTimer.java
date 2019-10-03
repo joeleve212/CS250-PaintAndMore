@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class SaveTimer implements Runnable{
-    private int saveInterval = 120; //
+    private int saveInterval = 120; //How many sleepTime intervals between saving
     private int sleepTime = 1000; //Time to sleep in milliseconds
     private Canvas currCanv;
     private String tmpFileLoc = "src/paintrebuild/tmp.png";

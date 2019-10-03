@@ -47,7 +47,6 @@ public class PaintV0 extends Application {
         bordPane.setCenter(gr);
 
         ScrollPane scrollPane = new ScrollPane(bordPane);
-//TODO: Decide on these 2 lines:
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
 
@@ -59,7 +58,7 @@ public class PaintV0 extends Application {
         outlineColor = new ColorPicker(Color.BLACK); //set default outline color
         fillColor = new ColorPicker(Color.BLACK);//set default fill color
         textInput = new TextField("Text Input");
-        Text timerVal = new Text("20");
+        Text timerVal = new Text("120");
 //TODO: Place necessary controls on toolbar for each edit tool
         //ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, textInput, undoBtn, redoBtn); //Creates the toolbar to hold both choosers
         ToolBar windowBar = new ToolBar(widthChoose,outlineColor,fillColor,textInput,undoBtn,redoBtn,timerVal);
@@ -114,6 +113,12 @@ public class PaintV0 extends Application {
                 handlers.saveImage();
             } else if (press == KeyCode.Z && event.isControlDown()) {
                 undo();
+            } else if(press == KeyCode.H && event.isControlDown()) {
+                if(timerVal.isVisible()) {
+                    timerVal.setVisible(false);
+                } else{
+                    timerVal.setVisible(true);
+                }
             }
         });
 
