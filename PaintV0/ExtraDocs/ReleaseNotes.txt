@@ -3,12 +3,17 @@ Leveille Paint Version 0.4 - 10/5/19
 Features added this release:
 - Autosave
     - Displays time left before next autosave
+    - CTRL+H toggles timer visibility
+- Javadocs commenting added
 -
 
 Known Bugs:
+- Autosave makes program run slowly momentarily (fixed?)
 -
 
 Upcoming Solutions/Additions:
+- Adjustable autosave interval
+- Possible - delete tmp.png upon closing program
 -
 
 Leveille Paint Version 0.3 - 9/27/19

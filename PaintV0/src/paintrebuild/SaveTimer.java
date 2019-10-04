@@ -45,7 +45,7 @@ public class SaveTimer implements Runnable{
         currTimer.setText(Integer.toString(newTimeLeft));
     }
     private void autoSave(){
-        //TODO: implement saving currCanv to tmp.png
+        //TODO: implement saving currCanv to p.png
         Platform.runLater(()->{
             try{
                 WritableImage wImage = new WritableImage((int) currCanv.getWidth(), (int) currCanv.getHeight());

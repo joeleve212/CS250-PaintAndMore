@@ -5,16 +5,11 @@
  */
 package paintv0;
 import javafx.application.Application;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
-import javafx.geometry.Bounds;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.ZoomEvent;
 import javafx.scene.layout.*;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
@@ -23,11 +18,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 
-
-import javax.imageio.ImageIO;
-import java.io.IOException;
 import java.util.Stack;
-
+/**
+ * The PaintV0 program is meant to import, edit and
+ * save custom images.
+ *
+ * @author  Joe Leveille
+ * @version 0.4
+ * @since   2019-10-02
+ */
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
@@ -102,7 +101,13 @@ public class PaintV0 extends Application {
         redoBtn.setOnAction((event) -> {
             redo();
         });
-
+        /**
+         * The scene.setOnKeyPressed() method handles keyboard
+         * shortcuts that occur on the main window of the program.
+         * This includes CTRL+S,CTRL+H,CTRL+Z & ESC.
+         *
+         * @param KeyEvent event is the only parameter for the handler
+         */
         scene.setOnKeyPressed((event) -> {
             KeyCode press = event.getCode(); //store pressed key in variable for reuse
             imgCanv = menus.getCanv(); //grab imgCanv from TopMenus class
@@ -135,6 +140,7 @@ public class PaintV0 extends Application {
                 }
             });
         });
+
         bordPane.setOnScroll(event -> {
             if (event.isControlDown()) { //CTRL + Scroll triggers zooming
                 boolean scrollDown;

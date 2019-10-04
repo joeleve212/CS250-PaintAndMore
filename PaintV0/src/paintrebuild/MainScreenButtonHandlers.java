@@ -82,10 +82,6 @@ public class MainScreenButtonHandlers {
                     System.out.println("Initial save failed");
                 }
             }
-            SaveTimer saveTimer = new SaveTimer(imgCanv,savedImg,timerVal);
-            Thread timeThread = new Thread(saveTimer);
-            timeThread.setDaemon(true);
-            timeThread.start();
             menu.imageHasBeenSaved = true;
         });
 
@@ -121,6 +117,10 @@ public class MainScreenButtonHandlers {
                 } catch (IOException ex) {
                     System.out.println("Error!");
                 }
+                SaveTimer saveTimer = new SaveTimer(imgCanv,savedImg,timerVal);
+                Thread timeThread = new Thread(saveTimer);
+                timeThread.setDaemon(true);
+                timeThread.start();
             }
         });
         imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
