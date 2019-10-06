@@ -14,14 +14,13 @@ public class SaveTimer implements Runnable{
     private int saveInterval = 120; //How many sleepTime intervals between saving
     private int sleepTime = 1000; //Time to sleep in milliseconds
     private Canvas currCanv;
-    private String tmpFileLoc = "src/paintrebuild/tmp.png";
+    private String tmpFileLoc = "src/paintrebuild/tmp"; //TODO: allow multiple file type
     private File imageFile;
     private Text currTimer;
-    public SaveTimer(Canvas imgCanv, File imgFile, Text timerVal){
+    public SaveTimer(Canvas imgCanv, Text timerVal){
         currCanv=imgCanv;
         currTimer=timerVal;
         imageFile = new File(tmpFileLoc);
-        //TODO: pull in canvas in order to save/update temp file
         System.out.println("Timer created");
     }
     @Override
@@ -41,11 +40,9 @@ public class SaveTimer implements Runnable{
         }
     }
     public void updateTimer(int newTimeLeft){
-        //TODO: update displayed time in window
         currTimer.setText(Integer.toString(newTimeLeft));
     }
     private void autoSave(){
-        //TODO: implement saving currCanv to p.png
         Platform.runLater(()->{
             try{
                 WritableImage wImage = new WritableImage((int) currCanv.getWidth(), (int) currCanv.getHeight());

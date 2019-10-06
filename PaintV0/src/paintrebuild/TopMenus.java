@@ -169,6 +169,7 @@ public class TopMenus {
     public MenuBar getMenuBar(){return pinnedMenu;}
     public void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
     public Paint getLineColor(){return gc.getStroke();}
+    public double getLineWidth(){return gc.getLineWidth();}
     public void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
     public Paint getFillColor(){return gc.getFill(); }
     public void setToolBar(ToolBar tools){toolBar=tools;}

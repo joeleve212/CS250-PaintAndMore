@@ -12,13 +12,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="59" column="18" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="18" />
+            <state relative-caret-position="362">
+              <caret line="224" column="53" selection-start-line="224" selection-start-column="53" selection-end-line="224" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#undo#0;class#PaintV0#0" />
+                <element signature="method#redo#0;class#PaintV0#0" />
+                <element signature="method#updateTools#0;class#PaintV0#0" />
+                <element signature="e#9216#9217#0" expanded="true" />
+                <element signature="e#9244#9245#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -27,8 +32,8 @@
       <file leaf-file-name="FeatureTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/FeatureTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="26" column="21" selection-start-line="26" selection-end-line="27" />
+            <state relative-caret-position="440">
+              <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,11 +44,8 @@
       <file leaf-file-name="SaveTimer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/SaveTimer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="240">
+              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -51,17 +53,17 @@
       <file leaf-file-name="ReleaseNotes.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+            <state relative-caret-position="140">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="122" column="35" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
+            <state relative-caret-position="255">
+              <caret line="314" column="25" selection-start-line="314" selection-start-column="16" selection-end-line="314" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#createPolyPoints#0;class#MainScreenButtonHandlers#0" />
@@ -74,8 +76,8 @@
       <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3740">
-              <caret line="213" column="49" selection-start-line="213" selection-start-column="49" selection-end-line="213" selection-end-column="49" />
+            <state relative-caret-position="205">
+              <caret line="169" selection-start-line="169" selection-end-line="169" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,27 +97,13 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setinputst</find>
-      <find>setinput</find>
-      <find>imageHasBeenSaved</find>
-      <find>pressed</find>
-      <find>imagehasbeen</find>
-      <find>polylist</find>
-      <find>drawpoly</find>
-      <find>7</find>
-      <find>update</find>
-      <find>strokerect</find>
-      <find>gc.strokeOval(x0-deltX,y0-deltY,2*deltX, 2*deltY);</find>
-      <find>bottom</find>
       <find>savesnap</find>
       <find>savedimg</find>
-      <find>saveimage</find>
       <find>canv</find>
       <find>file</find>
       <find>save</find>
       <find>mains</find>
       <find>handl</find>
-      <find>handlers</find>
       <find>main</find>
       <find>toolbar</find>
       <find>savetimer</find>
@@ -124,6 +112,21 @@
       <find>text</find>
       <find>keycode</find>
       <find>timer</find>
+      <find>primary</find>
+      <find>primarystage</find>
+      <find>update</find>
+      <find>imgFile</find>
+      <find>get</find>
+      <find>handler</find>
+      <find>handlers</find>
+      <find>width</find>
+      <find>menus</find>
+      <find>saveimage</find>
+      <find>checkWidth</find>
+      <find>outlineColor</find>
+      <find>c</find>
+      <find>getline</find>
+      <find>fillcolor</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -137,13 +140,13 @@
         <option value="$PROJECT_DIR$/src/paintrebuild/BottomToolSet.java" />
         <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
         <option value="$PROJECT_DIR$/src/paintrebuild/InfoPopup.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
-        <option value="$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/SaveTimer.java" />
         <option value="$PROJECT_DIR$/test/InitialTests.java" />
-        <option value="$PROJECT_DIR$/test/FeatureTest.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/SaveTimer.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
+        <option value="$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
+        <option value="$PROJECT_DIR$/test/FeatureTest.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
       </list>
     </option>
   </component>
@@ -154,10 +157,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+    <option name="x" value="2065" />
+    <option name="y" value="-122" />
+    <option name="width" value="1549" />
+    <option name="height" value="837" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -165,28 +168,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
-              <item name="ExtraDocs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Local Unit Tests">
           <expand>
@@ -203,6 +184,34 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="paintrebuild" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PaintV0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PaintV0" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -212,6 +221,11 @@
     <property name="SearchEverywhereHistoryKey" value="javadoc&#9;PSI&#9;JAVA://jdk.javadoc.internal.tool.resources.javadoc" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -233,8 +247,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="PaintV0" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.Unnamed">
+    <configuration name="PaintV0" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="paintv0.PaintV0" />
       <module name="PaintV0" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -264,16 +278,51 @@
       <setting name="replType" value="0" />
       <module name="" />
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
+    <configuration name="FeatureTest.testStart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PaintV0" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="10" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeatureTest" />
+      <option name="METHOD_NAME" value="testStart" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="Unnamed" type="JUnit" factoryName="JUnit">
+      <module name="PaintV0" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="10" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FeatureTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <module name="PaintV0" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="10" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://%MODULE_WORKING_DIR%" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
@@ -302,9 +351,14 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.PaintV0" />
+      <item itemvalue="JUnit.Unnamed" />
+      <item itemvalue="JUnit.FeatureTest.testStart" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PaintV0" />
+        <item itemvalue="JUnit.FeatureTest.testStart" />
       </list>
     </recent_temporary>
   </component>
@@ -321,6 +375,38 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unnamed - 2019.10.04 at 17h 58m 40s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2019.10.04 at 18h 02m 38s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2019.10.05 at 17h 45m 38s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2019.10.05 at 17h 50m 05s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2019.10.05 at 17h 51m 21s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FeatureTest_testStart - 2019.10.05 at 18h 52m 23s.xml">
+      <configuration name="FeatureTest.testStart" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FeatureTest_testStart - 2019.10.05 at 19h 01m 04s.xml">
+      <configuration name="FeatureTest.testStart" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2019.10.05 at 19h 27m 45s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2019.10.05 at 19h 28m 29s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Unnamed - 2019.10.05 at 19h 31m 02s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -331,37 +417,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="1912" y="-113" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32763532" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32051283" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.18233618" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.24074075" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067115" side_tool="true" type="SLIDING" weight="0.18660969" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.3295302" />
       <window_info anchor="right" id="REPL" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27065527" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24836601" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Leiningen" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.18660969" />
-      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.07834758" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19194631" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09914712" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
     </layout>
     <layout-to-restore>
@@ -371,12 +457,12 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.02472188" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.027516779" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32763532" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2723343" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.18233618" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27065527" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Leiningen" order="7" />
@@ -384,14 +470,14 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info id="Learn" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2723343" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.07834758" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50067115" side_tool="true" type="SLIDING" weight="0.18660969" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Capture Tool" order="4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32276657" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32051283" />
       <window_info anchor="right" id="Maven Projects" order="9" weight="0.3295302" />
       <window_info id="Favorites" order="7" side_tool="true" />
     </layout-to-restore>
@@ -401,7 +487,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="20" />
+      <option name="time" value="21" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -411,6 +497,11 @@
           <caret line="127" column="8" lean-forward="true" selection-start-line="127" selection-start-column="8" selection-end-line="161" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#undo#0;class#PaintV0#0" />
+            <element signature="method#redo#0;class#PaintV0#0" />
+            <element signature="method#updateTools#0;class#PaintV0#0" />
+            <element signature="e#9216#9217#0" expanded="true" />
+            <element signature="e#9244#9245#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -626,64 +717,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/SaveTimer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/InitialTests.java" />
     <entry file="file://$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3740">
-          <caret line="213" column="49" selection-start-line="213" selection-start-column="49" selection-end-line="213" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/InitialTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="59" column="18" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/FeatureTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="26" column="21" selection-start-line="26" selection-end-line="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="140">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="122" column="35" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
+        <state relative-caret-position="255">
+          <caret line="314" column="25" selection-start-line="314" selection-start-column="16" selection-end-line="314" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#createPolyPoints#0;class#MainScreenButtonHandlers#0" />
@@ -692,5 +737,123 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/SaveTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/FeatureTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="224" column="53" selection-start-line="224" selection-start-column="53" selection-end-line="224" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#undo#0;class#PaintV0#0" />
+            <element signature="method#redo#0;class#PaintV0#0" />
+            <element signature="method#updateTools#0;class#PaintV0#0" />
+            <element signature="e#9216#9217#0" expanded="true" />
+            <element signature="e#9244#9245#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>PaintV0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>junit:junit:4.12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

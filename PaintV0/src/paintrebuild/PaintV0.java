@@ -17,8 +17,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
+import org.junit.Test;
 
 import java.util.Stack;
+
+import static junit.framework.TestCase.assertEquals;
+
 /**
  * The PaintV0 program is meant to import, edit and
  * save custom images.
@@ -35,7 +39,7 @@ public class PaintV0 extends Application {
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     private Stack<WritableImage> prevVersions = new Stack<>();
     private Stack<WritableImage> undidVersions = new Stack<>();
-    private ColorPicker outlineColor, fillColor;
+    public ColorPicker outlineColor, fillColor;
     private TextField textInput;
     private Spinner<Integer> widthChoose;
     @Override
@@ -76,19 +80,21 @@ public class PaintV0 extends Application {
         primaryStage.sizeToScene();
         primaryStage.show();
 
-        outlineColor.setOnAction(new EventHandler() { //trigger color picker when button is clicked
-            public void handle(Event t) {
-                Color c = outlineColor.getValue();
-                menus.setShapeLineColor(c);
-            }
+        outlineColor.setOnAction(event ->  { //trigger color picker when button is clicked
+//            public void handle(Event t) {
+            Color c = outlineColor.getValue();
+            menus.setShapeLineColor(c);
+            checkLineColor(c);
         });
         fillColor.setOnAction(event -> {
             Color fillC = fillColor.getValue();
             menus.setShapeFillColor(fillC);
+            checkFillColor(fillC);
         });
         widthChoose.setOnMouseClicked((event) -> { //Grabbing new width setting and updating Line width
-            int lineWidth = widthChoose.getValue();
-            menus.setLineWidth((double) lineWidth);
+            double lineWidth = widthChoose.getValue();
+            menus.setLineWidth(lineWidth);
+            //checkWidth(lineWidth);
         });
         textInput.setOnAction(e->{
             String currString = textInput.getText();
@@ -133,7 +139,7 @@ public class PaintV0 extends Application {
             }
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{
-                if(!imageHasBeenSaved){ //If this is the first time image is
+                if(!imageHasBeenSaved){ //If this is the first time image is being saved
                     //TODO: call saveAs function
                 }else {
                     handlers.saveImage(); //save on saveBtn press
@@ -190,8 +196,6 @@ public class PaintV0 extends Application {
         }
     }
     public void updateTools(int mode){
-//        int mode = menus.getDrawMode();
-//        ToolBar newToolBar = new ToolBar();
         if(mode==1||mode==3) {
             //Line & free draw
             //line width, line color
@@ -217,5 +221,15 @@ public class PaintV0 extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+    @Test //TODO: separate tests into different file?
+    public void checkLineColor(Color newColor){
+        assertEquals(newColor,menus.getLineColor());
+        System.out.println("Line Color Test Passed");
+    }
+    @Test
+    public void checkFillColor(Color newColor){
+        assertEquals(newColor,menus.getFillColor());
+        System.out.println("Fill Color Test Passed");
     }
 }

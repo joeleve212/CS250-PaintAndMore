@@ -117,10 +117,10 @@ public class MainScreenButtonHandlers {
                 } catch (IOException ex) {
                     System.out.println("Error!");
                 }
-                SaveTimer saveTimer = new SaveTimer(imgCanv,savedImg,timerVal);
-                Thread timeThread = new Thread(saveTimer);
-                timeThread.setDaemon(true);
-                timeThread.start();
+                SaveTimer saveTimer = new SaveTimer(imgCanv,timerVal);
+                Thread timeThread = new Thread(saveTimer); //Create separate thread using SaveTimer
+                timeThread.setDaemon(true); //Autosave thread ends with the rest of the program
+                timeThread.start(); //Starts run() function in SaveTimer
             }
         });
         imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
