@@ -221,6 +221,10 @@ public class MainScreenButtonHandlers {
                             dragRect.setWidth(Math.abs(event.getX()-menu.x0));
                             dragRect.setHeight(Math.abs(event.getY()-menu.y0));
                             break;
+                        case -3:
+                            dragRect.setWidth(Math.abs(event.getX()-menu.x0));
+                            dragRect.setHeight(Math.abs(event.getY()-menu.y0));
+                            break;
                         case 4:
                             dragEllip.setRadiusX(deltX);
                             dragEllip.setRadiusY(deltY);
@@ -249,7 +253,7 @@ public class MainScreenButtonHandlers {
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event) {
-                        if(!event.isPrimaryButtonDown()&&primaryJustClicked&&menu.drawMode!=3) {
+                        if(primaryJustClicked&&menu.drawMode!=3&&menu.drawMode!=0) {
                             menu.x1 = event.getX();
                             menu.y1 = event.getY();
                             menu.drawShape();
@@ -273,6 +277,9 @@ public class MainScreenButtonHandlers {
                                 case -2:
                                     group.getChildren().remove(dragRect);
                                     break;
+                                case -3:
+                                    group.getChildren().remove(dragRect);
+                                    break;
                                 case 6:
                                     double rad = Math.max(Math.abs(menu.x0- event.getX()),Math.abs(menu.y0-event.getY()));
                                     menu.drawPolygon(nPoly, rad);
@@ -286,12 +293,15 @@ public class MainScreenButtonHandlers {
                             menu.saveSnap();
                         }
                         if(menu.drawMode==-2){//If tool is in cut mode
-
-                            //cutImageRead.getPixels(x0,y0,Math.abs(x0-x1),Math.abs(y0-y1),);
                             WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());
                             imgCanv.snapshot(null, wImage);
                             cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
                             drawBlankRect();
+                            imageGrabbed = true;
+                        } else if(menu.drawMode==-3){
+                            WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());
+                            imgCanv.snapshot(null, wImage);
+                            cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
                             imageGrabbed = true;
                         }
                     }

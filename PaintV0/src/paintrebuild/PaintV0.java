@@ -21,6 +21,7 @@ import org.junit.Test;
 
 import java.util.Stack;
 
+import static junit.framework.Assert.assertNotSame;
 import static junit.framework.TestCase.assertEquals;
 
 /**
@@ -81,7 +82,6 @@ public class PaintV0 extends Application {
         primaryStage.show();
 
         outlineColor.setOnAction(event ->  { //trigger color picker when button is clicked
-//            public void handle(Event t) {
             Color c = outlineColor.getValue();
             menus.setShapeLineColor(c);
             checkLineColor(c);
@@ -94,7 +94,6 @@ public class PaintV0 extends Application {
         widthChoose.setOnMouseClicked((event) -> { //Grabbing new width setting and updating Line width
             double lineWidth = widthChoose.getValue();
             menus.setLineWidth(lineWidth);
-            //checkWidth(lineWidth);
         });
         textInput.setOnAction(e->{
             String currString = textInput.getText();
@@ -177,16 +176,17 @@ public class PaintV0 extends Application {
         });
     }
     public Canvas getCanv(){return imgCanv;}
-    public void undo(){ //TODO: export to handlers file?
+    public void undo(){
         if (prevVersions.size()>1){
             WritableImage removed = prevVersions.peek();
             prevVersions.pop();
             undidVersions.push(removed);
             menus.setCanvVersion(prevVersions.peek());
             imageHasBeenSaved=false;
+            checkUndoVersion(removed);
         }
     }
-    public void redo(){ //TODO: export to handlers file?
+    public void redo(){
         if(undidVersions.size()>0){
             WritableImage redid = undidVersions.peek();
             undidVersions.pop();
@@ -231,5 +231,10 @@ public class PaintV0 extends Application {
     public void checkFillColor(Color newColor){
         assertEquals(newColor,menus.getFillColor());
         System.out.println("Fill Color Test Passed");
+    }
+    @Test
+    public void checkUndoVersion(WritableImage removedImg){
+        assertNotSame(removedImg, prevVersions.peek());
+        System.out.println("Undo Test Passed");
     }
 }

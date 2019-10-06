@@ -87,7 +87,12 @@ public class TopMenus {
         pinnedMenu = new MenuBar(fileMenu,toolMenu,shapeMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
 
         cutter.setOnAction((e)->{
-            drawMode = -2; //negative num for non-drawing tool
+            drawMode = -2; //non-drawing tool ID
+            updateMenus();
+        });
+
+        copier.setOnAction((e)->{
+            drawMode = -3; //non-drawing tool ID
             updateMenus();
         });
 
@@ -262,17 +267,20 @@ public class TopMenus {
             case 6:
                 modeLabel.setText("Polygon");
                 break;
-            case -1:
-                modeLabel.setText("Color Grab");
+            case 7:
+                modeLabel.setText("Free Polygon");
                 break;
             case 8:
                 modeLabel.setText("Text");
                 break;
+            case -1:
+                modeLabel.setText("Color Grab");
+                break;
             case -2:
                 modeLabel.setText("Cut/Paste");
                 break;
-            case 7:
-                modeLabel.setText("Free Polygon");
+            case -3:
+                modeLabel.setText("Copy/Paste");
                 break;
             default:
                 modeLabel.setText("No Tool Selected");
