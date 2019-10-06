@@ -1,15 +1,19 @@
-Leveille Paint Version 0.4 - 10/5/19
+Leveille Paint Version 0.4 - 10/6/19
 
 Features added this release:
 - Autosave
     - Displays time left before next autosave
     - CTRL+H toggles timer visibility
-- Javadocs commenting added
--
+- Small bit of Javadocs commenting added
+- Copy/Paste added
+- Unit tests for line color, fill color & undo function
+- Images can be saved as png, jpeg, jpg, gif or bmp without issue (Pre-existing)
+    -
 
 Known Bugs:
 - Autosave makes program run slowly momentarily (fixed?)
--
+- Grabbing color does not update color label
+- Grabbing color can only update line color
 
 Upcoming Solutions/Additions:
 - Adjustable autosave interval

@@ -68,7 +68,9 @@ public class MainScreenButtonHandlers {
                     new FileChooser.ExtensionFilter("JPG Files", "*.jpg"),
                     new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
-            savedImg = saveImageChoose.showSaveDialog(null);
+            paintv0.InfoPopup saveWarn = new paintv0.InfoPopup(primaryStage,"saveWarn"); //Give popup warning for data loss
+//            saveWarn.bringToFront();
+            savedImg = saveImageChoose.showSaveDialog(primaryStage);
             String name = savedImg.getName();
             ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
@@ -135,6 +137,7 @@ public class MainScreenButtonHandlers {
                             menu.saveSnap();
                             imageGrabbed = false;
                             menu.drawMode = 0;
+                            menu.updateMenus();
                             return;
                         }
                         if(event.isPrimaryButtonDown()) {
