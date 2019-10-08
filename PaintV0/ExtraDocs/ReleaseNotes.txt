@@ -1,3 +1,14 @@
+Leveille Paint Version 0.5 - 10/13/19
+Features added this release:
+-
+
+Known Bugs:
+-
+
+Upcoming Solutions/Additions:
+-
+
+
 Leveille Paint Version 0.4 - 10/6/19
 
 Features added this release:
@@ -8,7 +19,7 @@ Features added this release:
 - Copy/Paste added
 - Unit tests for line color, fill color & undo function
 - Images can be saved as png, jpeg, jpg, gif or bmp without issue (Pre-existing)
-    -
+    - Warning popup added for saving to different file types
 
 Known Bugs:
 - Autosave makes program run slowly momentarily (fixed?)
@@ -18,7 +29,7 @@ Known Bugs:
 Upcoming Solutions/Additions:
 - Adjustable autosave interval
 - Possible - delete tmp.png upon closing program
--
+- Show rectangle while selecting cut or copy area
 
 Leveille Paint Version 0.3 - 9/27/19
 

@@ -1,6 +1,7 @@
 package paintv0;
 
 import javafx.application.Platform;
+import javafx.beans.Observable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
@@ -18,6 +19,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import paintrebuild.ToolTimer;
 
 import javax.tools.Tool;
 import java.awt.*;
@@ -27,8 +29,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
-
-public class TopMenus {
+/**
+ * This class creates the menu at the top of the window
+ * and handles the operations controlled by those menus.
+ *
+ * @author  Joe Leveille
+ * @version 0.4
+ * @since   2019-10-02
+ */
+public class TopMenus{
     public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
     public ImageView placedImgView;
     public int drawMode = 0; //-1 = color grab, 0 for none, 1 for line, 2 for rect, 3 for circ, etc
@@ -47,6 +56,7 @@ public class TopMenus {
     private Stack prevVersions;
     private String inputText = "Kevin";
     private MenuBar pinnedMenu;
+    private ToolTimer toolTimer;
     TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
         this.toolBar = toolBar;
         toolBar.getItems().add(modeLabel);
@@ -85,28 +95,29 @@ public class TopMenus {
         helpMenu.getItems().addAll(about, release_notes, toolHelp);
 
         pinnedMenu = new MenuBar(fileMenu,toolMenu,shapeMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar
+        toolTimer = new ToolTimer();
+        Thread toolThread = new Thread(toolTimer);
+        toolTimer.beginTimer("No Tool");
+        toolThread.setDaemon(true);
+        toolThread.start();
 
         cutter.setOnAction((e)->{
             drawMode = -2; //non-drawing tool ID
             updateMenus();
         });
-
         copier.setOnAction((e)->{
             drawMode = -3; //non-drawing tool ID
             updateMenus();
         });
-
         toolHelp.setOnAction((e)->{
             InfoPopup helpInfo = new InfoPopup(primaryStage, "helpInfo");
         });
-
         release_notes.setOnAction((ev)->{
             File ReleaseNotesDoc = new File(releaseNotesPath);
             try{
                 Desktop.getDesktop().open(ReleaseNotesDoc);
             } catch (IOException e){}
         });
-
         eraser.setOnAction((e)->{
             drawMode = 3; //set drawMode - same as freeDraw except auto white
             gc.setStroke(Color.WHITE);
@@ -248,42 +259,56 @@ public class TopMenus {
     }
     void setLineWidth(double newLineW){lineWidth=newLineW;}
     public void updateMenus(){ //TODO: actually update toolbar controls
+        //TODO: update toolTimer
+//        toolTimer.switchTool(); //Update the log of how long tools have been selected
         switch (drawMode){ //TODO: check that I have all modes covered
             case 1:
                 modeLabel.setText("Line");
+                toolTimer.switchTool("Line");
                 break;
             case 2:
                 modeLabel.setText("Rectangle");
+                toolTimer.switchTool("Rectangle");
                 break;
             case 3:
                 modeLabel.setText("Free Draw");
+                toolTimer.switchTool("Free Draw");
                 break;
             case 4:
                 modeLabel.setText("Ellipse");
+                toolTimer.switchTool("Ellipse");
                 break;
             case 5:
-                modeLabel.setText("Circle");
+                modeLabel.setText("Polygon");
+                toolTimer.switchTool("Polygon");
                 break;
             case 6:
                 modeLabel.setText("Polygon");
+                toolTimer.switchTool("Polygon");
                 break;
             case 7:
                 modeLabel.setText("Free Polygon");
+                toolTimer.switchTool("Free Polygon");
                 break;
             case 8:
                 modeLabel.setText("Text");
+                toolTimer.switchTool("Text");
                 break;
             case -1:
                 modeLabel.setText("Color Grab");
+                toolTimer.switchTool("Color Grab");
                 break;
             case -2:
                 modeLabel.setText("Cut/Paste");
+                toolTimer.switchTool("Cut/Paste");
                 break;
             case -3:
                 modeLabel.setText("Copy/Paste");
+                toolTimer.switchTool("Copy/Paste");
                 break;
             default:
                 modeLabel.setText("No Tool Selected");
+                toolTimer.switchTool("No Tool Selected");
         }
     }
     public Canvas getCanv(){return imgCanv;}

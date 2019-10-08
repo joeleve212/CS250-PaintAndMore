@@ -11,99 +11,106 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#updateTools#0;class#PaintV0#0" />
-                <element signature="e#9216#9217#0" expanded="true" />
-                <element signature="e#9244#9245#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SaveTimer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/paintrebuild/SaveTimer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReleaseNotes.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="72" column="14" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#createPolyPoints#0;class#MainScreenButtonHandlers#0" />
-                <element signature="method#drawBlankRect#0;class#MainScreenButtonHandlers#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InfoPopup.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="56" column="67" lean-forward="true" selection-start-line="56" selection-start-column="67" selection-end-line="56" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="37" column="29" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.49146515">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="32" selection-start-column="32" selection-end-column="32" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="method#updateTools#0;class#PaintV0#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SaveTimer.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/paintrebuild/SaveTimer.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="480">
+                  <caret line="32" selection-start-line="32" selection-end-line="34" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ToolTimer.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/paintrebuild/ToolTimer.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="183">
+                  <caret line="24" column="64" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ReleaseNotes.txt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="620">
+                  <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="151">
+                  <caret line="133" column="22" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="22" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="method#createPolyPoints#0;class#MainScreenButtonHandlers#0" />
+                    <element signature="method#drawBlankRect#0;class#MainScreenButtonHandlers#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="40">
+                  <caret line="99" column="17" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#4066#4158#0" />
+                    <element signature="e#4189#4281#0" />
+                    <element signature="e#4314#4404#0" />
+                    <element signature="e#4442#4637#0" />
+                    <element signature="e#4668#4860#0" />
+                    <element signature="e#6035#6396#0" />
+                    <element signature="e#6428#6495#0" />
+                    <element signature="e#7117#7633#0" />
+                    <element signature="e#7638#8209#0" />
+                    <element signature="e#8214#9746#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>primarystage</find>
-      <find>update</find>
-      <find>imgFile</find>
-      <find>get</find>
-      <find>handler</find>
-      <find>handlers</find>
-      <find>width</find>
-      <find>menus</find>
-      <find>checkWidth</find>
-      <find>outlineColor</find>
-      <find>c</find>
-      <find>getline</find>
       <find>fillcolor</find>
       <find>undo</find>
       <find>getcanv</find>
@@ -121,7 +128,19 @@
       <find>invalid</find>
       <find>save</find>
       <find>imageSave</find>
+      <find>**</find>
       <find>imagesave</find>
+      <find>end</find>
+      <find>close</find>
+      <find>exit</find>
+      <find>png</find>
+      <find>updatemenus</find>
+      <find>0</find>
+      <find>drawmode = 0</find>
+      <find>drawmode</find>
+      <find>updatemenus(){</find>
+      <find>thread</find>
+      <find>toolTimer</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -135,13 +154,14 @@
         <option value="$PROJECT_DIR$/src/paintrebuild/BottomToolSet.java" />
         <option value="$PROJECT_DIR$/Extra Docs/ReleaseNotes.txt" />
         <option value="$PROJECT_DIR$/test/InitialTests.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/SaveTimer.java" />
         <option value="$PROJECT_DIR$/test/FeatureTest.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
-        <option value="$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/InfoPopup.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/SaveTimer.java" />
+        <option value="$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/ToolTimer.java" />
       </list>
     </option>
   </component>
@@ -152,17 +172,16 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2065" />
-    <option name="y" value="-122" />
-    <option name="width" value="1549" />
-    <option name="height" value="837" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1939" />
+    <option name="height" value="1049" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Local Unit Tests">
           <expand>
@@ -201,6 +220,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -366,9 +386,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unnamed - 2019.10.04 at 18h 02m 38s.xml">
-      <configuration name="Unnamed" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Unnamed - 2019.10.05 at 17h 45m 38s.xml">
       <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
@@ -396,6 +413,9 @@
     <history-entry file="Unnamed - 2019.10.05 at 19h 52m 14s.xml">
       <configuration name="Unnamed" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Unnamed - 2019.10.06 at 12h 58m 53s.xml">
+      <configuration name="Unnamed" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,8 +427,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-113" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.18233618" />
@@ -417,18 +436,18 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067115" side_tool="true" type="SLIDING" weight="0.18660969" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.3295302" />
       <window_info anchor="right" id="REPL" order="3" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24836601" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1951567" />
       <window_info anchor="right" id="Leiningen" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.3267974" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.2037037" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09914712" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10738255" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info id="Image Layers" order="2" />
@@ -442,17 +461,17 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="REPL" order="6" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27065527" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.027516779" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.18233618" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27065527" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="right" id="REPL" order="6" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Leiningen" order="7" />
@@ -481,19 +500,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2540">
-          <caret line="127" column="8" lean-forward="true" selection-start-line="127" selection-start-column="8" selection-end-line="161" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#updateTools#0;class#PaintV0#0" />
-            <element signature="e#9216#9217#0" expanded="true" />
-            <element signature="e#9244#9245#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
@@ -507,6 +513,16 @@
           <caret line="282" column="23" selection-start-line="282" selection-start-column="16" selection-end-line="282" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
           </folding>
         </state>
       </provider>
@@ -532,6 +548,16 @@
           <caret line="136" column="23" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
           </folding>
         </state>
       </provider>
@@ -550,6 +576,16 @@
           <caret line="108" column="75" selection-start-line="108" selection-start-column="75" selection-end-line="108" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
           </folding>
         </state>
       </provider>
@@ -582,6 +618,16 @@
           <caret line="149" column="39" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
           </folding>
         </state>
       </provider>
@@ -599,6 +645,16 @@
           <caret line="210" column="13" selection-start-line="210" selection-start-column="13" selection-end-line="210" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
           </folding>
         </state>
       </provider>
@@ -618,6 +674,16 @@
           <caret line="210" column="13" lean-forward="true" selection-start-line="210" selection-start-column="13" selection-end-line="210" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
           </folding>
         </state>
       </provider>
@@ -635,6 +701,16 @@
           <caret line="66" column="109" selection-start-line="66" selection-start-column="109" selection-end-line="66" selection-end-column="109" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
           </folding>
         </state>
       </provider>
@@ -653,6 +729,16 @@
           <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
           </folding>
         </state>
       </provider>
@@ -709,47 +795,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="84" column="19" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#updateTools#0;class#PaintV0#0" />
-            <element signature="e#9216#9217#0" expanded="true" />
-            <element signature="e#9244#9245#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="37" column="29" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="220">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/SaveTimer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state relative-caret-position="480">
+          <caret line="32" selection-start-line="32" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#updateTools#0;class#PaintV0#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="72" column="14" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+        <state relative-caret-position="151">
+          <caret line="133" column="22" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#createPolyPoints#0;class#MainScreenButtonHandlers#0" />
@@ -758,10 +839,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="56" column="67" lean-forward="true" selection-start-line="56" selection-start-column="67" selection-end-line="56" selection-end-column="67" />
+        <state relative-caret-position="40">
+          <caret line="99" column="17" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4066#4158#0" />
+            <element signature="e#4189#4281#0" />
+            <element signature="e#4314#4404#0" />
+            <element signature="e#4442#4637#0" />
+            <element signature="e#4668#4860#0" />
+            <element signature="e#6035#6396#0" />
+            <element signature="e#6428#6495#0" />
+            <element signature="e#7117#7633#0" />
+            <element signature="e#7638#8209#0" />
+            <element signature="e#8214#9746#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/ToolTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="24" column="64" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

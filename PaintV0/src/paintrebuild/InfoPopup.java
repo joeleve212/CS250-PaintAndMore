@@ -19,7 +19,7 @@ public class InfoPopup {
     private Text content = new Text();
     private Button cancelBtn = new Button("Cancel");
     public Button saveBtn;
-    private Stage popupStage;
+    public Stage popupStage;
     InfoPopup(Stage primaryStage, String popupType) {
         dialogHeight = 300;
         dialogWidth = 300;
@@ -72,6 +72,5 @@ public class InfoPopup {
         cancelBtn.setOnAction((e)->{
             popupStage.close();
         });
-        //TODO: CONNECT SAVE BUTTON TO ACTUALLY GO BACK & SAVE
     }
 }

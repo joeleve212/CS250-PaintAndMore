@@ -26,7 +26,8 @@ import static junit.framework.TestCase.assertEquals;
 
 /**
  * The PaintV0 program is meant to import, edit and
- * save custom images.
+ * save custom images. This is the main class that
+ * creates the program window and it's components
  *
  * @author  Joe Leveille
  * @version 0.4
@@ -64,7 +65,6 @@ public class PaintV0 extends Application {
         textInput = new TextField("Text Input");
         Text timerVal = new Text("120");
 //TODO: Place necessary controls on toolbar for each edit tool
-        //ToolBar windowBar = new ToolBar(widthChoose, outlineColor, fillColor, textInput, undoBtn, redoBtn); //Creates the toolbar to hold both choosers
         ToolBar windowBar = new ToolBar(widthChoose,outlineColor,fillColor,textInput,undoBtn,redoBtn,timerVal);
 
         menus = new TopMenus(primaryStage, gr, prevVersions, windowBar);
@@ -137,13 +137,14 @@ public class PaintV0 extends Application {
                 event.consume();
             }
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
-            smartSave.saveBtn.setOnAction(e->{
+            smartSave.saveBtn.setOnAction(e->{ //when save button on popup is pressed, do the same as CTRL + S
                 if(!imageHasBeenSaved){ //If this is the first time image is being saved
                     //TODO: call saveAs function
                 }else {
                     handlers.saveImage(); //save on saveBtn press
                 }
             });
+//TODO: produce log file of times that each drawMode was selected
         });
 
         bordPane.setOnScroll(event -> {
@@ -165,13 +166,7 @@ public class PaintV0 extends Application {
                     imgCanv.setScaleX(xCanvScale + scaleMod); //Zoom out
                     imgCanv.setScaleY(yCanvScale + scaleMod);
                 }
-                //CLEAN?: these seem to do nothing
-//                menus.placedImgView.setScaleX(imgCanv.getScaleX()); //scale the imageView same as the canvas
-//                menus.placedImgView.setScaleY(imgCanv.getScaleY());
-//                target.setScaleX(imgCanv.getScaleX()); //scale the Region same as the canvas
-//                target.setScaleY(imgCanv.getScaleY());
-//                scrollPane.setHvalue(imgCanv.getWidth()); //attempt to make the scrollPane the same size as the canvas
-//                scrollPane.setVvalue(imgCanv.getHeight());
+    //TODO: un-jank zooming
             }
         });
     }

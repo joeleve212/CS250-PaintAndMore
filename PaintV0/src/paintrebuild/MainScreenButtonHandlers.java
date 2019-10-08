@@ -19,6 +19,7 @@ import javafx.scene.Group;
 import paintrebuild.SaveTimer;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -69,20 +70,30 @@ public class MainScreenButtonHandlers {
                     new FileChooser.ExtensionFilter("BMP Files", "*.bmp"),
                     new FileChooser.ExtensionFilter("GIF Files", "*.gif"));
             paintv0.InfoPopup saveWarn = new paintv0.InfoPopup(primaryStage,"saveWarn"); //Give popup warning for data loss
-//            saveWarn.bringToFront();
             savedImg = saveImageChoose.showSaveDialog(primaryStage);
             String name = savedImg.getName();
             ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
             if(savedImg != null){
-                try {
-                    WritableImage wImage = new WritableImage((int)menu.imgCanv.getWidth(), (int)menu.img.getHeight());
-                    menu.imgCanv.snapshot(null, wImage);
-                    RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
-                    ImageIO.write(rImage, "png", savedImg);
-                } catch (IOException ex) {
-                    System.out.println("Initial save failed");
-                }
+        //TODO: to fix zoom/saving, use dims of image instead?
+                WritableImage wImage = new WritableImage((int) menu.imgCanv.getWidth(), (int) menu.img.getHeight());
+//                if(ext!="jpg"&&ext!="jpeg") {
+                    try {
+                        menu.imgCanv.snapshot(null, wImage);
+                        RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
+                        ImageIO.write(rImage, "png", savedImg); //TODO: swap "png" to ext w/o breaking saved images
+                    } catch (IOException ex) {
+                        System.out.println("Initial save failed");
+                    }
+//                } else{
+//                    try {
+//                        BufferedImage image = SwingFXUtils.fromFXImage(img, null);
+//                        BufferedImage bImage = new BufferedImage((int)menu.imgCanv.getWidth(), (int)menu.img.getHeight(), BufferedImage.OPAQUE);
+//                        ImageIO.write(bImage,ext,savedImg);
+//                    } catch (IOException ex){
+//                        System.out.println("Initial save failed!");
+//                    }
+//                }
             }
             menu.imageHasBeenSaved = true;
         });

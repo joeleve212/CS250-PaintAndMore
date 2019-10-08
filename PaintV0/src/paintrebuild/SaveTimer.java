@@ -9,12 +9,19 @@ import javafx.scene.text.Text;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-
+/**
+ * This class creates a new thread to control the
+ * autosave timer.
+ *
+ * @author  Joe Leveille
+ * @version 0.4
+ * @since   2019-10-02
+ */
 public class SaveTimer implements Runnable{
     private int saveInterval = 120; //How many sleepTime intervals between saving
     private int sleepTime = 1000; //Time to sleep in milliseconds
     private Canvas currCanv;
-    private String tmpFileLoc = "src/paintrebuild/tmp"; //TODO: allow multiple file type
+    private String tmpFileLoc = "src/paintrebuild/tmp"; //allow multiple file types
     private File imageFile;
     private Text currTimer;
     public SaveTimer(Canvas imgCanv, Text timerVal){
