@@ -1,15 +1,22 @@
 package paintrebuild;
 
 import javafx.beans.Observable;
+import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observer;
 
 public class ToolTimer implements Runnable {
     private String drawMode, newLog;
     private long startTime,endTime;
     private double totTime;
-    private ArrayList<String> logEntries = new ArrayList<>();
+    private List<String> logEntries = new ArrayList<>();
     public void beginTimer(String startTool){
         drawMode = startTool; //bring in the initial mode from TopMenus
         startTime = System.currentTimeMillis();
@@ -31,5 +38,13 @@ public class ToolTimer implements Runnable {
             System.out.println(logEntries.get(i));
         }
     }
-
+    public void end(){
+        //TODO: create log file
+        Path file = Paths.get("toolTimes.log");
+        try {
+            Files.write(file, logEntries, StandardCharsets.UTF_8);
+        }catch(IOException e){
+            System.out.println("Failed to write log file");
+        }
+    }
 }

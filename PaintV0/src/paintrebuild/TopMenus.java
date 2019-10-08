@@ -53,10 +53,10 @@ public class TopMenus{
     public double[] xCoord, yCoord; //for use with polygon drawing
     public String releaseNotesPath = "src/../ExtraDocs/ReleaseNotes.txt";
     public Text modeLabel = new Text("No Tool Selected");
+    public ToolTimer toolTimer;
     private Stack prevVersions;
     private String inputText = "Kevin";
     private MenuBar pinnedMenu;
-    private ToolTimer toolTimer;
     TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
         this.toolBar = toolBar;
         toolBar.getItems().add(modeLabel);

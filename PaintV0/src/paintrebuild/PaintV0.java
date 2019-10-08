@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import org.junit.Test;
+import paintrebuild.ToolTimer;
 
 import java.util.Stack;
 
@@ -136,6 +137,7 @@ public class PaintV0 extends Application {
             if (!imageHasBeenSaved) {
                 event.consume();
             }
+            menus.toolTimer.end();
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{ //when save button on popup is pressed, do the same as CTRL + S
                 if(!imageHasBeenSaved){ //If this is the first time image is being saved
