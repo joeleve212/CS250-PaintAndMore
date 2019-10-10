@@ -77,7 +77,6 @@ public class MainScreenButtonHandlers {
             if(savedImg != null){
         //TODO: to fix zoom/saving, use dims of image instead?
                 WritableImage wImage = new WritableImage((int) menu.imgCanv.getWidth(), (int) menu.img.getHeight());
-//                if(ext!="jpg"&&ext!="jpeg") {
                     try {
                         menu.imgCanv.snapshot(null, wImage);
                         RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
@@ -85,15 +84,6 @@ public class MainScreenButtonHandlers {
                     } catch (IOException ex) {
                         System.out.println("Initial save failed");
                     }
-//                } else{
-//                    try {
-//                        BufferedImage image = SwingFXUtils.fromFXImage(img, null);
-//                        BufferedImage bImage = new BufferedImage((int)menu.imgCanv.getWidth(), (int)menu.img.getHeight(), BufferedImage.OPAQUE);
-//                        ImageIO.write(bImage,ext,savedImg);
-//                    } catch (IOException ex){
-//                        System.out.println("Initial save failed!");
-//                    }
-//                }
             }
             menu.imageHasBeenSaved = true;
         });
@@ -110,7 +100,6 @@ public class MainScreenButtonHandlers {
             );
             File insImg = openFile.showOpenDialog(primaryStage);
             currImgPath = insImg.getPath();
-            System.out.println(currImgPath);
             if (currImgPath != "") {
                 try {
                     InputStream io = new FileInputStream(insImg);

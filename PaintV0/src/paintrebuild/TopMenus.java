@@ -16,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,9 +24,8 @@ import paintrebuild.ToolTimer;
 
 import javax.tools.Tool;
 import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
@@ -40,6 +40,7 @@ import java.util.Stack;
 public class TopMenus{
     public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
     public ImageView placedImgView;
+    public String OPENER_FILE_LOC = "../../../";
     public int drawMode = 0; //-1 = color grab, 0 for none, 1 for line, 2 for rect, 3 for circ, etc
     public boolean fill = false;
     public Image img;
@@ -75,6 +76,7 @@ public class TopMenus{
         MenuItem text = new MenuItem("Text");
         MenuItem eraser = new MenuItem("Erase");
         MenuItem grabber = new MenuItem("Grab Color");
+        MenuItem sticker = new MenuItem("Sticker");
 
         Menu shapeMenu = new Menu("Draw Shape"); //Populate Drawing tools pull-down
         MenuItem line = new MenuItem("Line");
@@ -86,7 +88,7 @@ public class TopMenus{
         MenuItem freePoly = new MenuItem("Free Poly");
 
         shapeMenu.getItems().addAll(line, rect, free, oval, circ, regPoly,freePoly);
-        toolMenu.getItems().addAll(copier, cutter, text, eraser, grabber);
+        toolMenu.getItems().addAll(copier, cutter, text, eraser, grabber, sticker);
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
@@ -140,6 +142,24 @@ public class TopMenus{
         grabber.setOnAction((e)->{
             drawMode = -1; //It's not drawing, so negative for color grab mode
             updateMenus();
+        });
+
+        sticker.setOnAction((e)->{
+            drawMode = 9;
+            updateMenus();
+            //TODO: pick image & prep to place it
+            FileChooser openStick = new FileChooser();
+            openStick.setInitialDirectory(new File(OPENER_FILE_LOC));
+            openStick.setTitle("Open Sticker Image");
+            File stickImgFile = openStick.showOpenDialog(primaryStage);
+            String stickPath = stickImgFile.getPath();
+            if (stickPath != "") {
+                try {
+                    Image stickerImg = new Image(new FileInputStream(stickImgFile));
+                } catch (IOException ex) {
+                    System.out.println("That file is invalid");
+                }
+            }
         });
 
         about.setOnAction((e) -> {
@@ -291,8 +311,12 @@ public class TopMenus{
                 toolTimer.switchTool("Free Polygon");
                 break;
             case 8:
-                modeLabel.setText("Text");
+                modeLabel.setText("Place Text");
                 toolTimer.switchTool("Text");
+                break;
+            case 9:
+                modeLabel.setText("Place Sticker");
+                toolTimer.switchTool("Sticker");
                 break;
             case -1:
                 modeLabel.setText("Color Grab");

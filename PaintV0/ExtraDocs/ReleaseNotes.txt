@@ -1,9 +1,12 @@
 Leveille Paint Version 0.5 - 10/13/19
 Features added this release:
--
+- Logging tool times in .log file
+- ???
+- Removed Herobrine
+- more extras?
 
 Known Bugs:
--
+- Nope, everything is perfect
 
 Upcoming Solutions/Additions:
 -

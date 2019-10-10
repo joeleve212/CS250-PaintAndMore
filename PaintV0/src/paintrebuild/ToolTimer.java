@@ -40,6 +40,7 @@ public class ToolTimer implements Runnable {
     }
     public void end(){
         //TODO: create log file
+        switchTool("");
         Path file = Paths.get("toolTimes.log");
         try {
             Files.write(file, logEntries, StandardCharsets.UTF_8);
