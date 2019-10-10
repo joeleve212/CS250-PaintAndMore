@@ -14,11 +14,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.4250572">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="139" column="18" selection-start-line="139" selection-start-column="18" selection-end-line="139" selection-end-column="18" />
+                <state relative-caret-position="520">
+                  <caret line="156" column="22" lean-forward="true" selection-start-line="156" selection-start-column="22" selection-end-line="156" selection-end-column="22" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#updateTools#0;class#PaintV0#0" />
@@ -36,7 +36,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ToolTimer.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ToolTimer.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/ToolTimer.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="497">
@@ -60,14 +60,14 @@
           <file leaf-file-name="MainScreenButtonHandlers.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-70">
-                  <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
+                <state relative-caret-position="-433">
+                  <caret line="146" column="88" selection-start-line="146" selection-start-column="88" selection-end-line="146" selection-end-column="88" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1779#1787#0" expanded="true" />
                     <element signature="e#1848#1856#0" expanded="true" />
                     <element signature="e#2080#4357#0" />
-                    <element signature="class#6687:10931" />
+                    <element signature="e#4394#6622#0" />
                     <element signature="class#10996:13779" />
                     <element signature="class#13845:17188" />
                     <element signature="method#createPolyPoints#0;class#MainScreenButtonHandlers#0" />
@@ -83,21 +83,16 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="207">
-                  <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
+                <state relative-caret-position="436">
+                  <caret line="163" column="49" lean-forward="true" selection-start-line="163" selection-start-column="49" selection-end-line="163" selection-end-column="49" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="toolTimes.log" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/toolTimes.log">
-              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
         </leaf>
@@ -114,13 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>saveimage</find>
-      <find>updateMenus</find>
-      <find>-2</find>
-      <find>imagegrabbed</find>
-      <find>release</find>
-      <find>version</find>
-      <find>invali</find>
       <find>click</find>
       <find>pressed</find>
       <find>invalid</find>
@@ -144,6 +132,13 @@
       <find>currImgPath</find>
       <find>updateMenus(){</find>
       <find>OPENER_FILE_LOC</find>
+      <find>view</find>
+      <find>imageview</find>
+      <find>placedImgView</find>
+      <find>img</find>
+      <find>stickerHeight</find>
+      <find>stickerView</find>
+      <find>cutImage</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -162,9 +157,9 @@
         <option value="$PROJECT_DIR$/src/paintrebuild/SaveTimer.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
         <option value="$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/ToolTimer.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/ToolTimer.java" />
       </list>
     </option>
   </component>
@@ -733,16 +728,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/ToolTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toolTimes.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
+        <state relative-caret-position="-433">
+          <caret line="146" column="88" selection-start-line="146" selection-start-column="88" selection-end-line="146" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1779#1787#0" expanded="true" />
             <element signature="e#1848#1856#0" expanded="true" />
             <element signature="e#2080#4357#0" />
-            <element signature="class#6687:10931" />
+            <element signature="e#4394#6622#0" />
             <element signature="class#10996:13779" />
             <element signature="class#13845:17188" />
             <element signature="method#createPolyPoints#0;class#MainScreenButtonHandlers#0" />
@@ -753,23 +761,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toolTimes.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="139" column="18" selection-start-line="139" selection-start-column="18" selection-end-line="139" selection-end-column="18" />
+        <state relative-caret-position="520">
+          <caret line="156" column="22" lean-forward="true" selection-start-line="156" selection-start-column="22" selection-end-line="156" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#updateTools#0;class#PaintV0#0" />
@@ -777,10 +772,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/ToolTimer.java">
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+        <state relative-caret-position="436">
+          <caret line="163" column="49" lean-forward="true" selection-start-line="163" selection-start-column="49" selection-end-line="163" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

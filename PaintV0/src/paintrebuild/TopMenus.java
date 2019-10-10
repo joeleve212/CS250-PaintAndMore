@@ -55,9 +55,12 @@ public class TopMenus{
     public String releaseNotesPath = "src/../ExtraDocs/ReleaseNotes.txt";
     public Text modeLabel = new Text("No Tool Selected");
     public ToolTimer toolTimer;
+    public ImageView stickerView;
+    public Image stickerImg;
     private Stack prevVersions;
     private String inputText = "Kevin";
     private MenuBar pinnedMenu;
+    private double stickerHeight;
     TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
         this.toolBar = toolBar;
         toolBar.getItems().add(modeLabel);
@@ -155,7 +158,10 @@ public class TopMenus{
             String stickPath = stickImgFile.getPath();
             if (stickPath != "") {
                 try {
-                    Image stickerImg = new Image(new FileInputStream(stickImgFile));
+                    stickerImg = new Image(new FileInputStream(stickImgFile), 100, 200, true, true);
+                    stickerView = new ImageView(stickerImg); //ImageView is needed in order for image to show up,
+                    stickerView.setPreserveRatio(true);      //despite the image being placed directly
+                    stickerView.setFitHeight(.4);
                 } catch (IOException ex) {
                     System.out.println("That file is invalid");
                 }

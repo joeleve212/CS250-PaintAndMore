@@ -146,7 +146,10 @@ public class MainScreenButtonHandlers {
                                 PixelReader colorSnag = menu.img.getPixelReader();
                                 Color newColor = colorSnag.getColor((int) menu.x0, (int) menu.y0);
                                 menu.setShapeLineColor(newColor);
-                            } else if(menu.drawMode == 3) {
+                            } else if(menu.drawMode == 9 && menu.stickerView!=null){
+                                System.out.println("Test worked!");
+                                menu.gc.drawImage(menu.stickerImg, menu.x0, menu.y0);
+                            }else if(menu.drawMode == 3) {
                                 menu.x1 = menu.x0;
                                 menu.y1 = menu.y0;
                                 menu.gc.beginPath();
