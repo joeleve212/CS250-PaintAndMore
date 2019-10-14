@@ -1,15 +1,16 @@
 Leveille Paint Version 0.5 - 10/13/19
 Features added this release:
 - Logging tool times in .log file
-- ???
-- Removed Herobrine
-- more extras?
+- Added sticker placing/choosing tool
+    - Separate file has explanation
+- Removed Herobrine (finally!)
 
 Known Bugs:
 - Nope, everything is perfect
 
 Upcoming Solutions/Additions:
--
+- Fixing zooming
+- Making resizing an image to specific size an option
 
 
 Leveille Paint Version 0.4 - 10/6/19

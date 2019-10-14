@@ -1,0 +1,8 @@
+The extra feature: Choosing and placing an image as a sticker
+
+This is a useful and viable tool to force upon future classes because:
+- Placing stickers is a good way to integrate multiple images together
+- This forces students to think about how images are actually handled,
+which was helpful for me, since I was foggy on that subject throughout the project
+- This feature has opportunity for improvements in subsequent iterations
+
