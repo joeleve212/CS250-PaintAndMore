@@ -106,14 +106,6 @@ public class TopMenus{
         toolThread.setDaemon(true);
         toolThread.start();
 
-        cutter.setOnAction((e)->{
-            drawMode = -2; //non-drawing tool ID
-            updateMenus();
-        });
-        copier.setOnAction((e)->{
-            drawMode = -3; //non-drawing tool ID
-            updateMenus();
-        });
         toolHelp.setOnAction((e)->{
             InfoPopup helpInfo = new InfoPopup(primaryStage, "helpInfo");
         });
@@ -123,11 +115,7 @@ public class TopMenus{
                 Desktop.getDesktop().open(ReleaseNotesDoc);
             } catch (IOException e){}
         });
-        eraser.setOnAction((e)->{
-            drawMode = 3; //set drawMode - same as freeDraw except auto white
-            gc.setStroke(Color.WHITE);
-            updateMenus(); //SHOULD show only needed items
-        });
+
         exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
             if(imageHasBeenSaved){
                 Platform.exit();
@@ -136,22 +124,11 @@ public class TopMenus{
                 InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             }
         });
-
-        text.setOnAction((e)->{
-            drawMode = 8;
-            updateMenus();
-        });
-
-        grabber.setOnAction((e)->{
-            drawMode = -1; //It's not drawing, so negative for color grab mode
-            updateMenus();
-        });
-
+//TODO: insert Javadoc for all drawMode buttons
         sticker.setOnAction((e)->{
             drawMode = 9;
             updateMenus();
-            //TODO: pick image & prep to place it
-            FileChooser openStick = new FileChooser();
+            FileChooser openStick = new FileChooser(); //Picking an image
             openStick.setInitialDirectory(new File(OPENER_FILE_LOC));
             openStick.setTitle("Open Sticker Image");
             File stickImgFile = openStick.showOpenDialog(primaryStage);
@@ -168,10 +145,31 @@ public class TopMenus{
             }
         });
 
+        text.setOnAction((e)->{
+            drawMode = 8;
+            updateMenus();
+        });
+
+        cutter.setOnAction((e)->{
+            drawMode = -2; //non-drawing tool ID
+            updateMenus();
+        });
+        copier.setOnAction((e)->{
+            drawMode = -3; //non-drawing tool ID
+            updateMenus();
+        });
+        eraser.setOnAction((e)->{
+            drawMode = 3; //set drawMode - same as freeDraw except auto white
+            gc.setStroke(Color.WHITE);
+            updateMenus(); //SHOULD show only needed items
+        });
+        grabber.setOnAction((e)->{
+            drawMode = -1; //It's not drawing, so negative for color grab mode
+            updateMenus();
+        });
         about.setOnAction((e) -> {
             InfoPopup aboutPop = new InfoPopup(primaryStage, "About");
         });
-
         line.setOnAction((e)->{
             drawMode = 1;
             updateMenus();
@@ -196,8 +194,6 @@ public class TopMenus{
             numSides = 3;// inputBox.getValue();
             try{numSides = Integer.parseInt(inputText);} //May need catch
             catch(Exception ev){System.out.println("Couldn't detect number");}
-//            xCoord = new double[numSides];
-//            yCoord = new double[numSides];
             drawMode = 6;
             updateMenus();
         });
@@ -207,15 +203,20 @@ public class TopMenus{
         });
     }
     public int getDrawMode(){return drawMode;}
-    public void setDrawMode(int x){drawMode = x;}
-    public MenuBar getMenuBar(){return pinnedMenu;}
-    public void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
     public Paint getLineColor(){return gc.getStroke();}
     public double getLineWidth(){return gc.getLineWidth();}
-    public void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
     public Paint getFillColor(){return gc.getFill(); }
+    public MenuBar getMenuBar(){return pinnedMenu;}
+    public Canvas getCanv(){return imgCanv;} //Used to connect imgCanv in PaintV0
+    public void setLineWidth(double newLineW){lineWidth=newLineW;}
+    public void setDrawMode(int x){drawMode = x;}
+    public void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
+    public void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
     public void setToolBar(ToolBar tools){toolBar=tools;}
     public void setInputString(String newString){inputText=newString;}
+    public void setCanvVersion(WritableImage currVersion){ //used by main class for undo & redo
+        gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
+    }
     public void drawPolygon(Polygon poly, double radius){
         xCoord = new double[poly.getPoints().size()/2];
         yCoord = new double[poly.getPoints().size()/2];
@@ -283,10 +284,8 @@ public class TopMenus{
         saveSnap();
         return true;
     }
-    void setLineWidth(double newLineW){lineWidth=newLineW;}
+
     public void updateMenus(){ //TODO: actually update toolbar controls
-        //TODO: update toolTimer
-//        toolTimer.switchTool(); //Update the log of how long tools have been selected
         switch (drawMode){ //TODO: check that I have all modes covered
             case 1:
                 modeLabel.setText("Line");
@@ -340,10 +339,6 @@ public class TopMenus{
                 modeLabel.setText("No Tool Selected");
                 toolTimer.switchTool("No Tool Selected");
         }
-    }
-    public Canvas getCanv(){return imgCanv;}
-    public void setCanvVersion(WritableImage currVersion){
-        gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
     }
     public void saveSnap(){
         WritableImage wImage = new WritableImage((int)img.getWidth(), (int)img.getHeight());

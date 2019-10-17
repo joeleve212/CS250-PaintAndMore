@@ -137,7 +137,7 @@ public class PaintV0 extends Application {
             if (!imageHasBeenSaved) {
                 event.consume();
             }
-            menus.toolTimer.end();
+            menus.toolTimer.end(); //Trigger toolTimer thread to make .log file
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{ //when save button on popup is pressed, do the same as CTRL + S
                 if(!imageHasBeenSaved){ //If this is the first time image is being saved
@@ -146,7 +146,6 @@ public class PaintV0 extends Application {
                     handlers.saveImage(); //save on saveBtn press
                 }
             });
-//TODO: produce log file of times that each drawMode was selected
         });
 
         bordPane.setOnScroll(event -> {
@@ -172,7 +171,6 @@ public class PaintV0 extends Application {
             }
         });
     }
-    public Canvas getCanv(){return imgCanv;}
     public void undo(){
         if (prevVersions.size()>1){
             WritableImage removed = prevVersions.peek();
@@ -219,6 +217,7 @@ public class PaintV0 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
     @Test //TODO: separate tests into different file?
     public void checkLineColor(Color newColor){
         assertEquals(newColor,menus.getLineColor());

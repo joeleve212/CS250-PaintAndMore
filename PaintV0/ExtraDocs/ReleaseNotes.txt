@@ -1,3 +1,11 @@
+Leveille Paint Version 1.0 - 11/1/19
+CLEAN UP ITERATION, NO FEATURES ADDED
+
+Fixes added:
+- Removed unused unit test file
+-
+
+
 Leveille Paint Version 0.5 - 10/13/19
 Features added this release:
 - Logging tool times in .log file

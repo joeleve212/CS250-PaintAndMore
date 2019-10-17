@@ -22,9 +22,7 @@ public class ToolTimer implements Runnable {
         startTime = System.currentTimeMillis();
     }
     @Override
-    public void run() {
-        //TODO: check tool, start timer for that
-    }
+    public void run() {/*This thread does not utilize run() */ }
     public void switchTool(String newTool){
         //TODO: add previous timer to ArrayList, reset, start new timer
         endTime = System.currentTimeMillis();
@@ -38,10 +36,9 @@ public class ToolTimer implements Runnable {
             System.out.println(logEntries.get(i));
         }
     }
-    public void end(){
-        //TODO: create log file
+    public void end(){ //Transfers logEntries data to .log file as thread ends
         switchTool("");
-        Path file = Paths.get("toolTimes.log");
+        Path file = Paths.get("toolTimes.log"); //place log file in PaintV0 directory
         try {
             Files.write(file, logEntries, StandardCharsets.UTF_8);
         }catch(IOException e){
