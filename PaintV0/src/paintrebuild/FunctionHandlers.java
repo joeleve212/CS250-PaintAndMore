@@ -34,7 +34,7 @@ import java.util.ArrayList;
  *
  * @author Joe Leveille
  */
-public class MainScreenButtonHandlers {
+public class FunctionHandlers {
     public String OPENER_FILE_LOC = "../../../";
     //TODO: Bring in eventHandlers
     //TODO: Make instance of this class in main class
@@ -54,7 +54,7 @@ public class MainScreenButtonHandlers {
     private WritableImage currSnap;
     private ArrayList<Double> polyPointsX = new ArrayList<Double>();
     private ArrayList<Double> polyPointsY = new ArrayList<Double>();
-    MainScreenButtonHandlers(TopMenus menu, Stage primaryStage, Group group, Text timerVal){
+    FunctionHandlers(TopMenus menu, Stage primaryStage, Group group, Text timerVal){
         menuController=menu;
 
         Image img = menu.img;
@@ -87,7 +87,6 @@ public class MainScreenButtonHandlers {
             }
             menu.imageHasBeenSaved = true;
         });
-
         menu.openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked
             FileChooser openFile= new FileChooser();
             openFile.setInitialDirectory(new File(OPENER_FILE_LOC));
@@ -338,7 +337,7 @@ public class MainScreenButtonHandlers {
             System.out.println("Save Failed!");
         }
     }
-    public void drawBlankRect(){
+    private void drawBlankRect(){
         double x0 = menuController.x0;
         double x1 = menuController.x1;
         double y0 = menuController.y0;

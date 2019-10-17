@@ -38,11 +38,12 @@ public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
     public boolean imageHasBeenSaved = false;
+    public ColorPicker outlineColor, fillColor;
     public TopMenus menus;
+    private String INIT_TIMER_VAL = "120";
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     private Stack<WritableImage> prevVersions = new Stack<>();
     private Stack<WritableImage> undidVersions = new Stack<>();
-    public ColorPicker outlineColor, fillColor;
     private TextField textInput;
     private Spinner<Integer> widthChoose;
     @Override
@@ -64,8 +65,7 @@ public class PaintV0 extends Application {
         outlineColor = new ColorPicker(Color.BLACK); //set default outline color
         fillColor = new ColorPicker(Color.BLACK);//set default fill color
         textInput = new TextField("Text Input");
-        Text timerVal = new Text("120");
-//TODO: Place necessary controls on toolbar for each edit tool
+        Text timerVal = new Text(INIT_TIMER_VAL);
         ToolBar windowBar = new ToolBar(widthChoose,outlineColor,fillColor,textInput,undoBtn,redoBtn,timerVal);
 
         menus = new TopMenus(primaryStage, gr, prevVersions, windowBar);
@@ -75,7 +75,8 @@ public class PaintV0 extends Application {
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);
 
-        MainScreenButtonHandlers handlers = new MainScreenButtonHandlers(menus, primaryStage, gr, timerVal);
+        //TODO: Rename the following class
+        FunctionHandlers handlers = new FunctionHandlers(menus, primaryStage, gr, timerVal);
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
         primaryStage.setScene(scene);      //and build stage before showing
@@ -101,12 +102,8 @@ public class PaintV0 extends Application {
             menus.setInputString(currString);
         });
 
-        undoBtn.setOnAction((event) -> {
-            undo();
-        });
-        redoBtn.setOnAction((event) -> {
-            redo();
-        });
+        undoBtn.setOnAction((event) -> undo());
+        redoBtn.setOnAction((event) -> redo());
         /**
          * The scene.setOnKeyPressed() method handles keyboard
          * shortcuts that occur on the main window of the program.
@@ -121,6 +118,7 @@ public class PaintV0 extends Application {
                 menus.setDrawMode(0);
                 menus.updateMenus();
             } else if (press == KeyCode.S && event.isControlDown()) { //CTRL+S updates the image in the existing file
+                //TODO: handle if image is not already saved
                 handlers.saveImage();
             } else if (press == KeyCode.Z && event.isControlDown()) {
                 undo();
@@ -188,29 +186,6 @@ public class PaintV0 extends Application {
             menus.setCanvVersion(redid);
             prevVersions.push(redid);
             imageHasBeenSaved=false;
-        }
-    }
-    public void updateTools(int mode){
-        if(mode==1||mode==3) {
-            //Line & free draw
-            //line width, line color
-            widthChoose.setVisible(true);
-            outlineColor.setVisible(true);
-            fillColor.setVisible(false);
-            textInput.setVisible(false);
-        } else if(mode==2||(mode>3&&mode<8)) {//Rectangle, circle, ellipse, polygon, star
-//              //Line width/color, fill color
-            widthChoose.setVisible(true);
-            outlineColor.setVisible(true);
-            fillColor.setVisible(true);
-            textInput.setVisible(false);
-        }else if(mode==8){
-            widthChoose.setVisible(false);
-            outlineColor.setVisible(false);
-            fillColor.setVisible(false);
-            textInput.setVisible(true);
-        } else {
-            System.out.println("Draw mode " + mode + " invalid");
         }
     }
 

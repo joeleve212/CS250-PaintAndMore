@@ -109,13 +109,14 @@ public class TopMenus{
         toolHelp.setOnAction((e)->{
             InfoPopup helpInfo = new InfoPopup(primaryStage, "helpInfo");
         });
-        release_notes.setOnAction((ev)->{
+        release_notes.setOnAction((e)->{
             File ReleaseNotesDoc = new File(releaseNotesPath);
             try{
                 Desktop.getDesktop().open(ReleaseNotesDoc);
-            } catch (IOException e){}
+            } catch (IOException ev){
+                System.out.println("Cannot find release notes file");
+            }
         });
-
         exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
             if(imageHasBeenSaved){
                 Platform.exit();
@@ -144,12 +145,10 @@ public class TopMenus{
                 }
             }
         });
-
         text.setOnAction((e)->{
             drawMode = 8;
             updateMenus();
         });
-
         cutter.setOnAction((e)->{
             drawMode = -2; //non-drawing tool ID
             updateMenus();
@@ -202,6 +201,7 @@ public class TopMenus{
             updateMenus();
         });
     }
+
     public int getDrawMode(){return drawMode;}
     public Paint getLineColor(){return gc.getStroke();}
     public double getLineWidth(){return gc.getLineWidth();}

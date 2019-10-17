@@ -17,12 +17,12 @@ public class ToolTimer implements Runnable {
     private long startTime,endTime;
     private double totTime;
     private List<String> logEntries = new ArrayList<>();
+    @Override
+    public void run() {/*This thread does not utilize run() */ }
     public void beginTimer(String startTool){
         drawMode = startTool; //bring in the initial mode from TopMenus
         startTime = System.currentTimeMillis();
     }
-    @Override
-    public void run() {/*This thread does not utilize run() */ }
     public void switchTool(String newTool){
         //TODO: add previous timer to ArrayList, reset, start new timer
         endTime = System.currentTimeMillis();
