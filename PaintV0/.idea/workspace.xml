@@ -14,16 +14,14 @@
     <splitter split-orientation="horizontal" split-proportion="0.46088913">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="PaintV0.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="456">
-                  <caret line="103" column="11" lean-forward="true" selection-start-line="103" selection-start-column="11" selection-end-line="103" selection-end-column="11" />
+                <state relative-caret-position="1922">
+                  <caret line="189" column="11" selection-start-line="189" selection-start-column="11" selection-end-line="189" selection-end-column="11" />
                   <folding>
+                    <element signature="imports" expanded="true" />
                     <element signature="docComment;class#PaintV0#0" />
-                    <element signature="method#undo#0;class#PaintV0#0" />
-                    <element signature="method#redo#0;class#PaintV0#0" />
-                    <element signature="method#checkLineColor#0;class#PaintV0#0" />
                     <element signature="method#checkFillColor#0;class#PaintV0#0" />
                     <element signature="method#checkUndoVersion#0;class#PaintV0#0" />
                   </folding>
@@ -46,16 +44,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ToolTimer.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ToolTimer.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/ToolTimer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="21" selection-start-column="21" selection-end-column="21" />
+                <state relative-caret-position="780">
+                  <caret line="53" column="55" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
                   <folding>
                     <element signature="docComment;class#ToolTimer#0" />
-                    <element signature="method#beginTimer#0;class#ToolTimer#0" />
-                    <element signature="method#switchTool#0;class#ToolTimer#0" />
-                    <element signature="method#end#0;class#ToolTimer#0" />
                   </folding>
                 </state>
               </provider>
@@ -73,8 +68,8 @@
           <file leaf-file-name="FunctionHandlers.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/FunctionHandlers.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1342">
-                  <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+                <state relative-caret-position="2449">
+                  <caret line="332" column="26" selection-start-line="332" selection-start-column="26" selection-end-line="332" selection-end-column="26" />
                   <folding>
                     <element signature="docComment;class#FunctionHandlers#0" />
                   </folding>
@@ -86,25 +81,13 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2">
-                  <caret column="16" selection-start-column="16" selection-end-column="16" />
+                <state relative-caret-position="225">
+                  <caret line="91" column="49" selection-start-line="91" selection-start-column="49" selection-end-line="91" selection-end-column="49" />
                   <folding>
                     <element signature="docComment;class#TopMenus#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="InfoPopup.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-                  <folding>
-                    <element signature="docComment;class#InfoPopup#0" />
                   </folding>
                 </state>
               </provider>
@@ -124,8 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>0</find>
-      <find>drawmode = 0</find>
       <find>drawmode</find>
       <find>updatemenus(){</find>
       <find>thread</find>
@@ -154,6 +135,8 @@
       <find>MainScreenButtonHandlers</find>
       <find>lowCenterBtn</find>
       <find>optionButtons</find>
+      <find>imageHasBeenSaved</find>
+      <find>menus</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -171,12 +154,12 @@
         <option value="$PROJECT_DIR$/ExtraDocs/FeatureProposalForNextYear.txt" />
         <option value="$PROJECT_DIR$/ExtraDocs/ReleaseNotes.txt" />
         <option value="$PROJECT_DIR$/src/paintrebuild/MainScreenButtonHandlers.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/SaveTimer.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/ToolTimer.java" />
-        <option value="$PROJECT_DIR$/src/paintrebuild/FunctionHandlers.java" />
         <option value="$PROJECT_DIR$/src/paintrebuild/InfoPopup.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/PaintV0.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/FunctionHandlers.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/TopMenus.java" />
+        <option value="$PROJECT_DIR$/src/paintrebuild/ToolTimer.java" />
       </list>
     </option>
   </component>
@@ -187,10 +170,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1098" />
+    <option name="x" value="2017" />
+    <option name="y" value="-114" />
+    <option name="width" value="1242" />
+    <option name="height" value="672" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -446,18 +429,19 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.18233618" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.1819172" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.24074075" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067115" side_tool="true" type="SLIDING" weight="0.18660969" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.3295302" />
       <window_info anchor="right" id="REPL" order="3" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15795207" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.20588236" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Leiningen" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.14672364" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.114379086" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.052771855" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -473,7 +457,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
@@ -722,10 +705,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+          <folding>
+            <element signature="docComment;class#InfoPopup#0" />
+            <element signature="method#InfoPopup#0;class#InfoPopup#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/FunctionHandlers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2449">
+          <caret line="332" column="26" selection-start-line="332" selection-start-column="26" selection-end-line="332" selection-end-column="26" />
+          <folding>
+            <element signature="docComment;class#FunctionHandlers#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        <state relative-caret-position="225">
+          <caret line="91" column="49" selection-start-line="91" selection-start-column="49" selection-end-line="91" selection-end-column="49" />
           <folding>
             <element signature="docComment;class#TopMenus#0" />
           </folding>
@@ -745,50 +749,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/ToolTimer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-          <folding>
-            <element signature="docComment;class#ToolTimer#0" />
-            <element signature="method#beginTimer#0;class#ToolTimer#0" />
-            <element signature="method#switchTool#0;class#ToolTimer#0" />
-            <element signature="method#end#0;class#ToolTimer#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/FunctionHandlers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1342">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding>
-            <element signature="docComment;class#FunctionHandlers#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/PaintV0.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="103" column="11" lean-forward="true" selection-start-line="103" selection-start-column="11" selection-end-line="103" selection-end-column="11" />
+        <state relative-caret-position="1922">
+          <caret line="189" column="11" selection-start-line="189" selection-start-column="11" selection-end-line="189" selection-end-column="11" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;class#PaintV0#0" />
-            <element signature="method#undo#0;class#PaintV0#0" />
-            <element signature="method#redo#0;class#PaintV0#0" />
-            <element signature="method#checkLineColor#0;class#PaintV0#0" />
             <element signature="method#checkFillColor#0;class#PaintV0#0" />
             <element signature="method#checkUndoVersion#0;class#PaintV0#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/paintrebuild/InfoPopup.java">
+    <entry file="file://$PROJECT_DIR$/src/paintrebuild/ToolTimer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+        <state relative-caret-position="780">
+          <caret line="53" column="55" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
           <folding>
-            <element signature="docComment;class#InfoPopup#0" />
+            <element signature="docComment;class#ToolTimer#0" />
           </folding>
         </state>
       </provider>

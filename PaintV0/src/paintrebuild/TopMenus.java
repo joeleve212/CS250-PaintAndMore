@@ -39,7 +39,7 @@ public class TopMenus{
     public Image img;
     public Canvas imgCanv = new Canvas(DEFAULT_CANV_W,DEFAULT_CANV_H);
     public MenuItem imageSave, openBtn;
-    public boolean imageHasBeenSaved = false; //TODO: eliminate separate instances of this var?
+    public boolean imageHasBeenSaved = false;
     public int IMG_POS_X=0, IMG_POS_Y=0, numSides;
     public GraphicsContext gc;
     public double x0,y0,x1,y1, lineWidth;
@@ -88,8 +88,8 @@ public class TopMenus{
 
         final Menu helpMenu = new Menu("Help"); //Creating Help pull-down for later use
         MenuItem about = new MenuItem("About");
-        MenuItem release_notes = new MenuItem("Release Notes"); //TODO: implement popup w/ release notes read from file
-        MenuItem toolHelp = new MenuItem("Help");           //TODO: implement popup w/ info on current tool selected
+        MenuItem release_notes = new MenuItem("Release Notes");
+        MenuItem toolHelp = new MenuItem("Help");
         helpMenu.getItems().addAll(about, release_notes, toolHelp);
 
         pinnedMenu = new MenuBar(fileMenu,toolMenu,shapeMenu,helpMenu); //Plopping the menu pull-downs onto the menuBar

@@ -15,6 +15,8 @@ import org.junit.Test;
 import java.util.Stack;
 
 import static junit.framework.Assert.assertNotSame;
+import static junit.framework.TestCase.assertEquals;
+
 /**
  * The PaintV0 program is meant to import, edit and
  * save custom images. This is the main class that
@@ -28,7 +30,6 @@ import static junit.framework.Assert.assertNotSame;
 public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
-    public boolean imageHasBeenSaved = false;
     public ColorPicker outlineColor, fillColor;
     public TopMenus menus;
     private String INIT_TIMER_VAL = "120";
@@ -123,13 +124,13 @@ public class PaintV0 extends Application {
         });
 
         primaryStage.setOnCloseRequest((event) -> {
-            if (!imageHasBeenSaved) {
+            if (!menus.imageHasBeenSaved) {
                 event.consume();
             }
             menus.toolTimer.end(); //Trigger toolTimer thread to make .log file
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{ //when save button on popup is pressed, do the same as CTRL + S
-                if(!imageHasBeenSaved){ //If this is the first time image is being saved
+                if(!menus.imageHasBeenSaved){ //If this is the first time image is being saved
                     //TODO: call saveAs function
                 }else {
                     handlers.saveImage(); //save on saveBtn press
@@ -166,7 +167,7 @@ public class PaintV0 extends Application {
             prevVersions.pop();
             undidVersions.push(removed);
             menus.setCanvVersion(prevVersions.peek());
-            imageHasBeenSaved=false;
+            menus.imageHasBeenSaved=false;
             checkUndoVersion(removed);
         }
     }
@@ -176,7 +177,7 @@ public class PaintV0 extends Application {
             undidVersions.pop();
             menus.setCanvVersion(redid);
             prevVersions.push(redid);
-            imageHasBeenSaved=false;
+            menus.imageHasBeenSaved=false;
         }
     }
 
