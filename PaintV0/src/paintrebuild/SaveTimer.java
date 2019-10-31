@@ -1,5 +1,4 @@
 package paintrebuild;
-
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.Canvas;
@@ -14,7 +13,7 @@ import java.io.IOException;
  * autosave timer.
  *
  * @author  Joe Leveille
- * @version 0.4
+ * @version 1.0
  * @since   2019-10-02
  */
 public class SaveTimer implements Runnable{

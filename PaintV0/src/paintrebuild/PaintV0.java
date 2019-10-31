@@ -1,11 +1,5 @@
-/* Project - OO Development with Pain(t)
- * Author - Joe Leveille
- * Sprint #02 - 9/6/19 to 9/13/19
- * Release Notes in //PaintV0/ExtraDocs/ReleaseNotes.txt
- */
 package paintv0;
 import javafx.application.Application;
-import javafx.event.Event;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -16,22 +10,19 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.event.EventHandler;
 import org.junit.Test;
-import paintrebuild.ToolTimer;
 
 import java.util.Stack;
 
 import static junit.framework.Assert.assertNotSame;
-import static junit.framework.TestCase.assertEquals;
-
 /**
  * The PaintV0 program is meant to import, edit and
  * save custom images. This is the main class that
  * creates the program window and it's components
+ * Release Notes in //PaintV0/ExtraDocs/ReleaseNotes.txt
  *
  * @author  Joe Leveille
- * @version 0.4
+ * @version 1.0
  * @since   2019-10-02
  */
 public class PaintV0 extends Application {

@@ -1,14 +1,10 @@
 package paintv0;
-
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.scene.Group;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -22,12 +18,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import paintrebuild.ToolTimer;
 
-import javax.tools.Tool;
 import java.awt.*;
 import java.io.*;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Stack;
 /**
  * This class creates the menu at the top of the window

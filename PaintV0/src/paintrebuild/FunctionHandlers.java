@@ -1,5 +1,4 @@
 package paintv0;
-
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.scene.image.*;
@@ -19,20 +18,19 @@ import javafx.scene.Group;
 import paintrebuild.SaveTimer;
 
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 import java.util.ArrayList;
-
 /**
+ * The FunctionHandlers class is meant to hold a few
+ * key functions that were getting too long in other classes.
  *
- * @author Joe Leveille
+ * @author  Joe Leveille
+ * @version 1.0
+ * @since   2019-10-02
  */
 public class FunctionHandlers {
     public String OPENER_FILE_LOC = "../../../";
