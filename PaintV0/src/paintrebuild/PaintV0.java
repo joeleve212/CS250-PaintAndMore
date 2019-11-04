@@ -10,12 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.junit.Test;
-
 import java.util.Stack;
-
-import static junit.framework.Assert.assertNotSame;
-import static junit.framework.TestCase.assertEquals;
 
 /**
  * The PaintV0 program is meant to import, edit and
@@ -78,12 +73,12 @@ public class PaintV0 extends Application {
         outlineColor.setOnAction(event ->  { //trigger color picker when button is clicked
             Color c = outlineColor.getValue();
             menus.setShapeLineColor(c);
-            checkLineColor(c);
+//            checkLineColor(c);
         });
         fillColor.setOnAction(event -> {
             Color fillC = fillColor.getValue();
             menus.setShapeFillColor(fillC);
-            checkFillColor(fillC);
+//            checkFillColor(fillC);
         });
         widthChoose.setOnMouseClicked((event) -> { //Grabbing new width setting and updating Line width
             double lineWidth = widthChoose.getValue();
@@ -168,7 +163,7 @@ public class PaintV0 extends Application {
             undidVersions.push(removed);
             menus.setCanvVersion(prevVersions.peek());
             menus.imageHasBeenSaved=false;
-            checkUndoVersion(removed);
+//            checkUndoVersion(removed);
         }
     }
     public void redo(){
@@ -180,24 +175,10 @@ public class PaintV0 extends Application {
             menus.imageHasBeenSaved=false;
         }
     }
-
+    public WritableImage getCurrVersion(){
+        return prevVersions.peek();
+    }
     public static void main(String[] args) {
         launch(args);
-    }
-
-    @Test //TODO: separate tests into different file?
-    public void checkLineColor(Color newColor){
-        assertEquals(newColor,menus.getLineColor());
-        System.out.println("Line Color Test Passed");
-    }
-    @Test
-    public void checkFillColor(Color newColor){
-        assertEquals(newColor,menus.getFillColor());
-        System.out.println("Fill Color Test Passed");
-    }
-    @Test
-    public void checkUndoVersion(WritableImage removedImg){
-        assertNotSame(removedImg, prevVersions.peek());
-        System.out.println("Undo Test Passed");
     }
 }
