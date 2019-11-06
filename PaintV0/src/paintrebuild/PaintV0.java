@@ -29,6 +29,7 @@ public class PaintV0 extends Application {
     public TextField textInput;
     public Spinner<Integer> widthChoose;
     public TopMenus menus;
+    private int spinnerMin = 1, spinnerMax = 100, spinnerInit = 3;
     private String INIT_TIMER_VAL = "120";
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     private Stack<WritableImage> prevVersions = new Stack<>();
@@ -47,7 +48,7 @@ public class PaintV0 extends Application {
         Button undoBtn = new Button("Undo");
         Button redoBtn = new Button("Redo");
 
-        widthChoose = new Spinner<Integer>(1,100,5);
+        widthChoose = new Spinner<Integer>(spinnerMin,spinnerMax,spinnerInit);
         widthChoose.setEditable(true);
         outlineColor = new ColorPicker(Color.BLACK); //set default outline color
         fillColor = new ColorPicker(Color.BLACK);//set default fill color
@@ -102,8 +103,12 @@ public class PaintV0 extends Application {
                 menus.setDrawMode(0);
                 menus.updateMenus();
             } else if (press == KeyCode.S && event.isControlDown()) { //CTRL+S updates the image in the existing file
-                //TODO: handle if image is not already saved
-                handlers.saveImage();
+                if(menus.imageHasBeenSaved){ //if it was previously saved,
+                    handlers.saveImage(); //then update save file
+                }else{
+                    menus.imageSave.fire(); //Save as
+                }
+
             } else if (press == KeyCode.Z && event.isControlDown()) {
                 undo();
             } else if(press == KeyCode.H && event.isControlDown()) {
@@ -122,10 +127,10 @@ public class PaintV0 extends Application {
             menus.toolTimer.end(); //Trigger toolTimer thread to make .log file
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             smartSave.saveBtn.setOnAction(e->{ //when save button on popup is pressed, do the same as CTRL + S
-                if(!menus.imageHasBeenSaved){ //If this is the first time image is being saved
-                    //TODO: call saveAs function
-                }else {
+                if(menus.imageHasBeenSaved){ //If this is the first time image is being saved
                     handlers.saveImage(); //save on saveBtn press
+                }else {
+                    menus.imageSave.fire(); //Save as
                 }
             });
         });
@@ -149,7 +154,7 @@ public class PaintV0 extends Application {
                     imgCanv.setScaleX(xCanvScale + scaleMod); //Zoom out
                     imgCanv.setScaleY(yCanvScale + scaleMod);
                 }
-    //TODO: un-jank zooming
+    //TODO: un-jank zooming?????????????????
             }
         });
     }

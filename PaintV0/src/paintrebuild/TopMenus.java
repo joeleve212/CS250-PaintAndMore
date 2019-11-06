@@ -56,7 +56,7 @@ public class TopMenus{
     private ObservableList<Node> origTools;
     private String inputText = "Kevin";
     private MenuBar pinnedMenu;
-    private double stickerHeight;
+    private double defaultFitHeight=.4;
     TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar origToolBar){
         this.toolBar = origToolBar;
         origTools = origToolBar.getItems();
@@ -136,7 +136,7 @@ public class TopMenus{
                     stickerImg = new Image(new FileInputStream(stickImgFile), 100, 200, true, true);
                     stickerView = new ImageView(stickerImg); //ImageView is needed in order for image to show up,
                     stickerView.setPreserveRatio(true);      //despite the image being placed directly
-                    stickerView.setFitHeight(.4); //TODO: fix magic number
+                    stickerView.setFitHeight(defaultFitHeight);
                 } catch (IOException ex) {
                     System.out.println("That file is invalid");
                 }
@@ -283,11 +283,11 @@ public class TopMenus{
         return true;
     }
 
-    public void updateMenus(){ //TODO: actually update toolbar controls
+    public void updateMenus(){
         String toolName="";
         boolean visibility[]={true,true,true,true};
         switch (drawMode){
-            case 1://TODO: access to parts of toolbar!
+            case 1:
                 visibility[0]=true;
                 visibility[1]=true;
                 visibility[2]=false;

@@ -123,83 +123,83 @@ public class FunctionHandlers {
             }
         });
         imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
-                    @Override
-                    public void handle(MouseEvent event) {
-                        menu.x0 = event.getX();
-                        menu.y0 = event.getY();
-                        WritableImage writable = new WritableImage((int)menu.img.getWidth(),(int)menu.img.getHeight());
-                        currSnap = imgCanv.snapshot(null, writable);
-                        if(imageGrabbed){
-                            menu.gc.drawImage(cutImage, menu.x0, menu.y0);
-                            menu.saveSnap();
-                            imageGrabbed = false;
-                            menu.drawMode = 0;
-                            menu.updateMenus();
-                            return;
-                        }
-                        if(event.isPrimaryButtonDown()) {
-                            primaryJustClicked = true;
-                            if (menu.drawMode == -1) {
-                                PixelReader colorSnag = menu.img.getPixelReader();
-                                Color newColor = colorSnag.getColor((int) menu.x0, (int) menu.y0);
-                                ColorPicker setColor = (ColorPicker)menu.toolBar.getItems().get(1);
-                                setColor.setValue(newColor);
-                                menu.setShapeLineColor(newColor);
-                            } else if(menu.drawMode == 9 && menu.stickerView!=null){
-                                System.out.println("Test worked!");
-                                menu.gc.drawImage(menu.stickerImg, menu.x0, menu.y0);
-                            }else if(menu.drawMode == 3) {
-                                menu.x1 = menu.x0;
-                                menu.y1 = menu.y0;
-                                menu.gc.beginPath();
-                                menu.gc.setLineWidth(menu.lineWidth);
-                            } else if(menu.drawMode == 1) {
-                                dragLine.setStartX(menu.x0);
-                                dragLine.setStartY(menu.y0);
-                                dragLine.setEndX(menu.x0);
-                                dragLine.setEndY(menu.y0);
-                                dragLine.setStrokeWidth(menu.lineWidth);
-                                dragLine.setStroke(menu.getLineColor());
-                                group.getChildren().add(dragLine);
-                            } else if(Math.abs(menu.drawMode) == 2 || menu.drawMode == -3) {
-                                //rectangle
-                                dragRect.setX(menu.x0);
-                                dragRect.setY(menu.y0);
-                                dragRect.setWidth(0);
-                                dragRect.setHeight(0);
-                                dragRect.setStrokeWidth(defaultLineWidth);
-                                dragRect.setStroke(menu.getLineColor());
-                                dragRect.setFill(null);
-                                group.getChildren().add(dragRect);
-                            } else if (menu.drawMode == 4 || menu.drawMode == 5) {
-                                dragEllip.setCenterX(menu.x0);
-                                dragEllip.setCenterY(menu.y0);
-                                dragEllip.setRadiusX(0);
-                                dragEllip.setRadiusY(0);
-                                dragEllip.setStrokeWidth(menu.lineWidth);
-                                dragEllip.setStroke(menu.getLineColor());
-                                dragEllip.setFill(null);
-                                group.getChildren().add(dragEllip);
-                            } else if(menu.drawMode==6){
-                                nPoly.setStroke(menu.getLineColor());
-                                nPoly.setFill(null);
-                                nPoly.setStrokeWidth(menu.lineWidth);
-                                group.getChildren().add(nPoly);
-                            } else if (menu.drawMode==7) {
-                                if(recPoints<SELF_POLY_SIDES){
-                                    polyPointsX.add(event.getX());
-                                    polyPointsY.add(event.getY());
-                                    recPoints++;
-                                }else{      //Reset polygon points
-                                    menu.drawSelfPoly(polyPointsX, polyPointsY);
-                                    recPoints=0;
-                                    polyPointsX.clear();
-                                    polyPointsY.clear();
-                                }
-                            }
+            @Override
+            public void handle(MouseEvent event) {
+                menu.x0 = event.getX();
+                menu.y0 = event.getY();
+                WritableImage writable = new WritableImage((int)menu.img.getWidth(),(int)menu.img.getHeight());
+                currSnap = imgCanv.snapshot(null, writable);
+                if(imageGrabbed){
+                    menu.gc.drawImage(cutImage, menu.x0, menu.y0);
+                    menu.saveSnap();
+                    imageGrabbed = false;
+                    menu.drawMode = 0;
+                    menu.updateMenus();
+                    return;
+                }
+                if(event.isPrimaryButtonDown()) {
+                    primaryJustClicked = true;
+                    if (menu.drawMode == -1) {
+                        PixelReader colorSnag = menu.img.getPixelReader();
+                        Color newColor = colorSnag.getColor((int) menu.x0, (int) menu.y0);
+                        ColorPicker setColor = (ColorPicker)menu.toolBar.getItems().get(1);
+                        setColor.setValue(newColor);
+                        menu.setShapeLineColor(newColor);
+                    } else if(menu.drawMode == 9 && menu.stickerView!=null){
+                        System.out.println("Test worked!");
+                        menu.gc.drawImage(menu.stickerImg, menu.x0, menu.y0);
+                    }else if(menu.drawMode == 3) {
+                        menu.x1 = menu.x0;
+                        menu.y1 = menu.y0;
+                        menu.gc.beginPath();
+                        menu.gc.setLineWidth(menu.lineWidth);
+                    } else if(menu.drawMode == 1) {
+                        dragLine.setStartX(menu.x0);
+                        dragLine.setStartY(menu.y0);
+                        dragLine.setEndX(menu.x0);
+                        dragLine.setEndY(menu.y0);
+                        dragLine.setStrokeWidth(menu.lineWidth);
+                        dragLine.setStroke(menu.getLineColor());
+                        group.getChildren().add(dragLine);
+                    } else if(Math.abs(menu.drawMode) == 2 || menu.drawMode == -3) {
+                        //rectangle
+                        dragRect.setX(menu.x0);
+                        dragRect.setY(menu.y0);
+                        dragRect.setWidth(0);
+                        dragRect.setHeight(0);
+                        dragRect.setStrokeWidth(defaultLineWidth);
+                        dragRect.setStroke(menu.getLineColor());
+                        dragRect.setFill(null);
+                        group.getChildren().add(dragRect);
+                    } else if (menu.drawMode == 4 || menu.drawMode == 5) {
+                        dragEllip.setCenterX(menu.x0);
+                        dragEllip.setCenterY(menu.y0);
+                        dragEllip.setRadiusX(0);
+                        dragEllip.setRadiusY(0);
+                        dragEllip.setStrokeWidth(menu.lineWidth);
+                        dragEllip.setStroke(menu.getLineColor());
+                        dragEllip.setFill(null);
+                        group.getChildren().add(dragEllip);
+                    } else if(menu.drawMode==6){
+                        nPoly.setStroke(menu.getLineColor());
+                        nPoly.setFill(null);
+                        nPoly.setStrokeWidth(menu.lineWidth);
+                        group.getChildren().add(nPoly);
+                    } else if (menu.drawMode==7) {
+                        if(recPoints<SELF_POLY_SIDES){
+                            polyPointsX.add(event.getX());
+                            polyPointsY.add(event.getY());
+                            recPoints++;
+                        }else{      //Reset polygon points
+                            menu.drawSelfPoly(polyPointsX, polyPointsY);
+                            recPoints=0;
+                            polyPointsX.clear();
+                            polyPointsY.clear();
                         }
                     }
-                });
+                }
+            }
+        });
         imgCanv.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -251,69 +251,68 @@ public class FunctionHandlers {
                     }
                 }
                 if(imageGrabbed){
-                    //TODO: make grabbed image follow cursor
+                    //TODO: make grabbed image follow cursor?
                 }
             }
         });
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
-                    @Override
-                    public void handle(MouseEvent event) {
-                        if(primaryJustClicked&&menu.drawMode!=3&&menu.drawMode!=0&&menu.drawMode!=-1) {
-                            menu.x1 = event.getX();
-                            menu.y1 = event.getY();
-                            menu.drawShape();
-                            primaryJustClicked = false;
-                            WritableImage writable = new WritableImage((int)menu.imgCanv.getWidth(),(int)menu.imgCanv.getHeight());
-                            currSnap = imgCanv.snapshot(null,writable);
-                            switch (menu.drawMode) {
-                                case 1:
-                                    group.getChildren().remove(dragLine);
-                                    menu.setCanvVersion(currSnap);
-                                    break;
-                                case 2:
-                                    group.getChildren().remove(dragRect);
-                                    break;
-                                case 4:
-                                    group.getChildren().remove(dragEllip);
-                                    break;
-                                case 5:
-                                    group.getChildren().remove(dragEllip);
-                                    break;
-                                case -2:
-                                    group.getChildren().remove(dragRect);
-                                    break;
-                                case -3:
-                                    group.getChildren().remove(dragRect);
-                                    break;
-                                case 6:
-                                    double rad = Math.max(Math.abs(menu.x0- event.getX()),Math.abs(menu.y0-event.getY()));
-                                    menu.drawPolygon(nPoly, rad);
-                                    group.getChildren().remove(nPoly);
-                                    break;
-                                default:
-                                    //Obligatory default case
-                            }
-                        } else if(menu.drawMode==3){
-                            menu.gc.closePath();
-                            menu.saveSnap();
-                        }
-                        if(menu.drawMode==-2){//If tool is in cut mode
-                            WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());
-                            imgCanv.snapshot(null, wImage);
-                            cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
-                            drawBlankRect();
-                            imageGrabbed = true;
-                        } else if(menu.drawMode==-3){
-                            WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());
-                            imgCanv.snapshot(null, wImage);
-                            cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
-                            imageGrabbed = true;
-                        }
+            @Override
+            public void handle(MouseEvent event) {
+                if(primaryJustClicked&&menu.drawMode!=3&&menu.drawMode!=0&&menu.drawMode!=-1) {
+                    menu.x1 = event.getX();
+                    menu.y1 = event.getY();
+                    menu.drawShape();
+                    primaryJustClicked = false;
+                    WritableImage writable = new WritableImage((int)menu.imgCanv.getWidth(),(int)menu.imgCanv.getHeight());
+                    currSnap = imgCanv.snapshot(null,writable);
+                    switch (menu.drawMode) {
+                        case 1:
+                            group.getChildren().remove(dragLine);
+                            menu.setCanvVersion(currSnap);
+                            break;
+                        case 2:
+                            group.getChildren().remove(dragRect);
+                            break;
+                        case 4:
+                            group.getChildren().remove(dragEllip);
+                            break;
+                        case 5:
+                            group.getChildren().remove(dragEllip);
+                            break;
+                        case -2:
+                            group.getChildren().remove(dragRect);
+                            break;
+                        case -3:
+                            group.getChildren().remove(dragRect);
+                            break;
+                        case 6:
+                            double rad = Math.max(Math.abs(menu.x0- event.getX()),Math.abs(menu.y0-event.getY()));
+                            menu.drawPolygon(nPoly, rad);
+                            group.getChildren().remove(nPoly);
+                            break;
+                        default:
+                            //Obligatory default case
                     }
-                });
+                } else if(menu.drawMode==3){
+                    menu.gc.closePath();
+                    menu.saveSnap();
+                }
+                if(menu.drawMode==-2){//If tool is in cut mode
+                    WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());
+                    imgCanv.snapshot(null, wImage);
+                    cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
+                    drawBlankRect();
+                    imageGrabbed = true;
+                } else if(menu.drawMode==-3){
+                    WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());
+                    imgCanv.snapshot(null, wImage);
+                    cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
+                    imageGrabbed = true;
+                }
+            }
+        });
     }
     public ArrayList<Double> createPolyPoints(MouseEvent event){
-        //TODO: implement createNGon
         double x0 = menuController.x0;
         double y0 = menuController.y0;
         double x1 = event.getX();
