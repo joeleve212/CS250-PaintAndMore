@@ -1,6 +1,7 @@
 package paintv0;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -141,6 +142,8 @@ public class FunctionHandlers {
                             if (menu.drawMode == -1) {
                                 PixelReader colorSnag = menu.img.getPixelReader();
                                 Color newColor = colorSnag.getColor((int) menu.x0, (int) menu.y0);
+                                ColorPicker setColor = (ColorPicker)menu.toolBar.getItems().get(1);
+                                setColor.setValue(newColor);
                                 menu.setShapeLineColor(newColor);
                             } else if(menu.drawMode == 9 && menu.stickerView!=null){
                                 System.out.println("Test worked!");
@@ -255,7 +258,7 @@ public class FunctionHandlers {
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event) {
-                        if(primaryJustClicked&&menu.drawMode!=3&&menu.drawMode!=0) {
+                        if(primaryJustClicked&&menu.drawMode!=3&&menu.drawMode!=0&&menu.drawMode!=-1) {
                             menu.x1 = event.getX();
                             menu.y1 = event.getY();
                             menu.drawShape();
