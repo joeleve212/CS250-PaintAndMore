@@ -32,7 +32,7 @@ import java.util.Stack;
  * @version 0.4
  * @since   2019-10-02
  */
-public class TopMenus{
+public class TopMenus{ //TODO: resize tool
     public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
     public ImageView placedImgView;
     public String OPENER_FILE_LOC = "../../../";
@@ -253,8 +253,7 @@ public class TopMenus{
                     gc.fillRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
                 }
                 //place rectangle between opposite corners x0,y0 & x1,y1
-//TODO: allow drawing rect from corner other than top left
-                gc.strokeRect(x0, y0, Math.abs(x1-x0), Math.abs(y0-y1));
+                gc.strokeRect(Math.min(x0,x1), Math.min(y0,y1), Math.abs(x1-x0), Math.abs(y0-y1));
                 break;
             case 4:  //Ellipse
                 double deltX = Math.abs(x1-x0);

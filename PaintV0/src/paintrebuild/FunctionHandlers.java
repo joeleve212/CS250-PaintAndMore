@@ -217,10 +217,13 @@ public class FunctionHandlers {
                             menu.gc.strokeLine(menu.x0,menu.y0,event.getX(),event.getY());
                             break;
                         case 2:
-                            dragRect.setWidth(Math.abs(event.getX()-menu.x0));
-                            dragRect.setHeight(Math.abs(event.getY()-menu.y0));
+                            dragRect.setX(Math.min(event.getX(),menu.x0));
+                            dragRect.setY(Math.min(event.getY(),menu.y0));
+                            dragRect.setWidth(deltX);
+                            dragRect.setHeight(deltY);
                             menu.setCanvVersion(currSnap);
-                            menu.gc.strokeRect(menu.x0,menu.y0,deltX, deltY);
+                            double curX = Math.min(menu.x0,event.getX()), curY = Math.min(menu.y0,event.getY());
+                            menu.gc.strokeRect(curX,curY,deltX,deltY);
                             break;
                         case -2:
                             dragRect.setWidth(Math.abs(event.getX()-menu.x0));

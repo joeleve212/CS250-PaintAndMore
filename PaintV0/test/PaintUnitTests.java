@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.util.Stack;
 
 public class PaintUnitTests {
-    @Test //TODO: separate tests into different file?
+    @Test
     public void checkLineColor(){
         paintv0.TopMenus menu = new paintv0.TopMenus(null,null,null, null);
         assertEquals(null,menu.getLineColor());

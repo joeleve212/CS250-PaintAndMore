@@ -24,7 +24,7 @@ public class InfoPopup {
     private Button cancelBtn = new Button("Cancel");
     public Button saveBtn;
     public Stage popupStage;
-    InfoPopup(Stage primaryStage, String popupType) {
+    InfoPopup(Stage primaryStage, String popupType) { //TODO: fix errors when popup is closed
         //Below sets up the default window components in every popup
         Insets lowCenterBtn = new Insets(ins_TOP,ins_RIGHT,ins_BOT,ins_LEFT); //Sets position for button later
         ButtonBar optionButtons = new ButtonBar();
