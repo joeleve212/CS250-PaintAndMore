@@ -284,112 +284,105 @@ public class TopMenus{
     }
 
     public void updateMenus(){ //TODO: actually update toolbar controls
+        String toolName="";
+        boolean visibility[]={true,true,true,true};
         switch (drawMode){
             case 1://TODO: access to parts of toolbar!
-                toolBar.getItems().get(0).setVisible(true);
-                toolBar.getItems().get(1).setVisible(true);
-                toolBar.getItems().get(2).setVisible(false);
-                toolBar.getItems().get(3).setVisible(false);
-
-                modeLabel.setText("Line");
-                toolTimer.switchTool("Line");
+                visibility[0]=true;
+                visibility[1]=true;
+                visibility[2]=false;
+                visibility[3]=false;
+                toolName = "Line";
                 break;
             case 2:
-                toolBar.getItems().get(0).setVisible(true);
-                toolBar.getItems().get(1).setVisible(true);
-                toolBar.getItems().get(2).setVisible(true);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Rectangle");
-                toolTimer.switchTool("Rectangle");
+                visibility[0]=true;
+                visibility[1]=true;
+                visibility[2]=true;
+                visibility[3]=false;
+                toolName = "Rectangle";
                 break;
             case 3:
-                toolBar.getItems().get(0).setVisible(true);
-                toolBar.getItems().get(1).setVisible(true);
-                toolBar.getItems().get(2).setVisible(false);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Free Draw");
-                toolTimer.switchTool("Free Draw");
+                visibility[0]=true;
+                visibility[1]=true;
+                visibility[2]=false;
+                visibility[3]=false;
+                toolName = "Free Draw";
                 break;
             case 4:
-                toolBar.getItems().get(0).setVisible(true);
-                toolBar.getItems().get(1).setVisible(true);
-                toolBar.getItems().get(2).setVisible(true);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Ellipse");
-                toolTimer.switchTool("Ellipse");
+                visibility[0]=true;
+                visibility[1]=true;
+                visibility[2]=true;
+                visibility[3]=false;
+                toolName = "Ellipse";
                 break;
             case 5:
-                toolBar.getItems().get(0).setVisible(true);
-                toolBar.getItems().get(1).setVisible(true);
-                toolBar.getItems().get(2).setVisible(true);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Circle");
-                toolTimer.switchTool("Circle");
+                visibility[0]=true;
+                visibility[1]=true;
+                visibility[2]=true;
+                visibility[3]=false;
+                toolName = "Circle";
                 break;
             case 6:
-                toolBar.getItems().get(0).setVisible(true);
-                toolBar.getItems().get(1).setVisible(true);
-                toolBar.getItems().get(2).setVisible(true);
-                toolBar.getItems().get(3).setVisible(true);
-                modeLabel.setText("Polygon");
-                toolTimer.switchTool("Polygon");
+                visibility[0]=true;
+                visibility[1]=true;
+                visibility[2]=true;
+                visibility[3]=false;
+                toolName = "Polygon";
                 break;
             case 7:
-                toolBar.getItems().get(0).setVisible(true);
-                toolBar.getItems().get(1).setVisible(true);
-                toolBar.getItems().get(2).setVisible(true);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Free Polygon");
-                toolTimer.switchTool("Free Polygon");
+                visibility[0]=true;
+                visibility[1]=true;
+                visibility[2]=true;
+                visibility[3]=false;
+                toolName = "Free Polygon";
                 break;
             case 8:
-                toolBar.getItems().get(0).setVisible(false);
-                toolBar.getItems().get(1).setVisible(false);
-                toolBar.getItems().get(2).setVisible(false);
-                toolBar.getItems().get(3).setVisible(true);
-                modeLabel.setText("Place Text");
-                toolTimer.switchTool("Text");
+                visibility[0]=false;
+                visibility[1]=false;
+                visibility[2]=false;
+                visibility[3]=true;
+                toolName = "Text";
                 break;
             case 9:
-                toolBar.getItems().get(0).setVisible(false);
-                toolBar.getItems().get(1).setVisible(false);
-                toolBar.getItems().get(2).setVisible(false);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Place Sticker");
-                toolTimer.switchTool("Sticker");
+                visibility[0]=false;
+                visibility[1]=false;
+                visibility[2]=false;
+                visibility[3]=false;
+                toolName = "Sticker";
                 break;
-            case -1: //TODO: make line color label update with color grab
-                toolBar.getItems().get(0).setVisible(false);
-                toolBar.getItems().get(1).setVisible(true);
-                toolBar.getItems().get(2).setVisible(false);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Color Grab");
-                toolTimer.switchTool("Color Grab");
+            case -1:
+                visibility[0]=false;
+                visibility[1]=true;
+                visibility[2]=false;
+                visibility[3]=false;
+                toolName = "Color Grab";
                 break;
             case -2:
-                toolBar.getItems().get(0).setVisible(false);
-                toolBar.getItems().get(1).setVisible(false);
-                toolBar.getItems().get(2).setVisible(false);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Cut/Paste");
-                toolTimer.switchTool("Cut/Paste");
+                visibility[0]=false;
+                visibility[1]=false;
+                visibility[2]=false;
+                visibility[3]=false;
+                toolName = "Cut/Paste";
                 break;
             case -3:
-                toolBar.getItems().get(0).setVisible(false);
-                toolBar.getItems().get(1).setVisible(false);
-                toolBar.getItems().get(2).setVisible(false);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("Copy/Paste");
-                toolTimer.switchTool("Copy/Paste");
+                visibility[0]=false;
+                visibility[1]=false;
+                visibility[2]=false;
+                visibility[3]=false;
+                toolName = "Copy/Paste";
                 break;
             default:
-                toolBar.getItems().get(0).setVisible(false);
-                toolBar.getItems().get(1).setVisible(false);
-                toolBar.getItems().get(2).setVisible(false);
-                toolBar.getItems().get(3).setVisible(false);
-                modeLabel.setText("No Tool Selected");
-                toolTimer.switchTool("No Tool Selected");
+                visibility[0]=false;
+                visibility[1]=false;
+                visibility[2]=false;
+                visibility[3]=false;
+                toolName = "No Tool Selected";
         }
+        for(int i = 0; i<4;i++){
+            toolBar.getItems().get(i).setVisible(visibility[i]);
+        }
+        modeLabel.setText(toolName);
+        toolTimer.switchTool(toolName);
     }
     public void saveSnap(){
         WritableImage wImage = new WritableImage((int)img.getWidth(), (int)img.getHeight());
