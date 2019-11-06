@@ -35,7 +35,6 @@ import java.util.ArrayList;
 public class FunctionHandlers {
     public String OPENER_FILE_LOC = "../../../";
     //TODO: Bring in eventHandlers
-    //TODO: Make instance of this class in main class
     TopMenus menuController;
     public String currImgPath, ext;
     public boolean imgInserted = false, primaryJustClicked = false;

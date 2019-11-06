@@ -1,6 +1,8 @@
 package paintv0;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -51,11 +53,13 @@ public class TopMenus{
     public ImageView stickerView;
     public Image stickerImg;
     private Stack prevVersions;
+    private ObservableList<Node> origTools;
     private String inputText = "Kevin";
     private MenuBar pinnedMenu;
     private double stickerHeight;
-    TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar toolBar){
-        this.toolBar = toolBar;
+    TopMenus(Stage primaryStage, Group group, Stack versions, ToolBar origToolBar){
+        this.toolBar = origToolBar;
+        origTools = origToolBar.getItems();
         toolBar.getItems().add(modeLabel);
         placedImgView = new ImageView();
         prevVersions = versions;
@@ -132,7 +136,7 @@ public class TopMenus{
                     stickerImg = new Image(new FileInputStream(stickImgFile), 100, 200, true, true);
                     stickerView = new ImageView(stickerImg); //ImageView is needed in order for image to show up,
                     stickerView.setPreserveRatio(true);      //despite the image being placed directly
-                    stickerView.setFitHeight(.4);
+                    stickerView.setFitHeight(.4); //TODO: fix magic number
                 } catch (IOException ex) {
                     System.out.println("That file is invalid");
                 }
@@ -152,7 +156,9 @@ public class TopMenus{
         });
         eraser.setOnAction((e)->{
             drawMode = 3; //set drawMode - same as freeDraw except auto white
-            gc.setStroke(Color.WHITE);
+            if(img!=null){gc.setStroke(Color.WHITE);}
+            ColorPicker eraseColor = (ColorPicker)toolBar.getItems().get(1);
+            eraseColor.setValue(Color.WHITE);
             updateMenus(); //SHOULD show only needed items
         });
         grabber.setOnAction((e)->{
@@ -205,7 +211,6 @@ public class TopMenus{
     public void setDrawMode(int x){drawMode = x;}
     public void setShapeLineColor(Color newColor){gc.setStroke(newColor);}
     public void setShapeFillColor(Color newColor){gc.setFill(newColor);fill = true;}
-    public void setToolBar(ToolBar tools){toolBar=tools;}
     public void setInputString(String newString){inputText=newString;}
     public void setCanvVersion(WritableImage currVersion){ //used by main class for undo & redo
         gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
@@ -279,56 +284,109 @@ public class TopMenus{
     }
 
     public void updateMenus(){ //TODO: actually update toolbar controls
-        switch (drawMode){ //TODO: check that I have all modes covered
-            case 1:
+        switch (drawMode){
+            case 1://TODO: access to parts of toolbar!
+                toolBar.getItems().get(0).setVisible(true);
+                toolBar.getItems().get(1).setVisible(true);
+                toolBar.getItems().get(2).setVisible(false);
+                toolBar.getItems().get(3).setVisible(false);
+
                 modeLabel.setText("Line");
                 toolTimer.switchTool("Line");
                 break;
             case 2:
+                toolBar.getItems().get(0).setVisible(true);
+                toolBar.getItems().get(1).setVisible(true);
+                toolBar.getItems().get(2).setVisible(true);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("Rectangle");
                 toolTimer.switchTool("Rectangle");
                 break;
             case 3:
+                toolBar.getItems().get(0).setVisible(true);
+                toolBar.getItems().get(1).setVisible(true);
+                toolBar.getItems().get(2).setVisible(false);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("Free Draw");
                 toolTimer.switchTool("Free Draw");
                 break;
             case 4:
+                toolBar.getItems().get(0).setVisible(true);
+                toolBar.getItems().get(1).setVisible(true);
+                toolBar.getItems().get(2).setVisible(true);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("Ellipse");
                 toolTimer.switchTool("Ellipse");
                 break;
             case 5:
-                modeLabel.setText("Polygon");
-                toolTimer.switchTool("Polygon");
+                toolBar.getItems().get(0).setVisible(true);
+                toolBar.getItems().get(1).setVisible(true);
+                toolBar.getItems().get(2).setVisible(true);
+                toolBar.getItems().get(3).setVisible(false);
+                modeLabel.setText("Circle");
+                toolTimer.switchTool("Circle");
                 break;
             case 6:
+                toolBar.getItems().get(0).setVisible(true);
+                toolBar.getItems().get(1).setVisible(true);
+                toolBar.getItems().get(2).setVisible(true);
+                toolBar.getItems().get(3).setVisible(true);
                 modeLabel.setText("Polygon");
                 toolTimer.switchTool("Polygon");
                 break;
             case 7:
+                toolBar.getItems().get(0).setVisible(true);
+                toolBar.getItems().get(1).setVisible(true);
+                toolBar.getItems().get(2).setVisible(true);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("Free Polygon");
                 toolTimer.switchTool("Free Polygon");
                 break;
             case 8:
+                toolBar.getItems().get(0).setVisible(false);
+                toolBar.getItems().get(1).setVisible(false);
+                toolBar.getItems().get(2).setVisible(false);
+                toolBar.getItems().get(3).setVisible(true);
                 modeLabel.setText("Place Text");
                 toolTimer.switchTool("Text");
                 break;
             case 9:
+                toolBar.getItems().get(0).setVisible(false);
+                toolBar.getItems().get(1).setVisible(false);
+                toolBar.getItems().get(2).setVisible(false);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("Place Sticker");
                 toolTimer.switchTool("Sticker");
                 break;
-            case -1:
+            case -1: //TODO: make line color label update with color grab
+                toolBar.getItems().get(0).setVisible(false);
+                toolBar.getItems().get(1).setVisible(true);
+                toolBar.getItems().get(2).setVisible(false);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("Color Grab");
                 toolTimer.switchTool("Color Grab");
                 break;
             case -2:
+                toolBar.getItems().get(0).setVisible(false);
+                toolBar.getItems().get(1).setVisible(false);
+                toolBar.getItems().get(2).setVisible(false);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("Cut/Paste");
                 toolTimer.switchTool("Cut/Paste");
                 break;
             case -3:
+                toolBar.getItems().get(0).setVisible(false);
+                toolBar.getItems().get(1).setVisible(false);
+                toolBar.getItems().get(2).setVisible(false);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("Copy/Paste");
                 toolTimer.switchTool("Copy/Paste");
                 break;
             default:
+                toolBar.getItems().get(0).setVisible(false);
+                toolBar.getItems().get(1).setVisible(false);
+                toolBar.getItems().get(2).setVisible(false);
+                toolBar.getItems().get(3).setVisible(false);
                 modeLabel.setText("No Tool Selected");
                 toolTimer.switchTool("No Tool Selected");
         }

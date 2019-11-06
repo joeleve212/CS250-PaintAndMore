@@ -26,13 +26,13 @@ public class PaintV0 extends Application {
     public int INIT_WINDOW_WIDTH = 400;
     public int INIT_WINDOW_HEIGHT = 400;
     public ColorPicker outlineColor, fillColor;
+    public TextField textInput;
+    public Spinner<Integer> widthChoose;
     public TopMenus menus;
     private String INIT_TIMER_VAL = "120";
     private Canvas imgCanv = new Canvas(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     private Stack<WritableImage> prevVersions = new Stack<>();
     private Stack<WritableImage> undidVersions = new Stack<>();
-    private TextField textInput;
-    private Spinner<Integer> widthChoose;
     @Override
     public void start(Stage primaryStage) {
         Region target = new StackPane(imgCanv);
@@ -62,7 +62,6 @@ public class PaintV0 extends Application {
         VBox.setVgrow(scrollPane, Priority.ALWAYS);
         Scene scene = new Scene(screenContent);
 
-        //TODO: Rename the following class
         FunctionHandlers handlers = new FunctionHandlers(menus, primaryStage, gr, timerVal);
 
         primaryStage.setTitle("Paint v0"); //Set the window title text
@@ -73,12 +72,10 @@ public class PaintV0 extends Application {
         outlineColor.setOnAction(event ->  { //trigger color picker when button is clicked
             Color c = outlineColor.getValue();
             menus.setShapeLineColor(c);
-//            checkLineColor(c);
         });
         fillColor.setOnAction(event -> {
             Color fillC = fillColor.getValue();
             menus.setShapeFillColor(fillC);
-//            checkFillColor(fillC);
         });
         widthChoose.setOnMouseClicked((event) -> { //Grabbing new width setting and updating Line width
             double lineWidth = widthChoose.getValue();
@@ -163,7 +160,6 @@ public class PaintV0 extends Application {
             undidVersions.push(removed);
             menus.setCanvVersion(prevVersions.peek());
             menus.imageHasBeenSaved=false;
-//            checkUndoVersion(removed);
         }
     }
     public void redo(){
