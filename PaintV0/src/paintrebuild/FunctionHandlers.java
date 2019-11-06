@@ -43,7 +43,7 @@ public class FunctionHandlers {
     public Canvas imgCanv;
     public int SELF_POLY_SIDES = 5; //Sets the default number of sides for a self-draw Polygon
     private WritableImage cutImage;
-    private int recPoints = 0;
+    private int recPoints = 0, defaultLineWidth = 2;
     private boolean imageGrabbed = false;
     private Line dragLine = new Line();
     private Rectangle dragRect = new Rectangle();
@@ -161,13 +161,13 @@ public class FunctionHandlers {
                                 dragLine.setStrokeWidth(menu.lineWidth);
                                 dragLine.setStroke(menu.getLineColor());
                                 group.getChildren().add(dragLine);
-                            } else if(Math.abs(menu.drawMode) == 2) {
+                            } else if(Math.abs(menu.drawMode) == 2 || menu.drawMode == -3) {
                                 //rectangle
                                 dragRect.setX(menu.x0);
                                 dragRect.setY(menu.y0);
                                 dragRect.setWidth(0);
                                 dragRect.setHeight(0);
-                                dragRect.setStrokeWidth(menu.lineWidth);
+                                dragRect.setStrokeWidth(defaultLineWidth);
                                 dragRect.setStroke(menu.getLineColor());
                                 dragRect.setFill(null);
                                 group.getChildren().add(dragRect);
@@ -291,7 +291,7 @@ public class FunctionHandlers {
                                     group.getChildren().remove(nPoly);
                                     break;
                                 default:
-                                    //
+                                    //Obligatory default case
                             }
                         } else if(menu.drawMode==3){
                             menu.gc.closePath();
