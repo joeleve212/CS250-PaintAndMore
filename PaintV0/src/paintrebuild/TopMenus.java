@@ -53,6 +53,7 @@ public class TopMenus{ //TODO: resize tool
     public ImageView stickerView;
     public Image stickerImg;
     private Stack prevVersions;
+    private int minCanv=50,maxCanv=5000;
     private ObservableList<Node> origTools;
     private String inputText = "Kevin";
     private MenuBar pinnedMenu;
@@ -68,7 +69,16 @@ public class TopMenus{ //TODO: resize tool
         imageSave = new MenuItem("Save Image");
         MenuItem exitBtn = new MenuItem("Exit Program");
         openBtn = new MenuItem("Open Image");
-        fileMenu.getItems().addAll(imageSave, openBtn, exitBtn);
+        Menu resizeCanv = new Menu("Resize Canvas");
+        //TODO: use spinners to actually change size
+        Spinner<Integer> canvWidth = new Spinner<Integer>(minCanv,maxCanv,DEFAULT_CANV_W);
+        Spinner<Integer> canvHeight = new Spinner<Integer>(minCanv,maxCanv,DEFAULT_CANV_H);
+        canvHeight.setEditable(true);
+        canvWidth.setEditable(true);
+        CustomMenuItem canvWidthChoose = new CustomMenuItem(canvWidth);
+        CustomMenuItem canvHeightChoose = new CustomMenuItem(canvHeight);
+        resizeCanv.getItems().addAll(canvWidthChoose, canvHeightChoose);
+        fileMenu.getItems().addAll(imageSave, openBtn, exitBtn, resizeCanv);
 
         Menu toolMenu = new Menu("Tools"); //Populate the next menu pull-down - Options
         MenuItem cutter = new MenuItem("Cut");
@@ -121,6 +131,11 @@ public class TopMenus{ //TODO: resize tool
             else{
                 InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             }
+        });
+        resizeCanv.setOnAction((e)->{
+            //TODO: implement spinners to set x size & y size
+            //TODO: adjust any image present to fit w/ same aspect ratio
+
         });
 //TODO: insert Javadoc for all drawMode buttons
         sticker.setOnAction((e)->{

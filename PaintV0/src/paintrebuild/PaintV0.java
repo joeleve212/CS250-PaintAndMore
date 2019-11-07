@@ -69,7 +69,12 @@ public class PaintV0 extends Application {
         primaryStage.setScene(scene);      //and build stage before showing
         primaryStage.sizeToScene();
         primaryStage.show();
-
+        /**
+         * These methods handle the following settings on the bottom tool bar:
+         * line color, fill color, line width & the text input.
+         *
+         * @param Event event is the only parameter for the handler
+         */
         outlineColor.setOnAction(event ->  { //trigger color picker when button is clicked
             Color c = outlineColor.getValue();
             menus.setShapeLineColor(c);
@@ -86,11 +91,16 @@ public class PaintV0 extends Application {
             String currString = textInput.getText();
             menus.setInputString(currString);
         });
-
+        /**
+         * The undo and redo handlers only call their
+         * respective functions from below.
+         *
+         * @param Event event is the only parameter for these handlers
+         */
         undoBtn.setOnAction((event) -> undo());
         redoBtn.setOnAction((event) -> redo());
         /**
-         * The scene.setOnKeyPressed() method handles keyboard
+         * This method handles keyboard
          * shortcuts that occur on the main window of the program.
          * This includes CTRL+S,CTRL+H,CTRL+Z & ESC.
          *
@@ -119,10 +129,16 @@ public class PaintV0 extends Application {
                 }
             }
         });
-
+        /**
+         * This method handles
+         * when the user closes the program -
+         * makes sure that the user saves their work before closing.
+         *
+         * @param Event event is the only parameter for the handler
+         */
         primaryStage.setOnCloseRequest((event) -> {
-            if (!menus.imageHasBeenSaved) {
-                event.consume();
+            if (!menus.imageHasBeenSaved) { //if the image has not saved,
+                event.consume(); //do nothing with the close request
             }
             menus.toolTimer.end(); //Trigger toolTimer thread to make .log file
             InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
@@ -130,19 +146,20 @@ public class PaintV0 extends Application {
                 if(menus.imageHasBeenSaved){ //If this is the first time image is being saved
                     handlers.saveImage(); //save on saveBtn press
                 }else {
-                    menus.imageSave.fire(); //Save as
+                    menus.imageSave.fire(); //Trigger the save as function
                 }
             });
         });
-
+        /**
+         * This method handles scrolling,
+         * which is used to trigger zooming.
+         *
+         * @param Event event is the only parameter for the handler
+         */
         bordPane.setOnScroll(event -> {
             if (event.isControlDown()) { //CTRL + Scroll triggers zooming
                 boolean scrollDown;
-                if(event.getDeltaY() < 0){ //store direction of scroll before consuming event
-                    scrollDown = false;
-                }else{
-                    scrollDown = true;
-                }
+                scrollDown = (event.getDeltaY() < 0); //store direction of scroll before consuming event
                 event.consume(); //consuming event
                 double xCanvScale = imgCanv.getScaleX(); //grabbing current canvas scale
                 double yCanvScale = imgCanv.getScaleY(); //in each direction
@@ -154,10 +171,14 @@ public class PaintV0 extends Application {
                     imgCanv.setScaleX(xCanvScale + scaleMod); //Zoom out
                     imgCanv.setScaleY(yCanvScale + scaleMod);
                 }
-    //TODO: un-jank zooming?????????????????
             }
         });
     }
+
+    /**
+     * Reverts the canvas to the previous version before
+     * the most recent change.
+     */
     public void undo(){
         if (prevVersions.size()>1){
             WritableImage removed = prevVersions.peek();
@@ -167,6 +188,9 @@ public class PaintV0 extends Application {
             menus.imageHasBeenSaved=false;
         }
     }
+    /**
+     * Redoes the change that was most recently undone.
+     */
     public void redo(){
         if(undidVersions.size()>0){
             WritableImage redid = undidVersions.peek();
@@ -176,6 +200,11 @@ public class PaintV0 extends Application {
             menus.imageHasBeenSaved=false;
         }
     }
+    /**
+     * Gives the top item on the stack of canvas snapshots.
+     *
+     * @return WritableImage topImage is given by WritableImage.peek()
+     */
     public WritableImage getCurrVersion(){
         return prevVersions.peek();
     }

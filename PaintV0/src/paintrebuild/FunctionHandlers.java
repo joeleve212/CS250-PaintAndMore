@@ -73,7 +73,6 @@ public class FunctionHandlers {
             ext = name.substring(1+name.lastIndexOf(".")).toLowerCase(); //grab only the file extension of the image
 
             if(savedImg != null){
-        //TODO: to fix zoom/saving, use dims of image instead?
                 WritableImage wImage = new WritableImage((int) menu.imgCanv.getWidth(), (int) menu.img.getHeight());
                     try {
                         menu.imgCanv.snapshot(null, wImage);
