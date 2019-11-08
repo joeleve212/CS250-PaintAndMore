@@ -35,7 +35,6 @@ import java.util.ArrayList;
  */
 public class FunctionHandlers {
     public String OPENER_FILE_LOC = "../../../";
-    //TODO: Bring in eventHandlers
     TopMenus menuController;
     public String currImgPath, ext;
     public boolean imgInserted = false, primaryJustClicked = false;
@@ -55,8 +54,12 @@ public class FunctionHandlers {
     FunctionHandlers(TopMenus menu, Stage primaryStage, Group group, Text timerVal){
         menuController=menu;
 
-        Image img = menu.img;
         imgCanv = menu.imgCanv;
+        /**
+         * This handler deals with saving an image for the first time
+         *
+         * @param e is the event triggered by clicking the save MenuItem
+         */
         menu.imageSave.setOnAction((e)->{
             System.out.println("Saving image file...");
             FileChooser saveImageChoose = new FileChooser();
@@ -77,7 +80,7 @@ public class FunctionHandlers {
                     try {
                         menu.imgCanv.snapshot(null, wImage);
                         RenderedImage rImage = SwingFXUtils.fromFXImage(wImage, null);
-                        ImageIO.write(rImage, "png", savedImg); //TODO: swap "png" to ext w/o breaking saved images
+                        ImageIO.write(rImage, "png", savedImg);
                     } catch (IOException ex) {
                         System.out.println("Initial save failed");
                     }
@@ -100,7 +103,6 @@ public class FunctionHandlers {
                 try {
                     InputStream io = new FileInputStream(insImg);
                     menu.img = new Image(io);
-                    //TODO: Image scaling
                     menu.placedImgView.setImage(menu.img);        //Specifying placement & sizing of selected image
                     menu.placedImgView.setPreserveRatio(true);
 
@@ -249,11 +251,8 @@ public class FunctionHandlers {
                             nPoly.getPoints().setAll(corners);
                             break;
                         default:
-                            //Nothing?
+                            //default here to fulfill convention
                     }
-                }
-                if(imageGrabbed){
-                    //TODO: make grabbed image follow cursor?
                 }
             }
         });

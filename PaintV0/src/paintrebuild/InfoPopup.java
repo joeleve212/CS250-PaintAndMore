@@ -72,8 +72,6 @@ public class InfoPopup {
         /**
          * This handler closes the popup on a button press,
          * as well as the program if it is a specific popup.
-         *
-         * @param Event e is the only parameter for the handler
          */
         exitPopup.setOnAction((e) -> { //handle exit button
             popupStage.close();
@@ -81,6 +79,9 @@ public class InfoPopup {
                 primaryStage.close();  //by closing without saving
             }
         });
+        /**
+         * Cancel button closes only the popup
+         */
         cancelBtn.setOnAction((e)->{ //handle cancel button
             popupStage.close();
         });

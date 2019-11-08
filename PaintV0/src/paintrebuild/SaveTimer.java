@@ -23,11 +23,18 @@ public class SaveTimer implements Runnable{
     private String tmpFileLoc = "src/paintrebuild/tmp"; //allow multiple file types
     private File imageFile;
     private Text currTimer;
+
+    /**
+     * The constructor initializes the canvas, timer text
+     * & creates a file to save to.
+     *
+     * @param imgCanv
+     * @param timerVal
+     */
     public SaveTimer(Canvas imgCanv, Text timerVal){
         currCanv=imgCanv;
         currTimer=timerVal;
         imageFile = new File(tmpFileLoc);
-        System.out.println("Timer created");
     }
     @Override
     public void run(){
@@ -35,14 +42,13 @@ public class SaveTimer implements Runnable{
         while(true) {
             for (int i = 0; saveInterval - i > 0; i++) {
                 try {
-                    Thread.sleep(sleepTime);
+                    Thread.sleep(sleepTime); //delay the counter by sleepTime ms
                     updateTimer(saveInterval - i);
-                }catch(InterruptedException e){
+                }catch(InterruptedException e){ //catch errors that break sleep() function
                     System.out.println("Timer delay interrupted");
                 }
             }
-            autoSave();
-            System.out.println("Timer finished");
+            autoSave(); //call the function to actually save
         }
     }
     public void updateTimer(int newTimeLeft){

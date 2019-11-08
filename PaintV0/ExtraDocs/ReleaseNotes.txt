@@ -3,6 +3,9 @@ CLEAN UP ITERATION, NO FEATURES ADDED
 
 Fixes added:
 - Moved unit tests to a separate file
+- Added lots of Javadoc
+- Fixed background errors coming from various locations in program
+- Each tool shows only the tools necessary on tool bar
 -
 
 

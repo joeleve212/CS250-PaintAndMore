@@ -32,7 +32,7 @@ import java.util.Stack;
  * @version 0.4
  * @since   2019-10-02
  */
-public class TopMenus{ //TODO: resize tool
+public class TopMenus{
     public int DEFAULT_CANV_W = 400, DEFAULT_CANV_H = 400;
     public ImageView placedImgView;
     public String OPENER_FILE_LOC = "../../../";
@@ -69,16 +69,7 @@ public class TopMenus{ //TODO: resize tool
         imageSave = new MenuItem("Save Image");
         MenuItem exitBtn = new MenuItem("Exit Program");
         openBtn = new MenuItem("Open Image");
-        Menu resizeCanv = new Menu("Resize Canvas");
-        //TODO: use spinners to actually change size
-        Spinner<Integer> canvWidth = new Spinner<Integer>(minCanv,maxCanv,DEFAULT_CANV_W);
-        Spinner<Integer> canvHeight = new Spinner<Integer>(minCanv,maxCanv,DEFAULT_CANV_H);
-        canvHeight.setEditable(true);
-        canvWidth.setEditable(true);
-        CustomMenuItem canvWidthChoose = new CustomMenuItem(canvWidth);
-        CustomMenuItem canvHeightChoose = new CustomMenuItem(canvHeight);
-        resizeCanv.getItems().addAll(canvWidthChoose, canvHeightChoose);
-        fileMenu.getItems().addAll(imageSave, openBtn, exitBtn, resizeCanv);
+        fileMenu.getItems().addAll(imageSave, openBtn, exitBtn);
 
         Menu toolMenu = new Menu("Tools"); //Populate the next menu pull-down - Options
         MenuItem cutter = new MenuItem("Cut");
@@ -131,11 +122,6 @@ public class TopMenus{ //TODO: resize tool
             else{
                 InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             }
-        });
-        resizeCanv.setOnAction((e)->{
-            //TODO: implement spinners to set x size & y size
-            //TODO: adjust any image present to fit w/ same aspect ratio
-
         });
 //TODO: insert Javadoc for all drawMode buttons
         sticker.setOnAction((e)->{
@@ -279,13 +265,11 @@ public class TopMenus{ //TODO: resize tool
                 gc.strokeOval(x0-deltX,y0-deltY,2*deltX, 2*deltY);
                 break;
             case 5: //Circle
-//TODO: allow drawing from center to edge
-                double w = Math.abs(x1 - x0);
-                //double h = Math.abs(x1 - x0);
+                double r = Math.abs(x1 - x0);
                 if (fill) {
-                    gc.fillOval(x0-w, y0-w, 2*w, 2*w);
+                    gc.fillOval(x0-r, y0-r, 2*r, 2*r);
                 }
-                gc.strokeOval(x0-w, y0-w, 2*w, 2*w);
+                gc.strokeOval(x0-r, y0-r, 2*r, 2*r);
                 break;
             case 8: //Text placement
                 gc.fillText(inputText,x0,y0, Math.abs(x1-x0));
@@ -293,7 +277,7 @@ public class TopMenus{ //TODO: resize tool
             default:
                 System.out.println("Invalid Drawing Mode Selected");
         }
-        saveSnap();
+        saveSnap(); //save a version of the canvas to the undo stack
         return true;
     }
 

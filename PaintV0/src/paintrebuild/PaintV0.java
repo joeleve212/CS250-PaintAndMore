@@ -203,7 +203,7 @@ public class PaintV0 extends Application {
     /**
      * Gives the top item on the stack of canvas snapshots.
      *
-     * @return WritableImage topImage is given by WritableImage.peek()
+     * @return WritableImage is given by looking at the top item on the version stack
      */
     public WritableImage getCurrVersion(){
         return prevVersions.peek();
