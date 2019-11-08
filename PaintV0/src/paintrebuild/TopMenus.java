@@ -263,8 +263,8 @@ public class TopMenus{
     /**
      * This function draws the user-defined polygon.
      *
-     * @param polyPointsX
-     * @param polyPointsY
+     * @param polyPointsX is the set of x values for the new polygon
+     * @param polyPointsY is the set of y values for the new polygon
      */
     public void drawSelfPoly(ArrayList<Double> polyPointsX, ArrayList<Double> polyPointsY){
         double[] polyArrayX = new double[100];
@@ -279,6 +279,13 @@ public class TopMenus{
         gc.strokePolygon(polyArrayX,polyArrayY,polyPointsX.size());
         saveSnap();
     }
+
+    /**
+     * This function adds the corresponding shape to the canvas according
+     * to the drawMode currently set.
+     *
+     * @return a confirmation that the shape drew correctly
+     */
     public boolean drawShape(){
         gc.setLineWidth(lineWidth);
         switch(drawMode){ //Place line between x0,y0 & x1,y1
@@ -317,6 +324,10 @@ public class TopMenus{
         return true;
     }
 
+    /**
+     * This function updates the tool text &
+     * hides unnecessary toolbar options according to the chosen tool
+     */
     public void updateMenus(){
         String toolName="";
         boolean visibility[]={true,true,true,true};
@@ -418,6 +429,11 @@ public class TopMenus{
         modeLabel.setText(toolName);
         toolTimer.switchTool(toolName);
     }
+
+    /**
+     * This function takes a snapshot of the current canvas and stores
+     * it on the stack to be used to undo drawing.
+     */
     public void saveSnap(){
         WritableImage wImage = new WritableImage((int)img.getWidth(), (int)img.getHeight());
         imgCanv.snapshot(null, wImage);

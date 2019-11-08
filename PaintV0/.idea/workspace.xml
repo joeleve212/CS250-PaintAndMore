@@ -30,11 +30,12 @@
           <file leaf-file-name="TopMenus.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="215">
-                  <caret line="369" column="34" selection-start-line="369" selection-start-column="34" selection-end-line="369" selection-end-column="34" />
+                <state relative-caret-position="508">
+                  <caret line="434" column="50" selection-start-line="434" selection-start-column="50" selection-end-line="434" selection-end-column="50" />
                   <folding>
                     <element signature="docComment;class#TopMenus#0" />
                     <element signature="e#10855#12313#0" />
+                    <element signature="e#12299#15589#0" />
                   </folding>
                 </state>
               </provider>
@@ -414,10 +415,10 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50067115" side_tool="true" type="SLIDING" weight="0.18660969" />
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.3295302" />
       <window_info anchor="right" id="REPL" order="4" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14814815" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.14814815" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Leiningen" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" weight="0.16666667" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49932885" visible="true" weight="0.13180828" />
       <window_info id="Designer" order="7" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.114072494" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
@@ -468,6 +469,7 @@
           <folding>
             <element signature="docComment;class#TopMenus#0" />
             <element signature="e#10855#12313#0" />
+            <element signature="e#12299#15589#0" />
           </folding>
         </state>
       </provider>
@@ -487,6 +489,7 @@
           <folding>
             <element signature="docComment;class#TopMenus#0" />
             <element signature="e#10855#12313#0" />
+            <element signature="e#12299#15589#0" />
           </folding>
         </state>
       </provider>
@@ -520,6 +523,7 @@
           <folding>
             <element signature="docComment;class#TopMenus#0" />
             <element signature="e#10855#12313#0" />
+            <element signature="e#12299#15589#0" />
           </folding>
         </state>
       </provider>
@@ -538,6 +542,7 @@
           <folding>
             <element signature="docComment;class#TopMenus#0" />
             <element signature="e#10855#12313#0" />
+            <element signature="e#12299#15589#0" />
           </folding>
         </state>
       </provider>
@@ -558,6 +563,7 @@
           <folding>
             <element signature="docComment;class#TopMenus#0" />
             <element signature="e#10855#12313#0" />
+            <element signature="e#12299#15589#0" />
           </folding>
         </state>
       </provider>
@@ -576,6 +582,7 @@
           <folding>
             <element signature="docComment;class#TopMenus#0" />
             <element signature="e#10855#12313#0" />
+            <element signature="e#12299#15589#0" />
           </folding>
         </state>
       </provider>
@@ -595,6 +602,7 @@
           <folding>
             <element signature="docComment;class#TopMenus#0" />
             <element signature="e#10855#12313#0" />
+            <element signature="e#12299#15589#0" />
           </folding>
         </state>
       </provider>
@@ -721,11 +729,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/paintrebuild/TopMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="369" column="34" selection-start-line="369" selection-start-column="34" selection-end-line="369" selection-end-column="34" />
+        <state relative-caret-position="508">
+          <caret line="434" column="50" selection-start-line="434" selection-start-column="50" selection-end-line="434" selection-end-column="50" />
           <folding>
             <element signature="docComment;class#TopMenus#0" />
             <element signature="e#10855#12313#0" />
+            <element signature="e#12299#15589#0" />
           </folding>
         </state>
       </provider>
