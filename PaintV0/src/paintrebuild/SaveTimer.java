@@ -36,9 +36,13 @@ public class SaveTimer implements Runnable{
         currTimer=timerVal;
         imageFile = new File(tmpFileLoc);
     }
+
+    /**
+     * run() infinitely loops once the thread starts in order to keep autosaving
+     * after the set increment of time.
+     */
     @Override
     public void run(){
-        System.out.println("Timer started");
         while(true) {
             for (int i = 0; saveInterval - i > 0; i++) {
                 try {
@@ -51,9 +55,20 @@ public class SaveTimer implements Runnable{
             autoSave(); //call the function to actually save
         }
     }
+
+    /**
+     * This updates the displayed value of time left before autosaving
+     *
+     * @param newTimeLeft Is the new value to display on the countdown
+     */
     public void updateTimer(int newTimeLeft){
         currTimer.setText(Integer.toString(newTimeLeft));
     }
+
+    /**
+     * This function actually handles the autosave by taking a snapshot
+     * of the current canvas and placing it into imageFile.
+     */
     private void autoSave(){
         Platform.runLater(()->{
             try{

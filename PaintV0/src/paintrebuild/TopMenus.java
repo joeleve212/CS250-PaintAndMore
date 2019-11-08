@@ -53,7 +53,7 @@ public class TopMenus{
     public ImageView stickerView;
     public Image stickerImg;
     private Stack prevVersions;
-    private int minCanv=50,maxCanv=5000;
+    private int minCanv=50,maxCanv=5000,defaultPolySides = 5;
     private ObservableList<Node> origTools;
     private String inputText = "Kevin";
     private MenuBar pinnedMenu;
@@ -87,7 +87,7 @@ public class TopMenus{
         MenuItem circ = new MenuItem("Circle");
         MenuItem regPoly = new MenuItem("Polygon");
         MenuItem freePoly = new MenuItem("Free Poly");
-
+        //Building the menu options
         shapeMenu.getItems().addAll(line, rect, free, oval, circ, regPoly,freePoly);
         toolMenu.getItems().addAll(copier, cutter, text, eraser, grabber, sticker);
 
@@ -103,10 +103,16 @@ public class TopMenus{
         toolTimer.beginTimer("No Tool");
         toolThread.setDaemon(true);
         toolThread.start();
-
+        /**
+         * When help button is clicked, open an Info Popup for information.
+         */
         toolHelp.setOnAction((e)->{
             InfoPopup helpInfo = new InfoPopup(primaryStage, "helpInfo");
         });
+        /**
+         * When release notes button is clicked, open the release notes in
+         * the default .txt editor.
+         */
         release_notes.setOnAction((e)->{
             File ReleaseNotesDoc = new File(releaseNotesPath);
             try{
@@ -115,6 +121,10 @@ public class TopMenus{
                 System.out.println("Cannot find release notes file");
             }
         });
+        /**
+         * When exit button is clicked, open an info popup reminder if
+         * the image has not been saved.
+         */
         exitBtn.setOnAction((e)->{ //Define the behavior on click for exit button
             if(imageHasBeenSaved){
                 Platform.exit();
@@ -123,7 +133,12 @@ public class TopMenus{
                 InfoPopup smartSave = new InfoPopup(primaryStage, "exitSave");
             }
         });
-//TODO: insert Javadoc for all drawMode buttons
+        /**
+         * Each tool has a handler to set the drawMode & update the toolbar,
+         * along with any other necessary function at the time of choosing the tool,
+         * such as choosing an image to use as a sticker or setting the draw
+         * color for the eraser.
+         */
         sticker.setOnAction((e)->{
             drawMode = 9;
             updateMenus();
@@ -190,18 +205,25 @@ public class TopMenus{
             updateMenus();
         });
         regPoly.setOnAction((e)->{
-            numSides = 3;// inputBox.getValue();
+            numSides = defaultPolySides;
             try{numSides = Integer.parseInt(inputText);} //May need catch
             catch(Exception ev){System.out.println("Couldn't detect number");}
             drawMode = 6;
             updateMenus();
         });
         freePoly.setOnAction((e)->{
+            numSides = defaultPolySides;
+            try{numSides = Integer.parseInt(inputText);} //May need catch
+            catch(Exception ev){System.out.println("Couldn't detect number");}
             drawMode=7;
             updateMenus();
         });
     }
 
+    /**
+     * Various getters and setters for corresponding variables
+     * @return Variable corresponding to the getter/setter title
+     */
     public int getDrawMode(){return drawMode;}
     public Paint getLineColor(){return gc.getStroke();}
     public double getLineWidth(){return gc.getLineWidth();}
@@ -216,6 +238,13 @@ public class TopMenus{
     public void setCanvVersion(WritableImage currVersion){ //used by main class for undo & redo
         gc.drawImage(currVersion, IMG_POS_X,IMG_POS_Y, currVersion.getWidth(),currVersion.getHeight());
     }
+
+    /**
+     * This function places a regular polygon on the canvas.
+     *
+     * @param poly is the Polygon to transfer to the canvas
+     * @param radius is the radius from the center of the shape to outer edge
+     */
     public void drawPolygon(Polygon poly, double radius){
         xCoord = new double[poly.getPoints().size()/2];
         yCoord = new double[poly.getPoints().size()/2];
@@ -230,6 +259,13 @@ public class TopMenus{
         }
         saveSnap();
     }
+
+    /**
+     * This function draws the user-defined polygon.
+     *
+     * @param polyPointsX
+     * @param polyPointsY
+     */
     public void drawSelfPoly(ArrayList<Double> polyPointsX, ArrayList<Double> polyPointsY){
         double[] polyArrayX = new double[100];
         double[] polyArrayY = new double[100];
@@ -324,14 +360,14 @@ public class TopMenus{
                 visibility[0]=true;
                 visibility[1]=true;
                 visibility[2]=true;
-                visibility[3]=false;
+                visibility[3]=true;
                 toolName = "Polygon";
                 break;
             case 7:
                 visibility[0]=true;
                 visibility[1]=true;
                 visibility[2]=true;
-                visibility[3]=false;
+                visibility[3]=true;
                 toolName = "Free Polygon";
                 break;
             case 8:

@@ -53,7 +53,7 @@ public class FunctionHandlers {
     private ArrayList<Double> polyPointsY = new ArrayList<Double>();
     FunctionHandlers(TopMenus menu, Stage primaryStage, Group group, Text timerVal){
         menuController=menu;
-
+        SELF_POLY_SIDES = menu.numSides;
         imgCanv = menu.imgCanv;
         /**
          * This handler deals with saving an image for the first time
