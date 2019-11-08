@@ -87,6 +87,11 @@ public class FunctionHandlers {
             }
             menu.imageHasBeenSaved = true;
         });
+        /**
+         * This handler deals with opening a new image file to draw on
+         *
+         * @param e is the event triggered by clicking the open image MenuItem
+         */
         menu.openBtn.setOnAction((e)->{ //This function defines the action when open file is clicked
             FileChooser openFile= new FileChooser();
             openFile.setInitialDirectory(new File(OPENER_FILE_LOC));
@@ -123,6 +128,12 @@ public class FunctionHandlers {
                 timeThread.start(); //Starts run() function in SaveTimer
             }
         });
+        /**
+         * This handler looks at when the mouse clicks on the canvas.
+         * Used to start the drawing of shapes or use tools based on drawMode
+         *
+         * @param event is the mouse click event
+         */
         imgCanv.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -138,9 +149,9 @@ public class FunctionHandlers {
                     menu.updateMenus();
                     return;
                 }
-                if(event.isPrimaryButtonDown()) {
+                if(event.isPrimaryButtonDown()) { //Makes sure the click was the left button
                     primaryJustClicked = true;
-                    if (menu.drawMode == -1) {
+                    if (menu.drawMode == -1) { //extended if statements trigger based on the corresponding tool(s)
                         PixelReader colorSnag = menu.img.getPixelReader();
                         Color newColor = colorSnag.getColor((int) menu.x0, (int) menu.y0);
                         ColorPicker setColor = (ColorPicker)menu.toolBar.getItems().get(1);
@@ -201,6 +212,13 @@ public class FunctionHandlers {
                 }
             }
         });
+        /**
+         * This handler looks at when the mouse drags on the canvas.
+         * Used to show drawing shapes or use tools based on drawMode
+         * during the drawing movement
+         *
+         * @param event is the mouse drag event
+         */
         imgCanv.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -256,6 +274,12 @@ public class FunctionHandlers {
                 }
             }
         });
+        /**
+         * This handler looks at when the mouse unclicks on the canvas.
+         * Used to finish drawing shapes & deletes temp shapes based on drawMode
+         *
+         * @param event is the mouse unclick event
+         */
         imgCanv.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -304,7 +328,7 @@ public class FunctionHandlers {
                     cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
                     drawBlankRect();
                     imageGrabbed = true;
-                } else if(menu.drawMode==-3){
+                } else if(menu.drawMode==-3){ //if tool is copy mode
                     WritableImage wImage = new WritableImage((int)imgCanv.getWidth(), (int)imgCanv.getHeight());
                     imgCanv.snapshot(null, wImage);
                     cutImage = new WritableImage(wImage.getPixelReader() ,(int)menu.x0,(int)menu.y0,(int)Math.abs(menu.x0-menu.x1),(int)Math.abs(menu.y0-menu.y1));
@@ -313,6 +337,14 @@ public class FunctionHandlers {
             }
         });
     }
+
+    /**
+     * This method calculates the points of the vertices in a
+     * regular polygon of specified number of sides.
+     *
+     * @param event The mouse event on which to base calculations
+     * @return The ArrayList containing vertex points of regular polygons
+     */
     public ArrayList<Double> createPolyPoints(MouseEvent event){
         double x0 = menuController.x0;
         double y0 = menuController.y0;
@@ -327,6 +359,10 @@ public class FunctionHandlers {
         }
         return pointArr;
     }
+
+    /**
+     * This function handles CTRL+S - type saving, after the image has been saved once
+     */
     public void saveImage(){
         try{
             WritableImage wImage = new WritableImage((int) imgCanv.getWidth(), (int) imgCanv.getHeight());
@@ -337,6 +373,11 @@ public class FunctionHandlers {
             System.out.println("Save Failed!");
         }
     }
+
+    /**
+     * This function draws a white rectangle for the cut tool to 'delete'
+     * a portion of the image.
+     */
     private void drawBlankRect(){
         double x0 = menuController.x0;
         double x1 = menuController.x1;
